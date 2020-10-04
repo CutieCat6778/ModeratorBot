@@ -66,7 +66,7 @@ module.exports = {
                         }
                     }
                 } else {
-                    let words = args.slice(2);
+                    let words = args.slice(1);
                     let guild = await require("../../tools/getGuild")(message);
                     if(guild.textfilter.whitelist.includes(words)) return message.channel.send("You already whitelisted the words");
                     await words.forEach(word => {
