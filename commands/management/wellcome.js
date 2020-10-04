@@ -15,7 +15,7 @@ module.exports = {
                 if (args[1].toString() && message.mentions.channels.first()) {
                     let wellchannel = message.guild.channels.cache.get(require("../../tools/mentions")(args[1]));
                     if(!wellchannel) return message.channel.send("Channel not found");
-                    if (!wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGE")) {
+                    if (!wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                         return require("../../functions/permissionMiss")("I don't have permission to send messages in that channel")
                     }
                     let guild = await require("../../tools/getGuild")(message);
@@ -79,7 +79,7 @@ module.exports = {
                 } else if (args[1]) {
                     let wellchannel = message.guild.channels.cache.get(require("../../tools/mentions")(args[1]));
                     if(!wellchannel) return message.channel.send("Channel not found");
-                    if (!wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGE")) {
+                    if (!wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                         return require("../../functions/permissionMiss")("I don't have permission to send messages in that channel")
                     }
                     let guild = await require("../../tools/getGuild")(message);
