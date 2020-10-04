@@ -17,7 +17,7 @@ module.exports = {
                 const util = require("util");
                 const evaluted = eval(args.slice(1).join(" "));
                 if (!evaluted) return message.channel.send("Undefined")
-                const output = await require("../../tools/textsplit", true)(util.inspect(evaluted));
+                const output = await require("../../tools/textsplit")(util.inspect(evaluted), true);
                 await message.channel.send(`Type of: ${typeof (evaluted)} | ${require("ms")((new Date() - date1), {long: true})}`);
                 return message.channel.send(output);
             }
