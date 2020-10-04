@@ -80,7 +80,7 @@ module.exports = async (client, message) => {
                 }, 15000)
             }
             //bot mentions
-            if (message.content.toString().toLowerCase() == "<@!762253006993358868>") {
+            if (message.content.split(" ").join("").toString().toLowerCase() == "<@762253006993358868>" || message.content.split(" ").join("").toString().toLowerCase() == "<@!762253006993358868>") {
                 let embed = new MessageEmbed()
                     .setColor("#eec4c6")
                 if (guildCache.prefix) {
