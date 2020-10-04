@@ -8,7 +8,7 @@ module.exports = {
         description: "You use this command to check my ping",
         category: "members"
     },
-    async execute (client, message, args) {
+    async execute(client, message, args) {
         try {
             const date1 = new Date()
             const guild = require("../../tools/getGuild")(message);
@@ -18,6 +18,7 @@ module.exports = {
                 let botMessage = m.createdTimestamp - message.createdTimestamp
                 let Websocket = Math.floor(client.ws.ping);
                 let embed = new MessageEmbed()
+                    .setColor("#eec4c6")
                     .setTitle("🏓 Pong")
                     .addFields([
                         { "name": "Bot Message", "value": `${botMessage} ms` },

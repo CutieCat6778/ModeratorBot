@@ -7,7 +7,7 @@ module.exports = {
         category: "members",
         perms: ["SEND_MESSAGES"]
     },
-    async execute (client, message, args) {
+    async execute(client, message, args) {
         try {
             let snipe = client.snipe.get(message.channel.id);
             if (!snipe) return message.channel.send("There are no rencent deleted message");
@@ -15,6 +15,7 @@ module.exports = {
             if (!user) return message.channel.send("Message author not found");
             else if (snipe) {
                 let embed = new MessageEmbed()
+                    .setColor("#eec4c6")
                     .setAuthor(`${user.displayName}`, user.user.displayAvatarURL())
                     .setDescription(`    ${snipe.content}`)
                     .setFooter(require("ms")((new Date() - snipe.time), { long: true }) + " ago")

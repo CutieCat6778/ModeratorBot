@@ -8,13 +8,13 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         description: 'You use this command to see how many warns you have'
     },
-    async execute (client, message, args) {
+    async execute(client, message, args) {
         try {
             let guild = await require("../../tools/getGuild")(message);
             let user = guild.warn.find(u => u.userId == message.author.id);
             if (!user || user.time == 0) {
                 let embed = new MessageEmbed()
-                    .setColor("#a1ee33")
+                    .setColor("#eec4c6")
                     .setDescription("Nice, you don't have any warns")
                 return message.channel.send(embed);
             } else if (user && user.time > 0) {
