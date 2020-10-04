@@ -30,7 +30,7 @@ module.exports = {
                         }
                     });
                     message.guild.channels.cache.forEach(async (channel) => {
-                        if(channels.type != "text") return;
+                        if(channel.type != "text") return;
                         if (channels.includes(channel.id) == false) {
                             await channel.createOverwrite(vertifyrole, {
                                 VIEW_CHANNEL: false,
@@ -106,7 +106,7 @@ module.exports = {
                             }
                         });
                         message.guild.channels.cache.forEach(async (channel) => {
-                            if(channels.type != "text") return;
+                            if(channel.type != "text") return;
                             if (channels.includes(channel.id) == false) {
                                 await channel.createOverwrite(vertifyrole, {
                                     VIEW_CHANNEL: false,
