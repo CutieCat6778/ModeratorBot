@@ -16,7 +16,7 @@ module.exports = {
                 guild.textfilter.enable = true;
                 await guild.save();
                 client.guild.get(message.guild.id).textfilter = guild.textfilter;
-                message.channel.send("All done !");
+                message.channel.send("Successfully enabled Text filter function");
                 if (client.guild.get(message.guild.id)) {
                     let guildCache = client.guild.get(message.guild.id);
                     if (guildCache.logs.enable == false) return;
@@ -37,7 +37,7 @@ module.exports = {
                     guild.textfilter.enable = true;
                     await guild.save();
                     client.guild.get(message.guild.id).textfilter = guild.textfilter;
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Text filter function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -54,7 +54,7 @@ module.exports = {
                     guild.textfilter.enable = false;
                     await guild.save();
                     client.guild.get(message.guild.id).textfilter = guild.textfilter;
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully disabled Text filter function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;

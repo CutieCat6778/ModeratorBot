@@ -20,7 +20,7 @@ module.exports = {
                     guild.autorole.roleId = role.id;
                     guild.autorole.enable = true;
                     await guild.save();
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Auto asign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -44,7 +44,7 @@ module.exports = {
                     guild.autorole.enable = true;
                     await guild.save();
                     let role = message.guild.channels.cache.get(guild.autorole.roleId);
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Auto asign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -61,7 +61,7 @@ module.exports = {
                     guild.autorole.enable = false;
                     await guild.save();
                     let role = message.guild.channels.cache.get(guild.autorole.roleId);
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully disabled Auto asign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -79,7 +79,7 @@ module.exports = {
                     guild.autorole.roleId = role.id;
                     guild.autorole.enable = true;
                     await guild.save();
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Auto asign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;

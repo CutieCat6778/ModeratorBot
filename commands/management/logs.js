@@ -24,7 +24,7 @@ module.exports = {
                     guild.logs.enable = true;
                     await guild.save();
                     logchannel.send("logs messages will be here");
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Logging function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         guildCache.logs.channelId = logchannel.id;
@@ -50,7 +50,7 @@ module.exports = {
                     guild.logs.enable = true;
                     await guild.save();
                     let logchannel = message.guild.channels.cache.get(guild.logs.channelId);
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Logging function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         guildCache.logs.enable = true;
@@ -68,7 +68,7 @@ module.exports = {
                     guild.logs.enable = false;
                     await guild.save();
                     let logchannel = message.guild.channels.cache.get(guild.logs.channelId);
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully disabled Logging function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         guildCache.logs.enable = false;
@@ -91,7 +91,7 @@ module.exports = {
                     guild.logs.enable = true;
                     await guild.save();
                     logchannel.send("logs messages will be here");
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Logging function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         guildCache.logs.channelId = logchannel.id;

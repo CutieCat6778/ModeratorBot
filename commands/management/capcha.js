@@ -43,7 +43,7 @@ module.exports = {
                         }
                     });
                 }
-                message.channel.send("All done !");
+                message.channel.send("Successfully enabled Capcha function");
                 if (client.guild.get(message.guild.id)) {
                     let guildCache = client.guild.get(message.guild.id);
                     if (guildCache.enable == false) return;
@@ -63,7 +63,7 @@ module.exports = {
                     if (guild.capcha.enable == true) return message.channel.send(`You are already enable the capcha`)
                     guild.capcha.enable = true;
                     await guild.save();
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Capcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.enable == false) return;
@@ -79,7 +79,7 @@ module.exports = {
                     if (guild.capcha.enable == false) return message.channel.send(`You are already disable the capcha`)
                     guild.capcha.enable = false;
                     await guild.save();
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully disabled Capcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.enable == false) return;
@@ -119,7 +119,7 @@ module.exports = {
                             }
                         });
                     }
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Capcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.enable == false) return;

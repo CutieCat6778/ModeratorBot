@@ -24,7 +24,7 @@ module.exports = {
                     guild.wellcome.enable = true;
                     await guild.save();
                     wellchannel.send("Wellcome messages will be here");
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Wellcome message function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -48,7 +48,7 @@ module.exports = {
                     guild.wellcome.enable = true;
                     await guild.save();
                     let wellchannel = message.guild.channels.cache.get(guild.wellcome.channelId);
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Wellcome message function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -65,7 +65,7 @@ module.exports = {
                     guild.wellcome.enable = false;
                     await guild.save();
                     let wellchannel = message.guild.channels.cache.get(guild.wellcome.channelId);
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully disabled Wellcome message function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -87,7 +87,7 @@ module.exports = {
                     guild.wellcome.enable = true;
                     await guild.save();
                     wellchannel.send("Wellcome messages will be here");
-                    message.channel.send("All done !");
+                    message.channel.send("Successfully enabled Wellcome message function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
