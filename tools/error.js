@@ -21,6 +21,7 @@ module.exports = async (error, message, text) => {
             if (text) {
                 let embed1 = new MessageEmbed()
                     .setTitle(":x: Error")
+                    .setColor("#eec4c6")
                     .setDescription(`Oh no there is a error. \n\n __Error message:__\n \`${text}\``)
                     .setTimestamp()
                 message.channel.send(embed1);
@@ -28,6 +29,7 @@ module.exports = async (error, message, text) => {
                 const narary = array.slice(0, Math.floor((1000 / 5))).join('');
                 console.log(error);
                 let embed = new MessageEmbed()
+                    .setColor("#eec4c6")
                     .addField(name ? name : "none", `
                     \`\`\`console\n${narary} \n\n ${text}\`\`\`
                 `)
@@ -37,6 +39,7 @@ module.exports = async (error, message, text) => {
             } else if (message) {
                 let embed1 = new MessageEmbed()
                     .setTitle(":x: Error")
+                    .setColor("#eec4c6")
                     .setDescription("Oh no there is a error, please wait 24h then try again. If it is not fixed, you can use command \`(prefix) bug [problem-info]\` to get better support.")
                     .setTimestamp()
                 message.channel.send(embed1);
@@ -44,6 +47,7 @@ module.exports = async (error, message, text) => {
                 const narary = array.slice(0, Math.floor((1000 / 5))).join('');
                 console.log(error);
                 let embed = new MessageEmbed()
+                    .setColor("#eec4c6")
                     .addField(name ? name : "none", `
                     \`\`\`console\n${narary}\`\`\`
                 `)
@@ -55,6 +59,7 @@ module.exports = async (error, message, text) => {
                 let array = stringTools.toChunks(e, 5);
                 const narary = array.slice(0, Math.floor((1000 / 5))).join('');
                 let embed = new MessageEmbed()
+                    .setColor("#eec4c6")
                     .addField("Client error", `
                     \`\`\`console\n${narary}\`\`\`
                 `)
@@ -71,6 +76,7 @@ module.exports = async (error, message, text) => {
         const narary = array.slice(0, Math.floor((1000 / 5))).join('');
         console.log(error);
         let embed = new MessageEmbed()
+            .setColor("#eec4c6")
             .addField("Client error", `
                     \`\`\`console\n${narary}\`\`\`
                 `)

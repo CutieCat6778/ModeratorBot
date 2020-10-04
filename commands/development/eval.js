@@ -1,6 +1,6 @@
 const StringTools = require("string-toolkit");
 const stringTools = new StringTools;
-const {MessageEmbed} = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 module.exports = {
     config: {
         name: "eval",
@@ -9,7 +9,7 @@ module.exports = {
         perms: ["BOT_OWNER"],
         description: "Don't touch, when you don't know what is"
     },
-    async execute (client, message, args) {
+    async execute(client, message, args) {
         try {
             const date1 = new Date();
             if (!args[0]) return;
@@ -18,19 +18,20 @@ module.exports = {
                 const evaluted = eval(args.slice(1).join(" "));
                 if (!evaluted) return message.channel.send("Undefined")
                 const output = await require("../../tools/textsplit")(util.inspect(evaluted), true);
-                await message.channel.send(`Type of: ${typeof (evaluted)} | ${require("ms")((new Date() - date1), {long: true})}`);
+                await message.channel.send(`Type of: ${typeof (evaluted)} | ${require("ms")((new Date() - date1), { long: true })}`);
                 return message.channel.send(output);
             }
             const evaluted = eval(args.slice(0).join(" "));
             if (!evaluted) return message.channel.send("Undefined")
             const output = await require("../../tools/textsplit")(evaluted);
-            await message.channel.send(`Type of: ${typeof (evaluted)} | ${require("ms")((new Date() - date1), {long: true})}`);
+            await message.channel.send(`Type of: ${typeof (evaluted)} | ${require("ms")((new Date() - date1), { long: true })}`);
             message.channel.send(output);
         } catch (error) {
             let array = stringTools.toChunks(error.stack, 5);
             const narary = array.slice(0, Math.floor((1000 / 5))).join('');
             console.log(error);
             let embed = new MessageEmbed()
+                .setColor("#eec4c6")
                 .addField("Eval", `
                     \`\`\`console${narary}\`\`\`
                 `)

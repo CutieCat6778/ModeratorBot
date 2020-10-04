@@ -10,12 +10,12 @@ module.exports = {
         aliases: ["pol", "question", "ask"],
         perms: ["MANAGE_GUILD"]
     },
-    async execute (client, message, args) {
+    async execute(client, message, args) {
         try {
             if (!args[0]) return message.channel.send("Please supply a __question__")
             let question = args.slice(0).join(" ");
             let embed = new MessageEmbed()
-                .setColor("#a1ee33")
+                .setColor("#eec4c6")
                 .setTitle("Question from " + message.member.displayName)
                 .setDescription(question)
                 .setTimestamp()

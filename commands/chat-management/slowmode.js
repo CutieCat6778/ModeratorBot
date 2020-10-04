@@ -28,8 +28,8 @@ module.exports = {
             if (args[1]) {
                 reason = args.slice(1).join(" ");
             }
-            message.channel.send(`Set slowmode to ${limit}s`);
-            message.channel.setRateLimitPerUser(limit, [reason]);
+            await message.channel.setRateLimitPerUser(limit, [reason]);
+            message.channel.send(`Set slowmode to ${ms(limit, {long: true})}`);
         } catch (e) {
             require("../../tools/error")(e, message)
         }

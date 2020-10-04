@@ -28,6 +28,7 @@ module.exports = {
                     })
                     await newTag.save();
                     let embed = new MessageEmbed()
+                        .setColor("#eec4c6")
                         .setTitle("Added new tag")
                         .addField("Tag's name", key)
                         .addField("Tag's content", `${text}`)
