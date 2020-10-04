@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js")
 
-module.exports = (prefix) => {
+module.exports = function help(prefix) {
     let embed = new MessageEmbed()
         .setColor("#eec4c6")
         .setTitle("Moderation ")

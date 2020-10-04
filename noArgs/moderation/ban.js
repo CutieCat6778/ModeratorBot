@@ -1,6 +1,7 @@
 let {MessageEmbed} = require("discord.js");
-module.exports = function noBan(prefix) {
+module.exports = function help(prefix) {
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .setTitle("Ban")
         .setDescription(`The ban command's aliases are : \`ban\`, \`banish\` or \`ben\`\n
             **Pernamently ban**: \`${prefix} ban @user reason\`

@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js")
-module.exports = function embed(prefix) {
+module.exports = function help(prefix) {
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .setTitle("Text filter")
         .setDescription(`The Text filter command's aliases are : \`textfilter\`, \`badwords\` or \`noswear\`\n
             **Text filter setup**: \`${prefix} textfilter setup\`

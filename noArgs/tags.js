@@ -1,8 +1,9 @@
 const { MessageEmbed } = require("discord.js")
 
-module.exports = (prefix) => {
+module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#eec4c6")
+                .setColor("#eec4c6")
+
         .setTitle("Tags ")
         .setDescription("Tags category is like a public archive in there you can save your data but public")
         .setTimestamp()

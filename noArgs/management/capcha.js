@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js")
-module.exports = function embed(prefix) {
+module.exports = function help(prefix) {
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .setTitle("capcha")
         .setDescription(`The capcha command's aliases are : \`capcha\` or \`captcha\`\n
             **capcha setup**: \`${prefix} capcha setup\`

@@ -1,7 +1,8 @@
-const {MessageEmbed} = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 
 module.exports = function deletewarn(prefix) {
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .setTitle("Delete warn")
         .setDescription(`The deletewarn command's aliases are : \`deletewarn\`, \`delwarn\` or \`delw\`\n
             **Pernamently deletewarn**: \`${prefix} deletewarn @user reason\`

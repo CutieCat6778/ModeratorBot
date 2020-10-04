@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js")
-module.exports = function embed(prefix) {
+module.exports = function help(prefix) {
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .setTitle("Autorole")
         .setDescription(`The autorole command's aliases are : \`autorole\`, \`wellc\` or \`welcome\`\n
             **Autorole setup**: \`${prefix} autorole setup #channel\`

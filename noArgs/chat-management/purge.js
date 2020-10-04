@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js")
-module.exports = function embed(prefix) {
+module.exports = function help(prefix) {
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .setTitle("purge")
         .setDescription(`The purge command's aliases are : \`purge\`, \`clear\` or \`delmsg\`\n
             **purge**: \`${prefix} purge <lines or max>\`

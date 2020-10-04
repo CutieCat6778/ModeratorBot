@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js")
-module.exports = function embed(prefix) {
+module.exports = function help(prefix) {
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .setTitle("Mute")
         .setDescription(`The mute command's aliases are : \`mute\`, \`m\` or \`mutee\`\n
             **Temporaly mute**: \`${prefix} mute temp <time> <@user> <reason>\`

@@ -1,6 +1,7 @@
 let { MessageEmbed } = require("discord.js");
 module.exports = function nokick(prefix) {
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .setTitle("kick")
         .setDescription(`The kick command's aliases are : \`kick\`, \`k\` or \`getout\`\n
             **Pernamently kick**: \`${prefix} kick @user reason\`

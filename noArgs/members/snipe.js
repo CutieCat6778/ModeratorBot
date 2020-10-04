@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .setTitle("snipe")
         .setDescription(`The snipe command's aliases are : \`snipe\`, \`delmsg\` or \`deletemsg\`\n
             **Snipe command:** \`${prefix} snipe <status\`

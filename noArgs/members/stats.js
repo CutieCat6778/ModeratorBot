@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .setTitle("Stats")
         .setDescription(`The stats command's aliases are : \`stats\`, \`notonline\` or \`offline\`\n
             **All commands:** \`${prefix} stats\`

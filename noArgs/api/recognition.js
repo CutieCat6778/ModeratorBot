@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .setTitle("Recognition")
         .setDescription(`The recognition command's aliases are : \`recognition\`, \`recognit\` or \`recog\`\n
             **All commands:** \`${prefix} recognition [image]\`
