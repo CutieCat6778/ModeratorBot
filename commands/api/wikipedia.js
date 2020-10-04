@@ -8,7 +8,7 @@ module.exports = {
         category: "api",
         perms: ["SEND_MESSAGES"]
     },
-    async execute (client, message, args) {
+    async execute(client, message, args) {
         try {
             if (!args[0]) {
                 let embed = await require("../../noArgs/api/wikipedia.js")(client.guild.get(message.guild.id).prefix);
@@ -19,6 +19,7 @@ module.exports = {
                 let url = await getUrl(value);
                 if (info.length >= 1) {
                     let embed = new MessageEmbed()
+                        .setColor("#eec4c6")
                         .setTitle(`I found ${info.length} result`)
                         .setDescription(`Enter a number to get result about it or type \`cancel\` to cancel`)
                     if (info.length < 5) {
@@ -33,7 +34,7 @@ module.exports = {
                     message.channel.send(embed).then(async m => {
                         const filter = m => m.author.id == message.author.id;
                         const collected = await m.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
-                        if(collected.first().content.toString().toLowerCase() == "cancel") return message.channel.send("Canceled");
+                        if (collected.first().content.toString().toLowerCase() == "cancel") return message.channel.send("Canceled");
                         if (isNaN(collected.first().content) == true) return message.channel.send("Invalid number");
                         let num = parseInt(collected.first().content) - 1;
                         if (parseInt(num) > 5) return message.channel.send("Result not found");
@@ -43,6 +44,7 @@ module.exports = {
                             } else if (info[num]) {
                                 let res = info[num];
                                 let embed = new MessageEmbed()
+                                    .setColor("#eec4c6")
                                     .setTitle(res.title)
                                     .setDescription(`[More infomations](${url[3][num]})\n\n${htmlToText.fromString(res.snippet)} ...`)
                                     .setTimestamp(res.timestamp)

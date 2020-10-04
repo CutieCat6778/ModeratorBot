@@ -10,25 +10,25 @@ module.exports = {
         aliases: ["trans"],
         perms: ["SEND_MESSAGES"]
     },
-    async execute (client, message, args) {
-        try{
-            if(!args[0]) {
+    async execute(client, message, args) {
+        try {
+            if (!args[0]) {
                 let embed = require("../../noArgs/api/translate")(client.guild.get(message.guild.id).prefix);
                 return message.reply(embed);
-            }else if(args[0]){
+            } else if (args[0]) {
                 let text = args.slice(0).join(" ");
-                let result = await translate(text, {to: 'en'});
+                let result = await translate(text, { to: 'en' });
                 let embed = new MessageEmbed()
-                    .setColor("#a1ee33")
+                    .setColor("#eec4c6")
                     .setTitle("Translated to English")
                     .addField("Before", `\`${text.toString()}\``, true)
                     .addField("After", `\`${result.toString()}\``, true)
                     .setTimestamp()
                 return message.channel.send(embed);
             }
-        }catch(e) {
+        } catch (e) {
             return require("../../tools/error")(e, message);
         }
-        
+
     }
 }
