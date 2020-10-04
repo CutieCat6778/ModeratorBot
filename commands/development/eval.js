@@ -27,12 +27,11 @@ module.exports = {
             await message.channel.send(`Type of: ${typeof (evaluted)} | ${require("ms")((new Date() - date1), {long: true})}`);
             message.channel.send(output);
         } catch (error) {
-            const name = message.content.split(" ")[1];
             let array = stringTools.toChunks(error.stack, 5);
             const narary = array.slice(0, Math.floor((1000 / 5))).join('');
             console.log(error);
             let embed = new MessageEmbed()
-                .addField(name, `
+                .addField("Eval", `
                     \`\`\`console${narary}\`\`\`
                 `)
                 .addField("command", `${message.content ? message.content : "Client error, no commands info"}`)
