@@ -12,10 +12,10 @@ module.exports = async function muteLog(target, name, message, reason, ntarget) 
         .addField("**Moderator:**", message.author.username, true)
         .addField("**Moderator's id:**", message.author.id, true)
         .addField("**Moderator's tag:**", message.author.discriminator, true)
-        .addField("**Reason:**", reason)
+        .addField("**Reason:**", reason ? reason : "No reason provieded")
         .setTimestamp()
     guild.case.push({
-        "name": name, "num": guild.case.length, "reason": reason, "author": message.author.id, "target": target.id, "time": new Date()
+        "name": name, "num": guild.case.length, "reason": reason ? reason : "No reason provieded", "author": message.author.id, "target": target.id, "time": new Date()
     })
     await guild.save()
     return embed;
