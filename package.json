@@ -23,7 +23,6 @@
   "bugs": {
     "url": "https://github.com/NguyenXD06/shinoneko-djs/issue"
   },
-  "homepage": "https://www.shinoneko.tk",
   "dependencies": {
     "beautify": "0.0.8",
     "common-tags": "^1.8.0",
