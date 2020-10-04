@@ -74,6 +74,7 @@ module.exports = async (client, message) => {
             //bot mentions
             if (message.content.toString().toLowerCase() == "<@!762253006993358868>") {
                 let embed = new MessageEmbed()
+                    .setColor("#eec4c6")
                 if (guildCache.prefix) {
                     embed.setDescription(`My prefix in this server is \`${guildCache.prefix}\`, if you need help type in chat \`${guildCache.prefix} help\` or \`${guildCache.prefix}help\``)
                 } else if (!guildCache.prefix || !guildCache) {
@@ -88,6 +89,7 @@ module.exports = async (client, message) => {
                 if (userCache && userCache.enable == true) {
                     if (userCache) {
                         let embed = new MessageEmbed()
+                            .setColor("#eec4c6")
                             .setDescription(`<@!${user.id}> AFK - **${userCache.status}**`)
                             .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
                         message.channel.send(embed);
@@ -105,7 +107,7 @@ module.exports = async (client, message) => {
             //commands working
             if (message.author.id == "762251615629475847") {
                 let args = message.content.trim().split(/ +/g);
-                if (message.content.toLowerCase().startsWith(guildCache.prefix)){
+                if (message.content.toLowerCase().startsWith(guildCache.prefix)) {
                     args = message.content.slice(guildCache.prefix.length).trim().split(/ +/g);
                 }
                 const cmd = args.shift().toLowerCase();
