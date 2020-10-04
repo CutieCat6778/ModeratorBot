@@ -84,9 +84,9 @@ module.exports = async (client, message) => {
                 let embed = new MessageEmbed()
                     .setColor("#eec4c6")
                 if (guildCache.prefix) {
-                    embed.setDescription(`My prefix in this server is \`${guildCache.prefix}\`, if you need help type in chat \`${guildCache.prefix} help\` or \`${guildCache.prefix}help\``)
+                    embed.setDescription(`My prefix in this server is \`${guildCache.prefix}\`\n If you need help type in chat \`${guildCache.prefix} help\` or \`${guildCache.prefix}help\``)
                 } else if (!guildCache.prefix || !guildCache) {
-                    embed.setDescription(`My prefix in this server is \`shinoneko\`, if you need help type in chat \`shinoneko help\``)
+                    embed.setDescription(`My prefix in this server is \`shinoneko\`\n If you need help type in chat \`shinoneko help\``)
                 }
                 message.reply(embed);
             }
