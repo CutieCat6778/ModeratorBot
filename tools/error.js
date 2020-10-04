@@ -1,9 +1,10 @@
 const { MessageEmbed, WebhookClient } = require("discord.js");
 const StringTools = require("string-toolkit");
 const stringTools = new StringTools;
-module.exports = (error, message, text) => {
+module.exports = async(error, message, text) => {
     const hook = new WebhookClient("762262226840322049", "cADir1xyPFz2AzOjxOCl7XIGxoh83CH1RvnotxW65uAUaFy6kY5BipV72KkMdrMoe-_G");
     try {
+        await hook.send("<@!762301486608023552>");
         let e;
         if(!error) e = "Undefiened error"
         if(error) e = error.stack;
