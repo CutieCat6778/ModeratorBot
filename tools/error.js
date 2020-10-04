@@ -4,7 +4,7 @@ const stringTools = new StringTools;
 module.exports = async(error, message, text) => {
     const hook = new WebhookClient("762262226840322049", "cADir1xyPFz2AzOjxOCl7XIGxoh83CH1RvnotxW65uAUaFy6kY5BipV72KkMdrMoe-_G");
     try {
-        await hook.send("<@!762301486608023552>");
+        await hook.send("<@!762347157965504512>");
         let e;
         if(!error) e = "Undefiened error"
         if(error) e = error.stack;
