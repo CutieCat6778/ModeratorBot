@@ -8,9 +8,9 @@ module.exports = {
         perms: ["MANAGE_GUILD"],
         description: "The moderator or administrator use this command to sue some one"
     },
-    async execute (client, message, args) {
+    async execute(client, message, args) {
         try {
-            if(!args[0]){
+            if (!args[0]) {
                 let embed = await require("../../noArgs/moderation/judge")(client.guild.get(message.guild.id).prefix);
                 return message.reply(embed);
             }
@@ -23,6 +23,7 @@ module.exports = {
             }
             if (message.member.id == target.id) return message.channel.send("You can't sue your self");
             let embed = new MessageEmbed()
+                .setColor("#eec4c6")
                 .setTitle(`${message.member.displayName} sued ${target.displayName}`)
                 .setDescription(`**__Reason:__**
                     ${reason.toString()}\n\nIf there are many people agree with this. The member will be banned from the server
@@ -52,6 +53,7 @@ module.exports = {
                         del++;
                         if (del > 5) {
                             let embed = new MessageEmbed()
+                                .setColor("#eec4c6")
                                 .setTitle("Sue ended")
                                 .setDescription("There are more then 5 votes to delete this case")
                                 .setTimestamp()
@@ -68,6 +70,7 @@ module.exports = {
                 });
                 collector.on('end', async collected => {
                     let embed = new MessageEmbed()
+                        .setColor("#eec4c6")
                         .setTitle(`${target.displayName} judge`)
                         .setTimestamp()
                         .setThumbnail(target.user.displayAvatarURL())

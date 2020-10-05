@@ -1,4 +1,4 @@
-const {MessageEmbed} =require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     config: {
@@ -8,8 +8,8 @@ module.exports = {
         perms: ["MANAGE_GUILD"],
         description: "The moderator or administrator use this command to see cases history"
     },
-    async execute (client, message, args) {
-        try{
+    async execute(client, message, args) {
+        try {
             if (!args[0]) {
                 let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
                 return message.reply(embed);
@@ -28,7 +28,7 @@ module.exports = {
                     if (!author) author = await client.users.fetch(caseInfo.author);
                     let time = await require("ms")((new Date() - new Date(caseInfo.time)), { long: true });
                     const embed = new MessageEmbed()
-                        .setColor("#f94343")
+                        .setColor("#eec4c6")
                         .setTitle(`Case #${caseInfo.num + 1} | ${caseInfo.name}`)
                         .addField("**Target:**", target.user ? target.user.username : target.username, true)
                         .addField("**Target's id:**", target.id, true)
@@ -49,9 +49,9 @@ module.exports = {
                 let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
                 return message.reply(embed);
             }
-        }catch(e) {
+        } catch (e) {
             return require("../../tools/error")(e, message)
         }
-        
+
     }
 }
