@@ -47,7 +47,7 @@ module.exports = async (client, member) => {
                             let wellchannel = member.guild.channels.cache.get(guild.wellcome.channelId);
                             if (!wellchannel) return;
                             let embed = new MessageEmbed()
-                                .setColor("#f94343")
+                                .setColor("#eec4c6")
                                 .setTitle("Member failed")
                                 .setThumbnail(member.user.displayAvatarURL())
                                 .setDescription(`${member} just failed the capcha`)
@@ -56,7 +56,7 @@ module.exports = async (client, member) => {
                         return member.kick("The member failed the capcha");
                     } else if (isNaN(m.first().toString()) == false && parseInt(m.first().toString()) == c) {
                         let goodembed = new MessageEmbed()
-                            .setColor("#a1ee33")
+                            .setColor("#eec4c6")
                             .setTitle("You passed the Capcha")
                             .setDescription(`Wellcome to **${member.guild.name}** hope you enjoy the server`)
                         channel.send(goodembed);
@@ -80,7 +80,7 @@ module.exports = async (client, member) => {
                 let channel = member.guild.channels.cache.get(guild.wellcome.channelId);
                 if (!channel) return;
                 let embed = new MessageEmbed()
-                    .setColor("#a1ee33")
+                    .setColor("#eec4c6")
                     .setTitle("Member joined")
                     .setThumbnail(member.user.displayAvatarURL())
                     .setDescription(`${member} just joined the server \n    Member #${member.guild.memberCount}`)

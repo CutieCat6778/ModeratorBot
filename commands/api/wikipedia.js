@@ -57,7 +57,7 @@ module.exports = {
                     })
                 } else if (info.length == 0) {
                     let embed = new MessageEmbed()
-                        .setColor("#f94343")
+                        .setColor("#eec4c6")
                         .setDescription(`There are no infomations about **${value}**`)
                     return message.channel.send(embed);
                 }

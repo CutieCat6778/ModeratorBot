@@ -5,7 +5,7 @@ module.exports = async(client, guild) => {
         await require("../../tools/getGuild")(undefined, guild);
         const hook = new WebhookClient("762262226840322049", "cADir1xyPFz2AzOjxOCl7XIGxoh83CH1RvnotxW65uAUaFy6kY5BipV72KkMdrMoe-_G");
         let embed = new MessageEmbed()
-            .setColor("#a1ee33")
+            .setColor("#eec4c6")
             .setTitle(`${client.user.username} joined ${guild.name}`)
             .setFooter(`Server #${client.guilds.cache.size}`)
         hook.send(embed);

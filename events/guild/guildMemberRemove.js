@@ -10,7 +10,7 @@ module.exports = async (client, member) => {
             let channel = member.guild.channels.cache.get(guild.wellcome.channelId);
             if (!channel) return;
             let embed = new MessageEmbed()
-                .setColor("#a1ee33")
+                .setColor("#eec4c6")
                 .setTitle("Member left")
                 .setThumbnail(member.user.displayAvatarURL())
                 .setDescription(`${member} just left the server \n    Member #${member.guild.memberCount}`)
