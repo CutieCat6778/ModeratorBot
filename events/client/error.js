@@ -1,4 +1,4 @@
-const {WebhookClient, MessageEmbed} = require("discord.js");
+const { WebhookClient, MessageEmbed } = require("discord.js");
 const StringTools = require("string-toolkit");
 const stringTools = new StringTools;
 module.exports = (client, error) => {
@@ -7,6 +7,7 @@ module.exports = (client, error) => {
     let array = stringTools.toChunks(error.stack, 5);
     const narary = array.slice(0, Math.floor((1000 / 5))).join('');
     let embed = new MessageEmbed()
+        .setColor("#eec4c6")
         .addField("Client error", `
                 \`\`\`${narary}\`\`\`
             `)
