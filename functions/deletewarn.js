@@ -15,10 +15,5 @@ module.exports = async function warn(message, target, reason) {
     targetData.time--;
     targetData.reason = `Deleted warn:${reason}`;
     await guild.save();
-    let embed = new MessageEmbed()
-        .setColor("#a1ee33")
-        .setTitle("Deleted 1 warn")
-        .addField("**Target:**", target.user.username)
-        .addField("**Reason:**", reason)
-    return message.channel.send(embed);
+    return message.channel.send(`One warn has been removed from **${target.user.username}**`)
 }

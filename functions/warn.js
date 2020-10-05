@@ -68,5 +68,6 @@ module.exports = async function warn(message, target, reason, args0, client) {
         targetData.reason = reason;
         await guild.save();
     }
+    message.chanenl.send(`You have been warned in **${message.guild.name}** for reason **${reason}**`)
     return message.channel.send(`**${target.user.tag}** has been warned for reason **${reason}**`);
 }
