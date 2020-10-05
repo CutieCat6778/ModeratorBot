@@ -17,7 +17,7 @@ module.exports = async function getGuild(message, nguild) {
             logs: {
                 channelId: " ", enable: false
             },
-            prefix: "neko",
+            prefix: "shino",
             case: [],
             capcha: {
                 channels: [], enable: false
@@ -30,7 +30,7 @@ module.exports = async function getGuild(message, nguild) {
         return getGuild(message);
     }
     if (!guild.prefix) {
-        guild.prefix = "neko";
+        guild.prefix = "shino";
         await guild.save();
         getGuild(message);
     }
