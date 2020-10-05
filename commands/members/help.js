@@ -22,7 +22,7 @@ module.exports = {
                     try {
                         embed.addField(
                             `${capitalise}`,
-                            `\`\`\`css\n${beautify(dir.map(c => `${c.config.name}[${c.config.aliases.join(", ")}]`).join("\n"), {
+                            `\`\`\`css\n${beautify(dir.map(c => `${c.config.name}[${c.config.aliases[0]}]`).join("\n"), {
                                 format: "css",
                             })} \n\`\`\``, true
                         )
