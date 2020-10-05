@@ -13,7 +13,7 @@ module.exports = async function warn(message, target, reason) {
     }
     if (targetData.time == 0) return message.channel.send("You don't have any warns to delete");
     targetData.time--;
-    targetData.reason = `Deleted warn:${reason}`;
+    targetData.reason = `Deleted one warn for reason __${reason}__`;
     await guild.save();
     return message.channel.send(`One warn has been removed from **${target.user.username}**`)
 }
