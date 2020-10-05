@@ -23,7 +23,10 @@ const guildSchema = mongoose.Schema({
     },
     textfilter: {
         "enable":Boolean, "whitelist":Array
-    }
+    },
+    rules: {"channelId": String, "messageId": String, "rulesArr":[
+        {"ruleNum": Number, "ruleContent": String}
+    ]}
 })
 
 module.exports = mongoose.model("Guild", guildSchema);

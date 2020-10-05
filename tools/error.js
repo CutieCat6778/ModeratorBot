@@ -10,10 +10,12 @@ module.exports = async (error, message, text) => {
         if (error) e = error.stack;
         if (!e) e = error.toString();
         if (message) {
-            let name = message.content.split(" ")[1];
-            name = name.slice(0, 1).toUpperCase() + name.slice(1);
+            var name;
             if (message.author.id == "762251615629475847") {
                 name = message.content.split(" ")[0];
+                name = name.slice(0, 1).toUpperCase() + name.slice(1);
+            }else {
+                name = message.content.split(" ")[1];
                 name = name.slice(0, 1).toUpperCase() + name.slice(1);
             }
         }

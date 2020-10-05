@@ -24,7 +24,8 @@ module.exports = async function getGuild(message, nguild) {
             },
             textfilter: {
                 enable: false, whitelist: []
-            }
+            },
+            rules: {"channelId":" ", "messageId": " " ,"rulesArr":[]}
         })
         await newGuild.save();
         return getGuild(message);
@@ -48,6 +49,10 @@ module.exports = async function getGuild(message, nguild) {
         guild.textfilter = {
             "enable": false, "whitelist": []
         };
+        await guild.save();
+        getGuild(message);
+    }if(!guild.rules) {
+        guild.textfilter = {"channelId":" ", "messageId": " " ,"rulesArr":[]};
         await guild.save();
         getGuild(message);
     }
