@@ -46,14 +46,18 @@ module.exports = async function warn(message, target, reason, args0, client) {
         }
         switch (targetData.time) {
             case 0:
+                console.log(targetData.time)
                 break;
             case 1:
+                console.log(targetData.time)
                 mute(client, "5h", target, muterole)
                 break;
             case 2:
+                console.log(targetData.time)
                 mute(client, "24h", target, muterole)
                 break;
             case 3:
+                console.log(targetData.time)
                 mute(client, "2d", target, muterole)
                 break;
             case 4:
@@ -64,5 +68,5 @@ module.exports = async function warn(message, target, reason, args0, client) {
         targetData.reason = reason;
         await guild.save();
     }
-    return message.channel.send(`${target.user.name} has been warned for reason **${reason}**`);
+    return message.channel.send(`**${target.user.tag}** has been warned for reason **${reason}**`);
 }
