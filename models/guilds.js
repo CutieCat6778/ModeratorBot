@@ -24,7 +24,7 @@ const guildSchema = mongoose.Schema({
     textfilter: {
         "enable":Boolean, "whitelist":Array
     },
-    rules: {"channelId": String, "messageId": String, "rulesArr":[
+    rules: {"enable": Boolean, "channelId": String, "messageId": String, "rulesArr":[
         {"ruleNum": Number, "ruleContent": String}
     ]}
 })

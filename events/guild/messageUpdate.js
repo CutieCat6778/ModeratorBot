@@ -105,55 +105,6 @@ module.exports = async (client, message) => {
                     client.afk.delete(newMessage.author.id);
                 }
             }
-            //commands working
-            if (newMessage.author.id == "762251615629475847" || (message.content.toLowerCase().startsWith(guildCache.prefix) && newMessage.author.id == "762251615629475847")) {
-                let args = newMessage.content.trim().split(/ +/g);
-                if (newMessage.content.toLowerCase().startsWith(guildCache.prefix)) {
-                    args = newMessage.content.slice(guildCache.prefix.length).trim().split(/ +/g);
-                }
-                const cmd = args.shift().toLowerCase();
-                const commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
-                if (!commandfile) return;
-                if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && newMessage.author.id != "762251615629475847") {
-                    return newMessage.reply(require("../../functions/permissionMiss")(commandfile.config.perms))
-                } else if (!commandfile.config.perms.includes("BOT_OWNER")) {
-                    if (newMessage.member.permissions.has(commandfile.config.perms) == false) {
-                        return newMessage.reply(require("../../functions/permissionMiss")(commandfile.config.perms))
-                    }
-                    if (newMessage.guild.me.permissions.has(commandfile.config.perms) == false) {
-                        return newMessage.reply(require("../../functions/permissionMissMe")(commandfile.config.perms))
-                    }
-                }
-                message.channel.messages.fetch({
-                    limit: 80,
-                }).then(async (messages) => {
-                    messages = messages.filter(m => m.author.id === "762253006993358868").array().slice(0, 1);
-                    message.channel.bulkDelete(messages);
-                });
-                return commandfile.execute(client, newMessage, args)
-            }
-            if (!newMessage.content.toLowerCase().startsWith(guildCache.prefix)) return;
-            let args = newMessage.content.slice(guildCache.prefix.length).trim().split(/ +/g);
-            const cmd = args.shift().toLowerCase();
-            const commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
-            if (!commandfile) return;
-            if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && newMessage.author.id != "762251615629475847") {
-                return newMessage.reply(require("../../functions/permissionMiss")(commandfile.config.perms))
-            } else if (!commandfile.config.perms.includes("BOT_OWNER")) {
-                if (newMessage.member.permissions.has(commandfile.config.perms) == false) {
-                    return newMessage.reply(require("../../functions/permissionMiss")(commandfile.config.perms))
-                }
-                if (newMessage.guild.me.permissions.has(commandfile.config.perms) == false) {
-                    return newMessage.reply(require("../../functions/permissionMissMe")(commandfile.config.perms))
-                }
-            }
-            message.channel.messages.fetch({
-                limit: 80,
-            }).then(async (messages) => {
-                messages = messages.filter(m => m.author.id === "762253006993358868").array().slice(0, 1);
-                message.channel.bulkDelete(messages);
-            });
-            return commandfile.execute(client, newMessage, args)
         }
     } catch (e) {
         return require("../../tools/error")(e, undefined)

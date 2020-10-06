@@ -1,12 +1,8 @@
-module.exports = async function addToCache(client, guildid) {
+module.exports = async function addToCache(client) {
     let guilds = await require("../models/guilds").find();
     guilds.map(g => {
-        if(!client.guild.get(guildid)){
-            client.guild.set(guildid, {
-                prefix: g.prefix,
-                logs: g.logs,
-                textfilter: g.textfilter
-            })
+        if(!client.guild.get(g.guildId)){
+            client.guild.set(g.guildId, g)
         }
     })
 }

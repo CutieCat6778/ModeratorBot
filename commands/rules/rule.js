@@ -15,7 +15,7 @@ module.exports = {
                 const guild = await require('../../tools/getGuild')(message);
                 if (args[0] == "setup") {
                     const rules = [];
-                    if (guild.rules.rulesArr.length != 0) return message.channel.send("You are already setup the rules");
+                    if (guild.rules.rulesArr.length != 0 || guild.rules.enable == true) return message.channel.send(`You are already setup the rules or use command \`${client.guild.get(message.guild.id).prefix} resetrule\` to reset the rules`);
                     else if (guild.rules.rulesArr.length == 0) {
                         message.channel.send("Please supply how many rules you will need");
                         const filter = m => m.author.id == message.author.id;
@@ -54,6 +54,7 @@ module.exports = {
                                             let messageId = await channel.send(embed);
                                             guild.rules.messageId = messageId.id;
                                             guild.rules.rulesArr = rules;
+                                            guild.rules.enable == true;
                                             return await guild.save();
                                         }
                                     } else if (collected1.content == "n") {
@@ -70,6 +71,7 @@ module.exports = {
                         return message.channel.send("uhm, wtf")
                     }
                 } else if (isNaN(args[0]) == false) {
+                    if(guild.rules.enable == false) return message.channel.send("The rules is disabled")
                     if (guild.rules.rulesArr.length == 0) {
                         return message.channel.send("There are no rules has been setup")
                     } if (guild.rules.rulesArr.length < parseInt(args[0]) || parseInt(args[0]) < 1) {
@@ -83,6 +85,10 @@ module.exports = {
                         .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
                     return message.channel.send(embed);
                 } else if (args[0].toString() == "display") {
+                    if(guild.rules.enable == false) return message.channel.send("The rules is disabled")
+                    if(guild.rules.rulesArr.length == 0){
+                        return message.channel.send("There are no rules has been setup");
+                    }
                     const embed = new MessageEmbed()
                         .setTitle(`${message.guild.name}'s rules`)
                         .setColor("#eec4c6")
