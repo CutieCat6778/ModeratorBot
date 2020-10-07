@@ -1,6 +1,7 @@
 #work-space
 *.code-workspace
-
+#ngrok
+ngrok
 # Logs
 *.log
 npm-debug.log*

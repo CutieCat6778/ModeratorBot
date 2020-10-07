@@ -24,10 +24,13 @@
     "url": "https://github.com/NguyenXD06/shinoneko-djs/issue"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "beautify": "0.0.8",
+    "body-parser": "^1.19.0",
     "common-tags": "^1.8.0",
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "html-to-text": "^5.1.1",
     "mongoose": "^5.10.2",
     "ms": "^2.1.2",
