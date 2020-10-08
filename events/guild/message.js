@@ -8,11 +8,7 @@ module.exports = async (client, message) => {
             var guildCache = client.guild.get(message.guild.id);
             if (!guildCache) {
                 let g = await require("../../tools/getGuild")(message);
-                client.guild.set(g.guildId, {
-                    prefix: g.prefix,
-                    logs: g.logs,
-                    textfilter: g.textfilter
-                })
+                client.guild.set(g.guildId, g)
                 guildCache = client.guild.get(message.guild.id);
             }
             //text-filter
@@ -33,7 +29,8 @@ module.exports = async (client, message) => {
                         userCache.warn++;
                     } if (require("../../functions/badwords")(message.content, guildCache) == true) {
                         message.delete();
-                        message.reply("what your language").then(m => m.delete({ timeout: 5000 }))
+                        message.reply("what your language").then(m => m.delete({ timeout: 5000 }));
+                        userCache.warn++;
                     }
                     if (userCache.times >= 10 || userCache.warn >= 5) {
                         message.channel.send(`Muted <@!${message.author.id}> for 10 minutes with reason **Spamming**`);
@@ -78,7 +75,7 @@ module.exports = async (client, message) => {
                 if (guildCache.prefix) {
                     embed.setDescription(`My prefix in this server is \`${guildCache.prefix}\`\n If you need help type in chat \`${guildCache.prefix} help\` or \`${guildCache.prefix}help\``)
                 } else if (!guildCache.prefix || !guildCache) {
-                    embed.setDescription(`My prefix in this server is \`shinoneko\`\n If you need help type in chat \`shinoneko help\``)
+                    embed.setDescription(`My prefix in this server is \`shino\`\n If you need help type in chat \`shino help\``)
                 }
                 message.reply(embed);
             }
