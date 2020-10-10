@@ -79,11 +79,12 @@ module.exports = async (client, member) => {
             if (guild.wellcome.enable == true && guild.wellcome.channelId != " ") {
                 let channel = member.guild.channels.cache.get(guild.wellcome.channelId);
                 if (!channel) return;
+                const text = guild.wellcome.join.text.replace('{user}', member).replace('{server}', member.guild.name).replace('{count}', member.guild.members.cache.size)
                 let embed = new MessageEmbed()
                     .setColor("#eec4c6")
                     .setTitle("Member joined")
                     .setThumbnail(member.user.displayAvatarURL())
-                    .setDescription(`${member} just joined the server \n    Member #${member.guild.memberCount}`)
+                    .setDescription(text)
                 channel.send(embed);
             }
         }
