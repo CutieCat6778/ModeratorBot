@@ -134,7 +134,6 @@ module.exports = {
                         return message.channel.send(require("../../functions/permissionMiss")("I don't have permission to send messages in that channel"));
                     }
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
-                    if (guild.wellcome.channelId != " ") return message.channel.send(`Please use command \`${client.guild.get(message.guild.id).prefix} wellcome setting\`, you are already setup the wellcome`)
                     const filter = m => m.author.id == message.author.id;
                     let embed = new MessageEmbed()
                         .setTitle('Join message')
