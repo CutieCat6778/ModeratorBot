@@ -48,7 +48,13 @@ module.exports = async(client, g) => {
         },
         rules: { "enable": false, "channelId": " ", "messageId": " ", "rulesArr": [] }
     })
-    guild.members.cache.filter(u => u.permissions.has("MANAGE_GUILD")).map(a => newGuild.moderators.push(a.id));
+    guild.members.cache.filter(u => {
+        if(u.bot != true){
+            u.permissions.has("MANAGE_GUILD").map(a => {
+                newGuild.moderators.push(a.id)
+            })
+        }
+    });
     await newGuild.save().catch(e => require('./error')(e, undefined))
     return newGuild;
 }
