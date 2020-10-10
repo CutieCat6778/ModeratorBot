@@ -14,7 +14,7 @@ module.exports = {
                 return message.reply(require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
             }
             if (args[0] == "setup") {
-                if (args[1].toString()) {
+                if (args[1]) {
                     let wellchannel = message.guild.channels.cache.get(require("../../tools/mentions")(args[1]));
                     if (!wellchannel) return message.channel.send("Channel not found");
                     if (!wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
