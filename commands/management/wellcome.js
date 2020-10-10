@@ -72,14 +72,14 @@ module.exports = {
                 const guild = await require("../../tools/getGuild")(client, message.guild.id);
                 const channel = message.guild.channels.cache.get(guild.wellcome.channelId);
                 if (!channel) return message.channel.send('Channel not found');
-                const text1 = guild.wellcome.leave.text.replace('{user}', `<@${client.user.id}`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
+                const text1 = guild.wellcome.leave.text.replace('{user}', `<@${client.user.id}>`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
                 const embed1 = new MessageEmbed()
                     .setColor("#eec4c6")
                     .setTitle("Member left")
                     .setThumbnail(client.user.displayAvatarURL())
                     .setDescription(text1)
                 channel.send(embed1);
-                const text = guild.wellcome.join.text.replace('{user}', `<@${client.user.id}`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
+                const text = guild.wellcome.join.text.replace('{user}', `<@${client.user.id}>`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
                 const embed = new MessageEmbed()
                     .setColor("#eec4c6")
                     .setTitle("Member joined")
