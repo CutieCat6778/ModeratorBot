@@ -12,13 +12,14 @@ module.exports = {
         const channel = await message.member.createDM();
         if (!channel) return message.channel.send("I can't send you a Direct Message");
         else if (channel) {
+            const user = await require('../../tools/getUser')(message.author.tag);
+            if(user) return message.channel.send("You are already registed");
             await channel.send("Please supply your password");
             const filter = m => m.channel.id == channel.id;
             let collected = await channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
             collected = collected.first().content;
             if(collected.length < 6) return channel.send("Please supply a password more then 6 characters");
             else if(collected.length >= 6) {   
-                const user = await require('../../tools/getUser')(message.author.tag);
                 if(!user){
                     const password = await bcrypt.hash(collected.toString(), 10);
                     const Users = await require('../../models/users');
