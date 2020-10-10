@@ -14,7 +14,7 @@ module.exports = {
                 if (isNaN(args[0]) == true) return message.channel.send("Invalid rule number");
                 else if (isNaN(args[0]) == false) {
                     args[0] = parseInt(args[0]);
-                    const guild = await require('../../tools/getGuild')(message);
+                    const guild = await require('../../tools/getGuild')(client, message.guild.id);
                     if(guild.rules.enable == false) return message.channel.send("The rules is disabled")
                     if (guild.rules.rulesArr.length == 0) return message.channel.send("You haven't setup the rules yet");
                     await message.channel.send("Please supply a method (edit, delete, add)");

@@ -7,7 +7,7 @@ module.exports = {
     },
     async execute(client, message, args) {
         try{
-            const guild = await require('../../tools/getGuild')(message);
+            const guild = await require('../../tools/getGuild')(client, message.guild.id);
             if(guild.rules.enable == false) return message.channel.send("The rules is disabled")
             if(guild.rules.rulesArr.length == 0){
                 return message.channel.send("There are no rules has been setup");

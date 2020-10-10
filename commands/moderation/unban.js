@@ -29,7 +29,7 @@ module.exports = {
                 if (isNaN(guildCache.logs.channelId == true)) return;
                 let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
                 if (channel) {
-                    let embed = await require("../../logs/unban")(target, "unmute", message, reason, target);
+                    let embed = await require("../../logs/unban")(target, "unmute", message, reason, client, target);
                     return channel.send(embed);
                 }
             }

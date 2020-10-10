@@ -15,7 +15,7 @@ module.exports = {
             }
             if (args[0] == "setup") {
                 const channels = await mentions(args.slice(1));
-                let guild = await require("../../tools/getGuild")(message); 
+                let guild = await require("../../tools/getGuild")(client, message.guild.id); 
                 if (guild.capcha.enable == true) return message.channel.send(`You are already setup the capcha, \`${client.guild.get(message.guild.id).prefix} capcha setting\` to setting to capcha`)
                 guild.capcha.enable = true;
                 guild.capcha.channels = channels;
@@ -59,7 +59,7 @@ module.exports = {
                     return message.reply(require("../../noArgs/management/capcha")(client.guild.get(message.guild.id).prefix));
                 }
                 if (args[1] == "true") {
-                    let guild = await require("../../tools/getGuild")(message);
+                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.capcha.enable == true) return message.channel.send(`You are already enable the capcha`)
                     guild.capcha.enable = true;
                     await guild.save();
@@ -75,7 +75,7 @@ module.exports = {
                         }
                     }
                 } else if (args[1] == "false") {
-                    let guild = await require("../../tools/getGuild")(message);
+                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.capcha.enable == false) return message.channel.send(`You are already disable the capcha`)
                     guild.capcha.enable = false;
                     await guild.save();
@@ -92,7 +92,7 @@ module.exports = {
                     }
                 } else if (args[1]) {
                     const channels = await mentions(args.slice(1));
-                    let guild = await require("../../tools/getGuild")(message);
+                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     guild.capcha.enable = true;
                     guild.capcha.channels = channels;
                     await guild.save();

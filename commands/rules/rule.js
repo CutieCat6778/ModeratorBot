@@ -12,7 +12,7 @@ module.exports = {
             if (!args[0]) {
                 return message.channel.send(await require("../../noArgs/rules/rule.js")(client.guild.get(message.guild.id).prefix));
             } else if (args[0]) {
-                const guild = await require('../../tools/getGuild')(message);
+                const guild = await require('../../tools/getGuild')(client, message.guild.id);
                 if (args[0] == "setup") {
                     const rules = [];
                     if (guild.rules.rulesArr.length != 0 || guild.rules.enable == true) return message.channel.send(`You are already setup the rules or use command \`${client.guild.get(message.guild.id).prefix} resetrule\` to reset the rules`);

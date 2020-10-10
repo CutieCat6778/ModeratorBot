@@ -21,7 +21,7 @@ module.exports = {
                     })
             });
         } catch (e) {
-            return console.log(e);
+            return require('../../tools/error')(e, message);
         }
 
     }

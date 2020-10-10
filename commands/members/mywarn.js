@@ -10,7 +10,7 @@ module.exports = {
     },
     async execute(client, message, args) {
         try {
-            let guild = await require("../../tools/getGuild")(message);
+            let guild = await require("../../tools/getGuild")(client, message.guild.id);
             let user = guild.warn.find(u => u.userId == message.author.id);
             if (!user || user.time == 0) {
                 let embed = new MessageEmbed()

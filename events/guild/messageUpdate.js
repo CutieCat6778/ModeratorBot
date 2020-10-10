@@ -8,7 +8,7 @@ module.exports = async (client, message) => {
             //get guild and save it in cache
             var guildCache = client.guild.get(newMessage.guild.id);
             if (!guildCache) {
-                let g = await require("../../tools/getGuild")(newMessage);
+                let g = await require("../../tools/getGuild")(client, newMessage);
                 client.guild.set(g.guildId, {
                     prefix: g.prefix,
                     logs: g.logs,

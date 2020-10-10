@@ -2,11 +2,22 @@ const mongoose = require("mongoose");
 
 const guildSchema = mongoose.Schema({
     guildId: String,
+    moderators: Array,
+    channels: [{
+        "name": String, "id": String
+    }],
+    roles: [{
+        "name": String, "id": String
+    }],
     autorole: {
         "roleId":String, "enable":Boolean
     },
     wellcome: {
-        "channelId": String, "enable":Boolean
+        "channelId": String, "enable":Boolean, "join":{
+            "text": String, "default": Boolean
+        },"leave":{
+            "text": String, "default": Boolean
+        }
     },
     warn: [
         {"userId": String, "time": Number, "reason":String}

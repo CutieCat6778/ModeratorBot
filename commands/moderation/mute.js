@@ -49,7 +49,7 @@ module.exports = {
                         if (isNaN(guildCache.logs.channelId == true)) return;
                         let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
                         if (channel) {
-                            let embed = await require("../../logs/logs")(client, target, "mute", message, args.slice(3).join(" "));
+                            let embed = await require("../../logs/logs")(target, "mute", message, args.slice(3).join(" "), client);
                             return channel.send(embed);
                         }
                     }
@@ -63,7 +63,7 @@ module.exports = {
                         if (isNaN(guildCache.logs.channelId == true)) return;
                         let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
                         if (channel) {
-                            let embed = await require("../../logs/logs")(target, "mute", message, args.slice(1).join(" "));
+                            let embed = await require("../../logs/logs")(target, "mute", message, args.slice(1).join(" "), client);
                             return channel.send(embed);
                         }
                     }

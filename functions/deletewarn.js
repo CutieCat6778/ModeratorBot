@@ -1,7 +1,7 @@
 const {MessageEmbed} =require("discord.js");
 
-module.exports = async function warn(message, target, reason) {
-    const guild = await require("../tools/getGuild")(message);
+module.exports = async function warn(message, target, reason, client) {
+    const guild = await require("../tools/getGuild")(client, message.guild.id);
     let targetData = guild.warn.find(t => t.userId == target.id);
     if (!targetData) {
         const object = {

@@ -11,6 +11,7 @@ module.exports = {
     },
     async execute(client, message, args) {
         try {
+            require('../../tools/newGuild')(client, message.guild.id)
             const date1 = new Date();
             if (!args[0]) return;
             if (args[0] == "map") {
@@ -21,6 +22,7 @@ module.exports = {
                 await message.channel.send(`Type of: ${typeof (evaluted)} | ${require("ms")((new Date() - date1), { long: true })}`);
                 return message.channel.send(output);
             }
+            console.log(args.slice(0).join(" "));
             const evaluted = eval(args.slice(0).join(" "));
             if (!evaluted) return message.channel.send("Undefined")
             const output = await require("../../tools/textsplit")(evaluted);

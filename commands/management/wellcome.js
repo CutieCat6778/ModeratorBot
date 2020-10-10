@@ -18,7 +18,7 @@ module.exports = {
                     if (!wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                         return require("../../functions/permissionMiss")("I don't have permission to send messages in that channel")
                     }
-                    let guild = await require("../../tools/getGuild")(message);
+                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.wellcome.channelId != " ") return message.channel.send(`Please use command \`${client.guild.get(message.guild.id).prefix} wellcome setting\`, you are already setup the wellcome`)
                     guild.wellcome.channelId = wellchannel.id;
                     guild.wellcome.enable = true;
@@ -43,7 +43,7 @@ module.exports = {
                     return message.reply(require("../../noArgs/management/textfilter")(client.guild.get(message.guild.id).prefix));
                 }
                 else if (args[1] == "true") {
-                    let guild = await require("../../tools/getGuild")(message);
+                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.wellcome.enable == true) return message.channel.send("You already enable it");
                     guild.wellcome.enable = true;
                     await guild.save();
@@ -60,7 +60,7 @@ module.exports = {
                         }
                     }
                 } else if (args[1] == "false") {
-                    let guild = await require("../../tools/getGuild")(message);
+                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.wellcome.enable == false) return message.channel.send("You already disable it");
                     guild.wellcome.enable = false;
                     await guild.save();
@@ -82,7 +82,7 @@ module.exports = {
                     if (!wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                         return require("../../functions/permissionMiss")("I don't have permission to send messages in that channel")
                     }
-                    let guild = await require("../../tools/getGuild")(message);
+                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     guild.wellcome.channelId = wellchannel.id;
                     guild.wellcome.enable = true;
                     await guild.save();

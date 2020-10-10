@@ -1,6 +1,6 @@
 const mute = require("../tools/mute");
 module.exports = async function warn(message, target, reason, args0, client) {
-    const guild = await require("../tools/getGuild")(message);
+    const guild = await require("../tools/getGuild")(client, message.guild.id);
     let targetData = guild.warn.find(t => t.userId == target.id);
     if (!targetData) {
         const object = {
@@ -46,18 +46,14 @@ module.exports = async function warn(message, target, reason, args0, client) {
         }
         switch (targetData.time) {
             case 0:
-                console.log(targetData.time)
                 break;
             case 1:
-                console.log(targetData.time)
                 mute(client, "5h", target, muterole)
                 break;
             case 2:
-                console.log(targetData.time)
                 mute(client, "24h", target, muterole)
                 break;
             case 3:
-                console.log(targetData.time)
                 mute(client, "2d", target, muterole)
                 break;
             case 4:

@@ -20,7 +20,7 @@ module.exports = {
                 return message.channel.send("You can't mentions a role as a prefix");
             } else if (args[0]) {
                 const prefix = args[0].toString();
-                let guildData = await require("../../tools/getGuild")(message);
+                let guildData = await require("../../tools/getGuild")(message.guild.id);
                 guildData.prefix = prefix;
                 client.guild.get(message.guild.id).prefix = prefix;
                 await guildData.save();

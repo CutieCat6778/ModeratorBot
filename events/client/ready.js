@@ -7,9 +7,6 @@ module.exports = async (client) => {
             useNewUrlParser: true,
             useUnifiedTopology: true
         })
-        await client.guilds.cache.forEach(async guild => {
-            await require("../../tools/getGuild")(undefined, guild);
-        })
         await require("../../functions/guildCache")(client);
         const hook = new WebhookClient("762262226840322049", "cADir1xyPFz2AzOjxOCl7XIGxoh83CH1RvnotxW65uAUaFy6kY5BipV72KkMdrMoe-_G");
         const embed = new MessageEmbed()

@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const User = require('../models/users');
 const bcrypt = require('bcrypt')
+const Guild = require('../models/guilds');
 module.exports = (client) => {
     const app = new express();
 
@@ -36,7 +37,11 @@ module.exports = (client) => {
             }
         })
     })
-
+    app.post('/guild', (req, res) => {
+        Guild.findOne({guildId: req.body.id}, (err, guild) => {
+            res.json(JSON.parse(guild))
+        });
+    })
     app.listen(process.env.PORT || 3000, () => {
         console.log("server is running on port 3000")
     });

@@ -9,7 +9,7 @@ module.exports = {
     },
     async execute(client, message, args) {
         try{
-            const guild = await require('../../tools/getGuild')(message);
+            const guild = await require('../../tools/getGuild')(client, message.guild.id);
             if(guild.rules.enable == false) return message.channel.send("The rules is disabled")
             const filter = m => m.author.id == message.author.id;
             message.channel.send(`Please tell me the rule number ${guild.rules.rulesArr.length + 1} (__Only the rule's content !__)`);

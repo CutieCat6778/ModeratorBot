@@ -15,7 +15,7 @@ module.exports = {
                 if (args[1]) {
                     let role = message.guild.roles.cache.get(require("../../tools/mentions")(args[1]));
                     if(!role) return message.channel.send("Role not found");
-                    let guild = await require("../../tools/getGuild")(message);
+                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.autorole.roleId != " ") return message.channel.send(`Please use command \`${client.guild.get(message.guild.id).prefix} autorole setting\`, you are already setup the autorole`)
                     guild.autorole.roleId = role.id;
                     guild.autorole.enable = true;
@@ -39,7 +39,7 @@ module.exports = {
                     return message.reply(require("../../noArgs/management/textfilter")(client.guild.get(message.guild.id).prefix));
                 }
                 else if (args[1] == "true") {
-                    let guild = await require("../../tools/getGuild")(message);
+                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.autorole.enable == true) return message.channel.send("You already enable it");
                     guild.autorole.enable = true;
                     await guild.save();
@@ -56,7 +56,7 @@ module.exports = {
                         }
                     }
                 } else if (args[1] == "false") {
-                    let guild = await require("../../tools/getGuild")(message);
+                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.autorole.enable == false) return message.channel.send("You already disable it");
                     guild.autorole.enable = false;
                     await guild.save();
@@ -75,7 +75,7 @@ module.exports = {
                 } else if (args[1]) {
                     let role = message.guild.roles.cache.get(require("../../tools/mentions")(args[1]));
                     if(!role) return message.channel.send("Role not found");
-                    let guild = await require("../../tools/getGuild")(message);
+                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     guild.autorole.roleId = role.id;
                     guild.autorole.enable = true;
                     await guild.save();
