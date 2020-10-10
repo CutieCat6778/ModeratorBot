@@ -67,18 +67,18 @@ module.exports = {
                 const guild = await require("../../tools/getGuild")(client, message.guild.id);
                 const channel = member.guild.channels.cache.get(guild.wellcome.channelId);
                 if (!channel) return message.channel.send('Channel not found');
-                const text1 = guild.wellcome.leave.text.replace('{user}', member.tag).replace('{server}', member.guild.name).replace('{count}', member.guild.members.cache.size)
+                const text1 = guild.wellcome.leave.text.replace('{user}', `<@${client.user.id}`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
                 const embed1 = new MessageEmbed()
                     .setColor("#eec4c6")
                     .setTitle("Member left")
-                    .setThumbnail(member.user.displayAvatarURL())
+                    .setThumbnail(client.user.displayAvatarURL())
                     .setDescription(text1)
                 channel.send(embed1);
-                const text = guild.wellcome.join.text.replace('{user}', member).replace('{server}', member.guild.name).replace('{count}', member.guild.members.cache.size)
+                const text = guild.wellcome.join.text.replace('{user}', `<@${client.user.id}`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
                 const embed = new MessageEmbed()
                     .setColor("#eec4c6")
                     .setTitle("Member joined")
-                    .setThumbnail(member.user.displayAvatarURL())
+                    .setThumbnail(client.user.displayAvatarURL())
                     .setDescription(text)
                 channel.send(embed);
                 return message.channel.send(`Done ! check <#${guild.wellcome.channelId}>, if there is a problem use command \`${client.guild.get(message.guild.id).prefix} bug <text>\``)
