@@ -128,8 +128,32 @@ module.exports = {
                         return require("../../functions/permissionMiss")("I don't have permission to send messages in that channel")
                     }
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
+                    if (guild.wellcome.channelId != " ") return message.channel.send(`Please use command \`${client.guild.get(message.guild.id).prefix} wellcome setting\`, you are already setup the wellcome`)
+                    const filter = m => m.author.id == message.author.id;
+                    let embed = new MessageEmbed()
+                        .setTitle('Join message')
+                        .setDescription('Please supply a join message')
+                        .addField('Member Name', `{user}`, true)
+                        .addField('Server Name', `{server}`, true)
+                        .addField('Member count', `{count}`, true)
+                        .setTimestamp()
+                    message.channel.send(embed);
+                    let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                    collected = collected.first().content;
+                    let embed1 = new MessageEmbed()
+                        .setTitle('Leave message')
+                        .setDescription('Please supply a leave message')
+                        .addField('Member Name', `{user}`, true)
+                        .addField('Server Name', `{server}`, true)
+                        .addField('Member count', `{count}`, true)
+                        .setTimestamp()
+                    message.channel.send(embed1);
+                    let collecte = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                    collecte = collecte.first().content;
                     guild.wellcome.channelId = wellchannel.id;
                     guild.wellcome.enable = true;
+                    guild.wellcome.join.text = collected;
+                    guild.wellcome.leave.text = collecte;
                     await guild.save();
                     wellchannel.send("Wellcome messages will be here");
                     message.channel.send("Successfully enabled Wellcome message function");
