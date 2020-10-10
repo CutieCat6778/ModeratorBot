@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const bcrypt = require('bcrypt');
 
 module.exports = {
     config: {
@@ -19,15 +20,16 @@ module.exports = {
             else if(collected.length >= 6) {   
                 const user = await require('../../tools/getUser')(message.author.tag);
                 if(!user){
+                    const password = await bcrypt.hash(collected.toString(), 10);
                     const Users = await require('../../models/users');
                     const newUser = new Users({
                         id: message.author.id,
-                        password: collected.toString(),
+                        password: password,
                         username: message.author.tag,
                         guildId: [],
                         lastUpdate: new Date
                     })
-                    newUser.push(message.guild.id);
+                    newUser.guildId.push(message.guild.id);
                     await newUser.save();
                     let embed = new MessageEmbed()
                         .setTitle("Succesfully created new Account")
