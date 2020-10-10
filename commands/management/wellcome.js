@@ -65,7 +65,7 @@ module.exports = {
                 }
             } else if (args[0] == "test") {
                 const guild = await require("../../tools/getGuild")(client, message.guild.id);
-                const channel = member.guild.channels.cache.get(guild.wellcome.channelId);
+                const channel = message.guild.channels.cache.get(guild.wellcome.channelId);
                 if (!channel) return message.channel.send('Channel not found');
                 const text1 = guild.wellcome.leave.text.replace('{user}', `<@${client.user.id}`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
                 const embed1 = new MessageEmbed()
