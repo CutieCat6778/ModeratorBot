@@ -50,7 +50,7 @@ module.exports = async(client, g) => {
     })
     guild.members.cache.filter(u => {
         if(u.bot != true){
-            u.permissions.has("MANAGE_GUILD").map(a => {
+            u.permission.has("MANAGE_GUILD").map(a => {
                 newGuild.moderators.push(a.id)
             })
         }
