@@ -1,7 +1,7 @@
 let { MessageEmbed } = require("discord.js");
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#eec4c6")
+        .setColor("#669fd2")
         .setTitle("cases")
         .setDescription(`The cases command's aliases are : \`cases\`, \`case\` or \`caseinfo\`\n
             **Pernamently cases**: \`${prefix} cases <case_number>\`

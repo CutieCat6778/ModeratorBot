@@ -18,7 +18,7 @@ module.exports = {
             weather.getAllWeather(function (err, result) {
                 if (result.cod && result.cod == '404') return message.channel.send(result.message);
                 let embed = new MessageEmbed()
-                    .setColor("#eec4c6")
+                    .setColor("#669fd2")
                     .setTitle(result.name)
                     .setDescription(result.weather[0].main + " - " + result.weather[0].description)
                     .addField("Visibility", result.visibility / 1000 + "km", true)

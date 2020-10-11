@@ -22,7 +22,7 @@ module.exports = {
                     message.channel.send(`I will remind you after ${require("ms")(require("ms")(time), { long: true })}`)
                     return client.setTimeout(() => {
                         let embed = new MessageEmbed()
-                            .setColor("#eec4c6")
+                            .setColor("#669fd2")
                             .setTitle("Reminder")
                             .setDescription(`${text}`)
                             .setTimestamp(date)

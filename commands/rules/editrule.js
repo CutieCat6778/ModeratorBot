@@ -30,7 +30,7 @@ module.exports = {
                         rule.ruleContent = collected1.toString()
                         const embed = new MessageEmbed()
                             .setTitle(`${message.guild.name}'s rules`)
-                            .setColor("#eec4c6")
+                            .setColor("#669fd2")
                             .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                             .setFooter(message.guild.name, message.guild.iconURL())
                             .setTimestamp(new Date())

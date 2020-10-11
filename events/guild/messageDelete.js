@@ -5,7 +5,7 @@ module.exports = async (client, message) => {
                 if (client.guild.get(message.guild.id).rules.rulesArr.length != 0) {
                     const embed = new MessageEmbed()
                         .setTitle(`${message.guild.name}'s rules`)
-                        .setColor("#eec4c6")
+                        .setColor("#669fd2")
                         .setDescription(`${lient.guild.get(message.guild.id).rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                         .setFooter(message.guild.name, message.guild.iconURL())
                         .setTimestamp(new Date())

@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#eec4c6")
+        .setColor("#669fd2")
         .setTitle("help")
         .setDescription(`The help command's aliases are : \`help\`, \`h\` or \`hrlp\`\n
             **All commands:** \`${prefix}help\`

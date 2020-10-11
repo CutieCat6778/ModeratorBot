@@ -35,7 +35,7 @@ module.exports = {
                                 if (i == num) {
                                     const embed = new MessageEmbed()
                                         .setTitle(`${message.guild.name}'s rules`)
-                                        .setColor("#eec4c6")
+                                        .setColor("#669fd2")
                                         .setDescription(`${rules.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                                         .setFooter(message.guild.name, message.guild.iconURL())
                                         .setTimestamp(new Date())
@@ -78,7 +78,7 @@ module.exports = {
                         return message.channel.send("Rule number not found");
                     }
                     const embed = new MessageEmbed()
-                        .setColor("#eec4c6")
+                        .setColor("#669fd2")
                         .setAuthor(`Rule #${args[0]}`, message.guild.iconURL())
                         .setDescription(`**${guild.rules.rulesArr.find(a => a.ruleNum == parseInt(args[0])).ruleContent}**\n[Please read <#${guild.rules.channelId}> for more infomations](https://discordapp.com/channels/${message.guild.id}/${guild.rules.channelId}/${guild.rules.messageId}/)`)
                         .setTimestamp()
@@ -91,7 +91,7 @@ module.exports = {
                     }
                     const embed = new MessageEmbed()
                         .setTitle(`${message.guild.name}'s rules`)
-                        .setColor("#eec4c6")
+                        .setColor("#669fd2")
                         .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                         .setFooter(message.guild.name, message.guild.iconURL())
                         .setTimestamp(new Date())

@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#eec4c6")
+        .setColor("#669fd2")
         .setTitle("My warn")
         .setDescription(`The My warn command's aliases are : \`My warn\`, \`notonline\` or \`offline\`\n
             **All commands:** \`${prefix} mywarn\`

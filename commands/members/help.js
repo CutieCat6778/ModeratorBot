@@ -13,7 +13,7 @@ module.exports = {
             const categories = await readdirSync("./commands/");
             if (!args[0]) {
                 let embed = new MessageEmbed()
-                    .setColor("#eec4c6")
+                    .setColor("#669fd2")
                     .setTitle(message.guild.me.displayName + `#${client.user.discriminator}`)
                     .setFooter("© 2020 Valder#3127 All Rights Reserved")
                 categories.forEach(category => {

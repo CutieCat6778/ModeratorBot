@@ -13,7 +13,7 @@ module.exports = {
             let topic = args.slice(0).join("+");
             const url = `https://www.google.com/search?q=${topic}`;
             let embed = new MessageEmbed()
-                .setColor("#eec4c6")
+                .setColor("#669fd2")
                 .setTitle("Link for the result")
                 .setDescription(`[Click here](${url})`)
                 .setTimestamp()

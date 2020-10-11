@@ -14,12 +14,12 @@ module.exports = {
             let user = guild.warn.find(u => u.userId == message.author.id);
             if (!user || user.time == 0) {
                 let embed = new MessageEmbed()
-                    .setColor("#eec4c6")
+                    .setColor("#669fd2")
                     .setDescription("Nice, you don't have any warns")
                 return message.channel.send(embed);
             } else if (user && user.time > 0) {
                 let embed = new MessageEmbed()
-                    .setColor("#eec4c6")
+                    .setColor("#669fd2")
                     .setTitle(`You have ${user.time} warns`)
                     .addField("Last reason", user.reason)
                     .setTimestamp()

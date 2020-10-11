@@ -71,7 +71,7 @@ module.exports = async (client, message) => {
             //bot mentions
             if (message.content.split(" ").join("").toString().toLowerCase() == "<@762253006993358868>" || message.content.split(" ").join("").toString().toLowerCase() == "<@!762253006993358868>") {
                 let embed = new MessageEmbed()
-                    .setColor("#eec4c6")
+                    .setColor("#669fd2")
                 if (guildCache.prefix) {
                     embed.setDescription(`My prefix in this server is \`${guildCache.prefix}\`\n If you need help type in chat \`${guildCache.prefix} help\` or \`${guildCache.prefix}help\``)
                 } else if (!guildCache.prefix || !guildCache) {
@@ -86,7 +86,7 @@ module.exports = async (client, message) => {
                 if (userCache && userCache.enable == true) {
                     if (userCache) {
                         let embed = new MessageEmbed()
-                            .setColor("#eec4c6")
+                            .setColor("#669fd2")
                             .setDescription(`<@!${user.id}> AFK - **${userCache.status}**`)
                             .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
                         message.channel.send(embed);
@@ -102,7 +102,7 @@ module.exports = async (client, message) => {
                 }
             }
             //commands working
-            if (message.author.id == "762251615629475847" || (message.content.toLowerCase().startsWith(guildCache.prefix) && message.author.id == "762251615629475847")) {
+            if (message.author.id == "762749432658788384" || (message.content.toLowerCase().startsWith(guildCache.prefix) && message.author.id == "762749432658788384")) {
                 let args = message.content.trim().split(/ +/g);
                 if (message.content.toLowerCase().startsWith(guildCache.prefix)) {
                     args = message.content.slice(guildCache.prefix.length).trim().split(/ +/g);
@@ -110,7 +110,7 @@ module.exports = async (client, message) => {
                 const cmd = args.shift().toLowerCase();
                 const commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
                 if (!commandfile) return;
-                if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && message.author.id != "762251615629475847") {
+                if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && message.author.id != "762749432658788384") {
                     return message.reply(require("../../functions/permissionMiss")(commandfile.config.perms))
                 } else if (!commandfile.config.perms.includes("BOT_OWNER")) {
                     if (message.member.permissions.has(commandfile.config.perms) == false) {
@@ -127,7 +127,7 @@ module.exports = async (client, message) => {
             const cmd = args.shift().toLowerCase();
             const commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
             if (!commandfile) return;
-            if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && message.author.id != "762251615629475847") {
+            if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && message.author.id != "762749432658788384") {
                 return message.reply(require("../../functions/permissionMiss")(commandfile.config.perms))
             } else if (!commandfile.config.perms.includes("BOT_OWNER")) {
                 if (message.member.permissions.has(commandfile.config.perms) == false) {

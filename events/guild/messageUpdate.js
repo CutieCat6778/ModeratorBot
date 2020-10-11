@@ -75,7 +75,7 @@ module.exports = async (client, message) => {
             //bot mentions
             if (newMessage.content.split(" ").join("").toString().toLowerCase() == "<@762253006993358868>" || newMessage.content.split(" ").join("").toString().toLowerCase() == "<@!762253006993358868>") {
                 let embed = new MessageEmbed()
-                    .setColor("#eec4c6")
+                    .setColor("#669fd2")
                 if (guildCache.prefix) {
                     embed.setDescription(`My prefix in this server is \`${guildCache.prefix}\`\n If you need help type in chat \`${guildCache.prefix} help\` or \`${guildCache.prefix}help\``)
                 } else if (!guildCache.prefix || !guildCache) {
@@ -90,7 +90,7 @@ module.exports = async (client, message) => {
                 if (userCache && userCache.enable == true) {
                     if (userCache) {
                         let embed = new MessageEmbed()
-                            .setColor("#eec4c6")
+                            .setColor("#669fd2")
                             .setDescription(`<@!${user.id}> AFK - **${userCache.status}**`)
                             .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
                         newMessage.channel.send(embed);

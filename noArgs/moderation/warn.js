@@ -1,7 +1,7 @@
 let { MessageEmbed } = require("discord.js");
 module.exports = function nowarn(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#eec4c6")
+        .setColor("#669fd2")
         .setTitle("Warn")
         .setDescription(`The warn command's aliases are : \`warn\`, \`wsrn\` or \`attention\`\n
             **Warn system**:\n\`First warn: nothing\nSecond warn: mute 5h\nThird warn: mute 24h\nFouth warn: mute 2days\nFifth warn: ban\`

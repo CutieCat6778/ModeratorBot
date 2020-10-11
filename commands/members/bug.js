@@ -16,14 +16,14 @@ module.exports = {
             } else if (args[0]) {
                 let problem = args.slice(0).join(" ");
                 let embed = new MessageEmbed()
-                    .setColor("#eec4c6")
+                    .setColor("#669fd2")
                     .setTitle(`Problem reported`)
                     .setDescription(`Content: ${problem}`)
                     .addField("Member's ID", message.author.id, true)
                     .addField("Server's ID", message.guild.id, true)
                     .setTimestamp()
                 message.author.send("Thanks you for supporting Juger, my Developer will alert you about the newest fix about your problem.");
-                const hook = new WebhookClient("762262226840322049", "cADir1xyPFz2AzOjxOCl7XIGxoh83CH1RvnotxW65uAUaFy6kY5BipV72KkMdrMoe-_G");
+                const hook = new WebhookClient("764912496665952258", "YL_Vt9BaCvMdFaPPZy5lsE5osWtTEJ1HJUUyI5rfSEVWyxXjGYAO32BtwTomCfxpyE_K");
                 return hook.send(embed);
             }
         } catch (e) {

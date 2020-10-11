@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#eec4c6")
+        .setColor("#669fd2")
         .setTitle("Delete tag")
         .setDescription(`The deletetag command's aliases are : \`deletetag\`, \`deltag\` or \`deletetags\`\n
             **All commands:** \`${prefix} deletetag [key_word]\`

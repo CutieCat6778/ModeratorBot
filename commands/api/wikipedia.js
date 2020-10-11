@@ -19,7 +19,7 @@ module.exports = {
                 let url = await getUrl(value);
                 if (info.length >= 1) {
                     let embed = new MessageEmbed()
-                        .setColor("#eec4c6")
+                        .setColor("#669fd2")
                         .setTitle(`I found ${info.length} result`)
                         .setDescription(`Enter a number to get result about it or type \`cancel\` to cancel`)
                     if (info.length < 5) {
@@ -44,7 +44,7 @@ module.exports = {
                             } else if (info[num]) {
                                 let res = info[num];
                                 let embed = new MessageEmbed()
-                                    .setColor("#eec4c6")
+                                    .setColor("#669fd2")
                                     .setTitle(res.title)
                                     .setDescription(`[More infomations](${url[3][num]})\n\n${htmlToText.fromString(res.snippet)} ...`)
                                     .setTimestamp(res.timestamp)
@@ -57,7 +57,7 @@ module.exports = {
                     })
                 } else if (info.length == 0) {
                     let embed = new MessageEmbed()
-                        .setColor("#eec4c6")
+                        .setColor("#669fd2")
                         .setDescription(`There are no infomations about **${value}**`)
                     return message.channel.send(embed);
                 }

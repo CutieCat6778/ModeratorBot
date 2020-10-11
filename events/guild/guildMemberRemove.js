@@ -11,7 +11,7 @@ module.exports = async (client, member) => {
             if (!channel) return;
             const text = guild.wellcome.leave.text.replace('{user}', member.tag).replace('{server}', member.guild.name).replace('{count}', member.guild.members.cache.size)
             let embed = new MessageEmbed()
-                .setColor("#eec4c6")
+                .setColor("#669fd2")
                 .setTitle("Member left")
                 .setThumbnail(member.user.displayAvatarURL())
                 .setDescription(text)

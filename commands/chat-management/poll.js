@@ -15,7 +15,7 @@ module.exports = {
             if (!args[0]) return message.channel.send("Please supply a __question__")
             let question = args.slice(0).join(" ");
             let embed = new MessageEmbed()
-                .setColor("#eec4c6")
+                .setColor("#669fd2")
                 .setTitle("Question from " + message.member.displayName)
                 .setDescription(question)
                 .setTimestamp()

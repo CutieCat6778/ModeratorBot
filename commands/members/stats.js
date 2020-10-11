@@ -10,9 +10,9 @@ module.exports = {
     },
     async execute (client, message, args) {
         try {
-            const owner = client.users.cache.get("762251615629475847").tag
+            const owner = client.users.cache.get("762749432658788384").tag
             let embed = new MessageEmbed()
-                .setColor("#eec4c6")
+                .setColor("#669fd2")
                 .setTitle(`${client.user.username}'s information`)
                 .addField("Name", client.user.username, true)
                 .setThumbnail(client.user.displayAvatarURL())

@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#eec4c6")
+        .setColor("#669fd2")
         .setTitle("wellcome")
         .setDescription(`The wellcome command's aliases are : \`wellcome\`, \`wellc\` or \`welcome\`\n
             **Wellcome setup**: \`${prefix} wellcome setup #channel\`

@@ -33,7 +33,7 @@ module.exports = {
             const narary = array.slice(0, Math.floor((1000 / 5))).join('');
             console.log(error);
             let embed = new MessageEmbed()
-                .setColor("#eec4c6")
+                .setColor("#669fd2")
                 .addField("Eval", `
                     \`\`\`console${narary}\`\`\`
                 `)

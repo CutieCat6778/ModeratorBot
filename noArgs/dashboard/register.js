@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#eec4c6")
+        .setColor("#669fd2")
         .setTitle("Register")
         .setDescription(`The register command's aliases are : \`register\`, \`registe\` or \`registration\`\n
             **Registration**: \`${prefix} register\`

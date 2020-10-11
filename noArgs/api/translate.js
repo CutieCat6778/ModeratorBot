@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#eec4c6")
+        .setColor("#669fd2")
         .setTitle("Translate")
         .setDescription(`The avatar command's aliases are : \`translate\` or \`trans\`\n
             **All commands:** \`${prefix} translate [something]\`

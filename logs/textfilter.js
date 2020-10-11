@@ -8,7 +8,7 @@ module.exports = function wellcomelogs(autorole) {
         whitelist = autorole.whitelist.join(", ")
     }
     let embed = new MessageEmbed()
-        .setColor("#eec4c6")
+        .setColor("#669fd2")
         .setTitle("Text filter (anti swear)")
         .addField("Whitelist words", `${whitelist}`)
         .addField("Status", autorole.enable)

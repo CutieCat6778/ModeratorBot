@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = async function muteLog(target, name, message, reason, client) {
     const guild = await require("../tools/getGuild")(client, message.guild.id);
     const embed = new MessageEmbed()
-        .setColor("#eec4c6")
+        .setColor("#669fd2")
         .setTitle(`Case #${guild.case.length + 1} | ${name}`)
         .addField("**Target:**", target.user.username, true)
         .addField("**Target's id:**", target.id, true)

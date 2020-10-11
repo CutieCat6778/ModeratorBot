@@ -15,7 +15,7 @@ module.exports = {
             if (!user) return message.channel.send("Message author not found");
             else if (snipe) {
                 let embed = new MessageEmbed()
-                    .setColor("#eec4c6")
+                    .setColor("#669fd2")
                     .setAuthor(`${user.displayName}`, user.user.displayAvatarURL())
                     .setDescription(`    ${snipe.content}`)
                     .setFooter(require("ms")((new Date() - snipe.time), { long: true }) + " ago")

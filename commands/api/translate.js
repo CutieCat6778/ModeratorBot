@@ -19,7 +19,7 @@ module.exports = {
                 let text = args.slice(0).join(" ");
                 let result = await translate(text, { to: 'en' });
                 let embed = new MessageEmbed()
-                    .setColor("#eec4c6")
+                    .setColor("#669fd2")
                     .setTitle("Translated to English")
                     .addField("Before", `\`${text.toString()}\``, true)
                     .addField("After", `\`${result.toString()}\``, true)

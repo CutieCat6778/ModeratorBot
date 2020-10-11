@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#eec4c6")
+        .setColor("#669fd2")
         .setTitle("slowmode")
         .setDescription(`The slowmode command's aliases are : \`slowmode\`, \`ratelimit\` or \`limit\`\n
             **slowmode**: \`${prefix} slowmode <time>\`

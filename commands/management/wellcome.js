@@ -26,7 +26,7 @@ module.exports = {
                     const filter = m => m.author.id == message.author.id;
                     let embed = new MessageEmbed()
                         .setTitle('Join message')
-                        .setColor("#eec4c6")
+                        .setColor("#669fd2")
                         .setDescription('Please supply a join message')
                         .addField('Member Name', `{user}`, true)
                         .addField('Server Name', `{server}`, true)
@@ -38,7 +38,7 @@ module.exports = {
                         collected = collected.first().content;
                         let embed1 = new MessageEmbed()
                             .setTitle('Leave message')
-                            .setColor("#eec4c6")
+                            .setColor("#669fd2")
                             .setDescription('Please supply a leave message')
                             .addField('Member Name', `{user}`, true)
                             .addField('Server Name', `{server}`, true)
@@ -74,14 +74,14 @@ module.exports = {
                 if (!channel) return message.channel.send('Channel not found');
                 const text1 = guild.wellcome.leave.text.replace('{user}', `${client.user.tag}`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
                 const embed1 = new MessageEmbed()
-                    .setColor("#eec4c6")
+                    .setColor("#669fd2")
                     .setTitle("Member left")
                     .setThumbnail(client.user.displayAvatarURL())
                     .setDescription(text1)
                 channel.send(embed1);
                 const text = guild.wellcome.join.text.replace('{user}', `<@${client.user.id}>`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
                 const embed = new MessageEmbed()
-                    .setColor("#eec4c6")
+                    .setColor("#669fd2")
                     .setTitle("Member joined")
                     .setThumbnail(client.user.displayAvatarURL())
                     .setDescription(text)
@@ -137,7 +137,7 @@ module.exports = {
                     const filter = m => m.author.id == message.author.id;
                     let embed = new MessageEmbed()
                         .setTitle('Join message')
-                        .setColor("#eec4c6")
+                        .setColor("#669fd2")
                         .setDescription('Please supply a join message')
                         .addField('Member Name', `{user}`, true)
                         .addField('Server Name', `{server}`, true)
@@ -149,7 +149,7 @@ module.exports = {
                         collected = collected.first().content;
                         let embed1 = new MessageEmbed()
                             .setTitle('Leave message')
-                            .setColor("#eec4c6")
+                            .setColor("#669fd2")
                             .setDescription('Please supply a leave message')
                             .addField('Member Name', `{user}`, true)
                             .addField('Server Name', `{server}`, true)

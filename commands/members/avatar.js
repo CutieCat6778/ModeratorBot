@@ -16,7 +16,7 @@ module.exports = {
                 if(!user) return message.channel.send("Member not found");
             }
             let embed = new MessageEmbed()
-            .setColor("#eec4c6")
+            .setColor("#669fd2")
                 .setTitle(`${user.displayName}'s avatar`)
                 .setDescription(`[Click here for link](${user.user.displayAvatarURL({ size: 256, format: "png" })})`)
                 .setImage(user.user.displayAvatarURL({ size: 256 }))
