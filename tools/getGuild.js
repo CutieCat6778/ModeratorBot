@@ -6,7 +6,7 @@ module.exports = async function getGuild(client, id) {
         return guild
     }
     if (!guild.prefix) {
-        guild.prefix = "shino";
+        guild.prefix = "mod";
         await guild.save();
         getGuild(id);
     }
