@@ -4,7 +4,7 @@ module.exports = function help(prefix) {
     let embed = new MessageEmbed()
         .setColor("#eec4c6")
         .setTitle("Management ")
-        .setDescription("Dashboard category will help you to control Shinoneko better and view your server's status")
+        .setDescription("Dashboard category will help you to control process.env.name better and view your server's status")
         .setTimestamp()
     return embed;
 }

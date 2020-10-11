@@ -8,7 +8,7 @@ module.exports = function help(prefix) {
             **All commands:** \`${prefix} tag [key_word]\`
                 Get a tag's infomation with key word
             **Example**: 
-            \`${prefix} tag shinoneko\`
+            \`${prefix} tag process.env.name\`
         `)
     return embed;
 }

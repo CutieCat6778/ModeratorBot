@@ -8,7 +8,7 @@ module.exports = function help(prefix) {
             **All commands:** \`${prefix} changetag [key_word]\`
                 Change your tag's content
             **Example**: 
-            \`${prefix} changetag shinoneko\`
+            \`${prefix} changetag process.env.name\`
         `)
     return embed;
 }

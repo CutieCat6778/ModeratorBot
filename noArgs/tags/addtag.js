@@ -8,7 +8,7 @@ module.exports = function help(prefix) {
             **All commands:** \`${prefix} addtag [key_word]\`
                 After that commnad, you have to write your new tag's content
             **Example**: 
-            \`${prefix} addtag shinoneko\`
+            \`${prefix} addtag process.env.name\`
         `)
     return embed;
 }

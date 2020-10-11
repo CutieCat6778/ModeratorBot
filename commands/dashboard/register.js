@@ -35,7 +35,7 @@ module.exports = {
                     let embed = new MessageEmbed()
                         .setTitle("Succesfully created new Account")
                         .setColor("#eec4c6")
-                        .setDescription("[https://shinoneko.ga/login](https://shinoneko.ga/login)")
+                        .setDescription("[https://process.env.name.ga/login](https://process.env.name.ga/login)")
                         .addField('Username', message.author.tag, true)
                         .addField('Password', `||You last password||`, true)
                         .addField('ID', message.author.id, true)
