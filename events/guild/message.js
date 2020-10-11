@@ -75,7 +75,7 @@ module.exports = async (client, message) => {
                 if (guildCache.prefix) {
                     embed.setDescription(`My prefix in this server is \`${guildCache.prefix}\`\n If you need help type in chat \`${guildCache.prefix} help\` or \`${guildCache.prefix}help\``)
                 } else if (!guildCache.prefix || !guildCache) {
-                    embed.setDescription(`My prefix in this server is \`shino\`\n If you need help type in chat \`shino help\``)
+                    embed.setDescription(`My prefix in this server is \`${process.env.prefix}\`\n If you need help type in chat \`${process.env.prefix} help\``)
                 }
                 message.reply(embed);
             }
