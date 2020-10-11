@@ -15,7 +15,7 @@ module.exports = {
                 let embed = new MessageEmbed()
                     .setColor("#669fd2")
                     .setTitle(message.guild.me.displayName + `#${client.user.discriminator}`)
-                    .setFooter("© 2020 Valder#3127 All Rights Reserved")
+                    .setFooter("© 2020 CutieCat#6778 All Rights Reserved")
                 categories.forEach(category => {
                     const dir = client.commands.filter(c => c.config.category === category)
                     const capitalise = category.slice(0, 1).toUpperCase() + category.slice(1)
