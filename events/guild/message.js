@@ -69,7 +69,7 @@ module.exports = async (client, message) => {
                 }, 15000)
             }
             //bot mentions
-            if (message.content.split(" ").join("").toString().toLowerCase() == "<@762253006993358868>" || message.content.split(" ").join("").toString().toLowerCase() == "<@!762253006993358868>") {
+            if (message.content.split(" ").join("").toString().toLowerCase() == "<@764901016692588554>" || message.content.split(" ").join("").toString().toLowerCase() == "<@!764901016692588554>") {
                 let embed = new MessageEmbed()
                     .setColor("#669fd2")
                 if (guildCache.prefix) {
@@ -80,7 +80,7 @@ module.exports = async (client, message) => {
                 message.reply(embed);
             }
             //user mentions
-            if (message.mentions.members.first() && message.mentions.members.first().id != "762253006993358868") {
+            if (message.mentions.members.first() && message.mentions.members.first().id != "764901016692588554") {
                 const user = message.mentions.members.first();
                 let userCache = client.afk.get(user.id);
                 if (userCache && userCache.enable == true) {
