@@ -41,7 +41,7 @@ module.exports = {
             }
             if (args[0]) {
                 if (args[0] == "temp") {
-                    require("../../functions/muteTemp")(muterole, message, args, target);
+                    require("../../functions/muteTemp")(client, muterole, message, args, target);
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
