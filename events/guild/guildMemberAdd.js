@@ -15,7 +15,7 @@ module.exports = async (client, member) => {
                     }
                 });
                 member.guild.channels.forEach(async (channel) => {
-                    if(guild.capcha.whitelist.includes(channel.id))return;
+                    if (guild.capcha.whitelist.includes(channel.id)) return;
                     await channel.createOverwrite(vertifyrole, {
                         READ_MESSAGES: false,
                         SEND_MESSAGES: false,
@@ -30,6 +30,15 @@ module.exports = async (client, member) => {
                 member.roles.add(vertifyrole);
             }
             let channel = await member.createDM();
+            let canDm = true;
+            if (!channel) {
+                channel = await member.guild.createChannel(`${member.user.displayName}'s capcha`, text);
+                await channel.overwritePermissions(message.author.id, { VIEW_CHANNEL: true });
+                await channel.overwritePermissions(client.id, { VIEW_CHANNEL: true });
+                await channel.overwritePermissions(everyoneRole, { VIEW_CHANNEL: false });
+                canDm = false;
+                await channel.send(member + " look down!");
+            }
             const a = Math.floor(Math.random() * 10) + 1;
             const b = Math.floor(Math.random() * 10) + 1;
             const c = parseInt(a) + parseInt(b);
@@ -50,7 +59,8 @@ module.exports = async (client, member) => {
                                 .setColor("#669fd2")
                                 .setTitle("Member failed")
                                 .setThumbnail(member.user.displayAvatarURL())
-                                .setDescription(`${member} just failed the capcha`)
+                                .setDescription(`${member} just failed the capcha`);
+                            await channel.delete();
                             wellchannel.send(embed);
                         }
                         return member.kick("The member failed the capcha");
@@ -61,6 +71,7 @@ module.exports = async (client, member) => {
                             .setDescription(`Wellcome to **${member.guild.name}** hope you enjoy the server`)
                         channel.send(goodembed);
                         member.roles.remove(vertifyrole);
+                        await channel.delete();
                         autoroleWellcome();
                     }
                 })
