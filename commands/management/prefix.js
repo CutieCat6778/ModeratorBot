@@ -16,6 +16,8 @@ module.exports = {
                 return message.channel.send("The prefix can be only one word")
             } else if (args[0].startsWith("<&!")) {
                 return message.channel.send("You can't mentions a channel as a prefix");
+            } else if (args[0].startsWith(":") && args[0].endsWith(":")) {
+                return message.channel.send("You can't use a emoji as a prefix");
             } else if (args[0].startsWith("<@&")) {
                 return message.channel.send("You can't mentions a role as a prefix");
             } else if (args[0]) {
