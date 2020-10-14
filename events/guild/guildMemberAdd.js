@@ -49,7 +49,7 @@ module.exports = async (client, member) => {
             await channel.send(embed);
             const filter = m => m.author.id == member.id;
             channel.awaitMessages(filter, { max: 1, time: 30000 })
-                .then(m => {
+                .then(async m => {
                     if (isNaN(m.first().toString()) == true || parseInt(m.first().toString()) != c) {
                         channel.send("You failed the capcha, please join to the server back to redo the capcha");
                         if (guild.wellcome.enable == true && guild.wellcome.channelId != " ") {
@@ -107,3 +107,4 @@ module.exports = async (client, member) => {
         return require("../../tools/error")(e, undefined)
     }
 }
+
