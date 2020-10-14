@@ -60,7 +60,9 @@ module.exports = async (client, member) => {
                                 .setTitle("Member failed")
                                 .setThumbnail(member.user.displayAvatarURL())
                                 .setDescription(`${member} just failed the capcha`);
-                            await channel.delete();
+                            if (canDm == false) {
+                                await channel.delete();
+                            }
                             wellchannel.send(embed);
                         }
                         return member.kick("The member failed the capcha");
@@ -71,7 +73,9 @@ module.exports = async (client, member) => {
                             .setDescription(`Wellcome to **${member.guild.name}** hope you enjoy the server`)
                         channel.send(goodembed);
                         member.roles.remove(vertifyrole);
-                        await channel.delete();
+                        if (canDm == false) {
+                            await channel.delete();
+                        }
                         autoroleWellcome();
                     }
                 })
