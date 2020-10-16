@@ -9,7 +9,8 @@ module.exports = {
     },
     async execute(client, message, args) {
         if (!args[0]) {
-            return message.reply(await require('../../noArgs/api/define.js'));
+            let embed = await require('../../noArgs/api/define.js')(client.guild.get(message.guild.id).prefix);
+            return message.reply(embed);
         } else if (args[0]) {
             url = `https://api.dictionaryapi.dev/api/v2/entries/en/${args[0]}`;
             url = encodeURI(url);
