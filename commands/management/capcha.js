@@ -2,11 +2,11 @@ const mentions = require("../../tools/mentions");
 
 module.exports = {
     config: {
-        name: 'capcha',
-        aliases: ["captcha"],
+        name: 'captcha',
+        aliases: ["capcha"],
         perms: ["MANAGE_GUILD"],
         category: "management",
-        description: "Just a simple capcha before people joining"
+        description: "Just a simple captcha before people joining"
     },
     async execute(client, message, args) {
         try {
@@ -20,11 +20,11 @@ module.exports = {
                 guild.capcha.enable = true;
                 guild.capcha.channels = channels;
                 await guild.save();
-                let vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unvertified");
+                let vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unverified");
                 if (!vertifyrole) {
                     vertifyrole = await message.guild.roles.create({
                         data: {
-                            name: 'Unvertified',
+                            name: 'Unverified',
                             color: '#000000',
                             permission: []
                         }
@@ -43,7 +43,7 @@ module.exports = {
                         }
                     });
                 }
-                message.channel.send("Successfully enabled Capcha function");
+                message.channel.send("Successfully enabled Captcha function");
                 if (client.guild.get(message.guild.id)) {
                     let guildCache = client.guild.get(message.guild.id);
                     if (guildCache.enable == false) return;
@@ -63,7 +63,7 @@ module.exports = {
                     if (guild.capcha.enable == true) return message.channel.send(`You are already enable the capcha`)
                     guild.capcha.enable = true;
                     await guild.save();
-                    message.channel.send("Successfully enabled Capcha function");
+                    message.channel.send("Successfully enabled Captcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.enable == false) return;
@@ -79,7 +79,7 @@ module.exports = {
                     if (guild.capcha.enable == false) return message.channel.send(`You are already disable the capcha`)
                     guild.capcha.enable = false;
                     await guild.save();
-                    message.channel.send("Successfully disabled Capcha function");
+                    message.channel.send("Successfully disabled Captcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.enable == false) return;
@@ -96,11 +96,11 @@ module.exports = {
                     guild.capcha.enable = true;
                     guild.capcha.channels = channels;
                     await guild.save();
-                    let vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unvertified");
+                    let vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unverified");
                     if (!vertifyrole) {
                         vertifyrole = await message.guild.roles.create({
                             data: {
-                                name: 'Unvertified',
+                                name: 'Unverified',
                                 color: '#000000',
                                 permission: []
                             }
@@ -119,7 +119,7 @@ module.exports = {
                             }
                         });
                     }
-                    message.channel.send("Successfully enabled Capcha function");
+                    message.channel.send("Successfully enabled Captcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.enable == false) return;

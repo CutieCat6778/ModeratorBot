@@ -6,7 +6,7 @@ module.exports = function help(prefix) {
         .setTitle("Wikipedia")
         .setDescription(`The avatar command's aliases are : \`wikipedia\`, \`wiki\` or \`defiene\`\n
             **All commands:** \`${prefix} wikipedia [something]\`
-                Get all infomation about one topic
+                Get all information about one topic
             **Example**: 
             \`${prefix} wikipedia discord\`
         `)

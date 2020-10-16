@@ -6,7 +6,7 @@ module.exports = function help(prefix) {
         .setTitle("Search")
         .setDescription(`The avatar command's aliases are : \`search\` or \`google\`\n
             **All commands:** \`${prefix} search [something]\`
-                Search all infomation about a something
+                Search all information about a something
             **Example**: 
             \`${prefix} search discord\`
         `)

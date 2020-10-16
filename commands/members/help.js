@@ -28,7 +28,7 @@ module.exports = {
 
                         **__How to use help commands__**
 
-                        **[1] Command infomation**
+                        **[1] Command information**
                         \`${client.guild.get(message.guild.id).prefix} help (command_name, category_name)\`
                         **[2] Comamnd list**
                         *look at the second link!*

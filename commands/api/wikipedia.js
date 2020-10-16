@@ -4,7 +4,7 @@ const htmlToText = require('html-to-text');
 module.exports = {
     config: {
         name: "wikipedia",
-        aliases: ["wiki", "defiene"],
+        aliases: ["wiki", "define"],
         category: "api",
         perms: ["SEND_MESSAGES"]
     },
@@ -46,7 +46,7 @@ module.exports = {
                                 let embed = new MessageEmbed()
                                     .setColor("#669fd2")
                                     .setTitle(res.title)
-                                    .setDescription(`[More infomations](${url[3][num]})\n\n${htmlToText.fromString(res.snippet)} ...`)
+                                    .setDescription(`[More information](${url[3][num]})\n\n${htmlToText.fromString(res.snippet)} ...`)
                                     .setTimestamp(res.timestamp)
                                     .setFooter("Last update")
                                 collected.delete()
@@ -58,7 +58,7 @@ module.exports = {
                 } else if (info.length == 0) {
                     let embed = new MessageEmbed()
                         .setColor("#669fd2")
-                        .setDescription(`There are no infomations about **${value}**`)
+                        .setDescription(`There are no information about **${value}**`)
                     return message.channel.send(embed);
                 }
 

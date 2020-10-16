@@ -10,7 +10,7 @@ module.exports = {
     async execute(client, message, args) {
         try {
             let snipe = client.snipe.get(message.channel.id);
-            if (!snipe) return message.channel.send("There are no rencent deleted message");
+            if (!snipe) return message.channel.send("There are no recent deleted message");
             let user = message.guild.members.cache.get(snipe.id);
             if (!user) return message.channel.send("Message author not found");
             else if (snipe) {

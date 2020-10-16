@@ -6,7 +6,7 @@ module.exports = function help(prefix) {
         .setTitle("Ping")
         .setDescription(`The ping command's aliases are : \`ping\`, \`notonline\` or \`offline\`\n
             **All commands:** \`${prefix} ping\`
-                It will display all infomation about my ping
+                It will display all information about my ping
             **Example**: 
             \`${prefix} ping\`
         `)

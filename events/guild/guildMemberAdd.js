@@ -5,11 +5,11 @@ module.exports = async (client, member) => {
         let guild = await require("../../tools/getGuild")(client, member.guild.id);
         //capcha
         if (guild.capcha.enable == true && member.user.bot == false) {
-            let vertifyrole = member.guild.roles.cache.find(r => r.name == "Unvertified");
+            let vertifyrole = member.guild.roles.cache.find(r => r.name == "Unverified");
             if (!vertifyrole) {
                 vertifyrole = await member.guild.roles.create({
                     data: {
-                        name: 'Unvertified',
+                        name: 'Unverified',
                         color: '#000000',
                         permission: []
                     }
@@ -43,7 +43,7 @@ module.exports = async (client, member) => {
             const b = Math.floor(Math.random() * 10) + 1;
             const c = parseInt(a) + parseInt(b);
             let embed = new MessageEmbed()
-                .setTitle("Capcha")
+                .setTitle("Captcha")
                 .setDescription(`What is ${a} + ${b} ?`)
                 .setFooter("You have 30 second to answer this question or you will be kicked")
             await channel.send(embed);
@@ -69,8 +69,8 @@ module.exports = async (client, member) => {
                     } else if (isNaN(m.first().toString()) == false && parseInt(m.first().toString()) == c) {
                         let goodembed = new MessageEmbed()
                             .setColor("#669fd2")
-                            .setTitle("You passed the Capcha")
-                            .setDescription(`Wellcome to **${member.guild.name}** hope you enjoy the server`)
+                            .setTitle("You passed the Captcha")
+                            .setDescription(`Welcome to **${member.guild.name}** hope you enjoy the server`)
                         channel.send(goodembed);
                         member.roles.remove(vertifyrole);
                         if (canDm == false) {

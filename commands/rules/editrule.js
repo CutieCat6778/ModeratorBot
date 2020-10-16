@@ -50,7 +50,7 @@ module.exports = {
                         await guild.save()
                         return message.channel.send(`Successfully deleted the rule#${rule.ruleNum}'s content`)
                     } else {
-                        return message.channel.send('Invalid optiosn')
+                        return message.channel.send('Invalid options')
                     }
 
                 }

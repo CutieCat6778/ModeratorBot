@@ -4,7 +4,7 @@ module.exports = {
         aliases: ["aar", "arole"],
         category: "management",
         perms: ["MANAGE_GUILD", "MANAGE_ROLES"],
-        description: "You use this command to setup a auto asign role function"
+        description: "You use this command to setup a auto assign role function"
     },
     async execute (client, message, args) {
         try {
@@ -20,7 +20,7 @@ module.exports = {
                     guild.autorole.roleId = role.id;
                     guild.autorole.enable = true;
                     await guild.save();
-                    message.channel.send("Successfully enabled Auto asign role function");
+                    message.channel.send("Successfully enabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -44,7 +44,7 @@ module.exports = {
                     guild.autorole.enable = true;
                     await guild.save();
                     let role = message.guild.channels.cache.get(guild.autorole.roleId);
-                    message.channel.send("Successfully enabled Auto asign role function");
+                    message.channel.send("Successfully enabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -61,7 +61,7 @@ module.exports = {
                     guild.autorole.enable = false;
                     await guild.save();
                     let role = message.guild.channels.cache.get(guild.autorole.roleId);
-                    message.channel.send("Successfully disabled Auto asign role function");
+                    message.channel.send("Successfully disabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -79,7 +79,7 @@ module.exports = {
                     guild.autorole.roleId = role.id;
                     guild.autorole.enable = true;
                     await guild.save();
-                    message.channel.send("Successfully enabled Auto asign role function");
+                    message.channel.send("Successfully enabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;

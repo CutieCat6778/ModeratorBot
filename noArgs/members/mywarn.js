@@ -6,7 +6,7 @@ module.exports = function help(prefix) {
         .setTitle("My warn")
         .setDescription(`The My warn command's aliases are : \`My warn\`, \`notonline\` or \`offline\`\n
             **All commands:** \`${prefix} mywarn\`
-                It will display all infomation about your last warn
+                It will display all information about your last warn
             **Example**: 
             \`${prefix} mywarn\`
         `)

@@ -22,7 +22,7 @@ module.exports = {
                     .addField("Member's ID", message.author.id, true)
                     .addField("Server's ID", message.guild.id, true)
                     .setTimestamp()
-                message.author.send("Thanks you for supporting Juger, my Developer will alert you about the newest fix about your problem.");
+                message.author.send("Thanks you for supporting Moderator Bot, my Developer will alert you about the newest fix about your problem.");
                 const hook = new WebhookClient("764912496665952258", "YL_Vt9BaCvMdFaPPZy5lsE5osWtTEJ1HJUUyI5rfSEVWyxXjGYAO32BtwTomCfxpyE_K");
                 return hook.send(embed);
             }

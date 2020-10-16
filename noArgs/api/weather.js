@@ -6,7 +6,7 @@ module.exports = function help(prefix) {
         .setTitle("Weather")
         .setDescription(`The avatar command's aliases are : \`weather\` or \`wether\`\n
             **All commands:** \`${prefix} weather [something]\`
-                Get all infomation about a city/country weather
+                Get all information about a city/country weather
             **Example**: 
             \`${prefix} weather USA\`
         `)

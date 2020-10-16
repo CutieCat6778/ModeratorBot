@@ -4,7 +4,7 @@ module.exports = {
     config: {
         name: "slowmode",
         perms: ["MANAGE_GUILD"],
-        description: "You use this commnad to enable or disable slowmode",
+        description: "You use this command to enable or disable slowmode",
         aliases: ["limit", "ratelimit", "slowm"],
         category: "chat-management",
     },
