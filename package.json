@@ -4,9 +4,15 @@
   "description": "Discord bot made by NguyenXD#6485",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
+    "start": "pm2 start ecosystem.config.js",
+    "test": "node index.js",
+    "lavalink": "sudo ./lavalink/start.sh"
+=======
     "start": "node index.js",
     "test": "node index.js",
     "lavalink": "./lavalink/start.sh"
+>>>>>>> b272c0b2ed277a7e8e7c0c4d1c7209f8129b3026
   },
   "repository": {
     "type": "git",
@@ -40,6 +46,7 @@
     "node-fetch": "^2.6.1",
     "openweather-apis": "^4.3.1",
     "os": "^0.1.1",
+    "pm2": "^4.5.0",
     "request": "^2.88.2",
     "string-toolkit": "^1.0.89",
     "translate-google": "^1.4.3"
