@@ -16,20 +16,23 @@ module.exports = {
                     .setColor("#669fd2")
                     .setTitle(message.guild.me.displayName + `#${client.user.discriminator}`)
                     .setFooter("© 2020 CutieCat#6778 All Rights Reserved")
-                categories.forEach(category => {
-                    const dir = client.commands.filter(c => c.config.category === category)
-                    const capitalise = category.slice(0, 1).toUpperCase() + category.slice(1)
-                    try {
-                        embed.addField(
-                            `${capitalise}`,
-                            `\`\`\`css\n${beautify(dir.map(c => `${c.config.name}[${c.config.aliases[0]}]`).join("\n"), {
-                                format: "css",
-                            })} \n\`\`\``, true
-                        )
-                    } catch (e) {
-                        return require('../../tools/error')(e, message);
-                    }
-                })
+                    .setDescription(`
+                        __**Usefull links**__
+
+                        **[1] Main website**
+                        [https://moderatorbot.tk](https://moderatorbot.tk)
+                        **[2] Commands list**
+                        [https://moderatorbot.tk/commands](https://moderatorbot.tk/commands.html)
+                        **[3]** Public profile**
+                        [https://top.gg/bot/moderatorbot](https://top.gg/bot/764901016692588554)
+
+                        __**How to use help commands**__
+
+                        **[1] Command infomation**
+                        \`${client.guild.get(message.guild.id).prefix} help (command_name, category_name)\`
+                        **[2] Comamnd list**
+                        *look at the second link!*
+                    `)
                 await message.reply("check your DM(direct messages)")
                 return message.author.send(embed)
             } else if (args[0]) {

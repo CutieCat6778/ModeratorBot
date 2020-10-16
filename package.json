@@ -4,9 +4,15 @@
   "description": "Discord bot made by NguyenXD#6485",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "start": "pm2 start ecosystem.config.js",
     "test": "node index.js",
     "lavalink": "sudo ./lavalink/start.sh"
+=======
+    "start": "node index.js",
+    "test": "node index.js",
+    "lavalink": "./lavalink/start.sh"
+>>>>>>> b272c0b2ed277a7e8e7c0c4d1c7209f8129b3026
   },
   "repository": {
     "type": "git",
@@ -31,7 +37,9 @@
     "common-tags": "^1.8.0",
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
+    "erela.js": "^2.0.1",
     "express": "^4.17.1",
+    "format-duration": "^1.3.1",
     "html-to-text": "^5.1.1",
     "mongoose": "^5.10.2",
     "ms": "^2.1.2",
