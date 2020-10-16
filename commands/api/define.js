@@ -28,7 +28,7 @@ module.exports = {
                     }
                     body = JSON.parse(body);
                     if(body.message) return message.channel.send(body.message);
-                    if(body[0]) return message.channel.send("No information found")
+                    if(!body[0]) return message.channel.send("No information found")
                     let embed = new MessageEmbed()
                         .setColor("#669fd2")
                         .setTitle(`${body[0].word} - ${body[0].phonetics[0].text}`)
