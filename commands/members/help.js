@@ -17,16 +17,16 @@ module.exports = {
                     .setTitle(message.guild.me.displayName + `#${client.user.discriminator}`)
                     .setFooter("© 2020 CutieCat#6778 All Rights Reserved")
                     .setDescription(`
-                        __**Usefull links**__
+                        **__Usefull links__**
 
                         **[1] Main website**
                         [https://moderatorbot.tk](https://moderatorbot.tk)
                         **[2] Commands list**
                         [https://moderatorbot.tk/commands](https://moderatorbot.tk/commands.html)
-                        **[3]** Public profile**
+                        **[3] Public profile**
                         [https://top.gg/bot/moderatorbot](https://top.gg/bot/764901016692588554)
 
-                        __**How to use help commands**__
+                        **__How to use help commands__**
 
                         **[1] Command infomation**
                         \`${client.guild.get(message.guild.id).prefix} help (command_name, category_name)\`
