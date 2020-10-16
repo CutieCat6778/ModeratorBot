@@ -4,7 +4,7 @@ module.exports = function help(prefix) {
     let embed = new MessageEmbed()
         .setColor("#669fd2")
         .setTitle("Translate")
-        .setDescription(`The avatar command's aliases are : \`translate\` or \`trans\`\n
+        .setDescription(`The translate command's aliases are : \`translate\` or \`trans\`\n
             **All commands:** \`${prefix} translate [something]\`
                 translate a text to english
             **Example**: 

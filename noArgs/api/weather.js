@@ -4,7 +4,7 @@ module.exports = function help(prefix) {
     let embed = new MessageEmbed()
         .setColor("#669fd2")
         .setTitle("Weather")
-        .setDescription(`The avatar command's aliases are : \`weather\` or \`wether\`\n
+        .setDescription(`The weather command's aliases are : \`weather\` or \`wether\`\n
             **All commands:** \`${prefix} weather [something]\`
                 Get all information about a city/country weather
             **Example**: 

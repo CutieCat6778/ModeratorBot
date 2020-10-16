@@ -4,7 +4,7 @@ const htmlToText = require('html-to-text');
 module.exports = {
     config: {
         name: "wikipedia",
-        aliases: ["wiki", "define"],
+        aliases: ["wiki"],
         category: "api",
         perms: ["SEND_MESSAGES"]
     },
