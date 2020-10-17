@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { readdirSync } = require("fs");
-const beautify = require("beautify");
+
 module.exports = {
     config: {
         name: "help",
