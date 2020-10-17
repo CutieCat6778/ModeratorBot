@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, WebhookClient } = require("discord.js");
 
 module.exports = {
     config: {
@@ -17,7 +17,6 @@ module.exports = {
                 if (args[1]) {
                     let wellchannel = message.guild.channels.cache.get(require("../../tools/mentions")(args[1]));
                     if (!wellchannel) return message.channel.send("Channel not found");
-                    console.log(wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES"))
                     if (wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES") == false) {
                         return message.channel.send(require("../../functions/permissionMiss")("I don't have permission to send messages in that channel"));
                     }
@@ -34,7 +33,7 @@ module.exports = {
                         .setTimestamp()
                     message.channel.send(embed);
                     let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
-                    if(collected){
+                    if (collected) {
                         collected = collected.first().content;
                         let embed1 = new MessageEmbed()
                             .setTitle('Leave message')
@@ -119,17 +118,50 @@ module.exports = {
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
-                        if (guildCache.logs.channelId == " ") return;
-                        if (isNaN(guildCache.logs.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                        if (guildCache.logs.id == " ") return;
+                        if (isNaN(guildCache.logs.id == true)) return;
+                        let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
                             return channel.send(require("../../logs/wellcome")(wellchannel, guild.wellcome));
                         }
                     }
+                } else if (args[1] == "join") {
+                    const guild = await require('../../tools/getGuild')(message.guild.id);
+                    const filter = m => m.author.id == message.author.id;
+                    let embed = new MessageEmbed()
+                        .setTitle('Join message')
+                        .setColor("#669fd2")
+                        .setDescription('Please supply a join message')
+                        .addField('Member Name', `{user}`, true)
+                        .addField('Server Name', `{server}`, true)
+                        .addField('Member count', `{count}`, true)
+                        .setTimestamp()
+                    message.channel.send(embed);
+                    let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                    collected = collected.first().content;
+                    guild.wellcome.join.text == collected.toString();
+                    await guild.save();
+                    return message.channel.send("Successfully change the user join text");
+                } else if (args[1] == "leave") {
+                    const guild = await require('../../tools/getGuild')(message.guild.id);
+                    const filter = m => m.author.id == message.author.id;
+                    let embed1 = new MessageEmbed()
+                        .setTitle('Leave message')
+                        .setColor("#669fd2")
+                        .setDescription('Please supply a leave message')
+                        .addField('Member Name', `{user}`, true)
+                        .addField('Server Name', `{server}`, true)
+                        .addField('Member count', `{count}`, true)
+                        .setTimestamp()
+                    message.channel.send(embed1);
+                    let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                    collected = collected.first().content;
+                    guild.wellcome.leave.text == collected.toString();
+                    await guild.save();
+                    return message.channel.send("Successfully change the user join text");
                 } else if (args[1]) {
                     let wellchannel = message.guild.channels.cache.get(require("../../tools/mentions")(args[1]));
                     if (!wellchannel) return message.channel.send("Channel not found");
-                    console.log(wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES"))
                     if (wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES") == false) {
                         return message.channel.send(require("../../functions/permissionMiss")("I don't have permission to send messages in that channel"));
                     }
@@ -145,7 +177,7 @@ module.exports = {
                         .setTimestamp()
                     message.channel.send(embed);
                     let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
-                    if(collected){
+                    if (collected) {
                         collected = collected.first().content;
                         let embed1 = new MessageEmbed()
                             .setTitle('Leave message')
@@ -168,9 +200,9 @@ module.exports = {
                         if (client.guild.get(message.guild.id)) {
                             let guildCache = client.guild.get(message.guild.id);
                             if (guildCache.logs.enable == false) return;
-                            if (guildCache.logs.channelId == " ") return;
-                            if (isNaN(guildCache.logs.channelId == true)) return;
-                            let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                            if (guildCache.logs.id == " ") return;
+                            if (isNaN(guildCache.logs.id == true)) return;
+                            let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                             if (channel) {
                                 return channel.send(require("../../logs/wellcome")(wellchannel, guild.wellcome));
                             }

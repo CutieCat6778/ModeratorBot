@@ -11,7 +11,6 @@ module.exports = {
     },
     async execute(client, message, args) {
         try {
-            require('../../tools/newGuild')(client, message.guild.id)
             const date1 = new Date();
             if (!args[0]) return;
             if (args[0] == "map") {

@@ -8,8 +8,8 @@ module.exports = async (client) => {
             useUnifiedTopology: true
         })
         await require("../../functions/guildCache")(client);
-        if(process.env.hook && process.env.hook === "no"){
-            const hook = new WebhookClient("764912496665952258", "YL_Vt9BaCvMdFaPPZy5lsE5osWtTEJ1HJUUyI5rfSEVWyxXjGYAO32BtwTomCfxpyE_K");
+        if(!process.env.hook){
+            const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
             const embed = new MessageEmbed()
                 .setColor("#669fd2")
                 .setTitle(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`)

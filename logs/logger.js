@@ -1,11 +1,11 @@
 const { MessageEmbed } = require("discord.js")
 
-module.exports = function wellcomelogs(channel, logs) {
+module.exports = function wellcomelogs(channelName, logsStatus) {
     let embed = new MessageEmbed()
         .setColor("#669fd2")
-        .setTitle("Logging")
-        .addField("Log channel", `${channel.name}`)
-        .addField("Status", logs.enable)
+        .setTitle("Logger")
+        .addField("Log channel", `${channelName}`)
+        .addField("Status", logsStatus)
         .setTimestamp()
     return embed;
 }

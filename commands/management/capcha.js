@@ -1,5 +1,5 @@
 const mentions = require("../../tools/mentions");
-
+const {WebhookClient} = require('discord.js');
 module.exports = {
     config: {
         name: 'captcha',
@@ -15,7 +15,7 @@ module.exports = {
             }
             if (args[0] == "setup") {
                 const channels = await mentions(args.slice(1));
-                let guild = await require("../../tools/getGuild")(client, message.guild.id); 
+                let guild = await require("../../tools/getGuild")(client, message.guild.id);
                 if (guild.capcha.enable == true) return message.channel.send(`You are already setup the capcha, \`${client.guild.get(message.guild.id).prefix} capcha setting\` to setting to capcha`)
                 guild.capcha.enable = true;
                 guild.capcha.channels = channels;
@@ -30,7 +30,7 @@ module.exports = {
                         }
                     });
                     message.guild.channels.cache.forEach(async (channel) => {
-                        if(channel.type != "text") return;
+                        if (channel.type != "text") return;
                         if (channels.includes(channel.id) == false) {
                             await channel.createOverwrite(vertifyrole, {
                                 VIEW_CHANNEL: false,
@@ -46,10 +46,10 @@ module.exports = {
                 message.channel.send("Successfully enabled Captcha function");
                 if (client.guild.get(message.guild.id)) {
                     let guildCache = client.guild.get(message.guild.id);
-                    if (guildCache.enable == false) return;
-                    if (guildCache.channelId == " ") return;
-                    if (isNaN(guildCache.channelId == true)) return;
-                    let channel = message.guild.channels.cache.get(guildCache.channelId);
+                    if (guildCache.logs.enable == false) return;
+                    if (guildCache.logs.id == " ") return;
+                    if (isNaN(guildCache.logs.id == true)) return;
+                    let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                     if (channel) {
                         return channel.send(require("../../logs/wellcome")(guild.cacha));
                     }
@@ -66,10 +66,10 @@ module.exports = {
                     message.channel.send("Successfully enabled Captcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
-                        if (guildCache.enable == false) return;
-                        if (guildCache.channelId == " ") return;
-                        if (isNaN(guildCache.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.channelId);
+                        if (guildCache.logs.enable == false) return;
+                        if (guildCache.logs.id == " ") return;
+                        if (isNaN(guildCache.logs.id == true)) return;
+                        let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
                             return channel.send(require("../../logs/wellcome")(guild.cacha));
                         }
@@ -82,10 +82,10 @@ module.exports = {
                     message.channel.send("Successfully disabled Captcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
-                        if (guildCache.enable == false) return;
-                        if (guildCache.channelId == " ") return;
-                        if (isNaN(guildCache.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.channelId);
+                        if (guildCache.logs.enable == false) return;
+                        if (guildCache.logs.id == " ") return;
+                        if (isNaN(guildCache.logs.id == true)) return;
+                        let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
                             return channel.send(require("../../logs/wellcome")(guild.cacha));
                         }
@@ -106,7 +106,7 @@ module.exports = {
                             }
                         });
                         message.guild.channels.cache.forEach(async (channel) => {
-                            if(channel.type != "text") return;
+                            if (channel.type != "text") return;
                             if (channels.includes(channel.id) == false) {
                                 await channel.createOverwrite(vertifyrole, {
                                     VIEW_CHANNEL: false,
@@ -122,10 +122,10 @@ module.exports = {
                     message.channel.send("Successfully enabled Captcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
-                        if (guildCache.enable == false) return;
-                        if (guildCache.channelId == " ") return;
-                        if (isNaN(guildCache.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.channelId);
+                        if (guildCache.logs.enable == false) return;
+                        if (guildCache.logs.id == " ") return;
+                        if (isNaN(guildCache.logs.id == true)) return;
+                        let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
                             return channel.send(require("../../logs/wellcome")(guild.cacha));
                         }

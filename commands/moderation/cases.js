@@ -19,7 +19,7 @@ module.exports = {
                     return message.reply(embed);
                 } else if (isNaN(args[0]) == false) {
                     let casenum = parseInt(args[0]);
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
+                    let guild = client.guild.get(message.guild.id);
                     let caseInfo = await guild.case.find(c => c.num == casenum - 1);;
                     if (!caseInfo) return message.channel.send("Case not found");
                     let target = message.guild.members.cache.get(caseInfo.target);

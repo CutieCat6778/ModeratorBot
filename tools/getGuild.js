@@ -14,6 +14,12 @@ module.exports = async function getGuild(client, id) {
         guild.case = [];
         await guild.save();
         getGuild(id);
+    }if (!guild.logs) {
+        guild.case = {
+            "id":" ", "enable": false, "token": " "
+        }
+        await guild.save();
+        getGuild(id);
     }if(!guild.capcha) {
         guild.capcha = {
             "channels":[], "enable": false

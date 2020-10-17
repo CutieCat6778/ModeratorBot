@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = async (client, member) => {
     try {
-        let guild = await require("../../tools/getGuild")(client, member.guild.id);
+        let guild = client.guild.get(member.guild.id);
         //capcha
         if (guild.capcha.enable == true && member.user.bot == false) {
             let vertifyrole = member.guild.roles.cache.find(r => r.name == "Unverified");

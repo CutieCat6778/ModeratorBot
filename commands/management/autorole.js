@@ -1,3 +1,5 @@
+const { WebhookClient } = require("discord.js");
+
 module.exports = {
     config: {
         name: "autorole",
@@ -24,9 +26,9 @@ module.exports = {
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
-                        if (guildCache.logs.channelId == " ") return;
-                        if (isNaN(guildCache.logs.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                        if (guildCache.logs.id == " ") return;
+                        if (isNaN(guildCache.logs.id == true)) return;
+                        let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
                             return channel.send(require("../../logs/autorole")(role, guild.autorole));
                         }

@@ -2,7 +2,7 @@ const { MessageEmbed,WebhookClient } = require("discord.js");
 
 module.exports = async(client, guild) => {
     try {
-        const hook = new WebhookClient("764912496665952258", "YL_Vt9BaCvMdFaPPZy5lsE5osWtTEJ1HJUUyI5rfSEVWyxXjGYAO32BtwTomCfxpyE_K");
+        const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
         let embed = new MessageEmbed()
             .setColor("#669fd2")
             .setTitle(`${client.user.username} left ${guild.name}`)

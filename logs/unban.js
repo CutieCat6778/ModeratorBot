@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 module.exports = async function muteLog(name, message, reason, target, client) {
-    const guild = await require("../tools/getGuild")(client, message.guild.id);
+    const guild = await client.guild.get(message.guild.id);
     const embed = new MessageEmbed()
         .setColor("#669fd2")
         .setTitle(`Case #${guild.case.length} | ${name}`)

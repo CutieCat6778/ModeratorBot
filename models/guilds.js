@@ -23,7 +23,7 @@ const guildSchema = mongoose.Schema({
         {"userId": String, "time": Number, "reason":String}
     ],
     logs: {
-        "channelId": String, "enable":Boolean
+        "id": String, "enable":Boolean, "token": String
     },
     prefix: String,
     case: [

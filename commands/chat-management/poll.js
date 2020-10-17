@@ -1,6 +1,5 @@
 const { stripIndents } = require("common-tags");
 const { MessageEmbed } = require("discord.js");
-require('dotenv').config();
 
 module.exports = {
     config: {

@@ -1,7 +1,7 @@
 const {Client, Collection} = require("discord.js");
 const client = new Client();
 const {readdirSync} = require("fs")
-require("dotenv").config();
+require('dotenv').config();
 
 client.start = new Date();
 

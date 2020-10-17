@@ -36,7 +36,7 @@ module.exports = async(client, g) => {
         },
         warn: [],
         logs: {
-            channelId: " ", enable: false
+            id: " ", enable: false, token: " "
         },
         prefix: "mod",
         case: [],

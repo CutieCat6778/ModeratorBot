@@ -2,7 +2,7 @@ const { MessageEmbed, WebhookClient } = require("discord.js");
 const StringTools = require("string-toolkit");
 const stringTools = new StringTools;
 module.exports = async (error, message, text) => {
-        const hook = new WebhookClient("764912496665952258", "YL_Vt9BaCvMdFaPPZy5lsE5osWtTEJ1HJUUyI5rfSEVWyxXjGYAO32BtwTomCfxpyE_K");
+        const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
     try {
         await hook.send("<@!762749432658788384>");
         let e;

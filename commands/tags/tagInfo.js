@@ -1,5 +1,4 @@
 const { MessageEmbed } = require("discord.js");
-const { execute } = require("./addtag");
 
 module.exports = {
     config: {

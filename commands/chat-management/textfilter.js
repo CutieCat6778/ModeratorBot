@@ -1,3 +1,5 @@
+const {WebhookClient} = require('discord.js');
+
 module.exports = {
     config: {
         name: "textfilter",
@@ -5,7 +7,7 @@ module.exports = {
         category: "chat-management",
         perms: ["MANAGE_GUILD"]
     },
-    async execute (client, message, args) {
+    async execute(client, message, args) {
         try {
             if (!args[0]) {
                 return message.reply(require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
@@ -20,15 +22,15 @@ module.exports = {
                 if (client.guild.get(message.guild.id)) {
                     let guildCache = client.guild.get(message.guild.id);
                     if (guildCache.logs.enable == false) return;
-                    if (guildCache.logs.channelId == " ") return;
-                    if (isNaN(guildCache.logs.channelId == true)) return;
-                    let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                    if (guildCache.logs.id == " ") return;
+                    if (isNaN(guildCache.logs.id == true)) return;
+                    let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                     if (channel) {
                         return channel.send(require("../../logs/textfilter")(guild.textfilter));
                     }
                 }
             } else if (args[0] == "setting") {
-                if(!args[1]){
+                if (!args[1]) {
                     return message.reply(require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
                 }
                 else if (args[1] == "true") {
@@ -41,9 +43,9 @@ module.exports = {
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
-                        if (guildCache.logs.channelId == " ") return;
-                        if (isNaN(guildCache.logs.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                        if (guildCache.logs.id == " ") return;
+                        if (isNaN(guildCache.logs.id == true)) return;
+                        let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
                             return channel.send(require("../../logs/textfilter")(guild.textfilter));
                         }
@@ -58,9 +60,9 @@ module.exports = {
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
-                        if (guildCache.logs.channelId == " ") return;
-                        if (isNaN(guildCache.logs.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                        if (guildCache.logs.id == " ") return;
+                        if (isNaN(guildCache.logs.id == true)) return;
+                        let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
                             return channel.send(require("../../logs/textfilter")(guild.textfilter));
                         }
@@ -68,7 +70,7 @@ module.exports = {
                 } else {
                     let words = args.slice(1);
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
-                    if(guild.textfilter.whitelist.includes(words)) return message.channel.send("You already whitelisted the words");
+                    if (guild.textfilter.whitelist.includes(words)) return message.channel.send("You already whitelisted the words");
                     await words.forEach(word => {
                         guild.textfilter.whitelist.push(word);
                     });
@@ -78,9 +80,9 @@ module.exports = {
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
-                        if (guildCache.logs.channelId == " ") return;
-                        if (isNaN(guildCache.logs.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                        if (guildCache.logs.id == " ") return;
+                        if (isNaN(guildCache.logs.id == true)) return;
+                        let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
                             return channel.send(require("../../logs/textfilter")(guild.textfilter));
                         }
