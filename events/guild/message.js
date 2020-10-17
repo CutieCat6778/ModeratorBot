@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, WebhookClient } = require("discord.js");
 
 module.exports = async (client, message) => {
     try {
@@ -110,6 +110,32 @@ module.exports = async (client, message) => {
                 const cmd = args.shift().toLowerCase();
                 const commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
                 if (!commandfile) return;
+                if (commandfile.category == "moderation" || commandfile.category == "management") {
+                    const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
+                    if (!hook) {
+                        const guild = require('../../tools/getGuild')(message.guild.id);
+                        const logchannel = message.guild.channels.get(guildCache.logs.channelId);
+                        if(logchannel){
+                            logchannel.createWebhook(client.user.username, {
+                                avatar: 'https://cutiecat6778.github.io/cdn/pfp.png'
+                            })
+                                .then(async webhook => {
+                                    guild.logs.id = webhook.id;
+                                    guild.logs.token = webhook.token;
+                                    guild.logs.enable = true;
+                                    guildCache.logs.id = webhook.id;
+                                    guildCache.logs.token = webhook.token;
+                                    guildCache.logs.enable = true;
+                                    const hook = new WebhookClient(webhook.id, webhook.token)
+                                    hook.send(await require('../../logs/logger')(logchannel.name, guildCache.logs.enable));
+                                    await guild.save();
+                                })
+                        }else if(!logchannel) {
+                            guildCache.logs = {"id":" ", "enable": false, "token":""};
+                            guild.logs = {"id":" ", "enable": false, "token":""};
+                        }
+                    }
+                }
                 if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && message.author.id != "762749432658788384") {
                     return message.reply(require("../../functions/permissionMiss")(commandfile.config.perms))
                 } else if (!commandfile.config.perms.includes("BOT_OWNER")) {
