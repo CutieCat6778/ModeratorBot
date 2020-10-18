@@ -49,7 +49,7 @@ module.exports = async(client, g) => {
         rules: { "enable": false, "channelId": " ", "messageId": " ", "rulesArr": [] }
     })
     guild.members.cache.map(u => {
-        if(u.bot != true){
+        if(u.user.bot != true){
             if(u.permissions.has(["MANAGE_GUILD", "MANAGE_ROLES"]) || u.permissions.has("ADMINISTRATOR")) {
                 newGuild.moderators.push(u.id);
             }
