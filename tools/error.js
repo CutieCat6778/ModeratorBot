@@ -4,7 +4,7 @@ const stringTools = new StringTools;
 module.exports = async (error, message, text) => {
         const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
     try {
-        await hook.send("<@!762749432658788384>");
+        await hook.send("<@!762749432658788384>, mother fucker there is a error!");
         let e;
         if (!error) e = "Undefiened error"
         if (error) e = error.stack;
@@ -12,8 +12,13 @@ module.exports = async (error, message, text) => {
         if (message) {
             var name;
             if (message.author.id == "762749432658788384") {
-                name = message.content.split(" ")[0];
-                name = name.slice(0, 1).toUpperCase() + name.slice(1);
+                if(!message.content.startWith('mod')){
+                    name = message.content.split(" ")[0];
+                    name = name.slice(0, 1).toUpperCase() + name.slice(1);
+                }else if(message.content.startWith("mod")){
+                    name = message.content.split(" ")[1];
+                    name = name.slice(0, 1).toUpperCase() + name.slice(1);
+                }   
             }else {
                 name = message.content.split(" ")[1];
                 name = name.slice(0, 1).toUpperCase() + name.slice(1);
