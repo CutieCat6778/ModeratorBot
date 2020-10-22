@@ -54,7 +54,7 @@ module.exports = {
                                             let messageId = await channel.send(embed);
                                             guild.rules.messageId = messageId.id;
                                             guild.rules.rulesArr = rules;
-                                            guild.rules.enable == true;
+                                            guild.rules.enable = true;
                                             return await guild.save();
                                         }
                                     } else if (collected1.content == "n") {
