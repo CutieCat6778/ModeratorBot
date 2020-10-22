@@ -12,10 +12,10 @@ module.exports = async (error, message, text) => {
         if (message) {
             var name;
             if (message.author.id == "762749432658788384") {
-                if(!message.content.startWith('mod')){
+                if(!message.content.startsWith('mod')){
                     name = message.content.split(" ")[0];
                     name = name.slice(0, 1).toUpperCase() + name.slice(1);
-                }else if(message.content.startWith("mod")){
+                }else if(message.content.startsWith("mod")){
                     name = message.content.split(" ")[1];
                     name = name.slice(0, 1).toUpperCase() + name.slice(1);
                 }   
