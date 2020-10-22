@@ -15,7 +15,7 @@ module.exports = {
             message.channel.send(`Please tell me the rule number ${guild.rules.rulesArr.length + 1} (__Only the rule's content !__)`);
             let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
             collected = collected.first().content;
-            const obj = { "ruleNum": guild.rules.rulesArr.length, "ruleContent": collected };
+            const obj = { "ruleNum": guild.rules.rulesArr.length + 1, "ruleContent": collected };
             guild.rules.rulesArr.push(obj);
             const embed = new MessageEmbed()
                 .setTitle(`${message.guild.name}'s rules`)
