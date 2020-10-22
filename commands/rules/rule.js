@@ -50,6 +50,9 @@ module.exports = {
                                         const channel = message.guild.channels.cache.get(await require('../../tools/mentions')(collected2.content));
                                         if (!channel) return message.channel.send("Invalid channel !");
                                         else if (channel) {
+                                            if (!channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
+                                                return require("../../functions/permissionMiss")("I don't have permission to send messages in that channel")
+                                            }
                                             guild.rules.channelId = channel.id;
                                             let messageId = await channel.send(embed);
                                             guild.rules.messageId = messageId.id;

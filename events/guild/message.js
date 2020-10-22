@@ -144,7 +144,7 @@ module.exports = async (client, message) => {
                     if (message.member.permissions.has(commandfile.config.perms) == false) {
                         return message.reply(require("../../functions/permissionMiss")(commandfile.config.perms))
                     }
-                    if (message.guild.me.permissions.has(commandfile.config.perms) == false) {
+                    if (message.guild.me.permissions.has(commandfile.config.perms) == false && commandfile.category != "rules") {
                         return message.reply(require("../../functions/permissionMissMe")(commandfile.config.perms))
                     }
                 }
