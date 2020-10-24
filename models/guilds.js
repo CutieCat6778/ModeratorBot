@@ -10,34 +10,52 @@ const guildSchema = mongoose.Schema({
         "name": String, "id": String
     }],
     autorole: {
-        "roleId":String, "enable":Boolean
+        "roleId": String, "enable": Boolean
     },
     wellcome: {
-        "channelId": String, "enable":Boolean, "join":{
+        "channelId": String, "enable": Boolean, "join": {
             "text": String, "default": Boolean
-        },"leave":{
+        }, "leave": {
             "text": String, "default": Boolean
         }
     },
     warn: [
-        {"userId": String, "time": Number, "reason":String}
+        { "userId": String, "time": Number, "reason": String }
     ],
     logs: {
-        "id": String, "enable":Boolean, "token": String, "channelId": String
+        "id": String, "enable": Boolean, "token": String, "channelId": String
     },
     prefix: String,
     case: [
-        {name:String, num: Number, reason: String, author: String, target: String, time: String}
+        { name: String, num: Number, reason: String, author: String, target: String, time: String }
     ],
     capcha: {
-        "channels": Array, "enable":Boolean
+        "channels": Array, "enable": Boolean
     },
     textfilter: {
-        "enable":Boolean, "whitelist":Array
+        "enable": Boolean, "whitelist": Array
     },
-    rules: {"enable": Boolean, "channelId": String, "messageId": String, "rulesArr":[
-        {"ruleNum": Number, "ruleContent": String}
-    ]}
+    rules: {
+        "enable": Boolean, "channelId": String, "messageId": String, "rulesArr": [
+            { "ruleNum": Number, "ruleContent": String }
+        ]
+    },
+    leveling: {
+        "enable": Boolean, "rewards": {
+            "enable": Boolean, "roles": [{
+                "level": Number, "roleId": Number
+            }]
+        }, "blacklist": {
+            "channels":[String],
+            "roles":[String]
+        }, "levelUp": {
+            "channelId": String, "enable": Boolean, "text": String
+        }, "users": [
+            {
+                "id": String, "exp": Number, "level": Number, "boost": Number
+            }
+        ]
+    }
 })
 
 module.exports = mongoose.model("Guild", guildSchema);

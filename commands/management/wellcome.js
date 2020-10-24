@@ -32,7 +32,7 @@ module.exports = {
                         .addField('Member count', `{count}`, true)
                         .setTimestamp()
                     message.channel.send(embed);
-                    let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                    let collected = await message.channel.awaitMessages(filter, { max: 1,  errors: ['time'] })
                     if (collected) {
                         collected = collected.first().content;
                         let embed1 = new MessageEmbed()
@@ -44,7 +44,7 @@ module.exports = {
                             .addField('Member count', `{count}`, true)
                             .setTimestamp()
                         message.channel.send(embed1);
-                        let collecte = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                        let collecte = await message.channel.awaitMessages(filter, { max: 1,  errors: ['time'] })
                         collecte = collecte.first().content;
                         guild.wellcome.channelId = wellchannel.id;
                         guild.wellcome.enable = true;
@@ -137,7 +137,7 @@ module.exports = {
                         .addField('Member count', `{count}`, true)
                         .setTimestamp()
                     message.channel.send(embed);
-                    let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                    let collected = await message.channel.awaitMessages(filter, { max: 1,  errors: ['time'] })
                     collected = collected.first().content;
                     guild.wellcome.join.text == collected.toString();
                     await guild.save();
@@ -154,7 +154,7 @@ module.exports = {
                         .addField('Member count', `{count}`, true)
                         .setTimestamp()
                     message.channel.send(embed1);
-                    let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                    let collected = await message.channel.awaitMessages(filter, { max: 1,  errors: ['time'] })
                     collected = collected.first().content;
                     guild.wellcome.leave.text == collected.toString();
                     await guild.save();
@@ -176,7 +176,7 @@ module.exports = {
                         .addField('Member count', `{count}`, true)
                         .setTimestamp()
                     message.channel.send(embed);
-                    let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                    let collected = await message.channel.awaitMessages(filter, { max: 1,  errors: ['time'] })
                     if (collected) {
                         collected = collected.first().content;
                         let embed1 = new MessageEmbed()
@@ -188,7 +188,7 @@ module.exports = {
                             .addField('Member count', `{count}`, true)
                             .setTimestamp()
                         message.channel.send(embed1);
-                        let collecte = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                        let collecte = await message.channel.awaitMessages(filter, { max: 1,  errors: ['time'] })
                         collecte = collecte.first().content;
                         guild.wellcome.channelId = wellchannel.id;
                         guild.wellcome.enable = true;

@@ -11,7 +11,6 @@ module.exports = {
     async execute(client, message, args) {
         try {
             const date1 = new Date()
-            const guild = require("../../tools/getGuild")(message);
             const date2 = new Date();
             var value = date2 - date1;
             message.channel.send("Pinging").then(m => {

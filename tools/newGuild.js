@@ -46,11 +46,19 @@ module.exports = async(client, g) => {
         textfilter: {
             enable: false, whitelist: []
         },
-        rules: { "enable": false, "channelId": " ", "messageId": " ", "rulesArr": [] }
+        rules: { "enable": false, "channelId": " ", "messageId": " ", "rulesArr": [] },
+        leveling: {
+            "enable": false, "blacklist": {
+                "channels":[],
+                "roles":[]
+            }, "levelUp": {
+                "channelId": "", "enable": false, "text": ""
+            },"users": []
+        }
     })
     guild.members.cache.map(u => {
         if(u.user.bot != true){
-            if(u.permissions.has(["MANAGE_GUILD", "MANAGE_ROLES"]) || u.permissions.has("ADMINISTRATOR")) {
+            if(u.permissions.has(["ADMINISTRATOR"]) || u.permissions.has("ADMINISTRATOR")) {
                 newGuild.moderators.push(u.id);
             }
         }

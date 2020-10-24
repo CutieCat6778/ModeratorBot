@@ -4,7 +4,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
     config: {
         name: "eval",
-        aliases: ["test", "code"],
+        aliases: ["code"],
         category: "development",
         perms: ["BOT_OWNER"],
         description: "Don't touch, when you don't know what is"

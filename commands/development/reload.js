@@ -1,31 +1,24 @@
-const { exec } = require('child_process');
-
 module.exports = {
     config: {
         name: "reload",
-        aliases: ["pm2reload", "restart"],
-        perms: ["BOT_OWNER"],
-        category: "development"
+        aliases: ["loadcmd"],
+        category: "development",
+        perms: ["BOT_OWNER"]
     },
     async execute(client, message, args) {
+        if (!args[0]) return;
+        let commandName = args[0].toLowerCase()
         try {
-            const input = "pm2 reload 0";
-            await message.channel.send(`${message.guild.me.displayName} is reloading`)
-            exec(input, async (error, stdout, stderr) => {
-                const date1 = new Date();
-                if (error || stderr) {
-                    const output = await require("../../tools/textsplit")(error, true);
-                    if(!output) output = await require("../../tools/textsplit")(stderr, true);
-                    if(!output) output = "nothing";
-                    await message.channel.send(`${require("ms")((new Date() - date1), { long: true })}`);
-                    return message.channel.send(output);
-                }
-                const output = await require("../../tools/textsplit")(stdout, true);
-                await message.channel.send(`${require("ms")((new Date() - date1), { long: true })}`);
-                message.channel.send(output);
-            });
+            const commandfile = await client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName));
+            delete require.cache[require.resolve(`../${commandfile.config.category}/${commandName}.js`)] // usage !reload <name>
+            client.commands.delete(commandName)
+            const pull = require(`../${commandfile.config.category}/${commandName}.js`)
+            client.commands.set(commandName, pull)
+            return message.channel.send("done")
         } catch (e) {
-            return require("../../tools/error")(e, message);
+            return require('../../tools/error')(e, message);
         }
+
+        message.channel.send(`The command \`${args[0].toUpperCase()}\` has been reloaded!`)
     }
 }
