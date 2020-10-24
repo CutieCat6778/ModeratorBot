@@ -50,7 +50,7 @@ module.exports = {
                 .addField('Level', user.level, true)
                 .setThumbnail(mentions.user.displayAvatarURL())
                 .setTimestamp()
-                .setFooter(`Requested by ${mentions.displayName}`, mentions.user.displayAvatarURL())
+                .setFooter(`Requested by ${message.member.displayName}`, message.member.user.displayAvatarURL())
             return message.channel.send(embed);
         }
     }
