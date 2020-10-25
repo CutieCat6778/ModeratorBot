@@ -26,7 +26,7 @@ module.exports = {
                 .addField("Discord.js version", "12.3.1", true)
                 .addField("OS platform", `${os.platform}`, true)
                 .addField("Owner", `\`${owner}\``, true)
-                .addField("Support server", "[Click here](https://discord.gg/wy2Ru7N)", true)
+                .addField("Support server", "[Click here](https://discord.gg/98tfpXG)", true)
                 .setTimestamp()
             message.channel.send(embed)
         } catch (e) {
