@@ -125,7 +125,7 @@ module.exports = async (client, message) => {
                             if (guildCache.leveling.levelUp.enable == true) {
                                 const channel = message.guild.channels.cache.get(guildCache.leveling.levelUp.channelId);
                                 if (channel) {
-                                    let text = guildCache.leveling.levelUp.text.replace('{userMentions}', `<@${message.author.id}>`).replace('{userName}', message.member.displayName).replace('{server}', member.guild.name).replace('{exp}', user.exp).replace('{level}', user.level)
+                                    let text = guild.leveling.levelUp.text.replace('{userMentions}', `<@${message.author.id}>`).replace('{userName}', message.member.displayName).replace('{server}', member.guild.name).replace('{exp}', user.exp).replace('{level}', user.level)
                                     channel.send(text);
                                 }
                             }
