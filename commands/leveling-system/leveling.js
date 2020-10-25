@@ -1,4 +1,4 @@
-const {MessageEmbed} = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     config: {
@@ -14,7 +14,7 @@ module.exports = {
             const guild = await require('../../tools/getGuild')(client, message.guild.id);
             const guildCache = await client.guild.get(message.guild.id);
             if (args[0].toString() == "setup") {
-                if(guild.leveling.enable == true) return message.channel.send(`You already setup the Leveling system, more help \`${guildCache.prefix} help leveling\``)
+                if (guild.leveling.enable == true) return message.channel.send(`You already setup the Leveling system, more help \`${guildCache.prefix} help leveling\``)
                 //Blacklist
                 message.channel.send("Please mentions none xp channels or roles");
                 const filter = m => m.author.id == message.author.id;
@@ -38,7 +38,7 @@ module.exports = {
                     message.channel.send("Please mentions level up channel");
                     const c = await require('../../tools/collectMessage')(message, filter);
                     const channel = message.guild.channels.cache.get(await require("../../tools/mentions")(c.toString()));
-                    if(!channel) return message.channel.send("Channel not found");
+                    if (!channel) return message.channel.send("Channel not found");
                     guild.leveling.levelUp.channelId = channel.id;
                     if (!channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                         return require("../../functions/permissionMiss")("I don't have permission to send messages in that channel")
@@ -57,46 +57,46 @@ module.exports = {
                     message.channel.send(embed1);
                     const b = await require('../../tools/collectMessage')(message, filter);
                     guild.leveling.levelUp.text = b.toString();
-                    guild.leveling.levelUp.enable == true;
-                }else if(a != "y" || a != "n") return message.channel.send("Invalid options");
+                    guild.leveling.levelUp.enable = true;
+                } else if (a != "y" || a != "n") return message.channel.send("Invalid options");
                 //Now the rest
                 guild.leveling.enable = true;
                 await guild.save();
                 await require('../../functions/guildCache')(client);
                 return message.channel.send("Successfully enabled the Leveling system");
-            }else if(args[0] == "setting"){
-                if(args[1] == "true"){
-                    if(guild.leveling.enable == true) return message.channel.send(`You already setup the Leveling system, more help \`${guildCache.prefix} help leveling\``)
-                    else if(guild.leveling.enable == false){
+            } else if (args[0] == "setting") {
+                if (args[1] == "true") {
+                    if (guild.leveling.enable == true) return message.channel.send(`You already setup the Leveling system, more help \`${guildCache.prefix} help leveling\``)
+                    else if (guild.leveling.enable == false) {
                         guild.leveling.enable = true;
                         await guild.save();
                         return message.channel.send("Successfully enabled the leveling system");
                     }
-                }else if(args[1] == "false"){
-                    if(guild.leveling.enable == false) return message.channel.send(`You already setup the Leveling system, more help \`${guildCache.prefix} help leveling\``)
-                    else if(guild.leveling.enable == true){
+                } else if (args[1] == "false") {
+                    if (guild.leveling.enable == false) return message.channel.send(`You already setup the Leveling system, more help \`${guildCache.prefix} help leveling\``)
+                    else if (guild.leveling.enable == true) {
                         guild.leveling.enable = false;
                         await guild.save();
                         return message.channel.send("Successfully disabled the leveling system");
                     }
-                }else if(args[0] == "reset"){
-                    if(guild.leveling.enable == true) return message.channel.send(`You already setup the Leveling system, more help \`${guildCache.prefix} help leveling\``)
-                    else if(guild.leveling.enable == false){
-                        guild.leveling = {
-                            "enable": false, "rewards": {
-                                "enable": false, "roles": []
-                            }, "blacklist": {
-                                "channels":[],
-                                "roles":[]
-                            }, "levelUp": {
-                                "channelId": "", "enable": false, "text": ""
-                            }
-                        }
-                        await guild.save();
-                        return message.channel.send("Successfully reset the leveling system");
-                    }
                 }
-            }else {
+            } else if (args[0] == "reset") {
+                if (guild.leveling.enable == true) return message.channel.send(`You already setup the Leveling system, more help \`${guildCache.prefix} help leveling\``)
+                else if (guild.leveling.enable == false) {
+                    guild.leveling = {
+                        "enable": false, "rewards": {
+                            "enable": false, "roles": []
+                        }, "blacklist": {
+                            "channels": [],
+                            "roles": []
+                        }, "levelUp": {
+                            "channelId": "", "enable": false, "text": ""
+                        }
+                    }
+                    await guild.save();
+                    return message.channel.send("Successfully reset the leveling system");
+                }
+            } else {
                 return message.reply(await require('../../noArgs/leveling-system/leveling')(client.guild.get(message.guild.id).prefix));
             }
         }
