@@ -1,5 +1,5 @@
 const mentions = require("../../tools/mentions");
-const {WebhookClient} = require('discord.js');
+const { WebhookClient } = require('discord.js');
 module.exports = {
     config: {
         name: 'captcha',
@@ -20,17 +20,32 @@ module.exports = {
                 guild.capcha.enable = true;
                 guild.capcha.channels = channels;
                 await guild.save();
-                let vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unverified");
+                let vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unvertified");
+                if (vertifyrole) {
+                    await vertifyrole.delete();
+                    vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unvertified");
+                }
                 if (!vertifyrole) {
                     vertifyrole = await message.guild.roles.create({
                         data: {
-                            name: 'Unverified',
+                            name: 'Unvertified',
                             color: '#000000',
                             permission: []
                         }
                     });
                     message.guild.channels.cache.forEach(async (channel) => {
-                        if (channel.type != "text") return;
+                        if (channel.type == "dm" || channel.type == "category" || channel.type == "unknown") return;
+                        if (channels.includes(channel.id) == true) {
+                            await channel.createOverwrite(vertifyrole, {
+                                VIEW_CHANNEL: true,
+                                SEND_MESSAGES: false,
+                                ADD_REACTIONS: true,
+                                SEND_TTS_MESSAGES: false,
+                                ATTACH_FILES: false,
+                                SPEAK: false,
+                                CONNECT: false
+                            });
+                        }
                         if (channels.includes(channel.id) == false) {
                             await channel.createOverwrite(vertifyrole, {
                                 VIEW_CHANNEL: false,
@@ -39,6 +54,7 @@ module.exports = {
                                 SEND_TTS_MESSAGES: false,
                                 ATTACH_FILES: false,
                                 SPEAK: false,
+                                CONNECT: false
                             });
                         }
                     });
@@ -51,7 +67,7 @@ module.exports = {
                     if (isNaN(guildCache.logs.id == true)) return;
                     let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                     if (channel) {
-                        return channel.send(require("../../logs/wellcome")(guild.cacha));
+                            return channel.send(require("../../logs/capcha")(guild.cacha));
                     }
                 }
             } else if (args[0] == "setting") {
@@ -71,7 +87,7 @@ module.exports = {
                         if (isNaN(guildCache.logs.id == true)) return;
                         let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
-                            return channel.send(require("../../logs/wellcome")(guild.cacha));
+                            return channel.send(require("../../logs/capcha")(guild.cacha));
                         }
                     }
                 } else if (args[1] == "false") {
@@ -87,7 +103,7 @@ module.exports = {
                         if (isNaN(guildCache.logs.id == true)) return;
                         let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
-                            return channel.send(require("../../logs/wellcome")(guild.cacha));
+                                return channel.send(require("../../logs/capcha")(guild.cacha));
                         }
                     }
                 } else if (args[1]) {
@@ -96,17 +112,32 @@ module.exports = {
                     guild.capcha.enable = true;
                     guild.capcha.channels = channels;
                     await guild.save();
-                    let vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unverified");
+                    let vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unvertified");
+                    if (vertifyrole) {
+                        await vertifyrole.delete();
+                        vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unvertified");
+                    }
                     if (!vertifyrole) {
                         vertifyrole = await message.guild.roles.create({
                             data: {
-                                name: 'Unverified',
+                                name: 'Unvertified',
                                 color: '#000000',
                                 permission: []
                             }
                         });
                         message.guild.channels.cache.forEach(async (channel) => {
-                            if (channel.type != "text") return;
+                            if (channel.type == "dm" || channel.type == "category" || channel.type == "unknown") return;
+                            if (channels.includes(channel.id) == true) {
+                                await channel.createOverwrite(vertifyrole, {
+                                    VIEW_CHANNEL: true,
+                                    SEND_MESSAGES: false,
+                                    ADD_REACTIONS: true,
+                                    SEND_TTS_MESSAGES: false,
+                                    ATTACH_FILES: false,
+                                    SPEAK: false,
+                                    CONNECT: false
+                                });
+                            }
                             if (channels.includes(channel.id) == false) {
                                 await channel.createOverwrite(vertifyrole, {
                                     VIEW_CHANNEL: false,
@@ -115,6 +146,7 @@ module.exports = {
                                     SEND_TTS_MESSAGES: false,
                                     ATTACH_FILES: false,
                                     SPEAK: false,
+                                    CONNECT: false
                                 });
                             }
                         });
@@ -127,7 +159,7 @@ module.exports = {
                         if (isNaN(guildCache.logs.id == true)) return;
                         let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
-                            return channel.send(require("../../logs/wellcome")(guild.cacha));
+                            return channel.send(require("../../logs/capcha")(guildCache.capcha));
                         }
                     }
                 }
