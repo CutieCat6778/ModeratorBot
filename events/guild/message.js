@@ -196,7 +196,7 @@ module.exports = async (client, message) => {
                         return message.reply(require("../../functions/permissionMissMe")(commandfile.config.perms))
                     }
                 }
-                return commandfile.execute(client, message, args)
+                return commandfile.execute(client, message, args, guildCache)
             }
             if (!message.content.toLowerCase().startsWith(guildCache.prefix)) return;
             let args = message.content.slice(guildCache.prefix.length).trim().split(/ +/g);
@@ -213,7 +213,7 @@ module.exports = async (client, message) => {
                     return message.reply(require("../../functions/permissionMissMe")(commandfile.config.perms))
                 }
             }
-            return commandfile.execute(client, message, args)
+            return commandfile.execute(client, message, args, guildCache)
         }
     } catch (e) {
         return require("../../tools/error")(e, undefined)

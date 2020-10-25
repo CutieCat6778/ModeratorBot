@@ -9,16 +9,19 @@ module.exports = {
         if (!args[0]) return;
         let commandName = args[0].toLowerCase()
         try {
-            const commandfile = await client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName));
-            delete require.cache[require.resolve(`../${commandfile.config.category}/${commandName}.js`)] // usage !reload <name>
-            client.commands.delete(commandName)
-            const pull = require(`../${commandfile.config.category}/${commandName}.js`)
-            client.commands.set(commandName, pull)
-            return message.channel.send("done")
+            if(commandName == "guild"){
+                await require('../../functions/guildCacheReload')(client);
+                return messasge.channel.send("Done");
+            }else if(client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName))){
+                const commandfile = await client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName));
+                delete require.cache[require.resolve(`../${commandfile.config.category}/${commandName}.js`)] // usage !reload <name>
+                client.commands.delete(commandName)
+                const pull = require(`../${commandfile.config.category}/${commandName}.js`)
+                client.commands.set(commandName, pull)
+                return message.channel.send("done")
+            }else return message.channel.send("Invalid options");
         } catch (e) {
             return require('../../tools/error')(e, message);
         }
-
-        message.channel.send(`The command \`${args[0].toUpperCase()}\` has been reloaded!`)
     }
 }
