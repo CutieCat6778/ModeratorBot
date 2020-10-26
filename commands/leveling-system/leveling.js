@@ -62,7 +62,7 @@ module.exports = {
                 //Now the rest
                 guild.leveling.enable = true;
                 await guild.save();
-                await require('../../functions/guildCache')(client);
+                await require('../../functions/guildCacheReload')(client);
                 return message.channel.send("Successfully enabled the Leveling system");
             } else if (args[0] == "setting") {
                 if (args[1] == "true") {
@@ -70,6 +70,7 @@ module.exports = {
                     else if (guild.leveling.enable == false) {
                         guild.leveling.enable = true;
                         await guild.save();
+                        await require('../../functions/guildCacheReload')(client);
                         return message.channel.send("Successfully enabled the leveling system");
                     }
                 } else if (args[1] == "false") {
@@ -77,6 +78,7 @@ module.exports = {
                     else if (guild.leveling.enable == true) {
                         guild.leveling.enable = false;
                         await guild.save();
+                        await require('../../functions/guildCacheReload')(client);
                         return message.channel.send("Successfully disabled the leveling system");
                     }
                 }
@@ -94,6 +96,7 @@ module.exports = {
                         }
                     }
                     await guild.save();
+                    await require('../../functions/guildCacheReload')(client);
                     return message.channel.send("Successfully reset the leveling system");
                 }
             } else {
