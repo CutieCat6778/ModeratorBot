@@ -8,7 +8,7 @@ module.exports = {
         category: "management",
         description: "Just a simple captcha before people joining"
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
                 return message.reply(require("../../noArgs/management/capcha")(client.guild.get(message.guild.id).prefix));
@@ -59,6 +59,7 @@ module.exports = {
                         }
                     });
                 }
+                await require('../../functions/guildCacheReload')(client);
                 message.channel.send("Successfully enabled Captcha function");
                 if (client.guild.get(message.guild.id)) {
                     let guildCache = client.guild.get(message.guild.id);
@@ -79,6 +80,7 @@ module.exports = {
                     if (guild.capcha.enable == true) return message.channel.send(`You are already enable the capcha`)
                     guild.capcha.enable = true;
                     await guild.save();
+                    await require('../../functions/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Captcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
@@ -95,6 +97,7 @@ module.exports = {
                     if (guild.capcha.enable == false) return message.channel.send(`You are already disable the capcha`)
                     guild.capcha.enable = false;
                     await guild.save();
+                    await require('../../functions/guildCacheReload')(client);
                     message.channel.send("Successfully disabled Captcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
@@ -151,6 +154,7 @@ module.exports = {
                             }
                         });
                     }
+                    await require('../../functions/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Captcha function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);

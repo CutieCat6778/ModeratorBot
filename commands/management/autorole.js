@@ -22,6 +22,7 @@ module.exports = {
                     guild.autorole.roleId = role.id;
                     guild.autorole.enable = true;
                     await guild.save();
+                    await require('../../functions/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
@@ -46,6 +47,7 @@ module.exports = {
                     guild.autorole.enable = true;
                     await guild.save();
                     let role = message.guild.channels.cache.get(guild.autorole.roleId);
+                    await require('../../functions/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
@@ -63,6 +65,7 @@ module.exports = {
                     guild.autorole.enable = false;
                     await guild.save();
                     let role = message.guild.channels.cache.get(guild.autorole.roleId);
+                    await require('../../functions/guildCacheReload')(client);
                     message.channel.send("Successfully disabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
@@ -81,6 +84,7 @@ module.exports = {
                     guild.autorole.roleId = role.id;
                     guild.autorole.enable = true;
                     await guild.save();
+                    await require('../../functions/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);

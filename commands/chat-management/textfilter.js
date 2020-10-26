@@ -18,6 +18,7 @@ module.exports = {
                 guild.textfilter.enable = true;
                 await guild.save();
                 client.guild.get(message.guild.id).textfilter = guild.textfilter;
+                await require('../../functions/guildCacheReload')(client);
                 message.channel.send("Successfully enabled Text filter function");
                 if (client.guild.get(message.guild.id)) {
                     let guildCache = client.guild.get(message.guild.id);
@@ -39,6 +40,7 @@ module.exports = {
                     guild.textfilter.enable = true;
                     await guild.save();
                     client.guild.get(message.guild.id).textfilter = guild.textfilter;
+                    await require('../../functions/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Text filter function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
@@ -55,6 +57,7 @@ module.exports = {
                     if (guild.textfilter.enable == false) return message.channel.send("You already disable it");
                     guild.textfilter.enable = false;
                     await guild.save();
+                    await require('../../functions/guildCacheReload')(client);
                     client.guild.get(message.guild.id).textfilter = guild.textfilter;
                     message.channel.send("Successfully disabled Text filter function");
                     if (client.guild.get(message.guild.id)) {
@@ -75,6 +78,7 @@ module.exports = {
                         guild.textfilter.whitelist.push(word);
                     });
                     await guild.save();
+                    await require('../../functions/guildCacheReload')(client);
                     client.guild.get(message.guild.id).textfilter = guild.textfilter;
                     message.channel.send("Added those word to whitelist word");
                     if (client.guild.get(message.guild.id)) {
