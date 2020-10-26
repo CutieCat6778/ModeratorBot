@@ -8,7 +8,7 @@ module.exports = {
         perms: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
-        if (client.guild.get(message.guild.id).leveling.enable == false) return message.channel.send(`Leveling system is disabled. Please use command \`${client.guild.get(message.guild.id).prefix} help level\``);
+        if (client.guild.get(message.guild.id).leveling.enable == false) return message.channel.send(`Leveling system is disabled. Please use command \`${client.guild.get(message.guild.id).prefix} help leveling\``);
         const guild = client.guild.get(message.guild.id);
         if (!args[0]) {
             let user = guild.leveling.users.find(g => g.id == message.author.id);
