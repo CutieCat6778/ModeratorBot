@@ -8,7 +8,7 @@ module.exports = async (client) => {
             useUnifiedTopology: true
         })
         await require("../../functions/guildCache")(client);
-        if(!process.env.hook){
+        if (!process.env.hook) {
             const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
             const embed = new MessageEmbed()
                 .setColor("#669fd2")
@@ -16,6 +16,7 @@ module.exports = async (client) => {
                 .setTimestamp()
             await hook.send(embed);
         }
+        await require('../../dashboard/server')(client);
         console.log(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`);
     } catch (e) {
         return require("../../tools/error")(e, undefined)
