@@ -8,7 +8,7 @@ module.exports = {
         perms: ["MANAGE_GUILD"],
         description: "You use this command to setup a wellcome message"
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
                 return message.reply(require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
@@ -50,6 +50,10 @@ module.exports = {
                         guild.wellcome.enable = true;
                         guild.wellcome.join.text = collected;
                         guild.wellcome.leave.text = collecte;
+                        guildCache.wellcome.channelId = wellchannel.id;
+                        guildCache.wellcome.enable = true;
+                        guildCache.wellcome.join.text = collected;
+                        guildCache.wellcome.leave.text = collecte;
                         await guild.save();
                         wellchannel.send("Welcome messages will be here");
                         message.channel.send("Successfully enabled Welcome message function");
@@ -95,6 +99,7 @@ module.exports = {
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.wellcome.enable == true) return message.channel.send("You already enable it");
                     guild.wellcome.enable = true;
+                    guildCache.wellcome.enable = true;
                     await guild.save();
                     let wellchannel = message.guild.channels.cache.get(guild.wellcome.channelId);
                     message.channel.send("Successfully enabled Welcome message function");
@@ -112,6 +117,7 @@ module.exports = {
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.wellcome.enable == false) return message.channel.send("You already disable it");
                     guild.wellcome.enable = false;
+                    guildCache.wellcome.enable = false;
                     await guild.save();
                     let wellchannel = message.guild.channels.cache.get(guild.wellcome.channelId);
                     message.channel.send("Successfully disabled Welcome message function");
@@ -140,6 +146,7 @@ module.exports = {
                     let collected = await message.channel.awaitMessages(filter, { max: 1,  errors: ['time'] })
                     collected = collected.first().content;
                     guild.wellcome.join.text == collected.toString();
+                    guildCache.wellcome.join.text == collected.toString();
                     await guild.save();
                     return message.channel.send("Successfully change the user join text");
                 } else if (args[1] == "leave") {
@@ -157,6 +164,7 @@ module.exports = {
                     let collected = await message.channel.awaitMessages(filter, { max: 1,  errors: ['time'] })
                     collected = collected.first().content;
                     guild.wellcome.leave.text == collected.toString();
+                    guildCache.wellcome.leave.text == collected.toString();
                     await guild.save();
                     return message.channel.send("Successfully change the user join text");
                 } else if (args[1]) {
@@ -191,9 +199,13 @@ module.exports = {
                         let collecte = await message.channel.awaitMessages(filter, { max: 1,  errors: ['time'] })
                         collecte = collecte.first().content;
                         guild.wellcome.channelId = wellchannel.id;
+                        guildCache.wellcome.channelId = wellchannel.id;
                         guild.wellcome.enable = true;
+                        guildCache.wellcome.enable = true;
                         guild.wellcome.join.text = collected;
+                        guildCache.wellcome.join.text = collected;
                         guild.wellcome.leave.text = collecte;
+                        guildCache.wellcome.leave.text = collecte;
                         await guild.save();
                         wellchannel.send("Welcome messages will be here");
                         message.channel.send("Successfully enabled Welcome message function");
