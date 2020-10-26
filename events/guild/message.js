@@ -22,7 +22,7 @@ module.exports = async (client, message) => {
                     userCache = client.spam.get(message.author.id);
                 }
                 userCache.times++;
-                if (message.member.permissions.has("ADMINISTRATOR")) {
+                if (!message.member.permissions.has("ADMINISTRATOR")) {
                     if (require("../../tools/isUpperCase")(message.content) == true && guildCache.textfilter.cap) {
                         message.delete();
                         message.reply("too many caps").then(m => m.delete({ timeout: 5000 }))
