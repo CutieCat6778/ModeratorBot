@@ -2,7 +2,7 @@ const badwords = require("../asset/useFullArrays/badwords");
 let a;
 module.exports = function bad(message, guildCache) {
     message.split(" ").forEach(word => {
-        if(badwords.includes(word) && !guildCache.textfilter.whitelist.includes(word)){
+        if(badwords.includes(word) && !guildCache.textfilter.badwords.whitelist.includes(word) || guildCache.textfilter.badwords.blacklist.includes(word)){
             a = true;
         }else {
             a = false;

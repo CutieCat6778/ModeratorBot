@@ -1,17 +1,18 @@
 const { MessageEmbed } = require("discord.js")
 
 module.exports = function wellcomelogs(autorole) {
-    let whitelist = [];
-    if(autorole.whitelist.length == 0){
-        whitelist = "None";
-    }else if(autorole.whitelist) {
-        whitelist = autorole.whitelist.join(", ")
-    }
-    let embed = new MessageEmbed()
+    const embed = new MessageEmbed()
         .setColor("#669fd2")
         .setTitle("Text filter (anti swear)")
-        .addField("Whitelist words", `${whitelist}`)
-        .addField("Status", autorole.enable)
+        .addField("Status", autorole.enable, true)
         .setTimestamp()
+    if(autorole.badwords.enable == true){
+        embed.addField("Whitelist words", `${autorole.badwords.whitelist.length > 0 ? autorole.badwords.whitelist.join(", ") : "None"}`, true)
+        .addField("Blacklist words", `${autorole.badwords.blacklist.length > 0 ? autorole.badwords.whitelist.join(", ") : "None"}`, true)
+    }if(autorole.cap == true){
+        embed.addField("Cap messages", autorole.cap, true)
+    }if(autorole.links == true){
+        embed.addField("Links", autorole.links, true)
+    }
     return embed;
 }

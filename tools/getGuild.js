@@ -1,6 +1,6 @@
 const Guild = require("../models/guilds");
 module.exports = async function getGuild(client, id) {
-    const guild = await Guild.findOne({ guildId: id}).catch(e => require('./error')(e, undefined))
+    const guild = await Guild.findOne({ guildId: id }).catch(e => require('./error')(e, undefined))
     if (!guild) {
         const guild = await require('./newGuild')(client, id);
         return guild
@@ -14,39 +14,42 @@ module.exports = async function getGuild(client, id) {
         guild.case = [];
         await guild.save();
         getGuild(id);
-    }if (!guild.logs) {
+    } if (!guild.logs) {
         guild.case = {
-            "id":" ", "enable": false, "token": " "
+            "id": " ", "enable": false, "token": " "
         }
         await guild.save();
         getGuild(id);
-    }if(!guild.capcha) {
+    } if (!guild.capcha) {
         guild.capcha = {
-            "channels":[], "enable": false
+            "channels": [], "enable": false
         };
         await guild.save();
         getGuild(id);
-    }if(!guild.textfilter) {
+    } if (!guild.textfilter) {
         guild.textfilter = {
-            "enable": false, "whitelist": []
+            "enable": false,
+            "badwords": {
+                "whitelist": [], "blacklist": [], "enable": false
+            }, "links": false, "cap": false
         };
         await guild.save();
         getGuild(id);
-    }if(!guild.rules) {
-        guild.textfilter = {"enable": false, "channelId":" ", "messageId": " " ,"rulesArr":[]};
+    } if (!guild.rules) {
+        guild.textfilter = { "enable": false, "channelId": " ", "messageId": " ", "rulesArr": [] };
         await guild.save();
         getGuild(id);
     }
-    if(!guild.leveling){
+    if (!guild.leveling) {
         guild.leveling = {
             "enable": false, "rewards": {
                 "enable": false, "roles": []
             }, "blacklist": {
-                "channels":[],
-                "roles":[]
+                "channels": [],
+                "roles": []
             }, "levelUp": {
                 "channelId": "", "enable": false, "text": ""
-            },"users": []
+            }, "users": []
         }
         await guild.save();
         getGuild(id);

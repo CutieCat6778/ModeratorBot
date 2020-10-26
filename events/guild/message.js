@@ -5,9 +5,9 @@ module.exports = async (client, message) => {
         if (message.author.bot) return;
         if (message.channel.type == "text") {
             //get guild and save it in cache
-            var guildCache = client.guild.get(message.guild.id);
+            let guildCache = client.guild.get(message.guild.id);
             if (!guildCache) {
-                let g = await require("../../tools/getGuild")(client, message.guild.id);
+                const g = await require("../../tools/getGuild")(client, message.guild.id);
                 client.guild.set(g.guildId, g)
                 guildCache = client.guild.get(message.guild.id);
             }
@@ -22,18 +22,21 @@ module.exports = async (client, message) => {
                     userCache = client.spam.get(message.author.id);
                 }
                 userCache.times++;
-                if (!message.member.permissions.has("ADMINISTRATOR")) {
-                    if (require("../../tools/isUpperCase")(message.content) == true) {
+                if (message.member.permissions.has("ADMINISTRATOR")) {
+                    if (require("../../tools/isUpperCase")(message.content) == true && guildCache.textfilter.cap) {
                         message.delete();
                         message.reply("too many caps").then(m => m.delete({ timeout: 5000 }))
                         userCache.warn++;
-                    } if (require("../../functions/badwords")(message.content, guildCache) == true) {
+                    } if (require("../../functions/badwords")(message.content, guildCache) == true && guildCache.textfilter.badwords.enable) {
                         message.delete();
                         message.reply("what your language").then(m => m.delete({ timeout: 5000 }));
                         userCache.warn++;
+                    } if(message.content.startsWith("http") && guildCache.textfilter.links) {
+                        message.delete();
+                        message.reply('links are not allowed in here')
                     }
                     if (userCache.times >= 10 || userCache.warn >= 5) {
-                        message.channel.send(`Muted <@!${message.author.id}> for 10 minutes with reason **Spamming**`);
+                        message.channel.send(`Muted <@!${message.author.id}> for 10 minute, because **he keep ignoring the warnings**`);
                         let muterole = message.guild.roles.cache.find((r) => r.name === "Muted");
                         if (!muterole) {
                             muterole = await message.guild.roles.create({
@@ -58,7 +61,7 @@ module.exports = async (client, message) => {
                         client.spam.delete(message.author.id);
                         return require("../../tools/mute")(client, "10m", message.member, muterole);
                     } if (userCache.times == 7) {
-                        return message.channel.send(`Slowdown <@!${message.author.id}>, next time you will get mute`);
+                        message.channel.send(`Slowdown <@!${message.author.id}>, next time you will get mute`);
                     }
                 }
                 client.setTimeout(() => {

@@ -32,8 +32,10 @@ const guildSchema = mongoose.Schema({
     capcha: {
         "channels": Array, "enable": Boolean
     },
-    textfilter: {
-        "enable": Boolean, "whitelist": Array
+    textfilter: { "enable": Boolean, 
+        "badwords":{
+            "whitelist": Array, "blacklist": Array, "enable": Boolean
+        }, "links":Boolean, "cap": Boolean
     },
     rules: {
         "enable": Boolean, "channelId": String, "messageId": String, "rulesArr": [
