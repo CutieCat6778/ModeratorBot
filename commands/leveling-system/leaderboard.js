@@ -15,7 +15,7 @@ module.exports = {
             .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
         let leaderboard = await guildCache.leveling.users.sort(await require("../../tools/sortBy")('exp', true, parseInt));
         if(leaderboard.length <= 0) return message.channel.send("There are no infomations has been saved");
-        leaderboard = leaderboard.slice(0, 10);
+        leaderboard = leaderboard.slice(0, 9);
         leaderboard = await guildCache.leveling.users.sort(await require("../../tools/sortBy")('level', true, parseInt));
         for(let i = 0;i < leaderboard.length; i++){
             const user = message.guild.members.cache.get(leaderboard[i].id);

@@ -20,9 +20,9 @@ module.exports = {
                         **__Usefull links__**
 
                         **[1] Main website**
-                        [https://moderatorbot.tk](https://moderatorbot.tk)
+                        [https://www.moderatorbot.tk](https://www.moderatorbot.tk)
                         **[2] Commands list**
-                        [https://moderatorbot.tk/commands](https://moderatorbot.tk/commands.html)
+                        [https://www.moderatorbot.tk/commands](https://www.moderatorbot.tk/commands.html)
                         **[3] Public profile**
                         [https://top.gg/bot/moderatorbot](https://top.gg/bot/764901016692588554)
 
