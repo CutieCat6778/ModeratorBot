@@ -4,7 +4,7 @@ module.exports = (client) => {
     const bodyParser = require('body-parser');
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
-    app.get('/guild', (req, res) => {
+    app.post('/guild', (req, res) => {
         const body = req.body;
         const server = client.guild.map(g => g.moderators.includes(body.id));
         if(!server.moderators.includes(body.userId)) return res.json({status: 69});
