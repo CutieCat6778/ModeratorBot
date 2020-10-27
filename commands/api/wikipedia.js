@@ -14,6 +14,10 @@ module.exports = {
                 let embed = await require("../../noArgs/api/wikipedia.js")(client.guild.get(message.guild.id).prefix);
                 return message.channel.send(embed);
             } else if (args[0]) {
+                if(message.channel.nsfw == false){
+                    const badword = await require("../../functions/badwords")(message.content, client.guild.get(message.guild.id));
+                    if(badword == true) return message.channel.send("You can define this word only in **nsfw** channel!");
+                }
                 const value = args.slice(0).join(" ").toString();
                 let info = await getInfo(value);
                 let url = await getUrl(value);
