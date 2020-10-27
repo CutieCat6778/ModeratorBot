@@ -9,7 +9,7 @@ module.exports = {
     },
     async execute(client, message, args) {
         try {
-            let target = message.guild.members.cache.get(await require('../../tools/mentions')(args[0]));
+            let target = await message.guild.members.fetch(await require('../../tools/mentions')(args[0]));
             if (!target || !args[0]) target = message.member;
             const date = new Date(target.joinedAt).toLocaleString()
             const date2 = new Date(target.user.createdAt).toLocaleString()
