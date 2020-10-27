@@ -1,5 +1,5 @@
 const {Client, Collection} = require("discord.js");
-const client = new Client();
+const client = new Client({ ws: { intents: ['GUILDS', 'GUILD_MESSAGES'] } });
 const {readdirSync} = require("fs")
 require('dotenv').config();
 
