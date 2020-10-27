@@ -28,7 +28,7 @@ module.exports = {
                     }
                 }, function (err, response, body) {
                     if (err) {
-                        return console.error(err)
+                        return require('../../tools/error')(err, message)
                     }
                     body = JSON.parse(body);
                     if(body.message) return message.channel.send(body.message);
