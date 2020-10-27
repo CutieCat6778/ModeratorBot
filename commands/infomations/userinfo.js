@@ -10,7 +10,7 @@ module.exports = {
     async execute(client, message, args) {
         try {
             let target = await message.guild.members.fetch(await require('../../tools/mentions')(args[0]));
-            if (!target || !args[0]) target = message.member;
+            if (!target || !args[0]) target = message.guild.members.fetch(message.member.id);
             const date = new Date(target.joinedAt).toLocaleString()
             const date2 = new Date(target.user.createdAt).toLocaleString()
             let Activity = target.presence;
