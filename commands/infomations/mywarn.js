@@ -4,7 +4,7 @@ module.exports = {
     config: {
         name: 'mywarn',
         aliases: ["mywarns", 'mwarn'],
-        category: "members",
+        category: "infomations",
         perms: ["SEND_MESSAGES"],
         description: 'You use this command to see how many warns you have'
     },

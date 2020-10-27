@@ -34,9 +34,9 @@
     "ms": "^2.1.2",
     "node-fetch": "^2.6.1",
     "openweather-apis": "^4.3.1",
-    "os": "^0.1.1",
     "request": "^2.88.2",
     "string-toolkit": "^1.0.89",
+    "systeminformation": "^4.27.11",
     "translate-google": "^1.4.3"
   }
 }

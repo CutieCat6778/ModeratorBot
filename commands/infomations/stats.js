@@ -1,15 +1,20 @@
-const os = require('os');
+const si = require('systeminformation');
 const { MessageEmbed } = require("discord.js");
 module.exports = {
     config: {
         name: "stats",
         aliases: ["botinfo", "stat"],
-        category: "members",
+        category: "infomations",
         perms: ["SEND_MESSAGES"],
         description: "You use this command to see my stats"
     },
     async execute (client, message, args) {
         try {
+            const system = {
+                osInfo: 'platform, release',
+            }
+            let os = await si.get(system);
+            os = os.osInfo;
             const owner = client.users.cache.get("762749432658788384").tag
             let embed = new MessageEmbed()
                 .setColor("#669fd2")
@@ -24,7 +29,7 @@ module.exports = {
                 .addField("Uptime", require("ms")(client.uptime, { long: true }), true)
                 .addField("NodeJS version", `${process.version}`, true)
                 .addField("Discord.js version", "12.3.1", true)
-                .addField("OS platform", `${os.platform}`, true)
+                .addField("OS platform", `${os.platform}/${os.release}`, true)
                 .addField("Owner", `\`${owner}\``, true)
                 .addField("Support server", "[Click here](https://discord.gg/98tfpXG)", true)
                 .setTimestamp()

@@ -4,7 +4,7 @@ module.exports = {
     config: {
         name: "avatar",
         aliases: ["av", "ava"],
-        category: "members",
+        category: "infomations",
         perms: ["SEND_MESSAGES"]
     },
     async execute (client, message, args) {

@@ -4,8 +4,8 @@ module.exports = function help(prefix) {
     let embed = new MessageEmbed()
         .setColor("#669fd2")
         .setTitle("My warn")
-        .setDescription(`The My warn command's aliases are : \`My warn\`, \`notonline\` or \`offline\`\n
-            **All commands:** \`${prefix} mywarn\`
+        .setDescription(`The my warn command's aliases are : \`mywarn\` or \`mywarns\`\n
+            **My warns:** \`${prefix} mywarn\`
                 It will display all information about your last warn
             **Example**: 
             \`${prefix} mywarn\`
