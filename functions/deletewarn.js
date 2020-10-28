@@ -35,7 +35,7 @@ module.exports = async function warn(message, target, reason, client) {
                 });
             });
         }
-        if(target.roles.has(muterole.id)){
+        if(target.roles.cache.has(muterole.id)){
             await target.roles.remove(muterole);
         }
         return message.channel.send(`One warn has been removed from **${target.user.username}**`)
