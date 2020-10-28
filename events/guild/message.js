@@ -104,54 +104,6 @@ module.exports = async (client, message) => {
                     client.afk.delete(message.author.id);
                 }
             }
-            //Leveling
-            if (guildCache.leveling.enable == true) {
-                const roles = message.member.roles.cache.map(a => a.id);
-                if (!roles.some(r => guildCache.leveling.blacklist.roles.includes(r))) {
-                    if (!guildCache.leveling.blacklist.channels.includes(message.channel.id)) {
-                        const guild = await require('../../tools/getGuild')(client, message.guild.id);
-                        let user = guild.leveling.users.find(g => g.id == message.author.id);
-                        if (!user) {
-                            guild.leveling.users.push({
-                                "id": message.author.id,
-                                "exp": 0, 
-                                "level": 1,
-                                "boost": 1
-                            })
-                        }
-                        user = guild.leveling.users.find(g => g.id == message.author.id);
-                        const exp = (Math.floor(Math.random() * 4) + 4) * user.boost;
-                        user.exp += exp;
-                        if (user.exp > user.level * 300) {
-                            user.level++;
-                            user.exp = 0;
-                            if (guildCache.leveling.levelUp.enable == true) {
-                                const channel = message.guild.channels.cache.get(guildCache.leveling.levelUp.channelId);
-                                if (channel) {
-                                    let text = guild.leveling.levelUp.text.replace('{userMention}', `<@${message.author.id}>`).replace('{userName}', message.member.displayName).replace('{server}', message.guild.name).replace('{exp}', user.exp).replace('{level}', user.level)
-                                    channel.send(text);
-                                }
-                            }
-                        }
-                        await guild.save();
-                        let userCa = guildCache.leveling.users.find(g => g.id == message.author.id);
-                        if (!userCa) {
-                            guildCache.leveling.users.push({
-                                "id": message.author.id,
-                                "exp": 0, 
-                                "level": 1,
-                                "boost": 1
-                            })
-                        }
-                        userCa = guildCache.leveling.users.find(g => g.id == message.author.id);
-                        userCa.exp += exp;
-                        if (userCa.exp > userCa.level * 300) {
-                            userCa.level++;
-                            userCa.exp = 0;
-                        }
-                    }
-                }
-            }
             //commands working
             if (message.author.id == "762749432658788384" || (message.content.toLowerCase().startsWith(guildCache.prefix) && message.author.id == "762749432658788384")) {
                 let args = message.content.trim().split(/ +/g);

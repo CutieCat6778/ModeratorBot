@@ -40,19 +40,5 @@ module.exports = async function getGuild(client, id) {
         await guild.save();
         getGuild(id);
     }
-    if (!guild.leveling) {
-        guild.leveling = {
-            "enable": false, "rewards": {
-                "enable": false, "roles": []
-            }, "blacklist": {
-                "channels": [],
-                "roles": []
-            }, "levelUp": {
-                "channelId": "", "enable": false, "text": ""
-            }, "users": []
-        }
-        await guild.save();
-        getGuild(id);
-    }
     return guild;
 }

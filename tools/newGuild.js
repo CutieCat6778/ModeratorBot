@@ -49,15 +49,7 @@ module.exports = async(client, g) => {
                 "whitelist": [], "blacklist": [], "enable": false
             }, "links": false, "cap": false
         },
-        rules: { "enable": false, "channelId": " ", "messageId": " ", "rulesArr": [] },
-        leveling: {
-            "enable": false, "blacklist": {
-                "channels":[],
-                "roles":[]
-            }, "levelUp": {
-                "channelId": "", "enable": false, "text": ""
-            },"users": []
-        }
+        rules: { "enable": false, "channelId": " ", "messageId": " ", "rulesArr": [] }
     })
     guild.members.cache.map(u => {
         if(u.user.bot == false){

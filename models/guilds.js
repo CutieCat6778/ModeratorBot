@@ -41,22 +41,6 @@ const guildSchema = mongoose.Schema({
         "enable": Boolean, "channelId": String, "messageId": String, "rulesArr": [
             { "ruleNum": Number, "ruleContent": String }
         ]
-    },
-    leveling: {
-        "enable": Boolean, "rewards": {
-            "enable": Boolean, "roles": [{
-                "level": Number, "roleId": Number
-            }]
-        }, "blacklist": {
-            "channels":[String],
-            "roles":[String]
-        }, "levelUp": {
-            "channelId": String, "enable": Boolean, "text": String
-        }, "users": [
-            {
-                "id": String, "exp": Number, "level": Number, "boost": Number
-            }
-        ]
     }
 })
 
