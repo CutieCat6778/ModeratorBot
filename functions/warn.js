@@ -7,7 +7,7 @@ module.exports = async function warn(message, target, reason, args0, client) {
             userId: target.id, time: 0, reason: " "
         }
         guild.warn.push(object);
-        await guild.save();
+        await guild.updateOne({warn: guild.warn});
         targetData = guild.warn.find(t => t.userId == target.id)
     }
     if (args0) {
@@ -41,7 +41,7 @@ module.exports = async function warn(message, target, reason, args0, client) {
                 reason: reason
             }
             guild.warn.push(object);
-            await guild.save();
+            await guild.updateOne({warn: guild.warn});
             targetData = guild.warn.find(u => u.userId === target.id)
         }
         switch (targetData.time) {
@@ -62,8 +62,9 @@ module.exports = async function warn(message, target, reason, args0, client) {
         }
         targetData.time++;
         targetData.reason = reason;
-        await guild.save();
+        await guild.updateOne({warn: guild.warn});
     }
+    require('./guildCacheReload')(client);
     message.author.send(`You have been warned in **${message.guild.name}** for reason **${reason}**`)
     return message.channel.send(`**${target.user.tag}** has been warned for reason **${reason}**`);
 }
