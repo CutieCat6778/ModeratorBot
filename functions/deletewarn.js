@@ -13,9 +13,8 @@ module.exports = async function warn(message, target, reason, client) {
         if (targetData.time == 0) return message.channel.send("That user don't have any warns to delete");
         targetData.time--;
         targetData.reason = `Deleted one warn for reason __${reason}__`;
-        console.log(guild.warn);
         await guild.updateOne({warn: guild.warn});
-        console.log(guild.warn)
+        client.guild.get(message.guild.id).warn = guild.warn;
         return message.channel.send(`One warn has been removed from **${target.user.username}**`)
     } catch (e) {
         return console.log(e);
