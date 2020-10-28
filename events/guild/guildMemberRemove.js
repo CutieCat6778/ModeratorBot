@@ -9,7 +9,7 @@ module.exports = async (client, member) => {
         if (guild.wellcome.enable == true && guild.wellcome.channelId != " ") {
             let channel = member.guild.channels.cache.get(guild.wellcome.channelId);
             if (!channel) return;
-            const text = guild.wellcome.leave.text.replace('{user}', member.tag).replace('{server}', member.guild.name).replace('{count}', member.guild.members.cache.size)
+            const text = guild.wellcome.leave.text.replace('{user}', member.user.tag).replace('{server}', member.guild.name).replace('{count}', member.guild.members.cache.size)
             let embed = new MessageEmbed()
                 .setColor("#669fd2")
                 .setTitle("Member left")
