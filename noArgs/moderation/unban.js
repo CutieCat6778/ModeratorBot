@@ -4,7 +4,7 @@ module.exports = function help(prefix) {
         .setColor("#669fd2")
         .setTitle("Unban")
         .setDescription(`The unban command's aliases are : \`unban\`, \`unbanish\` or \`unben\`\n
-            **Pernamently unban**: \`${prefix} unban <@user> <reason>\`
+            **Unban**: \`${prefix} unban <@user> <reason>\`
                 Unban a member so he can join to server back
             **Example**: 
             \`${prefix} unban @steve he is good now\`

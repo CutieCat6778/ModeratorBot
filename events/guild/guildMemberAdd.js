@@ -32,7 +32,7 @@ module.exports = async (client, member) => {
             let channel = await member.createDM();
             let canDm = true;
             if (!channel) {
-                channel = await member.guild.createChannel(`${member.user.displayName}'s capcha`, text);
+                channel = await member.guild.createChannel(`${member.user.displayName}'s capcha`, {type: "text"});
                 await channel.overwritePermissions(message.author.id, { VIEW_CHANNEL: true });
                 await channel.overwritePermissions(client.id, { VIEW_CHANNEL: true });
                 await channel.overwritePermissions(everyoneRole, { VIEW_CHANNEL: false });
