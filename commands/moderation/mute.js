@@ -41,7 +41,7 @@ module.exports = {
                 return message.reply(require("../../functions/permissionMiss")("I don't have permission to mute him/her"));
             }
             if (args[0]) {
-                if (args[0] == "temp") {
+                if (require('ms')(args[0])) {
                     require("../../functions/muteTemp")(client, muterole, message, args, target);
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
@@ -71,7 +71,6 @@ module.exports = {
                 } else {
                     return message.reply(require("../../noArgs/moderation/mute")(client.guild.get(message.guild.id).prefix));
                 }
-
             }
         } catch (e) {
             return require("../../tools/error")(e, message)

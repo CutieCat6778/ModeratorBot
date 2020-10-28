@@ -1,8 +1,8 @@
 module.exports = async function temp(client, muterole, message, args, target) {
-    const time = args[1].toString();
+    const time = args[0].toString();
     if (!require("ms")(time) || isNaN(require("ms")(time)) == true) return message.channel.send("Can't not parse the time, example (10s, 10m, 10h, 10d)");
     if (require("ms")(time) < 1000) return message.channel.send("The time can't be less then 1 second");
-    let reason = args.slice(3).join(" ");
+    let reason = args.slice(2).join(" ");
     if (!reason) reason = "No reason provided";
     if (target.roles.cache.has(muterole.id)) {
         return message.channel.send("The user is already get muted");
