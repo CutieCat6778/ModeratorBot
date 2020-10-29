@@ -16,7 +16,7 @@ module.exports = {
             let target = message.guild.members.cache.get(require("../../tools/mentions")(args[0]));
             if (!target) return message.channel.send("Member not found"); 
             if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
-                return message.reply(require("../../functions/permissionMiss")("I don't have permission to mute him/her"));
+                return message.reply(require("../../functions/permissionMiss")("I don't have permission to kick him/her"));
             }
             if (target) {
                 target.send(`You has been kicked from **${message.guild.name}** for reason **${reason}**`);
