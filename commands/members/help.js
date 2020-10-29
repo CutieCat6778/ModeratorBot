@@ -36,7 +36,8 @@ module.exports = {
                 await message.reply("check your DM(direct messages)")
                 return message.author.send(embed)
             } else if (args[0]) {
-                if (categories.includes(args.slice(0).join(" "))) {
+                const target = args.slice(0).join("-").split("_").join("-").toLowerCase().toString();
+                if (categories.includes(target)) {
                     if (args[0] == "development") {
                         let embed = await require(`../../noArgs/development.js`)(client.guild.get(message.guild.id).prefix);
                         if (!embed) return message.channel.send("Category not found");
@@ -45,7 +46,7 @@ module.exports = {
                     let embed = await require(`../../noArgs/${args.slice(0).join(" ")}.js`)(client.guild.get(message.guild.id).prefix);
                     if (!embed) return message.channel.send("Category not found");
                     else if (embed) return message.channel.send(embed);
-                } else if (!categories.includes(args.slice(0).join(" "))) {
+                } else if (!categories.includes(target)) {
                     let command = client.commands.get(client.aliases.get(args[0].toLowerCase()) || args[0].toLowerCase())
                     if (!command) return message.channel.send("Command not found");
                     if (command.config.category == "development") {
