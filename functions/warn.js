@@ -65,6 +65,6 @@ module.exports = async function warn(message, target, reason, args0, client) {
         await guild.updateOne({warn: guild.warn});
     }
     require('./guildCacheReload')(client);
-    message.author.send(`You have been warned in **${message.guild.name}** for reason **${reason}**`)
+    target.send(`You have been warned in **${message.guild.name}** for reason **${reason}**`)
     return message.channel.send(`**${target.user.tag}** has been warned for reason **${reason}**`);
 }
