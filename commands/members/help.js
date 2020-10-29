@@ -43,11 +43,11 @@ module.exports = {
                         if (!embed) return message.channel.send("Category not found");
                         return message.reply(embed);
                     }
-                    let embed = await require(`../../noArgs/${args.slice(0).join(" ")}.js`)(client.guild.get(message.guild.id).prefix);
+                    let embed = await require(`../../noArgs/${target}.js`)(client.guild.get(message.guild.id).prefix);
                     if (!embed) return message.channel.send("Category not found");
                     else if (embed) return message.channel.send(embed);
                 } else if (!categories.includes(target)) {
-                    let command = client.commands.get(client.aliases.get(args[0].toLowerCase()) || args[0].toLowerCase())
+                    let command = client.commands.get(client.aliases.get(target) || target)
                     if (!command) return message.channel.send("Command not found");
                     if (command.config.category == "development") {
                         let embed = await require(`../../noArgs/development.js`)(client.guild.get(message.guild.id).prefix);
