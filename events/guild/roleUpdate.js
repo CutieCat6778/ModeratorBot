@@ -3,8 +3,8 @@ module.exports = async(client, oldRole, newRole) => {
     let role = guild.roles.find(c => c.id == newRole.id);
     if(!role) return;
     else if(role) {
-        role.name = newRole.channel.name;
-        role.id = newRole.channel.id;
+        role.name = newRole.name;
+        role.id = newRole.id;
     }
     await guild.save();
 }

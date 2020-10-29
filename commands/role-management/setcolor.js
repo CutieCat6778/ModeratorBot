@@ -15,10 +15,11 @@ module.exports = {
             if (role.position >= message.guild.me.roles.highest.position && role.permissions.has("ADMINISTRATOR")) {
                 return message.reply(require("../../functions/permissionMiss")("I don't have permission to access that role"));
             }
-            await role.setColor(args[0]);
-            if (role.color != args[0]) {
+            const oldColor = role.color;
+            await role.setColor(args[1]);
+            if (role.color == oldColor) {
                 return message.channel.send("I couldn't change that role's color! Please check does it is a valid color code.");
-            } else if (role.color == args[0]) {
+            } else if (role.color != oldColor) {
                 return message.channel.send(`Done! I that role's color to ${args[0]}`);
             }
         } catch (e) {
