@@ -18,7 +18,7 @@ module.exports = {
                     let target = message.guild.members.cache.get(require("../../tools/mentions")(args[0]));
                     if (!target) return message.channel.send("User not found");
                     if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
-                        return message.reply(require("../../functions/permissionMiss")("I don't have permission to mute him/her"));
+                        return message.reply(require("../../functions/permissionMiss")("I don't have permission to ban him/her"));
                     }
                     let reason = args.slice(1).join(" ");
                     let text = `${target.displayName} has been banned for reason **${reason}**`;
@@ -42,7 +42,7 @@ module.exports = {
                     let target = message.guild.members.cache.get(require("../../tools/mentions")(args[2]));
                     if (!target) return message.channel.send("User not found");
                     if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
-                        return message.reply(require("../../functions/permissionMiss")("I don't have permission to mute him/her"));
+                        return message.reply(require("../../functions/permissionMiss")("I don't have permission to ban him/her"));
                     }
                     let reason = args.slice(3).join(" ");
                     let text = `${target.displayName} has been banned for reason **${reason}**`;
