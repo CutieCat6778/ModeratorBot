@@ -25,7 +25,6 @@ module.exports = async (client) => {
             const user = client.users.fetch(vote.user);
             console.log(`${user.username} just voted ${client.user.username}`);
         });
-        await require('../../dashboard/server')(client);
         if (!process.env.hook) {
             const embed = new MessageEmbed()
                 .setColor("#669fd2")
