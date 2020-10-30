@@ -1,3 +1,5 @@
+const {MessageEmbed} = require("discord.js");
+
 module.exports = async (client, message) => {
     try {
         if(message.channel.id == client.guild.get(message.guild.id).rules.channelId){
