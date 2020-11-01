@@ -25,7 +25,6 @@ module.exports = {
                 if(result.data.length == 0) return message.channel.send("No results found");
                 const data = result.data[random];
                 const randomImg = Math.floor(Math.random() * data.images.length);
-                if(data.images.length == 0) return message.channel.send("No results found");
                 const img = data.images[randomImg];
                 img.description = img.description ? img.description : `Image about ${args[0]}`
                 if(img.description.endsWith(".")){
