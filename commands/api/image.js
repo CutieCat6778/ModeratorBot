@@ -23,7 +23,9 @@ module.exports = {
             .then(result => {
                 const random = Math.floor(Math.random() * result.data.length);
                 if(result.data.length == 0) return message.channel.send("No results found");
+		console.log(random, result.data.length)
                 const data = result.data[random];
+		console.log(data);
                 const randomImg = Math.floor(Math.random() * data.images.length);
                 const img = data.images[randomImg];
                 img.description = img.description ? img.description : `Image about ${args[0]}`
