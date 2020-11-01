@@ -5,7 +5,7 @@ module.exports = (prefix) => {
         .setColor("#669fd2")
         .setTitle("Define")
         .setDescription(`The define command's aliases are : \`define\` or \`dict\`\n
-            **Define a word:** \`${prefix} wikipedia [something]\`
+            **Define a word:** \`${prefix} define [something]\`
                 Get a word's definitions.
             **Example**: 
             \`${prefix} define mother\`
