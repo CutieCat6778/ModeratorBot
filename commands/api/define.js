@@ -13,10 +13,6 @@ module.exports = {
                 let embed = await require('../../noArgs/api/define.js')(client.guild.get(message.guild.id).prefix);
                 return message.reply(embed);
             } else if (args[0]) {
-                if(message.channel.nsfw == false){
-                    const badword = await require("../../functions/badwords")(message.content, client.guild.get(message.guild.id));
-                    if(badword == true) return message.channel.send("You can define this word only in **nsfw** channel!");
-                }
                 url = `https://api.dictionaryapi.dev/api/v2/entries/en/${args[0]}`;
                 url = encodeURI(url);
                 request({
