@@ -16,7 +16,7 @@ module.exports = {
             if (!role) return message.channel.send("Role not found");
             const embed = new MessageEmbed()
                 .setColor("#669fd2")
-                .setTitle(`Lost of users has ${role.name} role`)
+                .setTitle(`List of users has ${role.name} role`)
                 .setTimestamp()
                 .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
                 .setDescription(`${message.guild.members.cache.map(member => { if(member.roles.cache.has(role.id)){return member.user.username+"\n"}})}`.split(',').join(""))

@@ -10,7 +10,7 @@ module.exports = {
         try {
             const embed = new MessageEmbed()
                 .setColor("#669fd2")
-                .setTitle(`${message.guild.name} info`)
+                .setTitle(`${message.guild.name} server information`)
                 .setThumbnail(message.guild.iconURL())
                 .addField("Guild Name", `${message.guild.name}`, true)
                 .addField("Guild Id", `${message.guild.id}`, true)
