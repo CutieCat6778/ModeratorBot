@@ -47,7 +47,7 @@ module.exports = async (client, message) => {
                                 },
                                 reason: reason,
                             });
-                            message.guild.channels.forEach(async (channel, id) => {
+                            message.guild.channels.cache.forEach(async (channel, id) => {
                                 await channel.createOverwrite(muterole, {
                                     SEND_MESSAGES: false,
                                     ADD_REACTIONS: false,

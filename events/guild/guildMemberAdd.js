@@ -14,7 +14,7 @@ module.exports = async (client, member) => {
                         permission: []
                     }
                 });
-                member.guild.channels.forEach(async (channel) => {
+                member.guild.channels.cache.forEach(async (channel) => {
                     if (guild.capcha.whitelist.includes(channel.id)) return;
                     await channel.createOverwrite(vertifyrole, {
                         READ_MESSAGES: false,
