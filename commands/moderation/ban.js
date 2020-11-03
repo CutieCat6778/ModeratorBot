@@ -6,7 +6,8 @@ module.exports = {
         description: "You use this command to kick a member, but he will never can comeback (ban)",
         aliases: ["banish", "ben"],
         category: "moderation",
-        perms: ["BAN_MEMBERS"]
+        perms: ["BAN_MEMBERS"],
+        bot: ["BAN_MEMBERS"]
     },
     async execute (client, message, args) {
         try {

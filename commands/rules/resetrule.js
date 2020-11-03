@@ -3,7 +3,8 @@ module.exports = {
         name: "resetrule",
         aliases: ['resetr', 'resetrules'],
         category: "rules",
-        perms: ["MANAGE_GUILD"]
+        perms: ["MANAGE_GUILD"],
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try{

@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["sue"],
         category: "moderation",
         perms: ["MANAGE_GUILD"],
-        description: "The moderator or administrator use this command to sue some one"
+        description: "The moderator or administrator use this command to sue some one",
+        bot: ["REACT_MESSAGES", "EMBED_LINKS"]
     },
     async execute(client, message, args) {
         try {

@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["k", "getout", "kickout"],
         category: "moderation",
         perms: ["KICK_MEMBERS"],
-        description: "You use this command to kick a member out of a guild, but he/her still can join back"
+        description: "You use this command to kick a member out of a guild, but he/her still can join back",
+        bot: ["KICK_MEMBERS"]
     },
     async execute (client, message, args) {
         try {

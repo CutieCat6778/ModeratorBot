@@ -6,7 +6,8 @@ module.exports = {
         perms: ["MANAGE_GUILD", "MANAGE_ROLES"],
         aliases: ["unm", "unmutee"],
         category: "moderation",
-        description: "You use this command to unmute people, who are muted"
+        description: "You use this command to unmute people, who are muted",
+        bot: ["MANAGE_ROLES"]
     },
     async execute (client, message, args) {
         try {

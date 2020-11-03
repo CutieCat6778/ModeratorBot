@@ -4,7 +4,8 @@ module.exports = {
         name: "editrule",
         aliases: ["editr", "changerule"],
         category: "rules",
-        perms: ["MANAGE_GUILD"]
+        perms: ["MANAGE_GUILD"],
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

@@ -3,7 +3,8 @@ module.exports = {
         name: "deleterole",
         aliases: ["delrole", "deletero"],
         category: "role-management",
-        perms: ["MANAGE_ROLES", "MANAGE_MESSAGES"]
+        perms: ["MANAGE_ROLES", "MANAGE_MESSAGES"],
+        bot: ["MANAGE_ROLES"]
     },
     async execute(client, message, args, guildCache) {
         try {

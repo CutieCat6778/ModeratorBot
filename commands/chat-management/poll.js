@@ -7,7 +7,8 @@ module.exports = {
         description: "You use this command to ask everyone in a server for something",
         category: "chat-management",
         aliases: ["pol", "question", "ask"],
-        perms: ["MANAGE_GUILD"]
+        perms: ["MANAGE_GUILD"],
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

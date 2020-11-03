@@ -3,7 +3,8 @@ module.exports = {
         name: "nuke",
         aliases: ["renew"],
         category: "moderation",
-        perms: ["MANAGE_CHANNELS", "MANAGE_GUILD"]
+        perms: ["MANAGE_CHANNELS", "MANAGE_GUILD"],
+        bot: ["MANAGE_CHANNELS"]
     },
     async execute(client, message, args) {
         try {

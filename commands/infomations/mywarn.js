@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["mywarns", 'mwarn'],
         category: "infomations",
         perms: ["SEND_MESSAGES"],
-        description: 'You use this command to see how many warns you have'
+        description: 'You use this command to see how many warns you have',
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

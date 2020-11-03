@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["botinfo", "stat"],
         category: "infomations",
         perms: ["SEND_MESSAGES"],
-        description: "You use this command to see my stats"
+        description: "You use this command to see my stats",
+        bot: ["SEND_MESSAGES"]
     },
     async execute (client, message, args) {
         try {

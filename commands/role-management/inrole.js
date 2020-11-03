@@ -5,7 +5,8 @@ module.exports = {
         name: "inrole",
         aliases: ["inr"],
         perms: ["SEND_MESSAGES"],
-        category: "role-management"
+        category: "role-management",
+        bot: ["MANAGE_ROLES"]
     },
     async execute(client, message, args) {
         try {

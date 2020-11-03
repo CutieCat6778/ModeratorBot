@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["problem", "bugreport"],
         description: "You use this command to report to the Developer about the bug you have found",
         category: "members",
-        perms: ["SEND_MESSAGES"]
+        perms: ["SEND_MESSAGES"],
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

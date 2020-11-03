@@ -6,7 +6,8 @@ module.exports = {
         name: "wikipedia",
         aliases: ["wiki"],
         category: "api",
-        perms: ["SEND_MESSAGES"]
+        perms: ["SEND_MESSAGES"],
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

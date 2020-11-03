@@ -3,7 +3,8 @@ module.exports = {
         name: 'tag',
         aliases: ["tags", "gettag"],
         perms: ["SEND_MESSAGES"],
-        category: "tags"
+        category: "tags",
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try{

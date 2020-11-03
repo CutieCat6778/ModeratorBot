@@ -6,7 +6,8 @@ module.exports = {
         name: "roleinfo",
         aliases: ["rolei", "rinfo"],
         category: "infomations",
-        perms: ["SEND_MESSAGES"]
+        perms: ["SEND_MESSAGES"],
+        bot: ["SEND_MESSAGES"]
     },
     async execute(bot, message, args) {
         try {

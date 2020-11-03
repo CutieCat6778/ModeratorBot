@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["case", "caseinfo"],
         category: "moderation",
         perms: ["MANAGE_GUILD"],
-        description: "The moderator or administrator use this command to see cases history"
+        description: "The moderator or administrator use this command to see cases history",
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["log", "logger"],
         category: "management",
         perms: ["MANAGE_GUILD"],
-        description: "You use this command to disable or enable logs"
+        description: "You use this command to disable or enable logs",
+        bot: ["MANAGE_CHANNELS", "SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

@@ -5,7 +5,8 @@ module.exports = {
         description: "You use this command to mute a member in your server",
         aliases: ["m", "mutee"],
         perms: ["MANAGE_GUILD", "MANAGE_ROLES"],
-        category: "moderation"
+        category: "moderation",
+        bot: ["MANAGE_ROLES"]
     },
     async execute (client, message, args) {
         try {

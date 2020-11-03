@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["delw", "delwarn", "delwsrn"],
         category: "moderation",
         description: "You use this command to delte a warn from a member",
-        perms: ["MANAGE_GUILD", "MANAGE_MESSAGES"]
+        perms: ["MANAGE_GUILD", "MANAGE_MESSAGES"],
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

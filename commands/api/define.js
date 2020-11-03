@@ -5,7 +5,8 @@ module.exports = {
         name: "define",
         aliases: ["dict"],
         category: "api",
-        perms: ["SEND_MESSAGES"]
+        perms: ["SEND_MESSAGES"],
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try{

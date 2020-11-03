@@ -8,7 +8,8 @@ module.exports = {
         name: "translate",
         category: "api",
         aliases: ["trans"],
-        perms: ["SEND_MESSAGES"]
+        perms: ["SEND_MESSAGES"],
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["wellc", "welcome"],
         category: "management",
         perms: ["MANAGE_GUILD"],
-        description: "You use this command to setup a wellcome message"
+        description: "You use this command to setup a wellcome message",
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args, guildCache) {
         try {

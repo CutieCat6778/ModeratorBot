@@ -6,7 +6,8 @@ module.exports = {
         description: "You use this command to unban people",
         aliases: ["unb", "unbanish", "unben"],
         category: "moderation",
-        perms: ["BAN_MEMBERS"]
+        perms: ["BAN_MEMBERS"],
+        bot: ["BAN_MEMBERS"]
     },
     async execute (client, message, args) {
         try {

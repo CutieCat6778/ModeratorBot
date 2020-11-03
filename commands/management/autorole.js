@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["aar", "arole"],
         category: "management",
         perms: ["MANAGE_GUILD", "MANAGE_ROLES"],
-        description: "You use this command to setup a auto assign role function"
+        description: "You use this command to setup a auto assign role function",
+        bot: ["MANAGE_ROLES"]
     },
     async execute (client, message, args) {
         try {

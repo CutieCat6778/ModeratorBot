@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["w", "wsrn", "attention"],
         category: "moderation",
         description: "You use this command to warn a member",
-        perms: ["MANAGE_GUILD", "MANAGE_MESSAGES"]
+        perms: ["MANAGE_GUILD", "MANAGE_MESSAGES"],
+        bot: ["SEND_MESSAGES"]
     },
     async execute (client, message, args) {
         try {

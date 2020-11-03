@@ -5,7 +5,8 @@ module.exports = {
         name: "textfilter",
         aliases: ["badwords", "noswear"],
         category: "chat-management",
-        perms: ["MANAGE_GUILD"]
+        perms: ["MANAGE_GUILD"],
+        bot: ["MANAGE_MESSAGES"]
     },
     async execute(client, message, args, guildCache) {
         try {

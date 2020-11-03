@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["capcha"],
         perms: ["MANAGE_GUILD"],
         category: "management",
-        description: "Just a simple captcha before people joining"
+        description: "Just a simple captcha before people joining",
+        bot: ["MANAGE_ROLES"]
     },
     async execute(client, message, args, guildCache) {
         try {

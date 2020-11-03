@@ -5,7 +5,8 @@ module.exports = {
         aliases: ["prefixes", "prefic"],
         category: "management",
         perms: ["MANAGE_GUILD"],
-        description: "Change my prefix"
+        description: "Change my prefix",
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

@@ -4,7 +4,8 @@ module.exports = {
         name: "serverinfo",
         aliases: ["sinfo", "serverdesc", "guildinfo"],
         category: "infomations",
-        perms: ["SEND_MESSAGES"]
+        perms: ["SEND_MESSAGES"],
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

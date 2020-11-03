@@ -6,7 +6,8 @@ module.exports = {
         aliases: ["pinng"],
         perms: ["SEND_MESSAGES"],
         description: "You use this command to check my ping",
-        category: "infomations"
+        category: "infomations",
+        bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
         try {

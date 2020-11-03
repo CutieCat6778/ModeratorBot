@@ -4,7 +4,8 @@ module.exports = {
         aliases: ["notonline", "offline"],
         category: "members",
         perms: ["SEND_MESSAGES"],
-        description: "You use this command to tell people that you are offline"
+        description: "You use this command to tell people that you are offline",
+        bot: ["SEND_MESSAGES"]
     },
     async execute (client, message, args) {
         try{
