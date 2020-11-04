@@ -11,8 +11,8 @@ module.exports = {
             if (!args[0]) {
                 message.channel.send("Are you sure that you want to nuke this channel ? [y/n]");
                 const filter = (user) => user.id == message.author.id;
-                const collected = await require('../../tools/collectMessage')(message, filter);
-                switch (collected) {
+                let collected = await require('../../tools/collectMessage')(message, filter);
+                switch (collected.content) {
                     default:
                         return message.channel.send("Invalid options");
                     case "y":
@@ -34,8 +34,8 @@ module.exports = {
                 if (!oldChannel) return message.channel.send("Channel not found");
                 message.channel.send("Are you sure that you want to nuke this channel ? [y/n]");
                 const filter = (user) => user.id == message.author.id;
-                const collected = await require('../../tools/collectMessage')(message, filter);
-                switch (collected) {
+                let collected = await require('../../tools/collectMessage')(message, filter);
+                switch (collected.content) {
                     default:
                         return message.channel.send("Invalid options");
                     case "y":

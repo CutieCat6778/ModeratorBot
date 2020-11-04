@@ -18,8 +18,8 @@ module.exports = {
                 if (!tag) {
                     const filter = m => m.author.id == message.author.id;
                     message.channel.send("Please supply your tag's content");
-                    const collected = await require('../../tools/collectMessage')(message, filter);
-                    const text = collected.toString();
+                    let collected = await require('../../tools/collectMessage')(message, filter);
+                    const text = collected.content.toString();
                     const newTag = new Tag({
                         userId: message.author.id,
                         key: key,

@@ -33,8 +33,8 @@ module.exports = {
                     `)
                     .setTimestamp()
                 message.channel.send(embed);
-                const collected = await require('../../tools/collectMessage')(message, (user) => user.id == message.author.id);
-                const options = collected.toString().split(" ");
+                let collected = await require('../../tools/collectMessage')(message, (user) => user.id == message.author.id);
+                const options = collected.content.toString().split(" ");
                 if (options.length == 1) {
                     if (isNaN(options[0])) return message.channel.send("Invalid options");
                     else if (isNaN(options[0]) == false) {

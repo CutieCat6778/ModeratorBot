@@ -19,8 +19,8 @@ module.exports = {
                     if(tag.userId != message.author.id) return message.channel.send("You don't have permission to change this tag");
                     const filter = m => m.author.id == message.author.id;
                     message.channel.send("Please supply your new tag's content");
-                    const collected = await require('../../tools/collectMessage')(message, filter);
-                    const text = collected.toString();
+                    let collected = await require('../../tools/collectMessage')(message, filter);
+                    const text = collected.content.toString();
                     tag.text = text.toString();
                     await tag.save();
                     return message.channel.send(`Changed the tag's content`)

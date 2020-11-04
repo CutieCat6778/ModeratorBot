@@ -15,7 +15,7 @@ module.exports = {
             const filter = m => m.author.id == message.author.id;
             message.channel.send(`Please tell me the rule number ${guild.rules.rulesArr.length + 1} (__Only the rule's content !__)`);
             let collected = await require('../../tools/collectMessage')(message, filter);
-            const obj = { "ruleNum": guild.rules.rulesArr.length + 1, "ruleContent": collected };
+            const obj = { "ruleNum": guild.rules.rulesArr.length + 1, "ruleContent": collected.content };
             guild.rules.rulesArr.push(obj);
             const embed = new MessageEmbed()
                 .setTitle(`${message.guild.name}'s rules`)

@@ -34,9 +34,9 @@ module.exports = {
                     }
                     message.channel.send(embed).then(async m => {
                         const filter = m => m.author.id == message.author.id;
-                        const collected = await require('../../tools/collectMessage')(m, filter);
-                        if (isNaN(collected) == true) return message.channel.send("Invalid number");
-                        let num = parseInt(collected) - 1;
+                        let collected = await require('../../tools/collectMessage')(message, filter);
+                        if (isNaN(collected.content) == true) return message.channel.send("Invalid number");
+                        let num = parseInt(collected.content) - 1;
                         if (parseInt(num) > 5) return message.channel.send("Result not found");
                         else if (isNaN(num) == false) {
                             if (!info[num]) {
@@ -49,7 +49,6 @@ module.exports = {
                                     .setDescription(`[More information](${url[3][num]})\n\n${htmlToText.fromString(res.snippet)} ...`)
                                     .setTimestamp(res.timestamp)
                                     .setFooter("Last update")
-                                collected.delete()
                                 return m.edit(embed);
                             }
                         }
