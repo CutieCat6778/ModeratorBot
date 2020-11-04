@@ -19,6 +19,7 @@ module.exports = {
                     if(guild.rules.enable == false) return message.channel.send("The rules is disabled")
                     if (guild.rules.rulesArr.length == 0) return message.channel.send("You haven't setup the rules yet");
 <<<<<<< HEAD
+<<<<<<< HEAD
                     let rule = guild.rules.rulesArr.find(a => a.ruleNum == args[0]);
                     if (!rule) return message.channel.send("Rule number not found");
                     const filter = m => m.author.id == message.author.id;
@@ -37,6 +38,8 @@ module.exports = {
                     } else if (msg) {
                         await msg.edit(embed);
 =======
+=======
+>>>>>>> parent of 712b566... added deletetule
                     await message.channel.send("Please supply a method (edit, delete, add)");
                     const filter = m => m.author.id == message.author.id;
                     let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] });
@@ -71,6 +74,9 @@ module.exports = {
                         return message.channel.send(`Successfully deleted the rule#${rule.ruleNum}'s content`)
                     } else {
                         return message.channel.send('Invalid options')
+<<<<<<< HEAD
+>>>>>>> parent of 712b566... added deletetule
+=======
 >>>>>>> parent of 712b566... added deletetule
                     }
 
