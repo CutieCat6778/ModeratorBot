@@ -34,10 +34,9 @@ module.exports = {
                     }
                     message.channel.send(embed).then(async m => {
                         const filter = m => m.author.id == message.author.id;
-                        const collected = await m.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
-                        if (collected.first().content.toString().toLowerCase() == "cancel") return message.channel.send("Canceled");
-                        if (isNaN(collected.first().content) == true) return message.channel.send("Invalid number");
-                        let num = parseInt(collected.first().content) - 1;
+                        const collected = await require('../../tools/collectMessage')(m, filter);
+                        if (isNaN(collected) == true) return message.channel.send("Invalid number");
+                        let num = parseInt(collected) - 1;
                         if (parseInt(num) > 5) return message.channel.send("Result not found");
                         else if (isNaN(num) == false) {
                             if (!info[num]) {

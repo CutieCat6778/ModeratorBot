@@ -16,7 +16,6 @@ module.exports = {
             message.channel.send("Are you sure that you want to reset al the rules ? [y/n]");
             const filter = m => m.author.id == message.author.id;
             let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] });
-            collected = collected.first().content;
             if(collected == "y"){
                 let channel = message.guild.channels.cache.get(guild.rules.channelId);
                 if(channel){

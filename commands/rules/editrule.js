@@ -20,9 +20,9 @@ module.exports = {
                     if (guild.rules.rulesArr.length == 0) return message.channel.send("You haven't setup the rules yet");
                     let rule = guild.rules.rulesArr.find(a => a.ruleNum == args[0]);
                     if (!rule) return message.channel.send("Rule number not found");
+                    const filter = m => m.author.id == message.author.id;
                     message.channel.send("Please supply the new rule's content");
-                    let collected1 = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] });
-                    collected1 = collected1.first().content;
+                    let collected1 = await require('../../tools/collectMessage')(message, filter);
                     rule.ruleContent = collected1.toString()
                     const embed = new MessageEmbed()
                         .setTitle(`${message.guild.name}'s rules`)

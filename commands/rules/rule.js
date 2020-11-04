@@ -20,8 +20,7 @@ module.exports = {
                     else if (guild.rules.rulesArr.length == 0) {
                         message.channel.send("Please supply how many rules you will need");
                         const filter = m => m.author.id == message.author.id;
-                        let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
-                        collected = collected.first();
+                        let collected = await require('../../tools/collectMessage')(message, filter);
                         if (collected.content.toString().toLowerCase() == "cancel") return message.channel.send("Canceled");
                         if (isNaN(collected.content) == true) return message.channel.send("Invalid number");
                         let num = parseInt(collected.content) + 1;
@@ -29,7 +28,7 @@ module.exports = {
                             let i = 1;
                             async function loop() {
                                 message.channel.send(`Please tell me the rule number ${i} (__Only the rule's content !__)`);
-                                let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                                let collected = await require('../../tools/collectMessage')(message, filter);
                                 collected = collected.first();
                                 rules.push({ "ruleNum": i, "ruleContent": collected.content.toString() });
                                 i++;
@@ -42,11 +41,11 @@ module.exports = {
                                         .setTimestamp(new Date())
                                     message.channel.send(embed);
                                     message.channel.send("Is that ok ? [y/n]");
-                                    let collected1 = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                                    let collected1 = await require('../../tools/collectMessage')(message, filter);
                                     collected1 = collected1.first();
                                     if (collected1.content == "y") {
                                         message.channel.send("Please mentions the rules channel");
-                                        let collected2 = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+                                        let collected2 = await require('../../tools/collectMessage')(message, filter);
                                         collected2 = collected2.first();
                                         const channel = message.guild.channels.cache.get(await require('../../tools/mentions')(collected2.content));
                                         if (!channel) return message.channel.send("Invalid channel !");

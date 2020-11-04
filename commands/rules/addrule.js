@@ -14,8 +14,7 @@ module.exports = {
             if(guild.rules.enable == false) return message.channel.send("The rules is disabled")
             const filter = m => m.author.id == message.author.id;
             message.channel.send(`Please tell me the rule number ${guild.rules.rulesArr.length + 1} (__Only the rule's content !__)`);
-            let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
-            collected = collected.first().content;
+            let collected = await require('../../tools/collectMessage')(message, filter);
             const obj = { "ruleNum": guild.rules.rulesArr.length + 1, "ruleContent": collected };
             guild.rules.rulesArr.push(obj);
             const embed = new MessageEmbed()

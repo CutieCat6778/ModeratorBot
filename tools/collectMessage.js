@@ -6,6 +6,6 @@ module.exports = async(message, filter, time) => {
     const filte = m => m.author.id == message.author.id;
     const collected = await message.channel.awaitMessages(filte, obj);
     if(!collected) return message.channel.send("Didn't recived any messages");
-    if (collected.first().content.toString().toLowerCase() == "cancel") return message.channel.send("Canceled");
-    return collected.first().content;
+    if (collected.toString().toLowerCase() == "cancel") return message.channel.send("Canceled");
+    return collected;
 }
