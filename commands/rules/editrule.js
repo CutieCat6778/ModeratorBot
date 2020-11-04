@@ -20,6 +20,7 @@ module.exports = {
                     if (guild.rules.rulesArr.length == 0) return message.channel.send("You haven't setup the rules yet");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     let rule = guild.rules.rulesArr.find(a => a.ruleNum == args[0]);
                     if (!rule) return message.channel.send("Rule number not found");
                     const filter = m => m.author.id == message.author.id;
@@ -38,6 +39,8 @@ module.exports = {
                     } else if (msg) {
                         await msg.edit(embed);
 =======
+=======
+>>>>>>> parent of 712b566... added deletetule
 =======
 >>>>>>> parent of 712b566... added deletetule
                     await message.channel.send("Please supply a method (edit, delete, add)");
@@ -75,6 +78,9 @@ module.exports = {
                     } else {
                         return message.channel.send('Invalid options')
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 712b566... added deletetule
+=======
 >>>>>>> parent of 712b566... added deletetule
 =======
 >>>>>>> parent of 712b566... added deletetule
