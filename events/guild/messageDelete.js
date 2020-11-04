@@ -8,7 +8,7 @@ module.exports = async (client, message) => {
                     const embed = new MessageEmbed()
                         .setTitle(`${message.guild.name}'s rules`)
                         .setColor("#669fd2")
-                        .setDescription(`${lient.guild.get(message.guild.id).rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
+                        .setDescription(`${client.guild.get(message.guild.id).rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                         .setFooter(message.guild.name, message.guild.iconURL())
                         .setTimestamp(new Date())
                     let msg = await message.guild.channels.cache.get(client.guild.get(message.guild.id).rules.channelId).send(embed);
