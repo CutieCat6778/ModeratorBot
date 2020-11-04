@@ -24,8 +24,8 @@ module.exports = {
                         [https://www.moderatorbot.tk](https://www.moderatorbot.tk)
                         **[2] Commands list**
                         [https://www.moderatorbot.tk/commands](https://www.moderatorbot.tk/commands.html)
-                        **[3] Public profile**
-                        [https://top.gg/bot/moderatorbot](https://top.gg/bot/764901016692588554)
+                        **[3] Support server**
+                        [https://www.moderatorbot.tk/invite](https://www.moderatorbot.tk/invite)
 
                         **__How to use help commands__**
 
