@@ -92,7 +92,7 @@ module.exports = async (client, message) => {
                         if (userCache && userCache.enable == true) {
                             let embed = new MessageEmbed()
                                 .setColor("#669fd2")
-                                .setDescription(`<@!${user}> AFK - **${userCache.status}**`)
+                                .setDescription(`<@!${users}> AFK - **${userCache.status}**`)
                                 .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
                             message.channel.send(embed);
                         }
