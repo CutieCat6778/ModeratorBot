@@ -39,8 +39,8 @@ module.exports = {
                             return channel.send(embed);
                         }
                     }
-                } else if (args[0] == "clear") {
-                    let target = message.guild.members.cache.get(require("../../tools/mentions")(args[2]));
+                } else if (isNaN(args[0]) == false) {
+                    let target = message.guild.members.cache.get(require("../../tools/mentions")(args[1]));
                     if (!target) return message.channel.send("User not found");
                     if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
                         return message.reply(require("../../functions/permissionMiss")("I don't have permission to ban him/her"));
@@ -51,7 +51,7 @@ module.exports = {
                     if (!reason) reason = "No reason provided";
                     await target.send(`You has been banned from **${message.guild.name}** for reason **${reason}**`);
                     if (isNaN(args[1]) == true) return message.reply(require("../../noArgs/moderation/ban")(client.guild.get(message.guild.id).prefix));
-                    await target.ban({ days: args[1].toString().toLowerCase(), reason: reason });
+                    await target.ban({ days: args[0].toString().toLowerCase(), reason: reason });
                     message.channel.send(text);
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);

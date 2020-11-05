@@ -36,7 +36,7 @@ module.exports = {
             if (!args[0]) {
                 return message.reply(require("../../noArgs/moderation/mute")(client.guild.get(message.guild.id).prefix));
             }
-            let target = message.guild.members.cache.get(require("../../tools/mentions")(args[0])) || message.guild.members.cache.get(require("../../tools/mentions")(args[1]));
+            let target = message.guild.members.cache.get(require("../../tools/mentions")(args[0])) || message.guild.members.cache.get(require("../../tools/mentions")(args[1])) || message.guild.members.cache.get(require("../../tools/mentions")(args[2]));
             if (!target) return message.channel.send("User not found");
             if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
                 return message.reply(require("../../functions/permissionMiss")("I don't have permission to mute him/her"));
