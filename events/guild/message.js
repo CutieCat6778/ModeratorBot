@@ -92,7 +92,7 @@ module.exports = async (client, message) => {
                             if (userCache) {
                                 let embed = new MessageEmbed()
                                     .setColor("#669fd2")
-                                    .setDescription(`<@!${user.id}> AFK - **${userCache.status}**`)
+                                    .setDescription(`<@!${user}> AFK - **${userCache.status}**`)
                                     .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
                                 message.channel.send(embed);
                             }
@@ -104,7 +104,7 @@ module.exports = async (client, message) => {
                                 if (userCache) {
                                     let embed = new MessageEmbed()
                                         .setColor("#669fd2")
-                                        .setDescription(`<@!${user.id}> AFK - **${userCache.status}**`)
+                                        .setDescription(`<@!${user}> AFK - **${userCache.status}**`)
                                         .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
                                     message.channel.send(embed);
                                 }
