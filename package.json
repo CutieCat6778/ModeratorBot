@@ -1,7 +1,7 @@
 {
-  "name": "shinoneko",
+  "name": "moddy",
   "version": "1.0.0",
-  "description": "Discord bot made by NguyenXD#6485",
+  "description": "Discord bot made by CutieCat#6778",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start ecosystem.config.js",
@@ -21,7 +21,7 @@
   "author": "NguyenXD#6485",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NguyenXD06/shinoneko-djs/issue"
+    "url": "https://github.com/CutieCat6778/Moddy/issue"
   },
   "dependencies": {
     "body-parse": "^0.1.0",

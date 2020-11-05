@@ -23,7 +23,7 @@ module.exports = {
                     .addField("Member's ID", message.author.id, true)
                     .addField("Server's ID", message.guild.id, true)
                     .setTimestamp()
-                message.author.send("Thanks you for supporting Moderator Bot, my Developer will alert you about the newest fix about your problem.");
+                message.author.send(`Thanks you for supporting ${client.user.username}, my Developer will alert you about the newest fix about your problem.`);
                 const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
                 return hook.send(embed);
             }
