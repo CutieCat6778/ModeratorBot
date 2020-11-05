@@ -25,12 +25,14 @@ module.exports = {
                         }
                     }
                     let reason = args.slice(1).join(" ");
-                    let text = `${target.displayName} has been banned for reason **${reason}**`;
-                    if (!reason) text = `${target.displayName} has been banned`;
+                    let text = `**${target.displayName ? target.displayName : (target.username ? `${target.username}#${target.discriminator}` : `${target.user.username}#${target.user.discriminator}`)}** has been banned for reason **${reason}**`;
+                    if (!reason) text = `**${target.displayName ? target.displayName : (target.username ? `${target.username}#${target.discriminator}` : `${target.user.username}#${target.user.discriminator}`)}** has been banned`;
                     if (!reason) reason = "No reason provided";
-                    const dm = await target.createDM();
-                    if (dm) {
-                        dm.send(`You has been banned from **${message.guild.name}** for reason **${reason}**`);
+                    if (target.roles) {
+                        target.send(`You has been banned from **${message.guild.name}** for reason **${reason}**`);
+                    }
+                    if(!target.user){
+                        target.user = target
                     }
                     message.guild.members.ban(target.id, { reason: reason })
                     message.channel.send(text);
