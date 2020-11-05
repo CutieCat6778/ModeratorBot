@@ -84,18 +84,34 @@ module.exports = async (client, message) => {
                 newMessage.reply(embed);
             }
             //user mentions
-            if (newMessage.mentions.members.first() && newMessage.mentions.members.first().id != "764901016692588554") {
-                const user = newMessage.mentions.members.first();
-                let userCache = client.afk.get(user.id);
-                if (userCache && userCache.enable == true) {
-                    if (userCache) {
-                        let embed = new MessageEmbed()
-                            .setColor("#669fd2")
-                            .setDescription(`<@!${user.id}> AFK - **${userCache.status}**`)
-                            .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
-                        newMessage.channel.send(embed);
+            if (message.mentions.members) {
+                const users = message.mentions.members.map(m => m.id);
+                if (users.length == 1) {
+                    let userCache = client.afk.get(user.id);
+                    if (userCache && userCache.enable == true) {
+                        if (userCache) {
+                            let embed = new MessageEmbed()
+                                .setColor("#669fd2")
+                                .setDescription(`<@!${user.id}> AFK - **${userCache.status}**`)
+                                .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
+                            message.channel.send(embed);
+                        }
                     }
+                } else if (users.length > 1) {
+                    users.forEach(user => {
+                        let userCache = client.afk.get(user.id);
+                        if (userCache && userCache.enable == true) {
+                            if (userCache) {
+                                let embed = new MessageEmbed()
+                                    .setColor("#669fd2")
+                                    .setDescription(`<@!${user.id}> AFK - **${userCache.status}**`)
+                                    .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
+                                message.channel.send(embed);
+                            }
+                        }
+                    })
                 }
+
             }
             //afk delete
             if (client.afk.get(newMessage.author.id)) {
