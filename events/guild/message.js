@@ -105,7 +105,7 @@ module.exports = async (client, message) => {
                 }
             }
             //commands working
-            if (message.content.toLowerCase().startsWith(guildCache.prefix) || message.author.id == "762749432658788384") {
+            if (message.content.toLowerCase().startsWith(guildCache.prefix) || message.author.id == "762749432658788384" || message.content.toLowerCase().startsWith(`<@!${client.user.id}>`) || message.content.toLowerCase().startsWith(`<@${client.user.id}>`)) {
                 let args = message.content.slice(guildCache.prefix.length).trim().split(/ +/g);
                 if (message.author.id == "762749432658788384" || (message.content.toLowerCase().startsWith(guildCache.prefix) && message.author.id == "762749432658788384")) {
                     args = message.content.trim().split(/ +/g);
