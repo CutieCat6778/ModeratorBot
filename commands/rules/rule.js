@@ -21,15 +21,15 @@ module.exports = {
                         message.channel.send("Please supply how many rules you will need");
                         const filter = m => m.author.id == message.author.id;
                         let collected = await require('../../tools/collectMessage')(message, filter);
-                        if (collected.content.toString().toLowerCase() == "cancel") return message.channel.send("Canceled");
-                        if (isNaN(collected.content) == true) return message.channel.send("Invalid number");
-                        let num = parseInt(collected.content) + 1;
-                        if (isNaN(collected.content) == false) {
+                        if (collected.first().content.toString().toLowerCase() == "cancel") return message.channel.send("Canceled");
+                        if (isNaN(collected.first().content) == true) return message.channel.send("Invalid number");
+                        let num = parseInt(collected.first().content) + 1;
+                        if (isNaN(collected.first().content) == false) {
                             let i = 1;
                             async function loop() {
                                 message.channel.send(`Please tell me the rule number ${i} (__Only the rule's content !__)`);
                                 let collected = await require('../../tools/collectMessage')(message, filter);
-                                rules.push({ "ruleNum": i, "ruleContent": collected.content.toString() });
+                                rules.push({ "ruleNum": i, "ruleContent": collected.first().content.toString() });
                                 i++;
                                 if (i == num) {
                                     const embed = new MessageEmbed()
@@ -41,10 +41,10 @@ module.exports = {
                                     message.channel.send(embed);
                                     message.channel.send("Is that ok ? [y/n]");
                                     let collected1 = await require('../../tools/collectMessage')(message, filter);
-                                    if (collected1.content == "y") {
+                                    if (collected1.first().content == "y") {
                                         message.channel.send("Please mentions the rules channel");
                                         let collected2 = await require('../../tools/collectMessage')(message, filter);
-                                        const channel = message.guild.channels.cache.get(await require('../../tools/mentions')(collected2.content));
+                                        const channel = message.guild.channels.cache.get(await require('../../tools/mentions')(collected2.first().content));
                                         if (!channel) return message.channel.send("Invalid channel !");
                                         else if (channel) {
                                             if (!channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
@@ -57,7 +57,7 @@ module.exports = {
                                             guild.rules.enable = true;
                                             return await guild.save();
                                         }
-                                    } else if (collected1.content == "n") {
+                                    } else if (collected1.first().content == "n") {
                                         return message.channel.send(`If you have problem with the embed, please do command \`${client.guild.get(message.guild.id).prefix} bug [YOUR_PROBLEM]\``);
                                     } else {
                                         return message.channel.send("Invalid options");

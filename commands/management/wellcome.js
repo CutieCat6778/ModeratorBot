@@ -34,7 +34,7 @@ module.exports = {
                         .setTimestamp()
                     message.channel.send(embed);
                     let collected = await require('../../tools/collectMessage')(message, filter);
-                    if (collected.content) {
+                    if (collected.first().content) {
                         let embed1 = new MessageEmbed()
                             .setTitle('Leave message')
                             .setColor("#669fd2")
@@ -44,14 +44,14 @@ module.exports = {
                             .addField('Member count', `{count}`, true)
                             .setTimestamp()
                         message.channel.send(embed1);
-                        let collecte = await message.channel.awaitMessages(filter, { max: 1,  errors: ['time'] })
+                        let collecte = await require('../../tools/collectMessage')(message, filter);
                         guild.wellcome.channelId = wellchannel.id;
                         guild.wellcome.enable = true;
-                        guild.wellcome.join.text = collected.content;
+                        guild.wellcome.join.text = collected.first().content;
                         guild.wellcome.leave.text = collecte.content;
                         guildCache.wellcome.channelId = wellchannel.id;
                         guildCache.wellcome.enable = true;
-                        guildCache.wellcome.join.text = collected.content;
+                        guildCache.wellcome.join.text = collected.first().content;
                         guildCache.wellcome.leave.text = collecte.content;
                         await guild.save();
                         wellchannel.send("Welcome messages will be here");
@@ -143,8 +143,8 @@ module.exports = {
                         .setTimestamp()
                     message.channel.send(embed);
                     let collected = await require('../../tools/collectMessage')(message, filter);
-                    guild.wellcome.join.text == collected.content.toString();
-                    guildCache.wellcome.join.text == collected.content.toString();
+                    guild.wellcome.join.text == collected.first().content.toString();
+                    guildCache.wellcome.join.text == collected.first().content.toString();
                     await guild.save();
                     return message.channel.send("Successfully change the user join text");
                 } else if (args[1] == "leave") {
@@ -160,8 +160,8 @@ module.exports = {
                         .setTimestamp()
                     message.channel.send(embed1);
                     let collected = await require('../../tools/collectMessage')(message, filter);                   
-                    guild.wellcome.leave.text == collected.content.toString();
-                    guildCache.wellcome.leave.text == collected.content.toString();
+                    guild.wellcome.leave.text == collected.first().content.toString();
+                    guildCache.wellcome.leave.text == collected.first().content.toString();
                     await guild.save();
                     return message.channel.send("Successfully change the user join text");
                 } else if (args[1]) {
@@ -182,7 +182,7 @@ module.exports = {
                         .setTimestamp()
                     message.channel.send(embed);
                     let collected = await require('../../tools/collectMessage')(message, filter);
-                    if (collected.content) {
+                    if (collected.first().content) {
                         let embed1 = new MessageEmbed()
                             .setTitle('Leave message')
                             .setColor("#669fd2")
@@ -192,13 +192,13 @@ module.exports = {
                             .addField('Member count', `{count}`, true)
                             .setTimestamp()
                         message.channel.send(embed1);
-                        let collecte = await message.channel.awaitMessages(filter, { max: 1,  errors: ['time'] })
+                        let collecte = await require('../../tools/collectMessage')(message, filter);
                         guild.wellcome.channelId = wellchannel.id;
                         guildCache.wellcome.channelId = wellchannel.id;
                         guild.wellcome.enable = true;
                         guildCache.wellcome.enable = true;
-                        guild.wellcome.join.text = collected.content;
-                        guildCache.wellcome.join.text = collected.content;
+                        guild.wellcome.join.text = collected.first().content;
+                        guildCache.wellcome.join.text = collected.first().content;
                         guild.wellcome.leave.text = collecte.content;
                         guildCache.wellcome.leave.text = collecte.content;
                         await guild.save();

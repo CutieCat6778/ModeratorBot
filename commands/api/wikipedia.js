@@ -35,8 +35,8 @@ module.exports = {
                     message.channel.send(embed).then(async m => {
                         const filter = m => m.author.id == message.author.id;
                         let collected = await require('../../tools/collectMessage')(message, filter);
-                        if (isNaN(collected.content) == true) return message.channel.send("Invalid number");
-                        let num = parseInt(collected.content) - 1;
+                        if (isNaN(collected.first().content) == true) return message.channel.send("Invalid number");
+                        let num = parseInt(collected.first().content) - 1;
                         if (parseInt(num) > 5) return message.channel.send("Result not found");
                         else if (isNaN(num) == false) {
                             if (!info[num]) {

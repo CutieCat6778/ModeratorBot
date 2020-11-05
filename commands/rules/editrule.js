@@ -23,7 +23,7 @@ module.exports = {
                     const filter = m => m.author.id == message.author.id;
                     message.channel.send("Please supply the new rule's content");
                     let collected1 = await require('../../tools/collectMessage')(message, filter);
-                    rule.ruleContent = collected1.content.toString()
+                    rule.ruleContent = collected1.first().content.toString()
                     const embed = new MessageEmbed()
                         .setTitle(`${message.guild.name}'s rules`)
                         .setColor("#669fd2")
@@ -37,13 +37,13 @@ module.exports = {
                         await msg.edit(embed);
                         await message.channel.send("Please supply a method (edit, delete, add)");
                         const filter = m => m.author.id == message.author.id;
-                        let collected = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] });
-                        if (collected.content == "edit") {
+                        let collected = require('../../tools/collectMessage')(message, filter);
+                        if (collected.first().content == "edit") {
                             let rule = guild.rules.rulesArr.find(a => a.ruleNum == args[0]);
                             if (!rule) return message.channel.send("Rule number not found");
                             message.channel.send("Please supply the new rule's content");
-                            let collected1 = await message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] });
-                            rule.ruleContent = collected1.content.toString()
+                            let collected1 = require('../../tools/collectMessage')(message, filter);
+                            rule.ruleContent = collected1.first().content.toString()
                             const embed = new MessageEmbed()
                                 .setTitle(`${message.guild.name}'s rules`)
                                 .setColor("#669fd2")
@@ -58,7 +58,7 @@ module.exports = {
                             }
                             await guild.save();
                             return message.channel.send(`Successfully changed the rule#${rule.ruleNum}'s content`)
-                        } else if (collected.content == "delete") {
+                        } else if (collected.first().content == "delete") {
                             let rule = guild.rules.rulesArr.find(a => a.ruleNum == args[0]);
                             if (!rule) return message.channel.send("Rule number not found");
                             let postion = guild.rules.rulesArr.indexOf(rule);
