@@ -12,6 +12,7 @@ module.exports = async (client) => {
         })
         const dbl = new DBL(process.env.dbl, { webhookPort: 5000, webhookAuth: '23072006' });
         await require("../../functions/guildCache")(client);
+        await require("../../functions/emojis")(client);
         dbl.on('posted', () => {
             hook.send("DBL posted");
         })
