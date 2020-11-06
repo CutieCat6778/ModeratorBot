@@ -34,7 +34,7 @@ module.exports = async (client, message) => {
                         userCache.warn++;
                     } if (require("../../functions/badwords")(newMessage.content, guildCache) == true) {
                         newMessage.delete();
-                        newMessage.reply("what your language").then(m => m.delete({ timeout: 5000 }))
+                        newMessage.reply("watch your language").then(m => m.delete({ timeout: 5000 }))
                     }
                     if (userCache.times >= 10 || userCache.warn >= 5) {
                         newMessage.channel.send(`Muted <@!${newMessage.author.id}> for 10 minutes with reason **Spamming**`);

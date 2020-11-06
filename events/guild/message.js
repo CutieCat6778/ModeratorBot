@@ -29,7 +29,7 @@ module.exports = async (client, message) => {
                         userCache.warn++;
                     } if (require("../../functions/badwords")(message.content, guildCache) == true && guildCache.textfilter.badwords.enable) {
                         message.delete();
-                        message.reply("what your language").then(m => m.delete({ timeout: 5000 }));
+                        message.reply("watch your language").then(m => m.delete({ timeout: 5000 }));
                         userCache.warn++;
                     } if (message.content.startsWith("http") && guildCache.textfilter.links) {
                         message.delete();

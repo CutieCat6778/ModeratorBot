@@ -12,7 +12,7 @@ module.exports = {
                 message.channel.send("Are you sure that you want to nuke this channel ? [y/n]");
                 const filter = (user) => user.id == message.author.id;
                 let collected = await require('../../tools/collectMessage')(message, filter);
-                switch (collected.first().content) {
+                switch (collected.content) {
                     default:
                         return message.channel.send("Invalid options");
                     case "y":
@@ -35,7 +35,7 @@ module.exports = {
                 message.channel.send("Are you sure that you want to nuke this channel ? [y/n]");
                 const filter = (user) => user.id == message.author.id;
                 let collected = await require('../../tools/collectMessage')(message, filter);
-                switch (collected.first().content) {
+                switch (collected.content) {
                     default:
                         return message.channel.send("Invalid options");
                     case "y":

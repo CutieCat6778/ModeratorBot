@@ -34,7 +34,7 @@ module.exports = {
                     .setTimestamp()
                 message.channel.send(embed);
                 let collected = await require('../../tools/collectMessage')(message, (user) => user.id == message.author.id);
-                const options = collected.first().content.toString().split(" ");
+                const options = collected.content.toString().split(" ");
                 if (options.length == 1) {
                     if (isNaN(options[0])) return message.channel.send("Invalid options");
                     else if (isNaN(options[0]) == false) {
