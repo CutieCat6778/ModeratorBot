@@ -12,14 +12,14 @@ module.exports = {
     async execute(client, message, args) {
         try {
             if (!args[0]) {
-                let embed = await require("../../noArgs/moderation/judge")(client.guild.get(message.guild.id).prefix);
+                let embed = await require("../../noArgs/moderation/votekick")(client.guild.get(message.guild.id).prefix);
                 return message.reply(embed);
             }
             const target = message.guild.members.cache.get(require("../../tools/mentions")(args[0]));
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ");
             if (!reason || !target) {
-                let embed = await require("../../noArgs/moderation/judge")(client.guild.get(message.guild.id).prefix);
+                let embed = await require("../../noArgs/moderation/votekick")(client.guild.get(message.guild.id).prefix);
                 return message.reply(embed);
             }
             if (message.member.id == target.id) return message.channel.send("You can't sue your self");
