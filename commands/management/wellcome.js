@@ -131,7 +131,7 @@ module.exports = {
                         }
                     }
                 } else if (args[1] == "join") {
-                    const guild = await require('../../tools/getGuild')(message.guild.id);
+                    const guild = await require('../../tools/getGuild')(client, message.guild.id);
                     const filter = m => m.author.id == message.author.id;
                     let embed = new MessageEmbed()
                         .setTitle('Join message')
@@ -148,7 +148,7 @@ module.exports = {
                     await guild.save();
                     return message.channel.send("Successfully change the user join text");
                 } else if (args[1] == "leave") {
-                    const guild = await require('../../tools/getGuild')(message.guild.id);
+                    const guild = await require('../../tools/getGuild')(client, message.guild.id);
                     const filter = m => m.author.id == message.author.id;
                     let embed1 = new MessageEmbed()
                         .setTitle('Leave message')

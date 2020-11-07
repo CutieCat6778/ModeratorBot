@@ -13,7 +13,7 @@ module.exports = async (client, message) => {
                         .setTimestamp(new Date())
                     let msg = await message.guild.channels.cache.get(client.guild.get(message.guild.id).rules.channelId).send(embed);
                     client.guild.get(message.guild.id).rules.messageId = msg.id;
-                    const guild = require('../../tools/getGuild')(message);
+                    const guild = require('../../tools/getGuild')(client, message);
                     guild.rules.messageId = msg.id;
                     await guild.save();
                 }

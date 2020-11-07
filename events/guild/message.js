@@ -133,7 +133,7 @@ module.exports = async (client, message) => {
                     if (guildCache.logs.enable == true) {
                         const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                         if (!hook) {
-                            const guild = require('../../tools/getGuild')(message.guild.id);
+                            const guild = require('../../tools/getGuild')(client, message.guild.id);
                             const logchannel = message.guild.channels.get(guildCache.logs.channelId);
                             if (logchannel) {
                                 logchannel.createWebhook(client.user.username, {
