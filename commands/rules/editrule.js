@@ -35,26 +35,8 @@ module.exports = {
                         await message.guild.channels.cache.get(guild.rules.channelId).send(embed);
                     } else if (msg) {
                         await msg.edit(embed);
-                        let rule = guild.rules.rulesArr.find(a => a.ruleNum == args[0]);
-                        if (!rule) return message.channel.send("Rule number not found");
-                        message.channel.send("Please supply the new rule's content");
-                        let collected1 = require('../../tools/collectMessage')(message, filter);
-                        rule.ruleContent = collected1.content.toString()
-                        const embed = new MessageEmbed()
-                            .setTitle(`${message.guild.name}'s rules`)
-                            .setColor("#669fd2")
-                            .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
-                            .setFooter(message.guild.name, message.guild.iconURL())
-                            .setTimestamp(new Date())
-                        const msg = await message.guild.channels.cache.get(guild.rules.channelId).messages.fetch(guild.rules.messageId);
-                        if (!msg) {
-                            await message.guild.channels.cache.get(guild.rules.channelId).send(embed);
-                        } else if (msg) {
-                            await msg.edit(embed);
-                        }
-                        await guild.save();
-                        return message.channel.send(`Successfully changed the rule#${rule.ruleNum}'s content`)
                     }
+                    return message.channel.send("Successfully edited the rules.")
                 }
             }
         } catch (e) {
