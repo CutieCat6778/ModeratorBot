@@ -40,6 +40,6 @@ module.exports = async function warn(message, target, reason, client) {
         }
         return message.channel.send(`One warn has been removed from **${target.user.username}**`)
     } catch (e) {
-        return console.log(e);
+        return require('../tools/error')(e, message);
     }
 }
