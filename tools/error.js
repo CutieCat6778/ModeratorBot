@@ -27,7 +27,7 @@ module.exports = async (error, message, text) => {
         if (e) {
             if (text) {
                 let embed1 = new MessageEmbed()
-                    .setTitle(":x: Error")
+                    .setTitle(`<:error:774311088262086697> Error`)
                     .setColor("#669fd2")
                     .setDescription(`Oh no there is a error. \n\n __Error message:__\n \`${text}\``)
                     .setTimestamp()
@@ -45,7 +45,7 @@ module.exports = async (error, message, text) => {
                 return hook.send(embed);
             } else if (message) {
                 let embed1 = new MessageEmbed()
-                    .setTitle(":x: Error")
+                    .setTitle("<:error:774311088262086697> Error")
                     .setColor("#669fd2")
                     .setDescription("Oh no there is a error, please wait 24h then try again. If it is not fixed, you can use command \`(prefix) bug [problem-info]\` to get better support.")
                     .setTimestamp()

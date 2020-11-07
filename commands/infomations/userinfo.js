@@ -10,7 +10,7 @@ module.exports = {
     },
     async execute(client, message, args) {
         try {
-            let target = await message.guild.members.fetch(args[0] ? await require('../../tools/mentions')(args[0]) : message.author.id);
+            let target = await messge.guild.members.fetch(args[0] ? await require('../../tools/mentions')(args[0]) : message.author.id);
             if (!target) return message.channel.send("User not found");
             const date = new Date(target.joinedAt).toLocaleString()
             const date2 = new Date(target.user.createdAt).toLocaleString()

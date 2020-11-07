@@ -33,7 +33,7 @@ module.exports = {
             console.log(error);
             let embed = new MessageEmbed()
                 .setColor("#669fd2")
-                .addField("Eval", `
+                .addField("<:error:774311088262086697> Eval", `
                     \`\`\`console${narary}\`\`\`
                 `)
                 .addField("command", `${message.content ? message.content : "Client error, no commands info"}`)
