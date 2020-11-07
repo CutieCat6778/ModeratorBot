@@ -34,7 +34,7 @@ module.exports = {
                     🗑️ if there are more then 5 reaction of this, the vote will be closed`)
                 .setTimestamp()
                 .setThumbnail(target.user.displayAvatarURL())
-                .setFooter("The vote will end after 15m")
+                .setFooter("The vote will end after 15 minutes")
             message.channel.send(embed).then(async m => {
                 m.react("✅");
                 m.react("❌");
