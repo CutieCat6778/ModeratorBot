@@ -18,21 +18,25 @@ module.exports = {
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ")
             if (!reason) reason = "No reason given!";
-            if(!await message.guild.fetchBans(target.id)) return message.channel.send("That user is not banned.")
-            await message.guild.members.unban(target);
-            message.channel.send(`Unbaned **${target.tag}**`)
-            if (client.guild.get(message.guild.id)) {
-                let guildCache = client.guild.get(message.guild.id);
-                if (guildCache.logs.enable == false) return;
-                if (guildCache.logs.id == " ") return;
-                if (isNaN(guildCache.logs.id == true)) return;
-                let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
-                if (channel) {
-                    target.user = target;
-                    let embed = await require("../../logs/logs")(target, "unban", message, reason, client);
-                    return channel.send(embed);
+            message.guild.fetchBan(target.id).then(async b => {
+                await message.guild.members.unban(target);
+                message.channel.send(`Unbaned **${target.tag}**`)
+                if (client.guild.get(message.guild.id)) {
+                    let guildCache =    lient.guild.get(message.guild.id);
+                    if (guildCache.logs.enable == false) return;
+                    if (guildCache.logs.id == " ") return;
+                    if (isNaN(guildCache.logs.id == true)) return;
+                    let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
+                    if (channel) {
+                        target.user = target;
+                        let embed = await require("../../logs/logs")(target, "unban", message, reason, client);
+                        return channel.send(embed);
+                    }
                 }
-            }
+            }).catch(e => {
+                return message.channel.send("That is user is not banned");
+            })
+            // if(!await message.guild.fetchBan(target.id)) return message.channel.send("That user is not banned.")
         } catch (e) {
             return require("../../tools/error")(e, message)
         }
