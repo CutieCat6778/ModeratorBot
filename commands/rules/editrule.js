@@ -36,6 +36,7 @@ module.exports = {
                     } else if (msg) {
                         await msg.edit(embed);
                     }
+                    await guild.updateOne({rules: guild.rules});
                     return message.channel.send("Successfully edited the rules.")
                 }
             }
