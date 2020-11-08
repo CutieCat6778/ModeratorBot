@@ -18,6 +18,7 @@ module.exports = {
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ")
             if (!reason) reason = "No reason given!";
+            if(!await message.guild.fetchBans(target.id)) return message.channel.send("That user is not banned.")
             await message.guild.members.unban(target);
             message.channel.send(`Unbaned **${target.tag}**`)
             if (client.guild.get(message.guild.id)) {
