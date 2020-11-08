@@ -1,10 +1,9 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, WebhookClient } = require("discord.js");
 
-module.exports = async (client, message) => {
+module.exports = async (client, oldMessage, newMessage) => {
     try {
-        if (message.author.bot) return;
-        if (message.channel.type == "text") {
-            const newMessage = message.reactions.message;
+        if (newMessage.author.bot) return;
+        if (newMessage.channel.type == "text") {
             //get guild and save it in cache
             var guildCache = client.guild.get(newMessage.guild.id);
             if (!guildCache) {
@@ -84,9 +83,9 @@ module.exports = async (client, message) => {
                 newMessage.reply(embed);
             }
             //user mentions
-            if (message.mentions.members) {
-                if (!message.content.includes("@everyone")) {
-                    const users = message.mentions.members.map(m => m.id);
+            if (newMessage.mentions.members) {
+                if (!newMessage.content.includes("@everyone")) {
+                    const users = newMessage.mentions.members.map(m => m.id);
                     if (users.length == 1) {
                         let userCache = client.afk.get(users[0]);
                         if (userCache && userCache.enable == true) {
@@ -94,7 +93,7 @@ module.exports = async (client, message) => {
                                 .setColor("#669fd2")
                                 .setDescription(`<@!${users}> AFK - **${userCache.status}**`)
                                 .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
-                            message.channel.send(embed);
+                            newMessage.channel.send(embed);
                         }
                     } else if (users.length > 1) {
                         users.forEach(user => {
@@ -104,7 +103,7 @@ module.exports = async (client, message) => {
                                     .setColor("#669fd2")
                                     .setDescription(`<@!${user}> AFK - **${userCache.status}**`)
                                     .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
-                                message.channel.send(embed);
+                                newMessage.channel.send(embed);
                             }
                         })
                     }
@@ -116,6 +115,22 @@ module.exports = async (client, message) => {
                 if (userCache.enable == true) {
                     newMessage.reply("wellcome back, removed you from AFK");
                     client.afk.delete(newMessage.author.id);
+                }
+            }
+            if (guildCache.logs.enable == true) {
+                if (guildCache.logs.id == " ") return;
+                if (isNaN(guildCache.logs.id == true)) return;
+                const channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
+                const embed = new MessageEmbed()
+                    .setColor("#669fd2")
+                    .setTitle("Logger - Message updated")
+                    .addField("Old message", `\`${oldMessage.embeds.length > 0 ? "an embed" : oldMessage.content}\``)
+                    .addField("Old message", `\`${newMessage.embeds.length > 0 ? "an embed" : newMessage.content}\``)
+                    .addField("Author", newMessage.member.displayName)
+                    .setTimestamp(new Date())
+                    .setFooter(newMessage.guild.me.displayName, newMessage.guild.me.user.displayAvatarURL())
+                if (channel) {
+                    return channel.send(embed);
                 }
             }
         }
