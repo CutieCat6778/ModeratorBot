@@ -8,7 +8,7 @@ module.exports = (client, oldGuild, newGuild) => {
         let mod = false;
         const embed = new MessageEmbed()
             .setColor("#669fd2")
-            .setTitle("Logger - Channel deleted")
+            .setTitle("Logger - Server updated")
             .setTimestamp(new Date())
             .setFooter(client.user.username, client.user.displayAvatarURL())
         if (oldGuild.name != newGuild.name) {
@@ -20,17 +20,11 @@ module.exports = (client, oldGuild, newGuild) => {
         }if (oldGuild.afkTimeout != newGuild.afkTimeout) {
             embed.addField("Changed afkTimeout", `\`${require("ms")(oldGuild.afkTimeout, {long: true})}\` => \`${require("ms")(newGuild.afkTimeout, {long: true})}\``)
             mod = true
-        }if (oldGuild.available != newGuild.embedEnabled) {
-            embed.addField("Changed embedEnabled", `\`${oldGuild.embedEnabled}\` => \`${newGuild.embedEnabled}\``)
-            mod = true
-        }if (oldGuild.available != newGuild.embedEnabled) {
-            embed.addField("Changed embedEnabled", `\`${oldGuild.embedEnabled}\` => \`${newGuild.embedEnabled}\``)
+        }if (oldGuild.available != newGuild.available) {
+            embed.addField("Changed available", `\`${oldGuild.available}\` => \`${newGuild.available}\``)
             mod = true
         }if (oldGuild.embedChannel != newGuild.embedChannel) {
             embed.addField("Changed embedChannel", `\`${oldGuild.embedChannel.name}\` => \`${newGuild.embedChannel.name}\``)
-            mod = true
-        }if (oldGuild.features != newGuild.features) {
-            embed.addField("Changed features", `\`${oldGuild.features.toArray().join("\n").toLowerCase().split("_").join(" ")}\` => \`${newGuild.features.toArray().join("\n").toLowerCase().split("_").join(" ")}\``)
             mod = true
         }if (oldGuild.icon != newGuild.icon) {
             embed.addField("Changed icon", `\`[click here](${oldGuild.iconURL()})\` => \`[click here](${newGuild.iconURL()})\``)
@@ -48,37 +42,37 @@ module.exports = (client, oldGuild, newGuild) => {
             embed.addField("Changed mfa level", `\`${oldGuild.mfaLevel}\` => \`${newGuild.mfaLevel}\``)
             mod = true
         }if (oldGuild.owner != newGuild.owner) {
-            embed.addField("Changed owner", `\`${oldGuild.owner.user.tag}\` => \`${oldGuild.owner.user.tag}\``)
+            embed.addField("Changed owner", `\`${oldGuild.owner.user.tag}\` => \`${newGuild.owner.user.tag}\``)
             mod = true
         }if (oldGuild.partnered != newGuild.partnered) {
-            embed.addField("Changed partnered", `\`${oldGuild.partnered}\` => \`${oldGuild.partnered}\``)
+            embed.addField("Changed partnered", `\`${oldGuild.partnered}\` => \`${newGuild.partnered}\``)
             mod = true
         }if (oldGuild.preferredLocale != newGuild.preferredLocale) {
-            embed.addField("Changed preferred locale", `\`${oldGuild.preferredLocale}\` => \`${oldGuild.preferredLocale}\``)
+            embed.addField("Changed preferred locale", `\`${oldGuild.preferredLocale}\` => \`${newGuild.preferredLocale}\``)
             mod = true
         }if (oldGuild.premiumTier != newGuild.premiumTier) {
-            embed.addField("Changed premium tier", `\`${oldGuild.premiumTier}\` => \`${oldGuild.premiumTier}\``)
+            embed.addField("Changed premium tier", `\`${oldGuild.premiumTier}\` => \`${newGuild.premiumTier}\``)
             mod = true
         }if (oldGuild.publicUpdatesChannel != newGuild.publicUpdatesChannel) {
-            embed.addField("Changed public updates channel", `\`${oldGuild.publicUpdatesChannel.name}\` => \`${oldGuild.publicUpdatesChannel.name}\``)
+            embed.addField("Changed public updates channel", `\`${oldGuild.publicUpdatesChannel.name}\` => \`${newGuild.publicUpdatesChannel.name}\``)
             mod = true
         }if (oldGuild.region != newGuild.region) {
-            embed.addField("Changed region", `\`${oldGuild.region}\` => \`${oldGuild.region}\``)
+            embed.addField("Changed region", `\`${oldGuild.region}\` => \`${newGuild.region}\``)
             mod = true
         }if (oldGuild.rulesChannel != newGuild.rulesChannel) {
-            embed.addField("Changed rules channel", `\`${oldGuild.rulesChannel.name}\` => \`${oldGuild.rulesChannel.name}\``)
+            embed.addField("Changed rules channel", `\`${oldGuild.rulesChannel.name}\` => \`${newGuild.rulesChannel.name}\``)
             mod = true
         }if (oldGuild.systemChannel != newGuild.systemChannel) {
-            embed.addField("Changed system channel", `\`${oldGuild.systemChannel.name}\` => \`${oldGuild.systemChannel.name}\``)
+            embed.addField("Changed system channel", `\`${oldGuild.systemChannel.name}\` => \`${newGuild.systemChannel.name}\``)
             mod = true
         }if (oldGuild.verificationLevel != newGuild.verificationLevel) {
-            embed.addField("Changed verification level", `\`${oldGuild.verificationLevel}\` => \`${oldGuild.verificationLevel}\``)
+            embed.addField("Changed verification level", `\`${oldGuild.verificationLevel}\` => \`${newGuild.verificationLevel}\``)
             mod = true
         }if (oldGuild.verified != newGuild.verified) {
-            embed.addField("Changed verified", `\`${oldGuild.verified}\` => \`${oldGuild.verified}\``)
+            embed.addField("Changed verified", `\`${oldGuild.verified}\` => \`${newGuild.verified}\``)
             mod = true
         }if (oldGuild.widgetEnabled != newGuild.widgetEnabled) {
-            embed.addField("Changed widget enabled", `\`${oldGuild.widgetEnabled}\` => \`${oldGuild.widgetEnabled}\``)
+            embed.addField("Changed widget enabled", `\`${oldGuild.widgetEnabled}\` => \`${newGuild.widgetEnabled}\``)
             mod = true
         }
         if (hook && mod) {
