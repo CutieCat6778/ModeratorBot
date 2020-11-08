@@ -23,8 +23,8 @@ module.exports = {
                 target.send(`You has been kicked from **${message.guild.name}** for reason **${reason}**`);
                 if (args[0]) {
                     let reason = args.slice(1).join(" ");
-                    let text = `${target.displayName} has been kicked for reason **${reason}**`;
-                    if (!reason) text = `${target.displayName} has been kicked`;
+                    let text = `**${target.displayName}** has been kicked for reason **${reason}**`;
+                    if (!reason) text = `**${target.displayName}** has been kicked`;
                     if (!reason) reason = "No reason provided";
                     await target.send(text);
                     await target.kick(reason);

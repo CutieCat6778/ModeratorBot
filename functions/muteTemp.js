@@ -14,12 +14,12 @@ module.exports = async function temp(client, muterole, message, args, target) {
     }
     if (!target.roles.cache.has(muterole.id)) {
         await target.roles.add(muterole);
-        message.channel.send(`Muted ${target.displayName} for ${time}`);
+        message.channel.send(`Muted **${target.displayName}** for ${time}`);
     }
     client.setTimeout(() => {
         if (!target.roles.cache.has(muterole.id)) return;
         target.roles.remove(muterole);
-        return message.channel.send(`${target.displayName} has been unmuted for ${time}`)
+        return message.channel.send(`**${target.displayName}** has been unmuted for ${time}`)
     }, require("ms")(time))
 }
 

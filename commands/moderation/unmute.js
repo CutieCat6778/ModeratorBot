@@ -19,8 +19,8 @@ module.exports = {
             let target = message.guild.members.cache.get(require("../../tools/mentions")(args[0]));
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ");
-            let text = `${target.displayName} has been unmuted for reason **${reason}**`;
-            if (!reason) text = `${target.displayName} has been unmuted`;
+            let text = `**${target.displayName}** has been unmuted for reason **${reason}**`;
+            if (!reason) text = `**${target.displayName}** has been unmuted`;
             if (!reason) reason = "No reason provided";
             if (!target.roles.cache.has(muterole.id)) return message.channel.send("The user didn't get mute");
             if (target.roles.cache.has(muterole.id)) {

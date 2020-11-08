@@ -54,8 +54,8 @@ module.exports = {
                         return message.reply(require("../../functions/permissionMiss")("I don't have permission to ban him/her"));
                     }
                     let reason = args.slice(3).join(" ");
-                    let text = `${target.displayName} has been banned for reason **${reason}**`;
-                    if (!reason) text = `${target.displayName} has been banned`;
+                    let text = `**${target.displayName}** has been banned for reason **${reason}**`;
+                    if (!reason) text = `**${target.displayName}** has been banned`;
                     if (!reason) reason = "No reason provided";
                     await target.send(`You has been banned from **${message.guild.name}** for reason **${reason}**`);
                     if (isNaN(args[1]) == true) return message.reply(require("../../noArgs/moderation/ban")(client.guild.get(message.guild.id).prefix));
