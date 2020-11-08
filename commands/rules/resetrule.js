@@ -27,7 +27,7 @@ module.exports = {
                 guild.rules = {
                     "enable": false, "channelId": " ", "messageId": " ", "rulesArr":[]
                 }
-                await guild.save();
+                await guild.updateOne({rules: guild.rules});
                 return message.channel.send(`Successfully reset the rules in **${message.guild.name}**`);
             }else if(collected.content == "n"){
                 return message.channel.send("Canceled");

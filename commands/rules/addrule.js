@@ -29,7 +29,7 @@ module.exports = {
             }else if(msg){
                 await msg.edit(embed);
             }
-            await guild.save();
+            await guild.updateOne({rules: guild.rules});
             return message.channel.send(`Successfully added the rule#${obj.ruleNum} to rules list`)
         }catch(e){
             return require('../../tools/error')(e, message);
