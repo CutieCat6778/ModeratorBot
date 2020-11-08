@@ -50,7 +50,6 @@ module.exports = async (client, oldChannel, newChannel) => {
             embed.addField("Changed slowmode", `\`${require("ms")(oldChannel.rateLimitPerUser, { long: true })}\` => \`${require("ms")(newChannel.rateLimitPerUser, { long: true })}\``)
             mod = true
         }
-        console.log(mod)
         if (hook && mod) {
             return hook.send(embed);
         }
