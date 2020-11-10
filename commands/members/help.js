@@ -21,11 +21,11 @@ module.exports = {
                         **__Usefull links__**
 
                         **[1] Main website**
-                        [https://www.moderatorbot.tk](https://www.moderatorbot.tk)
+                        [https://www.moddy.tk](https://www.moddy.tk)
                         **[2] Commands list**
-                        [https://www.moderatorbot.tk/commands](https://www.moderatorbot.tk/commands.html)
+                        [https://www.moddy.tk/commands](https://www.moddy.tk/commands.html)
                         **[3] Support server**
-                        [https://www.moderatorbot.tk/invite](https://www.moderatorbot.tk/invite)
+                        [https://www.moddy.tk/invite](https://www.moddy.tk/invite)
 
                         **__How to use help commands__**
 

@@ -1,13 +1,13 @@
 module.exports = {
   apps : [{
     script: 'index.js',
-    name: 'moderator-bot',
+    name: 'moddy',
     watch: '.'
   }],
   deploy : {
     production : {
-      user : 'Shinoneko6778',
-      host : 'ModeratorBot',
+      user : 'CutieCat6778',
+      host : 'Moddy',
       ref  : 'origin/main',
       repo : 'https://github.com/CutieCat6778/ModeratorBot',
       path : '.',
