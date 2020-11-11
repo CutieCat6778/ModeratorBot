@@ -34,9 +34,9 @@ module.exports = async (client, message) => {
                 .setColor("#669fd2")
                 .setTitle("Logger - Message deleted")
                 .addField("Content", `\`${message.embeds.length > 0 ? "an embed" : message.content}\``)
-                .addField("Author", message.member.displayName)
+                .addField("Author", message.member.displayName ? message.member.displayName : message.author.username)
                 .setTimestamp(new Date())
-                .setFooter(message.guild.me.displayName, message.guild.me.user.displayAvatarURL())
+                .setFooter(message.member.displayName ? message.member.displayName : message.author.username, message.guild.me.user.displayAvatarURL())
             if (channel) {
                 return channel.send(embed);
             }
