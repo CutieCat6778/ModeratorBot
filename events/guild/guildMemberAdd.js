@@ -5,11 +5,11 @@ module.exports = async (client, member) => {
         let guild = client.guild.get(member.guild.id);
         //capcha
         if (guild.capcha.enable == true && member.user.bot == false) {
-            let vertifyrole = member.guild.roles.cache.find(r => r.name == "Unverified");
+            let vertifyrole = member.guild.roles.cache.find(r => r.name == "Unvertified");
             if (!vertifyrole) {
                 vertifyrole = await member.guild.roles.create({
                     data: {
-                        name: 'Unverified',
+                        name: 'Unvertified',
                         color: '#000000',
                         permission: []
                     }
