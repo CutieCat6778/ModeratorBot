@@ -25,7 +25,7 @@ module.exports = {
                         **[2] Commands list**
                         [https://www.moddy.tk/commands](https://www.moddy.tk/commands.html)
                         **[3] Support server**
-                        [https://www.moddy.tk/invite](https://www.moddy.tk/invite)
+                        [https://www.moddy.tk/support](https://www.moddy.tk/support)
 
                         **__How to use help commands__**
 
