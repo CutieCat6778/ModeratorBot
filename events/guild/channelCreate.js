@@ -10,6 +10,27 @@ module.exports = async (client, channel) => {
         await guild.save();
     }
     const guildCache = client.guild.get(channel.guild.id);
+    let muterole = channel.guild.roles.cache.find((r) => r.name === "Muted");
+    if (!muterole) {
+        try {
+            muterole = await channel.guild.roles.create({
+                data: {
+                    name: 'Muted',
+                    color: '#000000',
+                    permission: []
+                }
+            });
+            await channel.createOverwrite(muterole, {
+                SEND_MESSAGES: false,
+                ADD_REACTIONS: false,
+                SEND_TTS_MESSAGES: false,
+                ATTACH_FILES: false,
+                SPEAK: false,
+            });
+        } catch (error) {
+            require("../../tools/error")("mute", undefined)
+        }
+    }
     if (guildCache.logs.enable == true) {
         if (guildCache.logs.id == " ") return;
         if (isNaN(guildCache.logs.id == true)) return;
