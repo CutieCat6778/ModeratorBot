@@ -20,6 +20,7 @@ module.exports = {
                 guildCache.textfilter.enable = true;
                 let embed = new MessageEmbed()
                     .setTitle("Text filter types")
+                    .setColor("#669fd2")
                     .setDescription(`
                     __**Options:**__
                         **[1] Cap message**
@@ -196,7 +197,7 @@ module.exports = {
                             return channel.send(require("../../logs/textfilter")(guild.textfilter));
                         }
                     }
-                } else if(args[1].toLowerCase() == "whitelist"){
+                } else if (args[1].toLowerCase() == "whitelist") {
                     let words = args.slice(2);
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.textfilter.badwords.whitelist.includes(words)) return message.channel.send("You already whitelisted the words");
@@ -217,7 +218,7 @@ module.exports = {
                             return channel.send(require("../../logs/textfilter")(guild.textfilter));
                         }
                     }
-                } else if(args[1].toLowerCase() == "blacklist"){
+                } else if (args[1].toLowerCase() == "blacklist") {
                     let words = args.slice(2);
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
                     if (guild.textfilter.badwords.blacklist.includes(words)) return message.channel.send("You already blacklisted the words");
