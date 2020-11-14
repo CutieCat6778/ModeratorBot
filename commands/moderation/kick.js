@@ -20,7 +20,6 @@ module.exports = {
                 return message.reply(require("../../functions/permissionMiss")("I don't have permission to kick him/her"));
             }
             if (target) {
-                target.send(`You has been kicked from **${message.guild.name}** for reason **${reason}**`);
                 if (args[0]) {
                     let reason = args.slice(1).join(" ");
                     let text = `**${target.displayName}** has been kicked for reason **${reason}**`;
@@ -29,6 +28,7 @@ module.exports = {
                     await target.send(text);
                     await target.kick(reason);
                     message.channel.send(text);
+                    target.send(`You has been kicked from **${message.guild.name}** for reason **${reason}**`);
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
