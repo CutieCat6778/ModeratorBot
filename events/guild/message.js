@@ -129,6 +129,23 @@ module.exports = async (client, message) => {
                 const cmd = args.shift().toLowerCase();
                 const commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
                 if (!commandfile) return;
+                if(commandfile.category == "api"){
+                    let user = client.ratelimmit.get(message.author.id);
+                    if(!user){
+                        client.ratelimmit.set(message.author.id, {
+                            "used": 10,
+                            "votes": 0
+                        })
+                        user = client.ratelimmit.get(message.author.id);
+                    }
+                    if(user.used == 0 && message.author.id != '762749432658788384'){
+                        client.setTimeout(() => {
+                            client.ratelimmit.delete(message.author.id);
+                        })
+                        return message.channel.send("You are being ratelimited, please wait 2h to use this type of command again!");
+                    }
+                    user--;
+                }
                 if (commandfile.category == "moderation" || commandfile.category == "management") {
                     if (guildCache.logs.enable == true) {
                         const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);

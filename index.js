@@ -6,7 +6,7 @@ require('dotenv').config();
 client.start = new Date();
 
 ["aliases", "commands"].forEach(x => client[x] = new Collection());
-["afk", "spam", "emoje", "snipe", "guild"].forEach(x => client[x] = new Map());
+["afk", "spam", "ratelimit", "snipe", "guild"].forEach(x => client[x] = new Map());
 readdirSync("./handlers/").forEach(x => require(`./handlers/${x}`)(client));
 
 client.login(process.env.token);
