@@ -31,7 +31,7 @@ module.exports = async (client, message) => {
                         message.delete();
                         message.reply("watch your language").then(m => m.delete({ timeout: 5000 }));
                         userCache.warn++;
-                    } if (message.content.startsWith("http") && guildCache.textfilter.links) {
+                    } if (message.content.startsWith("http") && guildCache.textfilter.links && message.content.includes("://") && message.content.includes(".")) {
                         message.delete();
                         message.reply('links are not allowed in here')
                     }
