@@ -28,7 +28,7 @@ module.exports = async (client, channel) => {
                 SPEAK: false,
             });
         } catch (error) {
-            require("../../tools/error")("mute", undefined)
+            require("../../tools/error")(error, undefined)
         }
     }
     if (guildCache.logs.enable == true) {
