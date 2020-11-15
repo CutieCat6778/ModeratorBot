@@ -134,14 +134,15 @@ module.exports = async (client, message) => {
                     if(!user){
                         client.ratelimmit.set(message.author.id, {
                             "used": 10,
-                            "votes": 0
+                            "votes": 0,
+                            "created": new Date()
                         })
                         user = client.ratelimmit.get(message.author.id);
                     }
                     if(user.used == 0 && message.author.id != '762749432658788384'){
                         client.setTimeout(() => {
                             client.ratelimmit.delete(message.author.id);
-                        })
+                        }, 7200000)
                         return message.channel.send("You are being ratelimited, please wait 2h to use this type of command again!");
                     }
                     user--;
