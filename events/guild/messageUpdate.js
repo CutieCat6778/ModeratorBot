@@ -125,7 +125,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                     .setColor("#669fd2")
                     .setTitle("Logger - Message updated")
                     .addField("Old message", `\`${oldMessage.embeds.length > 0 ? "an embed" : oldMessage.content}\``)
-                    .addField("Old message", `\`${newMessage.embeds.length > 0 ? "an embed" : newMessage.content}\``)
+                    .addField("New message", `\`${newMessage.embeds.length > 0 ? "an embed" : newMessage.content}\``)
                     .addField("Author", newMessage.member.displayName)
                     .setTimestamp(new Date())
                     .setFooter(newMessage.guild.me.displayName, newMessage.guild.me.user.displayAvatarURL())
