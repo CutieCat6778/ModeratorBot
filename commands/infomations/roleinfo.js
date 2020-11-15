@@ -16,7 +16,7 @@ module.exports = {
             if (!role) return message.channel.send("Role not found")
             let embed = new MessageEmbed()
                 .setColor("#669fd2")
-                .setTitle(`${role.name} role informations`)
+                .setTitle(`<:information:777490082289680395> ${role.name} role informations`)
                 .addField('Name', role.name, true)
                 .addField('ID', role.id, true)
                 .addField('Color', role.color, true)

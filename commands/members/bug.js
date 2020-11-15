@@ -18,7 +18,7 @@ module.exports = {
                 let problem = args.slice(0).join(" ");
                 let embed = new MessageEmbed()
                     .setColor("#669fd2")
-                    .setTitle(`Problem reported`)
+                    .setTitle(`<:bug:777495164742008853> Problem reported`)
                     .setDescription(`Content: ${problem}`)
                     .addField("Member's ID", message.author.id, true)
                     .addField("Server's ID", message.guild.id, true)

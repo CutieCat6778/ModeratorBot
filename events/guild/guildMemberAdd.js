@@ -43,7 +43,7 @@ module.exports = async (client, member) => {
             const b = Math.floor(Math.random() * 10) + 1;
             const c = parseInt(a) + parseInt(b);
             let embed = new MessageEmbed()
-                .setTitle("Captcha")
+                .setTitle("<:captcha:777490656813645836> Captcha")
                 .setDescription(`What is ${a} + ${b} ?`)
                 .setFooter("You have 30 second to answer this question or you will be kicked")
             await channel.send(embed);
@@ -57,7 +57,7 @@ module.exports = async (client, member) => {
                             if (!wellchannel) return;
                             let embed = new MessageEmbed()
                                 .setColor("#669fd2")
-                                .setTitle("Member failed")
+                                .setTitle("<:captcha:777490656813645836> Member failed")
                                 .setThumbnail(member.user.displayAvatarURL())
                                 .setDescription(`${member} just failed the capcha`);
                             if (canDm == false) {
@@ -69,7 +69,7 @@ module.exports = async (client, member) => {
                     } else if (isNaN(m.first().toString()) == false && parseInt(m.first().toString()) == c) {
                         let goodembed = new MessageEmbed()
                             .setColor("#669fd2")
-                            .setTitle("You passed the Captcha")
+                            .setTitle("<:easy:774348021101101096> You passed the Captcha")
                             .setDescription(`Welcome to **${member.guild.name}** hope you enjoy the server`)
                         channel.send(goodembed);
                         member.roles.remove(vertifyrole);
@@ -97,7 +97,7 @@ module.exports = async (client, member) => {
                 const text = guild.wellcome.join.text.replace('{user}', member).replace('{server}', member.guild.name).replace('{count}', member.guild.members.cache.size)
                 let embed = new MessageEmbed()
                     .setColor("#669fd2")
-                    .setTitle("Member joined")
+                    .setTitle("<:easy:774348021101101096> Member joined")
                     .setThumbnail(member.user.displayAvatarURL())
                     .setDescription(text)
                 channel.send(embed);

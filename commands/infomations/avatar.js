@@ -18,7 +18,7 @@ module.exports = {
             }
             let embed = new MessageEmbed()
             .setColor("#669fd2")
-                .setTitle(`${user.displayName}'s avatar`)
+                .setTitle(`<:avatar:777488401908629514> ${user.displayName}'s avatar`)
                 .setDescription(`[Click here for link](${user.user.displayAvatarURL({ size: 256, format: "png" })})`)
                 .setImage(user.user.displayAvatarURL({ size: 256 }))
                 .setTimestamp()

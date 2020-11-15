@@ -21,7 +21,7 @@ module.exports = {
             } else if (user && user.time > 0) {
                 let embed = new MessageEmbed()
                     .setColor("#669fd2")
-                    .setTitle(`You have ${user.time} warns`)
+                    .setTitle(`<:warning:777488987479736330> You have ${user.time} warns`)
                     .addField("Last reason", user.reason)
                     .setTimestamp()
                 return message.channel.send(embed);

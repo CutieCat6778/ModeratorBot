@@ -21,7 +21,7 @@ module.exports = {
                 let result = await translate(text, { to: 'en' });
                 let embed = new MessageEmbed()
                     .setColor("#669fd2")
-                    .setTitle("Translated to English")
+                    .setTitle("<:translate:777487138206908426> Translated to English")
                     .addField("Before", `\`${text.toString()}\``, true)
                     .addField("After", `\`${result.toString()}\``, true)
                     .setTimestamp()

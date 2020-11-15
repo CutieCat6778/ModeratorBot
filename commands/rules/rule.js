@@ -33,7 +33,7 @@ module.exports = {
                                 i++;
                                 if (i == num) {
                                     const embed = new MessageEmbed()
-                                        .setTitle(`${message.guild.name}'s rules`)
+                                        .setTitle(`<:rules:774311089445535765> ${message.guild.name}'s rules`)
                                         .setColor("#669fd2")
                                         .setDescription(`${rules.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                                         .setFooter(message.guild.name, message.guild.iconURL())
@@ -79,7 +79,7 @@ module.exports = {
                     }
                     const embed = new MessageEmbed()
                         .setColor("#669fd2")
-                        .setAuthor(`Rule #${args[0]}`, message.guild.iconURL())
+                        .setAuthor(`<:rules:774311089445535765> Rule #${args[0]}`, message.guild.iconURL())
                         .setDescription(`**${guild.rules.rulesArr.find(a => a.ruleNum == parseInt(args[0])).ruleContent}**\n[Please read <#${guild.rules.channelId}> for more information](https://discordapp.com/channels/${message.guild.id}/${guild.rules.channelId}/${guild.rules.messageId}/)`)
                         .setTimestamp()
                         .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
@@ -90,7 +90,7 @@ module.exports = {
                         return message.channel.send("There are no rules has been setup");
                     }
                     const embed = new MessageEmbed()
-                        .setTitle(`${message.guild.name}'s rules`)
+                        .setTitle(`<:rules:774311089445535765> ${message.guild.name}'s rules`)
                         .setColor("#669fd2")
                         .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                         .setFooter(message.guild.name, message.guild.iconURL())

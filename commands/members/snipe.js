@@ -22,7 +22,7 @@ module.exports = {
                 let embed = new MessageEmbed()
                     .setColor("#669fd2")
                     .setAuthor(`${user.displayName}`, user.user.displayAvatarURL())
-                    .setDescription(`    ${snipe.content}`)
+                    .setDescription(`<:snipe:777496361754689566>   ${snipe.content}`)
                     .setFooter(require("ms")((new Date() - snipe.time), { long: true }) + " ago")
                 return message.channel.send(embed);
             } else {

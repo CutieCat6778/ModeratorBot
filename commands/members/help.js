@@ -20,11 +20,11 @@ module.exports = {
                     .setDescription(`
                         **__Usefull links__**
 
-                        **[1] Main website**
+                        **<:website:777495410893389834> Main website**
                         [https://www.moddy.tk](https://www.moddy.tk)
-                        **[2] Commands list**
+                        **<:command:777495685082775552> Commands list**
                         [https://www.moddy.tk/commands](https://www.moddy.tk/commands.html)
-                        **[3] Support server**
+                        **<:support:777495932472131604> Support server**
                         [https://www.moddy.tk/support](https://www.moddy.tk/support)
 
                         **__How to use help commands__**

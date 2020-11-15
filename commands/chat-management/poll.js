@@ -16,7 +16,7 @@ module.exports = {
             let question = args.slice(0).join(" ");
             let embed = new MessageEmbed()
                 .setColor("#669fd2")
-                .setTitle("Question from " + message.member.displayName)
+                .setTitle("<:poll:774311089172774926> Question from " + message.member.displayName)
                 .setDescription(question)
                 .setTimestamp()
             message.delete();

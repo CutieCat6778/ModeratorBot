@@ -91,7 +91,7 @@ module.exports = async (client, message) => {
                         if (userCache && userCache.enable == true) {
                             let embed = new MessageEmbed()
                                 .setColor("#669fd2")
-                                .setDescription(`<@!${users}> AFK - **${userCache.status}**`)
+                                .setDescription(`<:afk:777491403676188702> <@!${users}> AFK - **${userCache.status}**`)
                                 .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
                             message.channel.send(embed);
                         }
@@ -101,7 +101,7 @@ module.exports = async (client, message) => {
                             if (userCache && userCache.enable == true) {
                                 let embed = new MessageEmbed()
                                     .setColor("#669fd2")
-                                    .setDescription(`<@!${user}> AFK - **${userCache.status}**`)
+                                    .setDescription(`<:afk:777491403676188702> <@!${user}> AFK - **${userCache.status}**`)
                                     .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
                                 message.channel.send(embed);
                             }

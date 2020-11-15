@@ -12,7 +12,7 @@ module.exports = {
         try {
             let embed = new MessageEmbed()
                 .setColor("#669fd2")
-                .setTitle(`${message.member.displayName}'s permissions`)
+                .setTitle(`<:permission:777488700010921985> ${message.member.displayName}'s permissions`)
                 .setDescription(`\`\`\`css\n${message.member.permissions.toArray().join("\n")}\n\`\`\``)
                 .setTimestamp()
             message.reply(embed)

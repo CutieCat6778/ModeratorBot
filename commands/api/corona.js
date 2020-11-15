@@ -35,7 +35,7 @@ module.exports = {
                 }
                 let embed = new MessageEmbed()
                     .setColor("#669fd2")
-                    .setTitle(`${country.Country} corona stats`)
+                    .setTitle(`<:covid:774311088334045184> ${country.Country} corona stats`)
                     .setTimestamp(country.Date)
                     .setFooter("Last update")
                     .addField("New confirmed", country.NewConfirmed, true)

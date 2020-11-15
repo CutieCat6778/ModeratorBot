@@ -20,11 +20,11 @@ module.exports = {
                 let Websocket = Math.floor(client.ws.ping);
                 let embed = new MessageEmbed()
                     .setColor("#669fd2")
-                    .setTitle("🏓 Pong")
+                    .setTitle("<:ping:774311088941957191> Ping")
                     .addFields([
-                        { "name": "Bot Message", "value": `${botMessage} ms` },
-                        { "name": "Websocket", "value": `${Websocket} ms` },
-                        { "name": "Database", "value": `${value} ms` }
+                        { "name": "<:bot:774311088246226984> Bot Message", "value": `${botMessage} ms` },
+                        { "name": "<:websocket:774348022582214747> Websocket", "value": `${Websocket} ms` },
+                        { "name": "<:database:777489828153262081> Database", "value": `${value} ms` }
                     ])
                     .setTimestamp()
                 m.delete();

@@ -29,15 +29,15 @@ module.exports = {
                 .setDescription(`**__Reason:__**
                     ${reason.toString()}\n\nIf there are many people agree with this. The member will be kicked from the server
                     
-                    ✅ to agree with the reason provided 
-                    ❌ to disagree with the reason provided
+                    <:easy:774348021101101096> to agree with the reason provided 
+                    <:x_:774311089310662667> to disagree with the reason provided
                     🗑️ if there are more then 5 reaction of this, the vote will be closed`)
                 .setTimestamp()
                 .setThumbnail(target.user.displayAvatarURL())
                 .setFooter("The vote will end after 15 minutes")
             message.channel.send(embed).then(async m => {
-                m.react("✅");
-                m.react("❌");
+                m.react("<:easy:774348021101101096>");
+                m.react("<:x_:774311089310662667>");
                 await m.react("🗑️");
                 let posiv = 0;
                 let nega = 0;

@@ -15,7 +15,7 @@ module.exports = {
             const url = `https://www.google.com/search?q=${topic}`;
             let embed = new MessageEmbed()
                 .setColor("#669fd2")
-                .setTitle("Link for the result")
+                .setTitle("<:google:774311088958341120> Link for the result")
                 .setDescription(`[Click here](${url})`)
                 .setTimestamp()
             return message.channel.send(embed);

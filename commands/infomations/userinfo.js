@@ -17,11 +17,11 @@ module.exports = {
             let Activity = target.presence;
             const embed = new MessageEmbed()
                 .setColor("#669fd2")
-                .setTitle(`${target.user.username}'s infomation`)
+                .setTitle(`<:information:777490082289680395> ${target.user.username}'s infomation`)
                 .setThumbnail(target.user.displayAvatarURL())
                 .addField("Username", target.user.username, true)
                 .addField("User's id", target.user.id, true)
-                .addField("Status", target.user.presence.status, true)
+                .addField("Status", target.user.presence.status == "offline" ? "<:afk:777491403676188702>" : "<:online:777491825362599947>", true)
                 .addField("Tag", "#" + target.user.discriminator, true)
                 .addField("Bot", target.user.bot, true)
                 .addField("Highest role", target.roles.highest.name, true)

@@ -25,7 +25,7 @@ module.exports = {
                     let collected1 = await require('../../tools/collectMessage')(message, filter);
                     rule.ruleContent = collected1.content.toString()
                     const embed = new MessageEmbed()
-                        .setTitle(`${message.guild.name}'s rules`)
+                        .setTitle(`<:rules:774311089445535765> ${message.guild.name}'s rules`)
                         .setColor("#669fd2")
                         .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                         .setFooter(message.guild.name, message.guild.iconURL())

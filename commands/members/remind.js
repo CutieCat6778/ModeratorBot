@@ -24,8 +24,7 @@ module.exports = {
                     return client.setTimeout(() => {
                         let embed = new MessageEmbed()
                             .setColor("#669fd2")
-                            .setTitle("Reminder")
-                            .setDescription(`${text}`)
+                            .setDescription(`<:bell:774311088032055356> **${text}**`)
                             .setTimestamp(date)
                         return message.author.send(embed);
                     }, require("ms")(time))
