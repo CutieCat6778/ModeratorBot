@@ -15,7 +15,7 @@ module.exports = (client, oldGuild, newGuild) => {
             embed.addField("Changed name", `\`${oldGuild.name}\` => \`${newGuild.name}\``)
             mod = true;
             const guild = client.guild.get(newGuild.id);
-            const embed = new MessageEmbed()
+            const embed1 = new MessageEmbed()
                 .setTitle(`<:rules:774311089445535765> ${newGuild.name}'s rules`)
                 .setColor("#669fd2")
                 .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
@@ -23,9 +23,9 @@ module.exports = (client, oldGuild, newGuild) => {
                 .setTimestamp(new Date())
             newGuild.channels.cache.get(guild.rules.channelId).messages.fetch(guild.rules.messageId).then(msg => {
                 if (!msg) {
-                    newGuild.channels.cache.get(guild.rules.channelId).send(embed);
+                    newGuild.channels.cache.get(guild.rules.channelId).send(embed1);
                 } else if (msg) {
-                    msg.edit(embed);
+                    msg.edit(embed1);
                 }
             })
         } if (oldGuild.afkChannel != newGuild.afkChannel) {
