@@ -31,6 +31,26 @@ module.exports = async (client, channel) => {
             require("../../tools/error")(error, undefined)
         }
     }
+    let vertifyrole = channel.guild.roles.cache.find((r) => r.name === "Unvertified");
+    if (!vertifyrole) {
+        vertifyrole = await channel.guild.roles.create({
+            data: {
+                name: 'Unvertified',
+                color: '#000000',
+                permission: []
+            }
+        });
+        if (channel.type == "dm" || channel.type == "category" || channel.type == "unknown") return;
+        await channel.createOverwrite(vertifyrole, {
+            VIEW_CHANNEL: false,
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false,
+            SEND_TTS_MESSAGES: false,
+            ATTACH_FILES: false,
+            SPEAK: false,
+            CONNECT: false
+        });
+    }
     if (guildCache.logs.enable == true) {
         if (guildCache.logs.id == " ") return;
         if (isNaN(guildCache.logs.id == true)) return;
