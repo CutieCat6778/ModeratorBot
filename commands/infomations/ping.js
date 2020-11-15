@@ -20,7 +20,7 @@ module.exports = {
                 let Websocket = Math.floor(client.ws.ping);
                 let embed = new MessageEmbed()
                     .setColor("#669fd2")
-                    .setTitle("<:ping:774311088941957191> Ping")
+                    .setTitle(`${message.guild.me.displayName} ping`)
                     .addFields([
                         { "name": "<:bot:774311088246226984> Bot Message", "value": `${botMessage} ms` },
                         { "name": "<:websocket:774348022582214747> Websocket", "value": `${Websocket} ms` },

@@ -45,7 +45,7 @@ module.exports = {
                                 let res = info[num];
                                 let embed = new MessageEmbed()
                                     .setColor("#669fd2")
-                                    .setTitle("<:wiki:774348022917759016>" + res.title)
+                                    .setTitle("<:wiki:774348022917759016> " + res.title)
                                     .setDescription(`[More information](${url[3][num]})\n\n${htmlToText.fromString(res.snippet)} ...`)
                                     .setTimestamp(res.timestamp)
                                     .setFooter("Last update")

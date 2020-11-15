@@ -20,7 +20,7 @@ module.exports = {
                 if (result.cod && result.cod == '404') return message.channel.send(result.message);
                 let embed = new MessageEmbed()
                     .setColor("#669fd2")
-                    .setTitle(`<:weather:774348021496283186>` + result.name)
+                    .setTitle(`<:weather:774348021496283186> ` + result.name)
                     .setDescription(result.weather[0].main + " - " + result.weather[0].description)
                     .addField("Visibility", result.visibility / 1000 + "km", true)
                     .addField("Temperature", result.main.temp + "°C", true)
