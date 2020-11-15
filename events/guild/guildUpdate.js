@@ -21,12 +21,13 @@ module.exports = (client, oldGuild, newGuild) => {
                 .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                 .setFooter(newGuild.name, newGuild.iconURL())
                 .setTimestamp(new Date())
-            const msg = await newGuild.channels.cache.get(guild.rules.channelId).messages.fetch(guild.rules.messageId);
-            if (!msg) {
-                await newGuild.channels.cache.get(guild.rules.channelId).send(embed);
-            } else if (msg) {
-                await msg.edit(embed);
-            }
+            newGuild.channels.cache.get(guild.rules.channelId).messages.fetch(guild.rules.messageId).then(msg => {
+                if (!msg) {
+                    newGuild.channels.cache.get(guild.rules.channelId).send(embed);
+                } else if (msg) {
+                    msg.edit(embed);
+                }
+            })
         } if (oldGuild.afkChannel != newGuild.afkChannel) {
             embed.addField("Changed afkChannel", `\`${oldGuild.afkChannel.name}\` => \`${newGuild.afkChannel.name}\``)
             mod = true
