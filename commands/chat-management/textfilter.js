@@ -23,6 +23,7 @@ module.exports = {
                     .setColor("#669fd2")
                     .setDescription(`
                     __**Options:**__
+                        **[0] Anti spam**
                         **[1] Cap message**
                         **[2] Links**
                         **[3] Bad words**
@@ -40,6 +41,10 @@ module.exports = {
                     if (isNaN(options[0])) return message.channel.send("Invalid options");
                     else if (isNaN(options[0]) == false) {
                         switch (parseInt(options[0])) {
+                            case 0:
+                                guild.textfilter.enable = true;
+                                guildCache.textfilter.enable = true;
+                                break;
                             case 1:
                                 guild.textfilter.cap = true;
                                 guildCache.textfilter.cap = true;
@@ -59,6 +64,10 @@ module.exports = {
                     for (i = 0; i < options.length; i++) {
                         if (isNaN(options[i]) == false) {
                             switch (parseInt(options[i])) {
+                                case 0:
+                                    guild.textfilter.enable = true;
+                                    guildCache.textfilter.enable = true;
+                                    break;
                                 case 1:
                                     guild.textfilter.cap = true;
                                     guildCache.textfilter.cap = true;
