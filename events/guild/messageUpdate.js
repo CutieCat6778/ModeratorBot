@@ -15,7 +15,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                 })
                 guildCache = client.guild.get(newMessage.guild.id);
             }
-            //text-filter
+            const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
             if (guildCache.textfilter.enable == true) {
                 let userCache = client.spam.get(newMessage.author.id);
                 if (!userCache) {
@@ -27,16 +27,44 @@ module.exports = async (client, oldMessage, newMessage) => {
                 }
                 userCache.times++;
                 if (!newMessage.member.permissions.has("ADMINISTRATOR")) {
-                    if (require("../../tools/isUpperCase")(newMessage.content) == true) {
+                    if (require("../../tools/isUpperCase")(newMessage.content) == true && guildCache.textfilter.cap) {
                         newMessage.delete();
                         newMessage.reply("too many caps").then(m => m.delete({ timeout: 5000 }))
                         userCache.warn++;
-                    } if (require("../../functions/badwords")(newMessage.content, guildCache) == true) {
+                        let embed = new MessageEmbed()
+                            .setColor("#669fd2")
+                            .setTitle("Textfilter")
+                            .setDescription(`**${newMessage.member.displayName ? newMessage.member.displayName : newMessage.author.tag}** got warned from __cap messages__ usage.`)
+                            .addField("Message content", newMessage.content)
+                            .setTimestamp()
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, newMessage.guild.me.displayAvatarURL())
+                        hook.send(embed);
+                    } if (require("../../functions/badwords")(newMessage.content, guildCache) == true && guildCache.textfilter.badwords.enable) {
                         newMessage.delete();
-                        newMessage.reply("watch your language").then(m => m.delete({ timeout: 5000 }))
+                        newMessage.reply("watch your language").then(m => m.delete({ timeout: 5000 }));
+                        userCache.warn++;
+                        let embed = new MessageEmbed()
+                            .setColor("#669fd2")
+                            .setTitle("Textfilter")
+                            .setDescription(`**${newMessage.member.displayName ? newMessage.member.displayName : newMessage.author.tag}** got warned from __badword messages__ usage.`)
+                            .addField("Message content", newMessage.content)
+                            .setTimestamp()
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, newMessage.guild.me.displayAvatarURL())
+                        hook.send(embed);
+                    } if (newMessage.content.startsWith("http") && guildCache.textfilter.links && newMessage.content.includes("://") && newMessage.content.includes(".")) {
+                        newMessage.delete();
+                        newMessage.reply('links are not allowed in here');
+                        let embed = new MessageEmbed()
+                            .setColor("#669fd2")
+                            .setTitle("Textfilter")
+                            .setDescription(`**${newMessage.member.displayName ? newMessage.member.displayName : newMessage.author.tag}** got warned from __links messages__ usage.`)
+                            .addField("Message content", newMessage.content)
+                            .setTimestamp()
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, newMessage.guild.me.displayAvatarURL())
+                        hook.send(embed);
                     }
                     if (userCache.times >= 10 || userCache.warn >= 5) {
-                        newMessage.channel.send(`Muted <@!${newMessage.author.id}> for 10 minutes with reason **Spamming**`);
+                        newMessage.channel.send(`Muted <@!${newMessage.author.id}> for 10 minute, because **he keep ignoring the warnings**`);
                         let muterole = newMessage.guild.roles.cache.find((r) => r.name === "Muted");
                         if (!muterole) {
                             muterole = await newMessage.guild.roles.create({
@@ -59,17 +87,27 @@ module.exports = async (client, oldMessage, newMessage) => {
                         }
                         newMessage.member.roles.add(muterole);
                         client.spam.delete(newMessage.author.id);
+                        let embed = new MessageEmbed()
+                            .setColor("#669fd2")
+                            .setTitle("Textfilter")
+                            .setDescription(`**${newMessage.member.displayName ? newMessage.member.displayName : newMessage.author.tag}** got muted because he ignore the warning from spamming.`)
+                            .addField("Message content", newMessage.content)
+                            .setTimestamp()
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, newMessage.guild.me.displayAvatarURL())
+                        hook.send(embed);
                         return require("../../tools/mute")(client, "10m", newMessage.member, muterole);
                     } if (userCache.times == 7) {
-                        return newMessage.channel.send(`Slowdown <@!${newMessage.author.id}>, next time you will get mute`);
+                        newMessage.channel.send(`Slowdown <@!${newMessage.author.id}>, next time you will get mute`);
+                        let embed = new MessageEmbed()
+                            .setColor("#669fd2")
+                            .setTitle("Textfilter")
+                            .setDescription(`**${newMessage.member.displayName ? newMessage.member.displayName : newMessage.author.tag}** got warned from spamming.`)
+                            .addField("Message content", newMessage.content)
+                            .setTimestamp()
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, newMessage.guild.me.displayAvatarURL())
+                        hook.send(embed);
                     }
                 }
-                client.setTimeout(() => {
-                    userCache.times = 0;
-                }, 10000)
-                client.setTimeout(() => {
-                    userCache.warn = 0;
-                }, 15000)
             }
             //bot mentions
             if (newMessage.content.split(" ").join("").toString().toLowerCase() == "<@764901016692588554>" || newMessage.content.split(" ").join("").toString().toLowerCase() == "<@!764901016692588554>") {

@@ -12,6 +12,30 @@ module.exports = async (client, message) => {
                 guildCache = client.guild.get(message.guild.id);
             }
             //text-filter
+            const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
+            if (!hook) {
+                const guild = require('../../tools/getGuild')(client, message.guild.id);
+                const logchannel = message.guild.channels.get(guildCache.logs.channelId);
+                if (logchannel) {
+                    logchannel.createWebhook(client.user.username, {
+                        avatar: 'https://cutiecat6778.github.io/cdn/pfp.png'
+                    })
+                        .then(async webhook => {
+                            guild.logs.id = webhook.id;
+                            guild.logs.token = webhook.token;
+                            guild.logs.enable = true;
+                            guildCache.logs.id = webhook.id;
+                            guildCache.logs.token = webhook.token;
+                            guildCache.logs.enable = true;
+                            const hook = new WebhookClient(webhook.id, webhook.token)
+                            hook.send(await require('../../logs/logger')(logchannel.name, guildCache.logs.enable));
+                            await guild.save();
+                        })
+                } else if (!logchannel) {
+                    guildCache.logs = { "id": " ", "enable": false, "token": "" };
+                    guild.logs = { "id": " ", "enable": false, "token": "" };
+                }
+            }
             if (guildCache.textfilter.enable == true) {
                 let userCache = client.spam.get(message.author.id);
                 if (!userCache) {
@@ -27,13 +51,37 @@ module.exports = async (client, message) => {
                         message.delete();
                         message.reply("too many caps").then(m => m.delete({ timeout: 5000 }))
                         userCache.warn++;
+                        let embed = new MessageEmbed()
+                            .setColor("#669fd2")
+                            .setTitle("Textfilter")
+                            .setDescription(`**${message.member.displayName ? message.member.displayName : message.author.tag}** got warned from __cap messages__ usage.`)
+                            .addField("Message content", message.content)
+                            .setTimestamp()
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.displayAvatarURL())
+                        hook.send(embed);
                     } if (require("../../functions/badwords")(message.content, guildCache) == true && guildCache.textfilter.badwords.enable) {
                         message.delete();
                         message.reply("watch your language").then(m => m.delete({ timeout: 5000 }));
                         userCache.warn++;
+                        let embed = new MessageEmbed()
+                            .setColor("#669fd2")
+                            .setTitle("Textfilter")
+                            .setDescription(`**${message.member.displayName ? message.member.displayName : message.author.tag}** got warned from __badword messages__ usage.`)
+                            .addField("Message content", message.content)
+                            .setTimestamp()
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.displayAvatarURL())
+                        hook.send(embed);
                     } if (message.content.startsWith("http") && guildCache.textfilter.links && message.content.includes("://") && message.content.includes(".")) {
                         message.delete();
-                        message.reply('links are not allowed in here')
+                        message.reply('links are not allowed in here');
+                        let embed = new MessageEmbed()
+                            .setColor("#669fd2")
+                            .setTitle("Textfilter")
+                            .setDescription(`**${message.member.displayName ? message.member.displayName : message.author.tag}** got warned from __links messages__ usage.`)
+                            .addField("Message content", message.content)
+                            .setTimestamp()
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.displayAvatarURL())
+                        hook.send(embed);
                     }
                     if (userCache.times >= 10 || userCache.warn >= 5) {
                         message.channel.send(`Muted <@!${message.author.id}> for 10 minute, because **he keep ignoring the warnings**`);
@@ -59,17 +107,33 @@ module.exports = async (client, message) => {
                         }
                         message.member.roles.add(muterole);
                         client.spam.delete(message.author.id);
+                        let embed = new MessageEmbed()
+                            .setColor("#669fd2")
+                            .setTitle("Textfilter")
+                            .setDescription(`**${message.member.displayName ? message.member.displayName : message.author.tag}** got muted because he ignore the warning from spamming.`)
+                            .addField("Message content", message.content)
+                            .setTimestamp()
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.displayAvatarURL())
+                        hook.send(embed);
                         return require("../../tools/mute")(client, "10m", message.member, muterole);
                     } if (userCache.times == 7) {
                         message.channel.send(`Slowdown <@!${message.author.id}>, next time you will get mute`);
+                        let embed = new MessageEmbed()
+                            .setColor("#669fd2")
+                            .setTitle("Textfilter")
+                            .setDescription(`**${message.member.displayName ? message.member.displayName : message.author.tag}** got warned from spamming.`)
+                            .addField("Message content", message.content)
+                            .setTimestamp()
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.displayAvatarURL())
+                        hook.send(embed);
                     }
                 }
                 client.setTimeout(() => {
                     userCache.times = 0;
-                }, 10000)
+                }, 20000)
                 client.setTimeout(() => {
                     userCache.warn = 0;
-                }, 15000)
+                }, 30000)
             }
             //bot mentions
             if (message.content.split(" ").join("").toString().toLowerCase() == "<@764901016692588554>" || message.content.split(" ").join("").toString().toLowerCase() == "<@!764901016692588554>") {
@@ -119,19 +183,25 @@ module.exports = async (client, message) => {
             }
             //commands working
             if (message.content.toLowerCase().startsWith(guildCache.prefix) || message.author.id == "762749432658788384" || message.content.toLowerCase().startsWith(`<@!${client.user.id}>`) || message.content.toLowerCase().startsWith(`<@${client.user.id}>`)) {
-                let args = message.content.slice(guildCache.prefix.length).trim().split(/ +/g);
-                if (message.author.id == "762749432658788384" || (message.content.toLowerCase().startsWith(guildCache.prefix) && message.author.id == "762749432658788384")) {
+                let args;
+                if (message.content.toLowerCase().startsWith(guildCache.prefix)) {
+                    args = message.content.slice(guildCache.prefix.length).trim().split(/ +/g);
+                } if (message.author.id == "762749432658788384" || (message.content.toLowerCase().startsWith(guildCache.prefix) && message.author.id == "762749432658788384")) {
                     args = message.content.trim().split(/ +/g);
                     if (message.content.toLowerCase().startsWith(guildCache.prefix)) {
                         args = message.content.slice(guildCache.prefix.length).trim().split(/ +/g);
                     }
+                } if (message.content.toLowerCase().startsWith(`<@!${client.user.id}>`)) {
+                    args = message.content.slice(`<@!${client.user.id}>`.length).trim().split(/ +/g);
+                } if (message.content.toLowerCase().startsWith(`<@${client.user.id}>`)) {
+                    args = message.content.slice(`<@${client.user.id}>`.length).trim().split(/ +/g);
                 }
                 const cmd = args.shift().toLowerCase();
                 const commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
                 if (!commandfile) return;
-                if(commandfile.category == "api"){
+                if (commandfile.category == "api") {
                     let user = client.ratelimmit.get(message.author.id);
-                    if(!user){
+                    if (!user) {
                         client.ratelimmit.set(message.author.id, {
                             "used": 10,
                             "votes": 0,
@@ -139,7 +209,7 @@ module.exports = async (client, message) => {
                         })
                         user = client.ratelimmit.get(message.author.id);
                     }
-                    if(user.used == 0 && message.author.id != '762749432658788384'){
+                    if (user.used == 0 && message.author.id != '762749432658788384') {
                         client.setTimeout(() => {
                             client.ratelimmit.delete(message.author.id);
                         }, 7200000)
@@ -149,7 +219,6 @@ module.exports = async (client, message) => {
                 }
                 if (commandfile.category == "moderation" || commandfile.category == "management") {
                     if (guildCache.logs.enable == true) {
-                        const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                         if (!hook) {
                             const guild = require('../../tools/getGuild')(client, message.guild.id);
                             const logchannel = message.guild.channels.get(guildCache.logs.channelId);
