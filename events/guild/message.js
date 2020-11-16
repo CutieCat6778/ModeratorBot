@@ -57,7 +57,7 @@ module.exports = async (client, message) => {
                             .setDescription(`**${message.member.displayName ? message.member.displayName : message.author.tag}** got warned from __cap messages__ usage.`)
                             .addField("Message content", message.content)
                             .setTimestamp()
-                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.displayAvatarURL())
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.user.displayAvatarURL())
                         hook.send(embed);
                     } if (require("../../functions/badwords")(message.content, guildCache) == true && guildCache.textfilter.badwords.enable) {
                         message.delete();
@@ -69,7 +69,7 @@ module.exports = async (client, message) => {
                             .setDescription(`**${message.member.displayName ? message.member.displayName : message.author.tag}** got warned from __badword messages__ usage.`)
                             .addField("Message content", message.content)
                             .setTimestamp()
-                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.displayAvatarURL())
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.user.displayAvatarURL())
                         hook.send(embed);
                     } if (message.content.startsWith("http") && guildCache.textfilter.links && message.content.includes("://") && message.content.includes(".")) {
                         message.delete();
@@ -80,7 +80,7 @@ module.exports = async (client, message) => {
                             .setDescription(`**${message.member.displayName ? message.member.displayName : message.author.tag}** got warned from __links messages__ usage.`)
                             .addField("Message content", message.content)
                             .setTimestamp()
-                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.displayAvatarURL())
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.user.displayAvatarURL())
                         hook.send(embed);
                     }
                     if (userCache.times >= 10 || userCache.warn >= 5) {
@@ -113,7 +113,7 @@ module.exports = async (client, message) => {
                             .setDescription(`**${message.member.displayName ? message.member.displayName : message.author.tag}** got muted because he ignore the warning from spamming.`)
                             .addField("Message content", message.content)
                             .setTimestamp()
-                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.displayAvatarURL())
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.user.displayAvatarURL())
                         hook.send(embed);
                         return require("../../tools/mute")(client, "10m", message.member, muterole);
                     } if (userCache.times == 7) {
@@ -124,7 +124,7 @@ module.exports = async (client, message) => {
                             .setDescription(`**${message.member.displayName ? message.member.displayName : message.author.tag}** got warned from spamming.`)
                             .addField("Message content", message.content)
                             .setTimestamp()
-                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.displayAvatarURL())
+                            .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.user.displayAvatarURL())
                         hook.send(embed);
                     }
                 }
