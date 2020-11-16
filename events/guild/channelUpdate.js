@@ -16,7 +16,7 @@ module.exports = async (client, oldChannel, newChannel) => {
         let mod = false;
         const embed = new MessageEmbed()
             .setColor("#669fd2")
-            .setTitle("Logger - Channel updated")
+            .setTitle(`Logger - Channel ${oldChannel.name} updated`)
             .setTimestamp(new Date())
             .setFooter(client.user.username, client.user.displayAvatarURL())
         if (oldChannel.name != newChannel.name) {
@@ -47,7 +47,7 @@ module.exports = async (client, oldChannel, newChannel) => {
             embed.addField("Changed nsfw", `\`${oldChannel.nsfw}\` => \`${newChannel.nsfw}\``)
             mod = true
         } if (oldChannel.rateLimitPerUser != newChannel.rateLimitPerUser) {
-            embed.addField("Changed slowmode", `\`${require("ms")(oldChannel.rateLimitPerUser, { long: true })}\` => \`${require("ms")(newChannel.rateLimitPerUser, { long: true })}\``)
+            embed.addField("Changed ratelimit per user", `\`${require("ms")(oldChannel.rateLimitPerUser, { long: true })}\` => \`${require("ms")(newChannel.rateLimitPerUser, { long: true })}\``)
             mod = true
         }
         if (hook && mod) {

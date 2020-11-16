@@ -29,16 +29,16 @@ module.exports = (client, oldGuild, newGuild) => {
                 }
             })
         } if (oldGuild.afkChannel != newGuild.afkChannel) {
-            embed.addField("Changed afkChannel", `\`${oldGuild.afkChannel.name}\` => \`${newGuild.afkChannel.name}\``)
+            embed.addField("Changed afk channel", `\`${oldGuild.afkChannel.name}\` => \`${newGuild.afkChannel.name}\``)
             mod = true
         } if (oldGuild.afkTimeout != newGuild.afkTimeout) {
-            embed.addField("Changed afkTimeout", `\`${require("ms")(oldGuild.afkTimeout, { long: true })}\` => \`${require("ms")(newGuild.afkTimeout, { long: true })}\``)
+            embed.addField("Changed afk timeout", `\`${require("ms")(oldGuild.afkTimeout, { long: true })}\` => \`${require("ms")(newGuild.afkTimeout, { long: true })}\``)
             mod = true
         } if (oldGuild.available != newGuild.available) {
             embed.addField("Changed available", `\`${oldGuild.available}\` => \`${newGuild.available}\``)
             mod = true
         } if (oldGuild.embedChannel != newGuild.embedChannel) {
-            embed.addField("Changed embedChannel", `\`${oldGuild.embedChannel.name}\` => \`${newGuild.embedChannel.name}\``)
+            embed.addField("Changed embed channel", `\`${oldGuild.embedChannel.name}\` => \`${newGuild.embedChannel.name}\``)
             mod = true
         } if (oldGuild.icon != newGuild.icon) {
             embed.addField("Changed icon", `\`[click here](${oldGuild.iconURL()})\` => \`[click here](${newGuild.iconURL()})\``)
