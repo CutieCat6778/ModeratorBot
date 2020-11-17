@@ -19,7 +19,7 @@ module.exports = {
                 si.mem().then(data2 => {
                     var embed = new MessageEmbed()
                         .setTitle(`System info`)
-                        .setColor("#669fd2")
+                        .setColor("#40598F")
                         .addField("CPU infomation", `
                             \`\`\`js\n
                                 Manufactor : ${data.cpu.manufacturer} \n

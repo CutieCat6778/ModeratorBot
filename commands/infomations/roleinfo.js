@@ -15,7 +15,7 @@ module.exports = {
             const role = message.guild.roles.cache.get(await require("../../tools/mentions")(args[0].toString()));
             if (!role) return message.channel.send("Role not found")
             let embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle(`<:information:777490082289680395> ${role.name} role informations`)
                 .addField('Name', role.name, true)
                 .addField('ID', role.id, true)

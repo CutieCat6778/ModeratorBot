@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Covid19 stats")
         .setDescription(`The covid19 command's aliases are : \`corona\` or \`covid19\`\n
             **Covid19 stats:** \`${prefix} search [CountryCode, CountryName]\`

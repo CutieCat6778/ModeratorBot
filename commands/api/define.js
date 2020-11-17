@@ -31,7 +31,7 @@ module.exports = {
                     if(body.message) return message.channel.send(body.message);
                     if(!body[0]) return message.channel.send("No information found")
                     let embed = new MessageEmbed()
-                        .setColor("#669fd2")
+                        .setColor("#40598F")
                         .setTitle(`<:dictionary:777487396564500510> ${body[0].word} - ${body[0].phonetics[0].text}`)
                         .setDescription(`${body[0].meanings[0].partOfSpeech}\n\n**Definition**\n${body[0].meanings[0].definitions[0].definition}\n\n**Synonyms**\n${body[0].meanings[0].definitions[0].synonyms ? body[0].meanings[0].definitions[0].synonyms.join(", ") : "None"}\n\n**Example**\n${body[0].meanings[0].definitions[0].example ? body[0].meanings[0].definitions[0].example : "none"}`)
                     return message.channel.send(embed);

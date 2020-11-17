@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Muterole")
         .setDescription(`The muterole command's aliases are : \`muterole\`, \`mrole\` or \`mutero\`\n
             **Muterole**: \`${prefix} muterole <@role, roleID> <reason>\`

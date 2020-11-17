@@ -16,7 +16,7 @@ module.exports = async (client, oldChannel, newChannel) => {
             const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
             let mod = false;
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle(`Logger - Channel ${oldChannel.name} updated`)
                 .setTimestamp(new Date())
                 .setFooter(client.user.username, client.user.displayAvatarURL())

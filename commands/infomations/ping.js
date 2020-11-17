@@ -19,7 +19,7 @@ module.exports = {
                 let botMessage = m.createdTimestamp - message.createdTimestamp
                 let Websocket = Math.floor(client.ws.ping);
                 let embed = new MessageEmbed()
-                    .setColor("#669fd2")
+                    .setColor("#40598F")
                     .setTitle(`${message.guild.me.displayName} ping`)
                     .addFields([
                         { "name": "<:bot:774311088246226984> Bot Message", "value": `${botMessage} ms` },

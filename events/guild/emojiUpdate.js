@@ -8,7 +8,7 @@ module.exports = (client, oldEmoji, newEmoji) => {
             const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
             let mod = false;
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle(`Logger - Emoji ${newEmoji.identifier} updated`)
                 .setTimestamp(new Date())
                 .setFooter(client.user.username, client.user.displayAvatarURL())

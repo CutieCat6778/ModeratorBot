@@ -24,7 +24,7 @@ module.exports = {
             }
             if (message.member.id == target.id) return message.channel.send("You can't sue your self");
             let embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle(`${message.member.displayName} voted to kick ${target.displayName}`)
                 .setDescription(`**__Reason:__**
                     ${reason.toString()}\n\nIf there are many people agree with this. The member will be kicked from the server
@@ -54,7 +54,7 @@ module.exports = {
                         del++;
                         if (del > 5) {
                             let embed = new MessageEmbed()
-                                .setColor("#669fd2")
+                                .setColor("#40598F")
                                 .setTitle("Vote ended")
                                 .setDescription("There are more then 5 votes to delete this case")
                                 .setTimestamp()
@@ -71,7 +71,7 @@ module.exports = {
                 });
                 collector.on('end', async collected => {
                     let embed = new MessageEmbed()
-                        .setColor("#669fd2")
+                        .setColor("#40598F")
                         .setTitle(`${target.displayName} votekick`)
                         .setTimestamp()
                         .setThumbnail(target.user.displayAvatarURL())

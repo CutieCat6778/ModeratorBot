@@ -32,7 +32,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                         newMessage.reply("too many caps").then(m => m.delete({ timeout: 5000 }))
                         userCache.warn++;
                         let embed = new MessageEmbed()
-                            .setColor("#669fd2")
+                            .setColor("#40598F")
                             .setTitle("Textfilter")
                             .setDescription(`**${newMessage.member.displayName ? newMessage.member.displayName : newMessage.author.tag}** got warned from __cap messages__ usage.`)
                             .addField("Message content", `\`${newMessage.content}\``)
@@ -44,7 +44,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                         newMessage.reply("watch your language").then(m => m.delete({ timeout: 5000 }));
                         userCache.warn++;
                         let embed = new MessageEmbed()
-                            .setColor("#669fd2")
+                            .setColor("#40598F")
                             .setTitle("Textfilter")
                             .setDescription(`**${newMessage.member.displayName ? newMessage.member.displayName : newMessage.author.tag}** got warned from __badword messages__ usage.`)
                             .addField("Message content", `\`${newMessage.content}\``)
@@ -55,7 +55,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                         newMessage.delete();
                         newMessage.reply('links are not allowed in here');
                         let embed = new MessageEmbed()
-                            .setColor("#669fd2")
+                            .setColor("#40598F")
                             .setTitle("Textfilter")
                             .setDescription(`**${newMessage.member.displayName ? newMessage.member.displayName : newMessage.author.tag}** got warned from __links messages__ usage.`)
                             .addField("Message content", `\`${newMessage.content}\``)
@@ -88,7 +88,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                         newMessage.member.roles.add(muterole);
                         client.spam.delete(newMessage.author.id);
                         let embed = new MessageEmbed()
-                            .setColor("#669fd2")
+                            .setColor("#40598F")
                             .setTitle("Textfilter")
                             .setDescription(`**${newMessage.member.displayName ? newMessage.member.displayName : newMessage.author.tag}** got muted because he ignore the warning from spamming.`)
                             .addField("Message content", `\`${newMessage.content}\``)
@@ -99,7 +99,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                     } if (userCache.times == 7) {
                         newMessage.channel.send(`Slowdown <@!${newMessage.author.id}>, next time you will get mute`);
                         let embed = new MessageEmbed()
-                            .setColor("#669fd2")
+                            .setColor("#40598F")
                             .setTitle("Textfilter")
                             .setDescription(`**${newMessage.member.displayName ? newMessage.member.displayName : newMessage.author.tag}** got warned from spamming.`)
                             .addField("Message content", `\`${newMessage.content}\``)
@@ -112,7 +112,7 @@ module.exports = async (client, oldMessage, newMessage) => {
             //bot mentions
             if (newMessage.content.split(" ").join("").toString().toLowerCase() == "<@764901016692588554>" || newMessage.content.split(" ").join("").toString().toLowerCase() == "<@!764901016692588554>") {
                 let embed = new MessageEmbed()
-                    .setColor("#669fd2")
+                    .setColor("#40598F")
                 if (guildCache.prefix) {
                     embed.setDescription(`My prefix in this server is \`${guildCache.prefix}\`\n If you need help type in chat \`${guildCache.prefix} help\` or \`${guildCache.prefix}help\``)
                 } else if (!guildCache.prefix || !guildCache) {
@@ -128,7 +128,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                         let userCache = client.afk.get(users[0]);
                         if (userCache && userCache.enable == true) {
                             let embed = new MessageEmbed()
-                                .setColor("#669fd2")
+                                .setColor("#40598F")
                                 .setDescription(`<:afk:777491403676188702> <@!${users}> AFK - **${userCache.status}**`)
                                 .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
                             newMessage.channel.send(embed);
@@ -138,7 +138,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                             let userCache = client.afk.get(user);
                             if (userCache && userCache.enable == true) {
                                 let embed = new MessageEmbed()
-                                    .setColor("#669fd2")
+                                    .setColor("#40598F")
                                     .setDescription(`<:afk:777491403676188702> <@!${user}> AFK - **${userCache.status}**`)
                                     .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
                                 newMessage.channel.send(embed);
@@ -160,7 +160,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                 if (isNaN(guildCache.logs.id == true)) return;
                 const channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                 const embed = new MessageEmbed()
-                    .setColor("#669fd2")
+                    .setColor("#40598F")
                     .setTitle("Logger - Message updated")
                     .addField("Old message", `\`${oldMessage.embeds.length > 0 ? "an embed" : oldMessage.content}\``)
                     .addField("New message", `\`${newMessage.embeds.length > 0 ? "an embed" : newMessage.content}\``)

@@ -20,7 +20,7 @@ module.exports = {
                     return message.channel.send({embed: snipe.embed})
                 }
                 let embed = new MessageEmbed()
-                    .setColor("#669fd2")
+                    .setColor("#40598F")
                     .setAuthor(`${user.displayName}`, user.user.displayAvatarURL())
                     .setDescription(`   ${snipe.content}`)
                     .setFooter(require("ms")((new Date() - snipe.time), { long: true }) + " ago")

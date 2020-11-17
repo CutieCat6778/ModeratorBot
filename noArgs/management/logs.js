@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Logs")
         .setDescription(`The logs command's aliases are : \`logs\`, \`log\` or \`logger\`\n
             **logs setup**: \`${prefix} logs setup #channel\`

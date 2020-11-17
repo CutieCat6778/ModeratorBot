@@ -16,7 +16,7 @@ module.exports = {
             const role = message.guild.roles.cache.get(await require('../../tools/mentions')(args[0]));
             if (!role) return message.channel.send("Role not found");
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle(`List of users has ${role.name} role`)
                 .setTimestamp()
                 .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())

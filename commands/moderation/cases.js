@@ -29,7 +29,7 @@ module.exports = {
                     if (!author) author = await client.users.fetch(caseInfo.author);
                     let time = await require("ms")((new Date() - new Date(caseInfo.time)), { long: true });
                     const embed = new MessageEmbed()
-                        .setColor("#669fd2")
+                        .setColor("#40598F")
                         .setTitle(`Case #${caseInfo.num + 1} | ${caseInfo.name}`)
                         .addField("**Target:**", target.user ? target.user.username : target.username, true)
                         .addField("**Target's id:**", target.id, true)

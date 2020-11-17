@@ -16,7 +16,7 @@ module.exports = {
             const date2 = new Date(target.user.createdAt).toLocaleString()
             let Activity = target.presence;
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle(`<:information:777490082289680395> ${target.user.username}'s infomation`)
                 .setThumbnail(target.user.displayAvatarURL())
                 .addField("Username", target.user.username, true)

@@ -1,7 +1,7 @@
 let { MessageEmbed } = require("discord.js");
 module.exports = function nojudge(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Votekick")
         .setDescription(`The votekick command's aliases are : \`votekick\` or \`votek\`\n
             **Pernamently votekick**: \`${prefix} votekick @user reason\`

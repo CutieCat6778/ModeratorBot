@@ -20,7 +20,7 @@ module.exports = {
                 guildCache.textfilter.enable = true;
                 let embed = new MessageEmbed()
                     .setTitle("Text filter types")
-                    .setColor("#669fd2")
+                    .setColor("#40598F")
                     .setDescription(`
                     __**Options:**__
                         **[0] Anti spam**

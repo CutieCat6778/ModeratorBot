@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Search")
         .setDescription(`The search command's aliases are : \`search\` or \`google\`\n
             **All commands:** \`${prefix} search [something]\`

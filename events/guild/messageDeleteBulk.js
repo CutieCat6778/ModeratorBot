@@ -8,7 +8,7 @@ module.exports = (client, messages) => {
             const { WebhookClient, MessageEmbed } = require('discord.js');
             const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle("Logger - Bulk delete")
                 .addField("Author", messages.first().author.username, true)
                 .addField("Channel", messages.first().channel.name, true)

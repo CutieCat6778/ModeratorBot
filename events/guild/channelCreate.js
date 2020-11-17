@@ -59,7 +59,7 @@ module.exports = async (client, channel) => {
             const { WebhookClient, MessageEmbed } = require('discord.js');
             const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle("Logger - Channel created")
                 .addField("Channel", channel.name, true)
                 .addField("Channel ID", channel.id, true)

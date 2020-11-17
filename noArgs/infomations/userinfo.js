@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("User info")
         .setDescription(`The user info command's aliases are : \`userinfo\` or \`whois\`\n
             **User info:** \`${prefix} userinfo\`

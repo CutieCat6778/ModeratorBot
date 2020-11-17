@@ -7,7 +7,7 @@ module.exports = (client, error) => {
     let array = stringTools.toChunks(error.stack, 5);
     const narary = array.slice(0, Math.floor((1000 / 5))).join('');
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .addField("Client error", `
                 \`\`\`${narary}\`\`\`
             `)

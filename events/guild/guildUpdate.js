@@ -8,7 +8,7 @@ module.exports = (client, oldGuild, newGuild) => {
             const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
             let mod = false;
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle("Logger - Server updated")
                 .setTimestamp(new Date())
                 .setFooter(client.user.username, client.user.displayAvatarURL())
@@ -18,7 +18,7 @@ module.exports = (client, oldGuild, newGuild) => {
                 const guild = client.guild.get(newGuild.id);
                 const embed1 = new MessageEmbed()
                     .setTitle(`<:rules:774311089445535765> ${newGuild.name}'s rules`)
-                    .setColor("#669fd2")
+                    .setColor("#40598F")
                     .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                     .setFooter(newGuild.name, newGuild.iconURL())
                     .setTimestamp(new Date())

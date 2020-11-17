@@ -18,7 +18,7 @@ module.exports = {
             os = os.osInfo;
             const owner = client.users.cache.get("762749432658788384").tag
             let embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle(`<:stats:774311089453137930> ${client.user.username}'s information`)
                 .addField("Name", client.user.username, true)
                 .setThumbnail(client.user.displayAvatarURL())

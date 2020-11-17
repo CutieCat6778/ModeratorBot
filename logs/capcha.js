@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js")
 
 module.exports = function wellcomelogs(autorole) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Captcha")
         .addField("Status", autorole.enable)
         .setTimestamp()

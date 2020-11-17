@@ -15,7 +15,7 @@ module.exports = async (client, oldRole, newRole) => {
             let mod = false;
             const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle(`Logger - Role ${oldRole.name} updated`)
                 .setTimestamp(new Date())
                 .setFooter(client.user.username, client.user.displayAvatarURL())

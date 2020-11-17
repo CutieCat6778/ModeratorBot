@@ -8,7 +8,7 @@ module.exports = async (client, message) => {
                 if (guildCache.rules.rulesArr.length != 0) {
                     const embed = new MessageEmbed()
                         .setTitle(`${message.guild.name}'s rules`)
-                        .setColor("#669fd2")
+                        .setColor("#40598F")
                         .setDescription(`${guildCache.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                         .setFooter(message.guild.name, message.guild.iconURL())
                         .setTimestamp(new Date())
@@ -31,7 +31,7 @@ module.exports = async (client, message) => {
             if (isNaN(guildCache.logs.id == true)) return;
             const channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle("Logger - Message deleted")
                 .addField("Content", `\`${message.embeds.length > 0 ? "an embed" : message.content}\``)
                 .addField("Author", message.member.displayName ? message.member.displayName : message.author.username)

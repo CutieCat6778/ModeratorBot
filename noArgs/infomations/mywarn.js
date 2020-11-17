@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("My warn")
         .setDescription(`The my warn command's aliases are : \`mywarn\` or \`mywarns\`\n
             **My warns:** \`${prefix} mywarn\`

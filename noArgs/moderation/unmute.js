@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Unmute")
         .setDescription(`The unmute command's aliases are : \`unmute\`, \`unm\` or \`unmutee\`\n
             **Pernamently unmute**: \`${prefix} unmute <@user> <reason>\`

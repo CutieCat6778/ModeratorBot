@@ -27,7 +27,7 @@ module.exports = async (client) => {
         });
         if (!process.env.hook) {
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`)
                 .setTimestamp()
             await hook.send(embed);

@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js")
 
 module.exports = function wellcomelogs(autorole) {
     const embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Text filter (anti swear)")
         .addField("Status", autorole.enable, true)
         .setTimestamp()

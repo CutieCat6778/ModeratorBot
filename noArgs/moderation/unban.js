@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Unban")
         .setDescription(`The unban command's aliases are : \`unban\`, \`unbanish\` or \`unben\`\n
             **Unban**: \`${prefix} unban <@user> <reason>\`

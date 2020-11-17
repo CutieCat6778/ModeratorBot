@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Wikipedia")
         .setDescription(`The wikipedia command's aliases are : \`wikipedia\` or \`wiki\`\n
             **All commands:** \`${prefix} wikipedia [something]\`

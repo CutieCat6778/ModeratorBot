@@ -1,7 +1,7 @@
 let { MessageEmbed } = require("discord.js");
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Rule")
         .setDescription(`The rule command's aliases are : \`rule\` or \`rules\`\n
             **Setup rule**: \`${prefix} rule [setup]\`

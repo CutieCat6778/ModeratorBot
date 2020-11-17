@@ -7,7 +7,7 @@ module.exports = (client, emoji) => {
             const { WebhookClient, MessageEmbed } = require('discord.js');
             const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle("Logger - Emoji deleted")
                 .addField("Emoji name", emoji.name, true)
                 .addField("Emoji ID", emoji.id, true)

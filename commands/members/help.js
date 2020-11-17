@@ -14,7 +14,7 @@ module.exports = {
             const categories = await readdirSync("./commands/");
             if (!args[0]) {
                 let embed = new MessageEmbed()
-                    .setColor("#669fd2")
+                    .setColor("#40598F")
                     .setTitle(message.guild.me.displayName + `#${client.user.discriminator}`)
                     .setFooter("© 2020 CutieCat#6778 All Rights Reserved")
                     .setDescription(`

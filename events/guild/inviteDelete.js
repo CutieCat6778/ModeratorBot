@@ -7,7 +7,7 @@ module.exports = (client, invite) => {
             const { WebhookClient, MessageEmbed } = require('discord.js');
             const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle("Logger - Invite deleted")
                 .addField("Invite channel", invite.channel.name, true)
                 .addField("Invite code", invite.code, true)

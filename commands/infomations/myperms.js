@@ -11,7 +11,7 @@ module.exports = {
     async execute(client, message, args) {
         try {
             let embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle(`<:permission:777500648500625449> ${message.member.displayName}'s permissions`)
                 .setDescription(`\`\`\`css\n${message.member.permissions.toArray().join("\n")}\n\`\`\``)
                 .setTimestamp()

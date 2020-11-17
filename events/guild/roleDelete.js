@@ -13,7 +13,7 @@ module.exports = async (client, role) => {
             const { WebhookClient, MessageEmbed } = require('discord.js');
             const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle("Logger - Role deleted")
                 .addField("Role name", role.name, true)
                 .addField("Role ID", role.id, true)

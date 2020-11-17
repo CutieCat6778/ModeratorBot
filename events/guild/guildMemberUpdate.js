@@ -8,7 +8,7 @@ module.exports = (client, oldMember, newMember) => {
             const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
             let mod = false;
             const embed = new MessageEmbed()
-                .setColor("#669fd2")
+                .setColor("#40598F")
                 .setTitle(`Logger - ${newMember.displayName} updated`)
                 .setTimestamp(new Date())
                 .setFooter(client.user.username, client.user.displayAvatarURL())

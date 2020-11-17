@@ -19,7 +19,7 @@ module.exports = {
                 else if (tag) {
                     const user = await client.users.fetch(tag.userId);
                     let embed = new MessageEmbed()
-                        .setColor("#669fd2")
+                        .setColor("#40598F")
                         .setTitle(`<:tags:774348022598860860> ${user.username}#${user.discriminator}`)
                         .addField("Key word", `${tag.key.slice(0, 1).toUpperCase() + tag.key.slice(1)}`, true)
                         .addField("Date", require("ms")((new Date() - tag.date), { long: true }) + " ago", true)

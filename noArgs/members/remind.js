@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Remind")
         .setDescription(`The remind command's aliases are : \`remind\`, \`alert\` or \`reminder\`\n
             **Remind:** \`${prefix} remind [time] [text]\`

@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = function help(prefix) {
     let embed = new MessageEmbed()
-        .setColor("#669fd2")
+        .setColor("#40598F")
         .setTitle("Bug")
         .setDescription(`The bug command's aliases are : \`bug\`, \`problem\` or \`bugreport\`\n
             **Report bug:** \`${prefix} bug <content>\`
