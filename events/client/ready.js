@@ -23,8 +23,10 @@ module.exports = async (client) => {
             console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
         });
         dbl.webhook.on('vote', async vote => {
-            const user = await client.users.fetch(vote.user);
-            hook.send(`${user.username} just voted ${client.user.username}`);
+            const user = client.users.cache.fetch(vote.user);
+            if(user){
+                hook.send(`${user.username} just voted ${client.user.username}`);
+            }
         });
         if (!process.env.hook) {
             const embed = new MessageEmbed()
