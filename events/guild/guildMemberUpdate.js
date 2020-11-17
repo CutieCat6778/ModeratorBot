@@ -1,6 +1,7 @@
 module.exports = (client, oldMember, newMember) => {
     try{
-        const guildCache = client.guild.get(newMember.guild.id);
+        let guildCache = client.guild.get(newMember.guild.id);
+        if(!guildCache) guildCache = require("../../tools/getGuild")(client, newMember.guild.id)
         if (guildCache.logs.enable == true) {
             if (guildCache.logs.id == " ") return;
             if (isNaN(guildCache.logs.id == true)) return;

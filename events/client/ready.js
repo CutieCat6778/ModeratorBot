@@ -28,6 +28,7 @@ module.exports = async (client) => {
                 hook.send(`${user.username} just voted ${client.user.username}`);
             }
         });
+        await dbl.postStats(client.guilds.size);
         if (!process.env.hook) {
             const embed = new MessageEmbed()
                 .setColor("#40598F")
@@ -36,8 +37,8 @@ module.exports = async (client) => {
             await hook.send(embed);
         }
         console.log(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`);
-        client.setInterval(() => {
-            dbl.postStats(client.guilds.size);
+        client.setInterval(async () => {
+            await dbl.postStats(client.guilds.size);
         }, 21600000)
     } catch (e) {
         return require("../../tools/error")(e, undefined)
