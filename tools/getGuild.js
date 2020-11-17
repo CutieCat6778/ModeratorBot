@@ -15,8 +15,8 @@ module.exports = async function getGuild(client, id) {
         await guild.save();
         getGuild(id);
     } if (!guild.logs) {
-        guild.case = {
-            "id": "", "enable": false, "token": "", "channelId": ""
+        guild.logs = {
+            id: " ", enable: false, token: " "
         }
         await guild.save();
         getGuild(id);
@@ -36,7 +36,7 @@ module.exports = async function getGuild(client, id) {
         await guild.save();
         getGuild(id);
     } if (!guild.rules) {
-        guild.textfilter = { "enable": false, "channelId": " ", "messageId": " ", "rulesArr": [] };
+        guild.rules = { "enable": false, "channelId": " ", "messageId": " ", "rulesArr": [] };
         await guild.save();
         getGuild(id);
     }
