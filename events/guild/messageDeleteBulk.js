@@ -12,14 +12,9 @@ module.exports = async (client, messages) => {
                 .setTitle("Logger - Bulk delete")
                 .addField("Author", messages.first().author.username, true)
                 .addField("Channel", messages.first().channel.name, true)
+                .addField("Amount of messages", messages.size)
                 .setTimestamp(new Date())
                 .setFooter(client.user.username, client.user.displayAvatarURL())
-            if (messages.first().content) {
-                if (messages.first().content.startsWith(guildCache.prefix) || messages.first().author.id == "762749432658788384" || messages.first().content.toLowerCase().startsWith(`<@!${client.user.id}>`)) {
-                    const args = messages.first().content.split(" ").slice(1);
-                    embed.addField("Amount of messages", args[0]);
-                }
-            }
             if (hook) {
                 return hook.send(embed);
             }
