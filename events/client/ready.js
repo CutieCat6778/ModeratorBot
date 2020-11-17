@@ -28,7 +28,7 @@ module.exports = async (client) => {
                 hook.send(`${user.username} just voted ${client.user.username}`);
             }
         });
-        await dbl.postStats(client.guilds.size);
+        await dbl.postStats(client.guilds.cache.size);
         if (!process.env.hook) {
             const embed = new MessageEmbed()
                 .setColor("#40598F")
