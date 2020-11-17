@@ -10,9 +10,8 @@ module.exports = async (client, messages) => {
             const embed = new MessageEmbed()
                 .setColor("#40598F")
                 .setTitle("Logger - Bulk delete")
-                .addField("Author", messages.first().author.username, true)
                 .addField("Channel", messages.first().channel.name, true)
-                .addField("Amount of messages", messages.size)
+                .addField("Amount of messages", messages.size, true)
                 .setTimestamp(new Date())
                 .setFooter(client.user.username, client.user.displayAvatarURL())
             if (hook) {

@@ -14,6 +14,7 @@ module.exports = {
         if (parseInt(args[0]) < 1 || parseInt(args[0]) > 80) return message.channel.send("I can only delete max 80 and min 1 messages, because of the Discord rate limit.");
         let reason = args.slice(1).join(" ");
         if (!args[1]) reason = "No reason provided";
+        message.delete();
         message.channel.bulkDelete(args[0])
             .then((m) => {
                 message.reply(`Deleted ${m.size} messages`).then(m => {
