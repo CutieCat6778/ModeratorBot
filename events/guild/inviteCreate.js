@@ -1,6 +1,6 @@
 module.exports = (client, invite) => {
     try {
-        const guildCache = client.guild.get(channel.guild.id);
+        const guildCache = client.guild.get(invite.guild.id);
         if (guildCache.logs.enable == true) {
             if (guildCache.logs.id == " ") return;
             if (isNaN(guildCache.logs.id == true)) return;
