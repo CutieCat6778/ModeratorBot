@@ -42,7 +42,7 @@ module.exports = (client, oldGuild, newGuild) => {
                 embed.addField("Changed embed channel", `\`${oldGuild.embedChannel.name}\` => \`${newGuild.embedChannel.name}\``)
                 mod = true
             } if (oldGuild.icon != newGuild.icon) {
-                embed.addField("Changed icon", `\`[click here](${oldGuild.iconURL()})\` => \`[click here](${newGuild.iconURL()})\``)
+                embed.addField("Changed icon", `[click here](${oldGuild.iconURL()}) => [click here](${newGuild.iconURL()})`)
                 mod = true
             } if (oldGuild.large != newGuild.large) {
                 embed.addField("Changed large", `\`${oldGuild.large}\` => \`${newGuild.large}\``)
