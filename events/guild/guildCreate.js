@@ -9,7 +9,7 @@ module.exports = async(client, guild) => {
             .setTitle(`${client.user.username} joined ${guild.name}`)
             .setFooter(`Server #${client.guilds.cache.size}`)
         hook.send(embed);
-        require("../../functions/guildCache")(client, guild.id);
+        require("../../functions/guildCacheReload")(client, guild.id);
     } catch (e) {
         return require("../../tools/error")(e, undefined)
     }

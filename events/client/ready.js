@@ -23,7 +23,7 @@ module.exports = async (client) => {
         });
         dbl.webhook.on('vote', vote => {
             const user = client.users.fetch(vote.user);
-            console.log(`${user.username} just voted ${client.user.username}`);
+            hook.send(`${user.username} just voted ${client.user.username}`);
         });
         if (!process.env.hook) {
             const embed = new MessageEmbed()
