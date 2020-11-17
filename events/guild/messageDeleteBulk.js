@@ -1,7 +1,7 @@
 
-module.exports = (client, messages) => {
+module.exports = async (client, messages) => {
     try {
-        const guildCache = client.guild.get(messages.first().guild.id);
+        const guildCache = await client.guild.get(messages.first().guild.id);
         if (guildCache.logs.enable == true) {
             if (guildCache.logs.id == " ") return;
             if (isNaN(guildCache.logs.id == true)) return;

@@ -2,8 +2,8 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = async (client, member) => {
     try {
-        let guild = client.guild.get(member.guild.id);
-        if(!guild) guild = require("../../tools/getGuild")(client, member.guild.id)  
+        let guild = await client.guild.get(member.guild.id);
+        if(!guild) guild = await require("../../tools/getGuild")(client, member.guild.id)  
         if (guild.wellcome.enable == false) return;
         if (guild.wellcome.channelId == " " || isNaN(guild.wellcome.channelId) == true) return;
         //wellcome

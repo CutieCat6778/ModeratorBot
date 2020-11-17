@@ -5,7 +5,7 @@ module.exports = async (client, oldMessage, newMessage) => {
         if (newMessage.author.bot) return;
         if (newMessage.channel.type == "text") {
             //get guild and save it in cache
-            var guildCache = client.guild.get(newMessage.guild.id);
+            var guildCache = await client.guild.get(newMessage.guild.id);
             if (!guildCache) {
                 let g = await require("../../tools/getGuild")(client, newMessage);
                 client.guild.set(g.guildId, {

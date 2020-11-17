@@ -1,6 +1,6 @@
-module.exports = (client, oldGuild, newGuild) => {
+module.exports = async (client, oldGuild, newGuild) => {
     try {
-        const guildCache = client.guild.get(newGuild.id);
+        const guildCache = await client.guild.get(newGuild.id);
         if (guildCache.logs.enable == true) {
             if (guildCache.logs.id == " ") return;
             if (isNaN(guildCache.logs.id == true)) return;
