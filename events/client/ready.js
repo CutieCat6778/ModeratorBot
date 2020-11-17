@@ -10,7 +10,8 @@ module.exports = async (client) => {
             useNewUrlParser: true,
             useUnifiedTopology: true
         })
-        const dbl = new DBL(process.env.dbl, { webhookPort: 5002, webhookAuth: '23072006' });
+        const dbl = new DBL("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc2NDkwMTAxNjY5MjU4ODU1NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjA1NjE4OTU5fQ.5je9Whr9B3LHvcp02qbDnwMuHINgi_pc5DJXGlM8seI", 
+        { webhookPort: 5002, webhookAuth: '23072006' });
         await require("../../functions/guildCache")(client);
         dbl.on('posted', () => {
             hook.send("DBL posted");
