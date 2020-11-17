@@ -10,9 +10,9 @@ module.exports = async (client) => {
             useNewUrlParser: true,
             useUnifiedTopology: true
         })
-        const dbl = new DBL("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc2NDkwMTAxNjY5MjU4ODU1NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjA1NjE4OTU5fQ.5je9Whr9B3LHvcp02qbDnwMuHINgi_pc5DJXGlM8seI", 
-        { webhookPort: 5002, webhookAuth: '23072006' });
         await require("../../functions/guildCache")(client);
+        const dbl = new DBL("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc2NDkwMTAxNjY5MjU4ODU1NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjA1NjE5NzgwfQ.IA3Zb_9eyCw-4ZmtddPcxg3CIteQL3ypPbRMwKA5Ups", 
+        { webhookPort: 5002, webhookAuth: '23072006' });
         dbl.on('posted', () => {
             hook.send("DBL posted");
         })
