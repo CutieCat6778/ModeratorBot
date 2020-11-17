@@ -11,7 +11,7 @@ module.exports = async (client) => {
             useUnifiedTopology: true
         })
         await require("../../functions/guildCache")(client);
-        const dbl = new DBL("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc2NDkwMTAxNjY5MjU4ODU1NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjA1NjE5NzgwfQ.IA3Zb_9eyCw-4ZmtddPcxg3CIteQL3ypPbRMwKA5Ups", 
+        const dbl = new DBL("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc2NDkwMTAxNjY5MjU4ODU1NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjA1NjIxNTcxfQ.E2Pm7AP-PXVYFKWJiuxfEVq8PlEYGTopW6emV1q6IY8", 
         { webhookPort: 5002, webhookAuth: '23072006' });
         dbl.on('posted', () => {
             hook.send("DBL posted");
