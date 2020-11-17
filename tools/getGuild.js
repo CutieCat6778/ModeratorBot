@@ -16,7 +16,7 @@ module.exports = async function getGuild(client, id) {
         getGuild(id);
     } if (!guild.logs) {
         guild.case = {
-            "id": " ", "enable": false, "token": " "
+            "id": "", "enable": false, "token": "", "channelId": ""
         }
         await guild.save();
         getGuild(id);
