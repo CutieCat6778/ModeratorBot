@@ -81,14 +81,16 @@ module.exports = {
                     .setTitle("Member left")
                     .setThumbnail(client.user.displayAvatarURL())
                     .setDescription(text1)
-                channel.send(embed1);
+                    .setTimestamp()
                 const text = guild.wellcome.join.text.replace('{user}', `<@${client.user.id}>`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
                 const embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setTitle("Member joined")
                     .setThumbnail(client.user.displayAvatarURL())
                     .setDescription(text)
-                channel.send(embed);
+                    .setTimestamp()
+                await channel.send(embed);
+                await channel.send(embed1);
                 return message.channel.send(`Done ! check <#${guild.wellcome.channelId}>, if there is a problem use command \`${client.guild.get(message.guild.id).prefix} bug <text>\``)
             }
             else if (args[0] == "setting") {
