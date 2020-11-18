@@ -8,7 +8,6 @@ module.exports = async (client, oldChannel, newChannel) => {
             chanel.id = newChannel.id;
             await guild.save();
         }
-        const guild = client.guild.get(newChannel.guild.id);
         if (guild.logs.enable == true) {
             if (guild.logs.id == " ") return;
             if (isNaN(guild.logs.id == true)) return;

@@ -7,7 +7,6 @@ module.exports = async (client, channel) => {
             guild.channels.splice(chanel, 1);
             await guild.save();
         }
-        const guild = client.guild.get(channel.guild.id);
         if (guild.logs.enable == true) {
             if (guild.logs.id == " ") return;
             if (isNaN(guild.logs.id == true)) return;

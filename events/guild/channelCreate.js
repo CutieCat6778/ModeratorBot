@@ -10,7 +10,6 @@ module.exports = async (client, channel) => {
             }
             await guild.save();
         }
-        const guild = client.guild.get(channel.guild.id);
         let muterole = channel.guild.roles.cache.find((r) => r.name === "Muted");
         if (!muterole) {
             try {
