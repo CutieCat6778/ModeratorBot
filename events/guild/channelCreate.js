@@ -10,7 +10,7 @@ module.exports = async (client, channel) => {
             }
             await guild.save();
         }
-        const guildCache = client.guild.get(channel.guild.id);
+        const guild = client.guild.get(channel.guild.id);
         let muterole = channel.guild.roles.cache.find((r) => r.name === "Muted");
         if (!muterole) {
             try {
@@ -53,11 +53,11 @@ module.exports = async (client, channel) => {
             SPEAK: false,
             CONNECT: false
         });
-        if (guildCache.logs.enable == true) {
-            if (guildCache.logs.id == " ") return;
-            if (isNaN(guildCache.logs.id == true)) return;
+        if (guild.logs.enable == true) {
+            if (guild.logs.id == " ") return;
+            if (isNaN(guild.logs.id == true)) return;
             const { WebhookClient, MessageEmbed } = require('discord.js');
-            const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
+            const hook = new WebhookClient(guild.logs.id, guild.logs.token)
             const embed = new MessageEmbed()
                 .setColor("#40598F")
                 .setTitle("Logger - Channel created")

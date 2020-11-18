@@ -12,31 +12,33 @@ module.exports = async (client, message) => {
                 guildCache = client.guild.get(message.guild.id);
             }
             //text-filter
-            const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
-            if (!hook) {
-                const guild = require('../../tools/getGuild')(client, message.guild.id);
-                const logchannel = message.guild.channels.get(guildCache.logs.channelId);
-                if (logchannel) {
-                    logchannel.createWebhook(client.user.username, {
-                        avatar: 'https://cutiecat6778.github.io/cdn/pfp.png'
-                    })
-                        .then(async webhook => {
-                            guild.logs.id = webhook.id;
-                            guild.logs.token = webhook.token;
-                            guild.logs.enable = true;
-                            guildCache.logs.id = webhook.id;
-                            guildCache.logs.token = webhook.token;
-                            guildCache.logs.enable = true;
-                            const hook = new WebhookClient(webhook.id, webhook.token)
-                            hook.send(await require('../../logs/logger')(logchannel.name, guildCache.logs.enable));
-                            await guild.save();
-                        })
-                } else if (!logchannel) {
-                    guildCache.logs = { "id": " ", "enable": false, "token": "" };
-                    guild.logs = { "id": " ", "enable": false, "token": "" };
-                }
-            }
             if (guildCache.textfilter.enable == true) {
+                if(guildCache.logs.enable == true){
+                    var hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
+                    if (!hook) {
+                        const guild = require('../../tools/getGuild')(client, message.guild.id);
+                        const logchannel = message.guild.channels.get(guildCache.logs.channelId);
+                        if (logchannel) {
+                            logchannel.createWebhook(client.user.username, {
+                                avatar: 'https://cutiecat6778.github.io/cdn/pfp.png'
+                            })
+                                .then(async webhook => {
+                                    guild.logs.id = webhook.id;
+                                    guild.logs.token = webhook.token;
+                                    guild.logs.enable = true;
+                                    guildCache.logs.id = webhook.id;
+                                    guildCache.logs.token = webhook.token;
+                                    guildCache.logs.enable = true;
+                                    hook = new WebhookClient(webhook.id, webhook.token)
+                                    hook.send(await require('../../logs/logger')(logchannel.name, guildCache.logs.enable));
+                                    await guild.save();
+                                })
+                        } else if (!logchannel) {
+                            guildCache.logs = { "id": " ", "enable": false, "token": "" };
+                            guild.logs = { "id": " ", "enable": false, "token": "" };
+                        }
+                    }
+                }
                 let userCache = client.spam.get(message.author.id);
                 if (!userCache) {
                     client.spam.set(message.author.id, {
@@ -219,6 +221,9 @@ module.exports = async (client, message) => {
                 }
                 if (commandfile.category == "moderation" || commandfile.category == "management") {
                     if (guildCache.logs.enable == true) {
+                        if(!hook){
+                            var hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
+                        }
                         if (!hook) {
                             const guild = require('../../tools/getGuild')(client, message.guild.id);
                             const logchannel = message.guild.channels.get(guildCache.logs.channelId);
@@ -233,7 +238,7 @@ module.exports = async (client, message) => {
                                         guildCache.logs.id = webhook.id;
                                         guildCache.logs.token = webhook.token;
                                         guildCache.logs.enable = true;
-                                        const hook = new WebhookClient(webhook.id, webhook.token)
+                                        hook = new WebhookClient(webhook.id, webhook.token)
                                         hook.send(await require('../../logs/logger')(logchannel.name, guildCache.logs.enable));
                                         await guild.save();
                                     })

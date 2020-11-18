@@ -6,12 +6,11 @@ module.exports = async (client, role) => {
             guild.roles.splice(chanel, 1);
             await guild.save();
         }
-        const guildCache = client.guild.get(role.guild.id);
-        if (guildCache.logs.enable == true) {
-            if (guildCache.logs.id == " ") return;
-            if (isNaN(guildCache.logs.id == true)) return;
+        if (guild.logs.enable == true) {
+            if (guild.logs.id == " ") return;
+            if (isNaN(guild.logs.id == true)) return;
             const { WebhookClient, MessageEmbed } = require('discord.js');
-            const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
+            const hook = new WebhookClient(guild.logs.id, guild.logs.token)
             const embed = new MessageEmbed()
                 .setColor("#40598F")
                 .setTitle("Logger - Role deleted")

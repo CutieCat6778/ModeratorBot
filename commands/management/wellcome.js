@@ -45,6 +45,7 @@ module.exports = {
                             .setTimestamp()
                         message.channel.send(embed1);
                         let collecte = await require('../../tools/collectMessage')(message, filter);
+                        console.log(collecte)
                         guild.wellcome.channelId = wellchannel.id;
                         guild.wellcome.enable = true;
                         guild.wellcome.join.text = collected.content;

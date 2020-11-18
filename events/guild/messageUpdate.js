@@ -15,8 +15,34 @@ module.exports = async (client, oldMessage, newMessage) => {
                 })
                 guildCache = client.guild.get(newMessage.guild.id);
             }
-            const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
+            //text-filter
             if (guildCache.textfilter.enable == true) {
+                if(guildCache.logs.enable == true){
+                    var hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
+                    if (!hook) {
+                        const guild = require('../../tools/getGuild')(client, newMessage.guild.id);
+                        const logchannel = newMessage.guild.channels.get(guildCache.logs.channelId);
+                        if (logchannel) {
+                            logchannel.createWebhook(client.user.username, {
+                                avatar: 'https://cutiecat6778.github.io/cdn/pfp.png'
+                            })
+                                .then(async webhook => {
+                                    guild.logs.id = webhook.id;
+                                    guild.logs.token = webhook.token;
+                                    guild.logs.enable = true;
+                                    guildCache.logs.id = webhook.id;
+                                    guildCache.logs.token = webhook.token;
+                                    guildCache.logs.enable = true;
+                                    hook = new WebhookClient(webhook.id, webhook.token)
+                                    hook.send(await require('../../logs/logger')(logchannel.name, guildCache.logs.enable));
+                                    await guild.save();
+                                })
+                        } else if (!logchannel) {
+                            guildCache.logs = { "id": " ", "enable": false, "token": "" };
+                            guild.logs = { "id": " ", "enable": false, "token": "" };
+                        }
+                    }
+                }
                 let userCache = client.spam.get(newMessage.author.id);
                 if (!userCache) {
                     client.spam.set(newMessage.author.id, {
@@ -108,6 +134,12 @@ module.exports = async (client, oldMessage, newMessage) => {
                         hook.send(embed);
                     }
                 }
+                client.setTimeout(() => {
+                    userCache.times = 0;
+                }, 20000)
+                client.setTimeout(() => {
+                    userCache.warn = 0;
+                }, 30000)
             }
             //bot mentions
             if (newMessage.content.split(" ").join("").toString().toLowerCase() == "<@764901016692588554>" || newMessage.content.split(" ").join("").toString().toLowerCase() == "<@!764901016692588554>") {

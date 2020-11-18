@@ -1,6 +1,6 @@
 module.exports = (client, oldEmoji, newEmoji) => {
     try {
-        const guildCache = client.guild.get(emoji.guild.id);
+        const guildCache = client.guild.get(newEmoji.guild.id);
         if (guildCache.logs.enable == true) {
             if (guildCache.logs.id == " ") return;
             if (isNaN(guildCache.logs.id == true)) return;

@@ -8,12 +8,12 @@ module.exports = async (client, oldChannel, newChannel) => {
             chanel.id = newChannel.id;
             await guild.save();
         }
-        const guildCache = client.guild.get(newChannel.guild.id);
-        if (guildCache.logs.enable == true) {
-            if (guildCache.logs.id == " ") return;
-            if (isNaN(guildCache.logs.id == true)) return;
+        const guild = client.guild.get(newChannel.guild.id);
+        if (guild.logs.enable == true) {
+            if (guild.logs.id == " ") return;
+            if (isNaN(guild.logs.id == true)) return;
             const { WebhookClient, MessageEmbed } = require('discord.js');
-            const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
+            const hook = new WebhookClient(guild.logs.id, guild.logs.token)
             let mod = false;
             const embed = new MessageEmbed()
                 .setColor("#40598F")

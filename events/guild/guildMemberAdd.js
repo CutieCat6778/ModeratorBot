@@ -50,8 +50,25 @@ module.exports = async (client, member) => {
             const filter = m => m.author.id == member.id;
             channel.awaitMessages(filter, { max: 1, time: 30000 })
                 .then(async m => {
+                    if(!m) {
+                        await channel.send("You failed the capcha, please join to the server back to redo the capcha");
+                        if (guild.wellcome.enable == true && guild.wellcome.channelId != " ") {
+                            let wellchannel = member.guild.channels.cache.get(guild.wellcome.channelId);
+                            if (!wellchannel) return;
+                            let embed = new MessageEmbed()
+                                .setColor("#40598F")
+                                .setTitle("<:captcha:777490656813645836> Member failed")
+                                .setThumbnail(member.user.displayAvatarURL())
+                                .setDescription(`${member} just failed the capcha`);
+                            if (canDm == false) {
+                                await channel.delete();
+                            }
+                            wellchannel.send(embed);
+                        }
+                        return member.kick("The member failed the capcha");
+                    }
                     if (isNaN(m.first().toString()) == true || parseInt(m.first().toString()) != c) {
-                        channel.send("You failed the capcha, please join to the server back to redo the capcha");
+                        await channel.send("You failed the capcha, please join to the server back to redo the capcha");
                         if (guild.wellcome.enable == true && guild.wellcome.channelId != " ") {
                             let wellchannel = member.guild.channels.cache.get(guild.wellcome.channelId);
                             if (!wellchannel) return;
