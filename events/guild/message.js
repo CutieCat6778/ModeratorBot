@@ -220,7 +220,7 @@ module.exports = async (client, message) => {
                         }, 7200000)
                         return message.channel.send("You are being ratelimited, please wait 2h to use this type of command again!");
                     }
-                    user--;
+                    user.user--;
                 }
                 if (commandfile.category == "moderation" || commandfile.category == "management") {
                     if (guildCache.logs.enable == true) {
