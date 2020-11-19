@@ -204,23 +204,25 @@ module.exports = async (client, message) => {
                 const cmd = args.shift().toLowerCase();
                 const commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
                 if (!commandfile) return;
-                if (commandfile.category == "api") {
-                    let user = client.ratelimmit.get(message.author.id);
+                if (commandfile.config.category == "api") {
+                    let user = client.ratelimit.get(message.author.id);
                     if (!user) {
-                        client.ratelimmit.set(message.author.id, {
+                        client.ratelimit.set(message.author.id, {
                             "used": 10,
-                            "votes": 0,
-                            "created": new Date()
+                            "votes": 0
                         })
-                        user = client.ratelimmit.get(message.author.id);
+                        user = client.ratelimit.get(message.author.id);
                     }
-                    if (user.used == 0 && message.author.id != '762749432658788384') {
+                    if (user.used == 0) {
                         client.setTimeout(() => {
-                            client.ratelimmit.delete(message.author.id);
+                            client.ratelimit.delete(message.author.id);
                         }, 7200000)
-                        return message.channel.send("You are being ratelimited, please wait 2h to use this type of command again!");
+                        let embed = new MessageEmbed()
+                            .setColor("#40598F")
+                            .setDescription("You are being **ratelimited**!\n Please wait **`2 hours`** to use this __type of command again!__\n Or vote the bot on **[top.gg](https://top.gg/bot/764901016692588554)** to skip the **`2 hours`**!")
+                        return message.channel.send(embed);
                     }
-                    user.user--;
+                    user.used--;
                 }
                 if (commandfile.category == "moderation" || commandfile.category == "management") {
                     if (guildCache.logs.enable == true) {
