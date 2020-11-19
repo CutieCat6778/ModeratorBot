@@ -13,6 +13,9 @@ module.exports = async (client, channel) => {
         let muterole = channel.guild.roles.cache.find((r) => r.name === "Muted");
         if (!muterole) {
             try {
+                if(channel.guild.roles.cache.size > 250){
+                    return;
+                }
                 muterole = await channel.guild.roles.create({
                     data: {
                         name: 'Muted',
@@ -34,6 +37,9 @@ module.exports = async (client, channel) => {
         });
         let vertifyrole = channel.guild.roles.cache.find((r) => r.name === "Unvertified");
         if (!vertifyrole) {
+            if(channel.guild.roles.cache.size > 250){
+                return;
+            }
             vertifyrole = await channel.guild.roles.create({
                 data: {
                     name: 'Unvertified',

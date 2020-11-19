@@ -13,6 +13,9 @@ module.exports = async function warn(message, target, reason, args0, client) {
     if (args0) {
         let muterole = message.guild.roles.cache.find((r) => r.name === "Muted");
         if (!muterole) {
+            if(message.guild.roles.cache.size > 250){
+                return message.channel.send("Your server has reached max roles, please delete a role that you don't need and run this command again!")
+            }
             muterole = await message.guild.roles.create({
                 data: {
                     name: 'Muted',

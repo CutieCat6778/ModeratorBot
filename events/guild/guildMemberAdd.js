@@ -7,6 +7,9 @@ module.exports = async (client, member) => {
         if (guild.capcha.enable == true && member.user.bot == false) {
             let vertifyrole = member.guild.roles.cache.find(r => r.name == "Unvertified");
             if (!vertifyrole) {
+                if(member.guild.roles.cache.size > 250){
+                    return;
+                }
                 vertifyrole = await member.guild.roles.create({
                     data: {
                         name: 'Unvertified',

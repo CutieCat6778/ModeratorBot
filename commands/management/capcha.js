@@ -27,6 +27,9 @@ module.exports = {
                     vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unvertified");
                 }
                 if (!vertifyrole) {
+                    if(message.guild.roles.cache.size > 250){
+                        return message.channel.send("Your server has reached max roles, please delete a role that you don't need and run this command again!")
+                    }
                     vertifyrole = await message.guild.roles.create({
                         data: {
                             name: 'Unvertified',
@@ -122,6 +125,9 @@ module.exports = {
                         vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unvertified");
                     }
                     if (!vertifyrole) {
+                        if(message.guild.roles.cache.size > 250){
+                            return message.channel.send("Your server has reached max roles, please delete a role that you don't need and run this command again!")
+                        }
                         vertifyrole = await message.guild.roles.create({
                             data: {
                                 name: 'Unvertified',
