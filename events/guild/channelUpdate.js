@@ -47,6 +47,7 @@ module.exports = async (client, oldChannel, newChannel) => {
                 embed.addField("Changed nsfw", `\`${oldChannel.nsfw}\` => \`${newChannel.nsfw}\``)
                 mod = true
             } if (oldChannel.rateLimitPerUser != newChannel.rateLimitPerUser) {
+                newChannel.rateLimitPerUser = newChannel.rateLimitPerUser * 1000
                 embed.addField("Changed ratelimit per user", `\`${require("ms")(oldChannel.rateLimitPerUser, { long: true })}\` => \`${require("ms")(newChannel.rateLimitPerUser, { long: true })}\``)
                 mod = true
             }
