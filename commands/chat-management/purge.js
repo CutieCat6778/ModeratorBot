@@ -5,7 +5,7 @@ module.exports = {
         category: "chat-management",
         perms: ["MANAGE_MESSAGES"],
         description: "You use this command to delete messages, but faster",
-        bot: ["MANAGE_MESSAGES"]
+        bot: ["MANAGE_MESSAGES", "MANAGE_CHANNELS"]
     },
     async execute (client, message, args) {
         if (!args[0]) return message.channel.send("Please specific a number of lines");
