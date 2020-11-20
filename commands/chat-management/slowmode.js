@@ -7,7 +7,7 @@ module.exports = {
         description: "You use this command to enable or disable slowmode",
         aliases: ["limit", "ratelimit", "slowm"],
         category: "chat-management",
-        bot: ["MANAGE_MESSAGES"]
+        bot: ["MANAGE_MESSAGES", "MANAGE_CHANNELS"]
     },
     async execute(client, message, args) {
         try {
