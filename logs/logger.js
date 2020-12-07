@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js")
 module.exports = function wellcomelogs(channelName, logsStatus) {
     let embed = new MessageEmbed()
         .setColor("#40598F")
-        .setTitle("Logger")
+        .setTitle("Updated logger")
         .addField("Log channel", `${channelName}`)
         .addField("Status", logsStatus)
         .setTimestamp()

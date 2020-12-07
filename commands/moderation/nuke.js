@@ -17,9 +17,13 @@ module.exports = {
                         return message.channel.send("Invalid options");
                     case "y":
                         const oldChannel = message.channel;
-                        const channel = await message.guild.channels.create(oldChannel.name, {
-                            type: oldChannel.type, parent: oldChannel.parent.id
-                        });
+                        const obj = {
+                            type: oldChannel.type
+                        }
+                        if(oldChannel.parent){
+                            obj.parent = oldChannel.parent.id
+                        }
+                        const channel = await message.guild.channels.create(oldChannel.name, obj);
                         await channel.setParent(oldChannel.parent.id);
                         await channel.setPosition(oldChannel.position);
                         await oldChannel.delete();
@@ -39,9 +43,13 @@ module.exports = {
                     default:
                         return message.channel.send("Invalid options");
                     case "y":
-                        const channel = await message.guild.channels.create(oldChannel.name, {
-                            type: oldChannel.type, parent: oldChannel.parent.id
-                        });
+                        const obj = {
+                            type: oldChannel.type
+                        }
+                        if(oldChannel.parent){
+                            obj.parent = oldChannel.parent.id
+                        }
+                        const channel = await message.guild.channels.create(oldChannel.name, obj);
                         await channel.setParent(oldChannel.parent.id);
                         await channel.setPosition(oldChannel.position);
                         await oldChannel.delete();
