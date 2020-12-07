@@ -24,7 +24,7 @@ module.exports = {
                             obj.parent = oldChannel.parent.id
                         }
                         const channel = await message.guild.channels.create(oldChannel.name, obj);
-                        await channel.setParent(oldChannel.parent.id);
+                        obj.parent ? await channel.setParent(oldChannel.parent.id) : null
                         await channel.setPosition(oldChannel.position);
                         await oldChannel.delete();
                         //done
@@ -50,7 +50,7 @@ module.exports = {
                             obj.parent = oldChannel.parent.id
                         }
                         const channel = await message.guild.channels.create(oldChannel.name, obj);
-                        await channel.setParent(oldChannel.parent.id);
+                        obj.parent ? await channel.setParent(oldChannel.parent.id) : null
                         await channel.setPosition(oldChannel.position);
                         await oldChannel.delete();
                         //done
