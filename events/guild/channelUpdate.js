@@ -39,11 +39,12 @@ module.exports = async (client, oldChannel, newChannel) => {
                 mod = true
             }
             if (oldChannel.parent != newChannel.parent) {
-                oldParent = oldChannel.parent.name ? oldChannel.parent.name : "none"
-                newParent = newChannel.parent.name ? newChannel.parent.name : "none"
+                oldParent = oldChannel.parent ? oldChannel.parent.name : "none"
+                newParent = newChannel.parent ? newChannel.parent.name : "none"
                 embed.addField("Moved category", `\`${oldParent}\` => \`${newParent}\``)
                 mod = true
-            } if (oldChannel.nsfw != newChannel.nsfw) {
+            }
+            if (oldChannel.nsfw != newChannel.nsfw) {
                 embed.addField("Changed nsfw", `\`${oldChannel.nsfw}\` => \`${newChannel.nsfw}\``)
                 mod = true
             } if (oldChannel.rateLimitPerUser != newChannel.rateLimitPerUser) {
