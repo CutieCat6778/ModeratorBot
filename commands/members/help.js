@@ -21,11 +21,11 @@ module.exports = {
                         **__Usefull links__**
 
                         **<:website:777495410893389834> Main website**
-                        [https://www.moddy.tk](https://www.moddy.tk)
+                        [https://www.moddy.js.org](https://www.moddy.js.org)
                         **<:command:777495685082775552> Commands list**
-                        [https://www.moddy.tk/commands](https://www.moddy.tk/commands.html)
+                        [https://www.moddy.js.org/commands](https://www.moddy.js.org/commands.html)
                         **<:support:777495932472131604> Support server**
-                        [https://www.moddy.tk/support](https://www.moddy.tk/support)
+                        [https://www.moddy.js.org/support](https://www.moddy.js.org/support)
 
                         **__How to use help commands__**
 
