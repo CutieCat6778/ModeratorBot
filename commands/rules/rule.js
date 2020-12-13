@@ -79,7 +79,7 @@ module.exports = {
                     }
                     const embed = new MessageEmbed()
                         .setColor("#40598F")
-                        .setAuthor(`<:rules:774311089445535765> Rule #${args[0]}`, message.guild.iconURL())
+                        .setTitle(`<:rules:774311089445535765> Rule #${args[0]}`, message.guild.iconURL())
                         .setDescription(`**${guild.rules.rulesArr.find(a => a.ruleNum == parseInt(args[0])).ruleContent}**\n[Please read <#${guild.rules.channelId}> for more information](https://discordapp.com/channels/${message.guild.id}/${guild.rules.channelId}/${guild.rules.messageId}/)`)
                         .setTimestamp()
                         .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
