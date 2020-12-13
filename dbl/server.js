@@ -26,6 +26,11 @@ module.exports = (client) => {
             if (userRatelimit) {
                 userRatelimit.votes++;
                 userRatelimit.used = userRatelimit + 15 * (userRatelimit.votes + 1);
+            }else if(!userRatelimit){
+                client.ratelimit.set(user.id, {
+                    "votes": 1,
+                    "used": 25
+                })
             }
         } else hook.send(embed)
     })
