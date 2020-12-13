@@ -24,9 +24,9 @@
     "url": "https://github.com/CutieCat6778/Moddy/issue"
   },
   "dependencies": {
+    "@top-gg/sdk": "^3.0.3",
     "body-parse": "^0.1.0",
     "common-tags": "^1.8.0",
-    "dblapi.js": "^2.4.1",
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -38,6 +38,7 @@
     "request": "^2.88.2",
     "string-toolkit": "^1.0.89",
     "systeminformation": "^4.27.11",
+    "topgg-autoposter": "^1.1.3",
     "translate-google": "^1.4.3"
   }
 }

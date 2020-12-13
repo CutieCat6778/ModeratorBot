@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { WebhookClient, MessageEmbed } = require("discord.js");
-const DBL = require("dblapi.js");
 const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
+const dbl = require('../../dbl/server');
 
 module.exports = async (client) => {
     try {
@@ -11,25 +11,7 @@ module.exports = async (client) => {
             useUnifiedTopology: true
         })
         await require("../../functions/guildCache")(client);
-        const dbl = new DBL(process.env.dbl, 
-        { webhookPort: 5002, webhookAuth: '23072006' });
-        dbl.on('posted', () => {
-            hook.send("DBL posted");
-        })
-        dbl.on('error', e => {
-            return require('../../tools/error')(e, undefined);
-        })
-        dbl.webhook.on('ready', hook => {
-            console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
-        });
-        dbl.webhook.on('vote', async vote => {
-            console.log(vote);
-            const user = await client.users.fetch(vote.user);
-            if(user){
-                hook.send(`${user.username} just voted ${client.user.username}`);
-            }else hook.send(`Some one with ID ${vote.user} voted ${client.user.username}`)
-        });
-        await dbl.postStats(client.guilds.cache.size);
+        await dbl(client);
         if (!process.env.hook) {
             const embed = new MessageEmbed()
                 .setColor("#40598F")
