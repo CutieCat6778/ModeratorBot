@@ -8,7 +8,7 @@ module.exports = (client) => {
     const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
     const app = express()
 
-    const webhook = new Topgg.Webhook(token)
+    const webhook = new Topgg.Webhook("23072006")
 
     app.post('/dblwebhook', webhook.middleware(), async (req, res) => {
         console.log(req.vote);
