@@ -219,7 +219,7 @@ module.exports = async (client, message) => {
                         }, 7200000)
                         let embed = new MessageEmbed()
                             .setColor("#40598F")
-                            .setDescription("You are being **ratelimited**!\n Please wait **`2 hours`** to use this __type of command again!__\n Or vote the bot on **[top.gg](https://top.gg/bot/764901016692588554)** to skip the **`2 hours`**!")
+                            .setDescription("You are being **ratelimited**!\n Please wait **`2 hours`** to use this __type of command again!__\n Or vote the bot on **[top.gg](https://moddy.js.org/vote)** to skip the **`2 hours`**!")
                         return message.channel.send(embed);
                     }
                     user.used--;
