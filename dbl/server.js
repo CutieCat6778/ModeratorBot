@@ -15,7 +15,7 @@ module.exports = (client) => {
         const user = await client.users.fetch(req.vote.user);
         const embed = new MessageEmbed()
             .setColor("#40598F")
-            .setDescription(`${user ? user.username : req.vote.user} voted ${client.user.username}`)
+            .setTitle(`${user ? user.username : req.vote.user} voted ${client.user.username}`)
         if (user) {
             hook.send(embed);
             const channel = await user.createDM();
@@ -35,7 +35,7 @@ module.exports = (client) => {
     poster.on("posted", () => {
         const embed = new MessageEmbed()
             .setColor("#40598F")
-            .setDescription(`Moddy stats has been posted on Top.gg`)
+            .setTitle(`Moddy stats has been posted on Top.gg`)
         hook.send(embed);
     })
 
