@@ -11,7 +11,7 @@ module.exports = {
     async execute(client, message, args) {
         try {
             if (!args[0]) {
-                return message.reply(require('../../noArgs/role-management/deleterole.js')(guildCache.prefix));
+                return message.reply(require('../../noArgs/role-management/inrole.js')(guildCache.prefix));
             }
             const role = message.guild.roles.cache.get(await require('../../tools/mentions')(args[0]));
             if (!role) return message.channel.send("Role not found");
