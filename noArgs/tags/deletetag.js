@@ -8,7 +8,7 @@ module.exports = function help(prefix) {
             **All commands:** \`${prefix} deletetag [key_word]\`
                 Delete a tag that you think it is stupid
             **Example**: 
-            \`${prefix} deletetag process.env.name\`
+            \`${prefix} deletetag moddy\`
         `)
     return embed;
 }

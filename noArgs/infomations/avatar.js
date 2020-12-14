@@ -8,7 +8,7 @@ module.exports = function help(prefix) {
             **All commands:** \`${prefix} av [@user]\`
                 Display your/someone is avatar
             **Example**: 
-            \`${prefix} avatar @process.env.name\`
+            \`${prefix} avatar @moddy\`
         `)
     return embed;
 }
