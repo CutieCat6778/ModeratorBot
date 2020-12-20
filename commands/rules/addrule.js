@@ -9,9 +9,9 @@ module.exports = {
         bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
-        try{
+        try {
             const guild = await require('../../tools/getGuild')(client, message.guild.id);
-            if(guild.rules.enable == false) return message.channel.send("The rules is disabled")
+            if (guild.rules.enable == false) return message.channel.send("The rules is disabled")
             const filter = m => m.author.id == message.author.id;
             message.channel.send(`Please tell me the rule number ${guild.rules.rulesArr.length + 1} (__Only the rule's content !__)`);
             let collected = await require('../../tools/collectMessage')(message, filter);
@@ -24,16 +24,16 @@ module.exports = {
                 .setFooter(message.guild.name, message.guild.iconURL())
                 .setTimestamp(new Date())
             const msg = await message.guild.channels.cache.get(guild.rules.channelId).messages.fetch(guild.rules.messageId);
-            if(!msg){
+            if (!msg) {
                 await message.guild.channels.cache.get(guild.rules.channelId).send(embed);
-            }else if(msg){
+            } else if (msg) {
                 await msg.edit(embed);
             }
-            await guild.updateOne({rules: guild.rules});
-            return message.channel.send(`Successfully added the rule#${obj.ruleNum} to rules list`)
-        }catch(e){
+            await guild.updateOne({ rules: guild.rules });
+            return require('../../tools/sendMessage')(message, `Successfully added the rule#${obj.ruleNum} to rules list`)
+        } catch (e) {
             return require('../../tools/error')(e, message);
         }
-        
+
     }
 }

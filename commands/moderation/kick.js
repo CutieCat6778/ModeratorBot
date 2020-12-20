@@ -12,12 +12,12 @@ module.exports = {
     async execute (client, message, args) {
         try {
             if (!args[0]) {
-                return message.reply(require("../../noArgs/moderation/kick")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/kick")(client.guild.get(message.guild.id).prefix));
             }
             let target = message.guild.members.cache.get(require("../../tools/mentions")(args[0]));
             if (!target) return message.channel.send("Member not found"); 
             if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
-                return message.reply(require("../../functions/permissionMiss")("I don't have permission to kick him/her"));
+                return require('../../tools/sendMessage')(message, require("../../functions/permissionMiss")("I don't have permission to kick him/her"));
             }
             if (target) {
                 if (args[0]) {
@@ -27,7 +27,7 @@ module.exports = {
                     if (!reason) reason = "No reason provided";
                     await target.send(text);
                     await target.kick(reason);
-                    message.channel.send(text);
+                    require('../../tools/sendMessage')(message, text);
                     target.send(`You has been kicked from **${message.guild.name}** for reason **${reason}**`);
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
@@ -41,7 +41,7 @@ module.exports = {
                         }
                     }
                 } else {
-                    return message.reply(require("../../noArgs/moderation/kick")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/kick")(client.guild.get(message.guild.id).prefix));
                 }
             }
         } catch (e) {

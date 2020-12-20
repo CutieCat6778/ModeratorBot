@@ -149,7 +149,7 @@ module.exports = async (client, message) => {
                 } else if (!guildCache.prefix || !guildCache) {
                     embed.setDescription(`My prefix in this server is \`${process.env.prefix}\`\n If you need help type in chat \`${process.env.prefix} help\``)
                 }
-                message.reply(embed);
+                require('../../tools/sendMessage')(message, embed);
             }
             //user mentions
             if (message.mentions.members) {
@@ -162,7 +162,7 @@ module.exports = async (client, message) => {
                                 .setColor("#40598F")
                                 .setDescription(`<:afk:777491403676188702> <@!${users}> AFK - **${userCache.status}**`)
                                 .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
-                            message.channel.send(embed);
+                            require('../../tools/sendMessage')(message, embed);
                         }
                     } else if (users.length > 1) {
                         users.forEach(user => {
@@ -172,7 +172,7 @@ module.exports = async (client, message) => {
                                     .setColor("#40598F")
                                     .setDescription(`<:afk:777491403676188702> <@!${user}> AFK - **${userCache.status}**`)
                                     .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
-                                message.channel.send(embed);
+                                require('../../tools/sendMessage')(message, embed);
                             }
                         })
                     }
@@ -220,7 +220,7 @@ module.exports = async (client, message) => {
                         let embed = new MessageEmbed()
                             .setColor("#40598F")
                             .setDescription("You are being **ratelimited**!\n Please wait **`2 hours`** to use this __type of command again!__\n Or vote the bot on **[top.gg](https://moddy.js.org/vote)** to skip the **`2 hours`**!")
-                        return message.channel.send(embed);
+                        return require('../../tools/sendMessage')(message, embed);
                     }
                     user.used--;
                 }
@@ -255,13 +255,13 @@ module.exports = async (client, message) => {
                     }
                 }
                 if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && message.author.id != "762749432658788384") {
-                    return message.reply(require("../../functions/permissionMiss")(commandfile.config.perms))
+                    return require('../../tools/sendMessage')(message, require("../../functions/permissionMiss")(commandfile.config.perms))
                 } else if (!commandfile.config.perms.includes("BOT_OWNER")) {
                     if (message.channel.permissionsFor(message.member).has(commandfile.config.perms) == false) {
-                        return message.reply(require("../../functions/permissionMiss")(commandfile.config.perms))
+                        return require('../../tools/sendMessage')(message, require("../../functions/permissionMiss")(commandfile.config.perms))
                     }
                     if (message.channel.permissionsFor(message.guild.me).has(commandfile.config.bot) == false) {
-                        return message.reply(require("../../functions/permissionMissMe")(commandfile.config.perms))
+                        return require('../../tools/sendMessage')(message, require("../../functions/permissionMissMe")(commandfile.config.perms))
                     }
                 }
                 return commandfile.execute(client, message, args, guildCache)

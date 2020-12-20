@@ -44,7 +44,7 @@ module.exports = {
                     .addField("Total deaths", country.TotalDeaths, true)
                     .addField("New recovered", country.NewRecovered, true)
                     .addField("Total recovered", country.TotalRecovered, true)
-                return message.channel.send(embed);
+                return require('../../tools/sendMessage')(message, embed);
             })
         }catch(e){
             return require('../../tools/error')(e, message);

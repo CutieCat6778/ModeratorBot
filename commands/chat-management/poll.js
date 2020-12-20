@@ -20,7 +20,7 @@ module.exports = {
                 .setDescription(question)
                 .setTimestamp()
             message.delete();
-            message.channel.send(embed).then(m => {
+            require('../../tools/sendMessage')(message, embed).then(m => {
                 return stripIndents`${m.react("👍")} \`${m.react("🤔")}\` \`${m.react("👎")}\``
             })
         } catch (e) {

@@ -18,7 +18,7 @@ module.exports = {
                 .setTitle("<:google:774311088958341120> Link for the result")
                 .setDescription(`[Click here](${url})`)
                 .setTimestamp()
-            return message.channel.send(embed);
+            return require('../../tools/sendMessage')(message, embed);
         } catch (e) {
             require("../../tools/error")(e, message);
         }

@@ -9,10 +9,10 @@ module.exports = {
         bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
-        try{
+        try {
             if (!args[0]) {
                 let embed = await require('../../noArgs/api/define.js')(client.guild.get(message.guild.id).prefix);
-                return message.reply(embed);
+                return require('../../tools/sendMessage')(message, embed);;
             } else if (args[0]) {
                 url = `https://api.dictionaryapi.dev/api/v2/entries/en/${args[0]}`;
                 url = encodeURI(url);
@@ -28,18 +28,18 @@ module.exports = {
                         return require('../../tools/error')(err, message)
                     }
                     body = JSON.parse(body);
-                    if(body.message) return message.channel.send(body.message);
-                    if(!body[0]) return message.channel.send("No information found")
+                    if (body.message) return require('../../tools/sendMessage')(message, body.message);
+                    if (!body[0]) return message.channel.send("No information found")
                     let embed = new MessageEmbed()
                         .setColor("#40598F")
                         .setTitle(`<:dictionary:777487396564500510> ${body[0].word} - ${body[0].phonetics[0].text}`)
                         .setDescription(`${body[0].meanings[0].partOfSpeech}\n\n**Definition**\n${body[0].meanings[0].definitions[0].definition}\n\n**Synonyms**\n${body[0].meanings[0].definitions[0].synonyms ? body[0].meanings[0].definitions[0].synonyms.join(", ") : "None"}\n\n**Example**\n${body[0].meanings[0].definitions[0].example ? body[0].meanings[0].definitions[0].example : "none"}`)
-                    return message.channel.send(embed);
+                    return require('../../tools/sendMessage')(message, embed);
                 })
             }
-        }catch(e) {
+        } catch (e) {
             return require('../../tools/error')(e, message);
         }
-        
+
     }
 }

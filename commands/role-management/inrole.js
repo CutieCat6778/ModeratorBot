@@ -11,7 +11,7 @@ module.exports = {
     async execute(client, message, args) {
         try {
             if (!args[0]) {
-                return message.reply(require('../../noArgs/role-management/inrole.js')(guildCache.prefix));
+                return require('../../tools/sendMessage')(message, require('../../noArgs/role-management/inrole.js')(guildCache.prefix));
             }
             const role = message.guild.roles.cache.get(await require('../../tools/mentions')(args[0]));
             if (!role) return message.channel.send("Role not found");
@@ -21,7 +21,7 @@ module.exports = {
                 .setTimestamp()
                 .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
                 .setDescription(`${message.guild.members.cache.map(member => { if(member.roles.cache.has(role.id)){return member.user.username+"\n"}})}`.split(',').join(""))
-            message.channel.send(embed);
+            require('../../tools/sendMessage')(message, embed);
         } catch (e) {
             return require('../../tools/error')(e, message);
         }

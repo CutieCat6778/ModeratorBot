@@ -13,11 +13,11 @@ module.exports = async function warn(message, target, reason, client) {
         if (targetData.time == 0) return message.channel.send("That user don't have any warns to delete");
         targetData.time--;
         targetData.reason = `Deleted one warn for reason __${reason}__`;
-        await guild.updateOne({warn: guild.warn});
+        await guild.updateOne({ warn: guild.warn });
         client.guild.get(message.guild.id).warn = guild.warn;
         let muterole = message.guild.roles.cache.find((r) => r.name === "Muted");
         if (!muterole) {
-            if(message.guild.roles.cache.size > 250){
+            if (message.guild.roles.cache.size > 250) {
                 return message.channel.send("Your server has reached max roles, please delete a role that you don't need and run this command again!")
             }
             muterole = await message.guild.roles.create({
@@ -38,10 +38,10 @@ module.exports = async function warn(message, target, reason, client) {
                 });
             });
         }
-        if(target.roles.cache.has(muterole.id)){
+        if (target.roles.cache.has(muterole.id)) {
             await target.roles.remove(muterole);
         }
-        return message.channel.send(`One warn has been removed from **${target.user.username}**`)
+        return require('../../tools/sendMessage')(message, `One warn has been removed from **${target.user.username}**`)
     } catch (e) {
         return require('../tools/error')(e, message);
     }

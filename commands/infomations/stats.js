@@ -9,7 +9,7 @@ module.exports = {
         description: "You use this command to see my stats",
         bot: ["SEND_MESSAGES"]
     },
-    async execute (client, message, args) {
+    async execute(client, message, args) {
         try {
             const system = {
                 osInfo: 'platform, release',
@@ -34,7 +34,7 @@ module.exports = {
                 .addField("Owner", `\`${owner}\``, true)
                 .addField("Support server", "[Click here](https://discord.gg/98tfpXG)", true)
                 .setTimestamp()
-            message.channel.send(embed)
+            return require('../../tools/sendMessage')(message, embed);
         } catch (e) {
             return require("../../tools/error")(e, message)
         }

@@ -25,7 +25,7 @@ module.exports = {
                 .addField('Mentionable', role.mentionable, true)
                 .setTimestamp()
                 .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
-            message.channel.send(embed);
+            require('../../tools/sendMessage')(message, embed);
         } catch (e) {
             return require("../../tools/error")(e, message);
         }

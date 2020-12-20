@@ -153,7 +153,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                 } else if (!guildCache.prefix || !guildCache) {
                     embed.setDescription(`My prefix in this server is \`${process.env.prefix}\`\n If you need help type in chat \`${process.env.prefix} help\``)
                 }
-                newMessage.reply(embed);
+                newrequire('../../tools/sendMessage')(message, embed);;
             }
             //user mentions
             if (newMessage.mentions.members) {

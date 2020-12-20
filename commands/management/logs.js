@@ -12,7 +12,7 @@ module.exports = {
     async execute(client, message, args) {
         try {
             if (!args[0] || !args[1]) {
-                return message.reply(require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
             }
             if (args[0] == "setup") {
                 if (args[1].toString()) {
@@ -43,11 +43,11 @@ module.exports = {
                         })
 
                 } else {
-                    return message.reply(require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
                 }
             } else if (args[0] == "setting") {
                 if (!args[1]) {
-                    return message.reply(require("../../noArgs/management/textfilter")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/textfilter")(client.guild.get(message.guild.id).prefix));
                 }
                 else if (args[1] == "true") {
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
@@ -94,10 +94,10 @@ module.exports = {
                             return message.channel.send("Succesfully enabled the logs function");
                         })
                 } else {
-                    return message.reply(require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
                 }
             } else {
-                return message.reply(require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
             }
         } catch (e) {
             return require("../../tools/error")(e, message)

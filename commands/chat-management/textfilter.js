@@ -11,7 +11,7 @@ module.exports = {
     async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return message.reply(require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
             }
             if (args[0] == "setup") {
                 let guild = await require("../../tools/getGuild")(client, message.guild.id);
@@ -34,7 +34,7 @@ module.exports = {
                             That mean you have chosed that bot will react only with \`Cap messages\` and \`Bad words\`
                     `)
                     .setTimestamp()
-                message.channel.send(embed);
+                require('../../tools/sendMessage')(message, embed);
                 let collected = await require('../../tools/collectMessage')(message, (user) => user.id == message.author.id);
                 const options = collected.content.toString().split(" ");
                 if (options.length == 1) {
@@ -99,7 +99,7 @@ module.exports = {
                 }
             } else if (args[0] == "setting") {
                 if (!args[1]) {
-                    return message.reply(require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
                 }
                 else if (args[1] == "true") {
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
@@ -249,10 +249,10 @@ module.exports = {
                         }
                     }
                 } else {
-                    return message.reply(require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
                 }
             } else {
-                return message.reply(require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
             }
         } catch (e) {
             return require("../../tools/error")(e, message)

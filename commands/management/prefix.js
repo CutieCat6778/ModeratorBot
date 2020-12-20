@@ -12,7 +12,7 @@ module.exports = {
         try {
             if (!args[0]) {
                 let emebd = await require("../../noArgs/management/prefix")(client.guild.get(message.guild.id).prefix);
-                message.reply(emebd);
+                require('../../tools/sendMessage')(message, emebd);
             } else if (args[1]) {
                 return message.channel.send("The prefix can be only one word")
             } else if (args[0].startsWith("<&!")) {

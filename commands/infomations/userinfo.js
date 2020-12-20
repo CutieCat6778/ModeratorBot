@@ -40,8 +40,8 @@ module.exports = {
                     }
                 }
             }
-            message.channel.send(embed.addField("Joined server", date, true)
-                .addField("Joined Discord", date2, true))
+            return require('../../tools/sendMessage')(message, (embed.addField("Joined server", date, true)
+                .addField("Joined Discord", date2, true)))
         } catch (e) {
             return require("../../tools/error")(e, message);
         }

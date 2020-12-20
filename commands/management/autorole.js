@@ -12,7 +12,7 @@ module.exports = {
     async execute (client, message, args) {
         try {
             if (!args[0] || !args[1]) {
-                return message.reply(require("../../noArgs/management/autorole")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/management/autorole")(client.guild.get(message.guild.id).prefix));
             }
             if (args[0] == "setup") {
                 if (args[1]) {
@@ -24,7 +24,7 @@ module.exports = {
                     guild.autorole.enable = true;
                     await guild.save();
                     await require('../../functions/guildCacheReload')(client);
-                    message.channel.send("Successfully enabled Auto assign role function");
+                    require('../../tools/sendMessage')(message, "Successfully enabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -36,11 +36,11 @@ module.exports = {
                         }
                     }
                 } else {
-                    return message.reply(require("../../noArgs/management/autorole")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/autorole")(client.guild.get(message.guild.id).prefix));
                 }
             } else if (args[0] == "setting") {
                 if(!args[1]){
-                    return message.reply(require("../../noArgs/management/textfilter")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/textfilter")(client.guild.get(message.guild.id).prefix));
                 }
                 else if (args[1] == "true") {
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
@@ -49,7 +49,7 @@ module.exports = {
                     await guild.save();
                     let role = message.guild.channels.cache.get(guild.autorole.roleId);
                     await require('../../functions/guildCacheReload')(client);
-                    message.channel.send("Successfully enabled Auto assign role function");
+                    require('../../tools/sendMessage')(message, "Successfully enabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -67,7 +67,7 @@ module.exports = {
                     await guild.save();
                     let role = message.guild.channels.cache.get(guild.autorole.roleId);
                     await require('../../functions/guildCacheReload')(client);
-                    message.channel.send("Successfully disabled Auto assign role function");
+                    require('../../tools/sendMessage')(message, "Successfully disabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -86,7 +86,7 @@ module.exports = {
                     guild.autorole.enable = true;
                     await guild.save();
                     await require('../../functions/guildCacheReload')(client);
-                    message.channel.send("Successfully enabled Auto assign role function");
+                    require('../../tools/sendMessage')(message, "Successfully enabled Auto assign role function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -98,10 +98,10 @@ module.exports = {
                         }
                     }
                 } else {
-                    return message.reply(require("../../noArgs/management/autorole")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/autorole")(client.guild.get(message.guild.id).prefix));
                 }
             } else {
-                return message.reply(require("../../noArgs/management/autorole")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/management/autorole")(client.guild.get(message.guild.id).prefix));
             }
         } catch (e) {
             return require("../../tools/error")(e, message)

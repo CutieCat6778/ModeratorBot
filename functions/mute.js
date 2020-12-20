@@ -5,6 +5,6 @@ module.exports = async function mute(muterole, message, args, target) {
     if (target.roles.cache.has(muterole.id)) return message.channel.send("The user is already muted");
     if (!target.roles.cache.has(muterole.id)) {
         await target.roles.add(muterole);
-        message.channel.send(text)
+        require('../../tools/sendMessage')(message, text);
     }
 }

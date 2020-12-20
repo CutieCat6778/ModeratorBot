@@ -12,7 +12,7 @@ module.exports = {
     async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return message.reply(require("../../noArgs/management/capcha")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/management/capcha")(client.guild.get(message.guild.id).prefix));
             }
             if (args[0] == "setup") {
                 const channels = await mentions(args.slice(1));
@@ -27,7 +27,7 @@ module.exports = {
                     vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unvertified");
                 }
                 if (!vertifyrole) {
-                    if(message.guild.roles.cache.size > 250){
+                    if(message.guild.roles.cache.size == 250){
                         return message.channel.send("Your server has reached max roles, please delete a role that you don't need and run this command again!")
                     }
                     vertifyrole = await message.guild.roles.create({
@@ -77,7 +77,7 @@ module.exports = {
                 }
             } else if (args[0] == "setting") {
                 if (!args[1]) {
-                    return message.reply(require("../../noArgs/management/capcha")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/capcha")(client.guild.get(message.guild.id).prefix));
                 }
                 if (args[1] == "true") {
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
@@ -125,7 +125,7 @@ module.exports = {
                         vertifyrole = message.guild.roles.cache.find((r) => r.name === "Unvertified");
                     }
                     if (!vertifyrole) {
-                        if(message.guild.roles.cache.size > 250){
+                        if(message.guild.roles.cache.size == 250){
                             return message.channel.send("Your server has reached max roles, please delete a role that you don't need and run this command again!")
                         }
                         vertifyrole = await message.guild.roles.create({
@@ -175,10 +175,10 @@ module.exports = {
                     }
                 }
                 else {
-                    return message.reply(require("../../noArgs/management/capcha")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/capcha")(client.guild.get(message.guild.id).prefix));
                 }
             } else {
-                return message.reply(require("../../noArgs/management/capcha")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/management/capcha")(client.guild.get(message.guild.id).prefix));
             }
         } catch (e) {
             return require("../../tools/error")(e, message)

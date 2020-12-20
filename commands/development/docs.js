@@ -12,7 +12,7 @@ module.exports = {
         let value = args[0].toString();
         if(!value) return;
         let embed = await fetch(`https://djsdocs.sorta.moe/v2/embed?src=stable&q=${value}`).then(data => data.json())
-        message.channel.send({ embed: embed });
+        require('../../tools/sendMessage')(message, { embed: embed });
         }catch(e) {
             return require("../../tools/error")(e, message);
         }

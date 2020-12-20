@@ -16,7 +16,7 @@ module.exports = {
                 if (!tag || tag.off == false) {
                     return message.channel.send(`There are no tag has key word **${key}**`);
                 } else if (tag) {
-                    message.reply(`i deleted a tag has key name **${key}**`)
+                    require('../../tools/sendMessage')(message, `Deleted a tag has key name **${key}**`)
                     return await tag.remove();
                 }
             }

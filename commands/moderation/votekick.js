@@ -13,14 +13,14 @@ module.exports = {
         try {
             if (!args[0]) {
                 let embed = await require("../../noArgs/moderation/votekick")(client.guild.get(message.guild.id).prefix);
-                return message.reply(embed);
+                return require('../../tools/sendMessage')(message, embed);;
             }
             const target = message.guild.members.cache.get(require("../../tools/mentions")(args[0]));
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ");
             if (!reason || !target) {
                 let embed = await require("../../noArgs/moderation/votekick")(client.guild.get(message.guild.id).prefix);
-                return message.reply(embed);
+                return require('../../tools/sendMessage')(message, embed);;
             }
             if (message.member.id == target.id) return message.channel.send("You can't sue your self");
             let embed = new MessageEmbed()
@@ -36,8 +36,8 @@ module.exports = {
                 .setThumbnail(target.user.displayAvatarURL())
                 .setFooter("The vote will end after 15 minutes")
             message.channel.send(embed).then(async m => {
-                m.react("<:easy:774348021101101096>");
-                m.react("<:x_:774311089310662667>");
+                m.react("✅");
+                m.react("❌");
                 await m.react("🗑️");
                 let posiv = 0;
                 let nega = 0;

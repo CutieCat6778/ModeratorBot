@@ -17,14 +17,14 @@ module.exports = {
                 let embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setDescription("Nice, you don't have any warns")
-                return message.channel.send(embed);
+                return require('../../tools/sendMessage')(message, embed);
             } else if (user && user.time > 0) {
                 let embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setTitle(`<:warning:777488987479736330> You have ${user.time} warns`)
                     .addField("Last reason", user.reason)
                     .setTimestamp()
-                return message.channel.send(embed);
+                return require('../../tools/sendMessage')(message, embed);
             }
         } catch (e) {
             return require("../../tools/error")(e, message)

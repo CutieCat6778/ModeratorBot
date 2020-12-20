@@ -28,7 +28,7 @@ module.exports = {
                     ])
                     .setTimestamp()
                 m.delete();
-                message.channel.send(embed);
+                require('../../tools/sendMessage')(message, embed);
             })
         } catch (e) {
             return require("../../tools/error")(e, message)

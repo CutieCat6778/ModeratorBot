@@ -33,7 +33,7 @@ module.exports = {
                         .addField("Tag's name", key)
                         .addField("Tag's content", `${text}`)
                         .setTimestamp()
-                    return message.channel.send(embed);
+                    return require('../../tools/sendMessage')(message, embed);
                 } else if (tag && tag.off == true) {
                     return message.channel.send("Oops, that tag name is already exist");
                 }

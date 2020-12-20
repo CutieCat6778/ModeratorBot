@@ -7,7 +7,7 @@ module.exports = {
         bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args) {
-        try{
+        try {
             if (!args[0]) {
                 return message.channel.send("Please supply tag's key word");
             } else if (args[0]) {
@@ -16,19 +16,19 @@ module.exports = {
                 if (!tag) {
                     return messages.channel.send(`There are no tag has key word **${key}**`);
                 } else if (tag) {
-                    if(tag.userId != message.author.id) return message.channel.send("You don't have permission to change this tag");
+                    if (tag.userId != message.author.id) return message.channel.send("You don't have permission to change this tag");
                     const filter = m => m.author.id == message.author.id;
                     message.channel.send("Please supply your new tag's content");
                     let collected = await require('../../tools/collectMessage')(message, filter);
                     const text = collected.content.toString();
                     tag.text = text.toString();
                     await tag.save();
-                    return message.channel.send(`Changed the tag's content`)
+                    return require('../../tools/sendMessage')(message, `Changed the tag's content`)
                 }
             }
-        }catch(e) {
+        } catch (e) {
             return await require("../../tools/error")(e, message);
         }
-        
+
     }
 }

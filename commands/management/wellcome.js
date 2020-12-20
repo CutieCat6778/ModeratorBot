@@ -12,7 +12,7 @@ module.exports = {
     async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return message.reply(require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
             }
             if (args[0] == "setup") {
                 if (args[1]) {
@@ -32,7 +32,7 @@ module.exports = {
                         .addField('Server Name', `{server}`, true)
                         .addField('Member count', `{count}`, true)
                         .setTimestamp()
-                    message.channel.send(embed);
+                    require('../../tools/sendMessage')(message, embed);
                     let collected = await require('../../tools/collectMessage')(message, filter);
                     if (collected.content) {
                         let embed1 = new MessageEmbed()
@@ -69,7 +69,7 @@ module.exports = {
                         }
                     }
                 } else {
-                    return message.reply(require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
                 }
             } else if (args[0] == "test") {
                 const guild = await require("../../tools/getGuild")(client, message.guild.id);
@@ -95,7 +95,7 @@ module.exports = {
             }
             else if (args[0] == "setting") {
                 if (!args[1]) {
-                    return message.reply(require("../../noArgs/management/textfilter")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/textfilter")(client.guild.get(message.guild.id).prefix));
                 }
                 else if (args[1] == "true") {
                     let guild = await require("../../tools/getGuild")(client, message.guild.id);
@@ -144,7 +144,7 @@ module.exports = {
                         .addField('Server Name', `{server}`, true)
                         .addField('Member count', `{count}`, true)
                         .setTimestamp()
-                    message.channel.send(embed);
+                    require('../../tools/sendMessage')(message, embed);
                     let collected = await require('../../tools/collectMessage')(message, filter);
                     guild.wellcome.join.text == collected.content.toString();
                     guildCache.wellcome.join.text == collected.content.toString();
@@ -183,7 +183,7 @@ module.exports = {
                         .addField('Server Name', `{server}`, true)
                         .addField('Member count', `{count}`, true)
                         .setTimestamp()
-                    message.channel.send(embed);
+                    require('../../tools/sendMessage')(message, embed);
                     let collected = await require('../../tools/collectMessage')(message, filter);
                     if (collected.content) {
                         let embed1 = new MessageEmbed()
@@ -219,10 +219,10 @@ module.exports = {
                         }
                     }
                 } else {
-                    return message.reply(require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
                 }
             } else {
-                return message.reply(require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
             }
         } catch (e) {
             return require("../../tools/error")(e, message)

@@ -11,7 +11,7 @@ module.exports = {
         try{
             if(!args[0]) {
                 let embed = await require("../../noArgs/members/afk.js")(client.guild.get(message.guild.id).prefix);
-                message.reply(embed);
+                return require('../../tools/sendMessage')(message, embed);
             }else if(args[0]){
                 let status = args.slice(0).join(" ");
                 client.afk.set(message.author.id, {

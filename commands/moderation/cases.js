@@ -13,11 +13,11 @@ module.exports = {
         try {
             if (!args[0]) {
                 let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
-                return message.reply(embed);
+                return require('../../tools/sendMessage')(message, embed);;
             } else if (args[0]) {
                 if (isNaN(args[0]) == true) {
                     let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
-                    return message.reply(embed);
+                    return require('../../tools/sendMessage')(message, embed);;
                 } else if (isNaN(args[0]) == false) {
                     let casenum = parseInt(args[0]);
                     let guild = client.guild.get(message.guild.id);
@@ -41,14 +41,14 @@ module.exports = {
                         .addField("**Reason:**", caseInfo.reason, true)
                         .addField("**Date:**", time + " ago", true)
                         .setTimestamp()
-                    return message.reply(embed);
+                    return require('../../tools/sendMessage')(message, embed);
                 } else {
                     let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
-                    return message.reply(embed);
+                    return require('../../tools/sendMessage')(message, embed);;
                 }
             } else {
                 let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
-                return message.reply(embed);
+                return require('../../tools/sendMessage')(message, embed);;
             }
         } catch (e) {
             return require("../../tools/error")(e, message)

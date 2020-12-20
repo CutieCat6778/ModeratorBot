@@ -12,7 +12,7 @@ module.exports = {
     async execute (client, message, args) {
         try {
             if(!args[0]){
-                return message.reply(require("../../noArgs/moderation/warn")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/warn")(client.guild.get(message.guild.id).prefix));
             }
             let target = message.guild.members.cache.get(require("../../tools/mentions")(args[0]));
             if (!target) return message.channel.send("User not found");
@@ -34,7 +34,7 @@ module.exports = {
                     }
                 }
                 else {
-                    return message.reply(require("../../noArgs/moderation/warn")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/warn")(client.guild.get(message.guild.id).prefix));
                 }
             }
         } catch (e) {

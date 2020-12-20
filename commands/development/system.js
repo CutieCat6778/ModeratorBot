@@ -44,7 +44,7 @@ module.exports = {
                                 Used memory: ${niceBytes(data2.used)}
                             \n\`\`\`
                         ` , true)
-                    message.channel.send(embed);
+                    require('../../tools/sendMessage')(message, embed);
                 });
             });
         } catch (e) {

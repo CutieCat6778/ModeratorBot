@@ -11,7 +11,7 @@ module.exports = {
     async execute(client, message, args) {
         try {
             if (!args[0]) {
-                return message.reply(await require("../../noArgs/members/remind.js")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, await require("../../noArgs/members/remind.js")(client.guild.get(message.guild.id).prefix));
             } else if (args[0]) {
                 const time = args[0].toString();
                 const date = new Date()

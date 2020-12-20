@@ -24,9 +24,9 @@ module.exports = {
                     .setAuthor(`${user.displayName}`, user.user.displayAvatarURL())
                     .setDescription(`   ${snipe.content}`)
                     .setFooter(require("ms")((new Date() - snipe.time), { long: true }) + " ago")
-                return message.channel.send(embed);
+                return require('../../tools/sendMessage')(message, embed);
             } else {
-                message.reply(require("../../noArgs/members/snipe"))(client.guild.get(message.guild.id).prefix)
+                require('../../tools/sendMessage')(message, require("../../noArgs/members/snipe"))(client.guild.get(message.guild.id).prefix)
             }
         } catch (e) {
             return require("../../tools/error")(e, message)

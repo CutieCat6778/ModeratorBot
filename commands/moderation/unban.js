@@ -12,7 +12,7 @@ module.exports = {
     async execute(client, message, args) {
         try {
             if (!args[0]) {
-                return message.reply(require("../../noArgs/moderation/unban")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/unban")(client.guild.get(message.guild.id).prefix));
             }
             let target = await client.users.fetch(require("../../tools/mentions")(args[0]));
             if (!target) return message.channel.send("User not found");
@@ -20,9 +20,9 @@ module.exports = {
             if (!reason) reason = "No reason given!";
             message.guild.fetchBan(target.id).then(async b => {
                 await message.guild.members.unban(target);
-                message.channel.send(`Unbaned **${target.tag}**`)
+                require('../../tools/sendMessage')(message, `Unbaned **${target.tag}**`)
                 if (client.guild.get(message.guild.id)) {
-                    let guildCache =    lient.guild.get(message.guild.id);
+                    let guildCache = client.guild.get(message.guild.id);
                     if (guildCache.logs.enable == false) return;
                     if (guildCache.logs.id == " ") return;
                     if (isNaN(guildCache.logs.id == true)) return;

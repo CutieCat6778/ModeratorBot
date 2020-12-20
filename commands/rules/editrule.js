@@ -10,7 +10,7 @@ module.exports = {
     async execute(client, message, args) {
         try {
             if (!args[0]) {
-                return message.channel.send(await require("../../noArgs/rules/editrule.js")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/sendMessage')(message, await require("../../noArgs/rules/editrule.js")(client.guild.get(message.guild.id).prefix));
             } else if (args[0]) {
                 if (isNaN(args[0]) == true) return message.channel.send("Invalid rule number");
                 else if (isNaN(args[0]) == false) {
@@ -36,8 +36,8 @@ module.exports = {
                     } else if (msg) {
                         await msg.edit(embed);
                     }
-                    await guild.updateOne({rules: guild.rules});
-                    return message.channel.send("Successfully edited the rules.")
+                    await guild.updateOne({ rules: guild.rules });
+                    return require('../../tools/sendMessage')(message, "Successfully edited the rules.")
                 }
             }
         } catch (e) {

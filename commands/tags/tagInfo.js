@@ -24,7 +24,7 @@ module.exports = {
                         .addField("Key word", `${tag.key.slice(0, 1).toUpperCase() + tag.key.slice(1)}`, true)
                         .addField("Date", require("ms")((new Date() - tag.date), { long: true }) + " ago", true)
                         .setTimestamp()
-                    return message.channel.send(embed);
+                    return require('../../tools/sendMessage')(message, embed);
                 }
             }
         } catch (e) {

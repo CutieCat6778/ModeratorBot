@@ -30,7 +30,7 @@ module.exports = {
                 reason = args.slice(1).join(" ");
             }
             await message.channel.setRateLimitPerUser(limit, [reason]);
-            message.channel.send(`Set slowmode to ${ms(limit * 1000, {long: true})}`);
+            require('../../tools/sendMessage')(message, `Set slowmode to ${ms(limit * 1000, {long: true})}`);
         } catch (e) {
             require("../../tools/error")(e, message)
         }

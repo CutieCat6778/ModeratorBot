@@ -26,7 +26,7 @@ module.exports = {
                 .addField("Server created on", `${new Date(message.guild.createdAt).toLocaleString()}`, true)
                 .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
                 .setTimestamp()
-            return message.channel.send(embed)
+            return require('../../tools/sendMessage')(message, embed);
         } catch (e) {
             return require('../../tools/error')(e, message);
         }
