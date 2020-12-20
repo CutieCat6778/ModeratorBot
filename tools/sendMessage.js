@@ -12,6 +12,9 @@ module.exports = (message, text) => {
                     ping.delete();
                 }
             })
+            collector.on('end', (reaction, user) => {
+                m.reactions.removeAll();
+            })
             return m;
         })
     })
