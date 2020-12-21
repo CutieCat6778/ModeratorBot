@@ -27,7 +27,7 @@ module.exports = {
                     if (!reason) reason = "No reason provided";
                     await target.send(text);
                     await target.kick(reason);
-                    require('../../tools/sendMessage')(message, text);
+                    require('../../tools/sendMessage')(message, text, true);
                     target.send(`You has been kicked from **${message.guild.name}** for reason **${reason}**`);
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);

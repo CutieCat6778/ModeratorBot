@@ -35,7 +35,7 @@ module.exports = {
                         target.user = target
                     }
                     message.guild.members.ban(target.id, { reason: reason })
-                    require('../../tools/sendMessage')(message, text);
+                    require('../../tools/sendMessage')(message, text, true);
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -60,7 +60,7 @@ module.exports = {
                     await target.send(`You has been banned from **${message.guild.name}** for reason **${reason}**`);
                     if (isNaN(args[1]) == true) return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/ban")(client.guild.get(message.guild.id).prefix));
                     await target.ban({ days: args[0].toString().toLowerCase(), reason: reason });
-                    require('../../tools/sendMessage')(message, text);
+                    require('../../tools/sendMessage')(message, text, true);
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;

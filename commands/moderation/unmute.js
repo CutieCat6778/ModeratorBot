@@ -25,7 +25,7 @@ module.exports = {
             if (!target.roles.cache.has(muterole.id)) return message.channel.send("The user didn't get mute");
             if (target.roles.cache.has(muterole.id)) {
                 await target.roles.remove(muterole);
-                require('../../tools/sendMessage')(message, text);
+                require('../../tools/sendMessage')(message, text, true);
                 if (client.guild.get(message.guild.id)) {
                     let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
