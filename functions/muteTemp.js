@@ -10,16 +10,16 @@ module.exports = async function temp(client, muterole, message, args, target) {
     let reason = spaces ? args.slice(3).join(" ") : args.slice(2).join(" ");
     if (!reason) reason = "No reason provided";
     if (target.roles.cache.has(muterole.id)) {
-        return require('../../tools/sendMessage')(message, "The user is already get muted");
+        return require('../tools/sendMessage')(message, "The user is already get muted");
     }
     if (!target.roles.cache.has(muterole.id)) {
         await target.roles.add(muterole);
-        require('../../tools/sendMessage')(message, `Muted **${target.displayName}** for ${time}`);
+        require('../tools/sendMessage')(message, `Muted **${target.displayName}** for ${time}`);
     }
     client.setTimeout(() => {
         if (!target.roles.cache.has(muterole.id)) return;
         target.roles.remove(muterole);
-        return require('../../tools/sendMessage')(message, `**${target.displayName}** has been unmuted for ${time}`)
+        return require('../tools/sendMessage')(message, `**${target.displayName}** has been unmuted for ${time}`)
     }, require("ms")(time))
 }
 

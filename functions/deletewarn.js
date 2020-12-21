@@ -41,7 +41,7 @@ module.exports = async function warn(message, target, reason, client) {
         if (target.roles.cache.has(muterole.id)) {
             await target.roles.remove(muterole);
         }
-        return require('../../tools/sendMessage')(message, `One warn has been removed from **${target.user.username}**`)
+        return require('../tools/sendMessage')(message, `One warn has been removed from **${target.user.username}**`)
     } catch (e) {
         return require('../tools/error')(e, message);
     }

@@ -35,7 +35,7 @@ module.exports = async function warn(message, target, reason, args0, client) {
             });
         }
         if (message.member.permissions.has(["MANAGE_GUILD", "MANAGE_MESSAGES"]) == false) {
-            return require('../../tools/sendMessage')(message, require("../functions/permissionMiss")(["MANAGE_GUILD", "MANAGE_MESSAGES"]));
+            return require('../tools/sendMessage')(message, require("../functions/permissionMiss")(["MANAGE_GUILD", "MANAGE_MESSAGES"]));
         }
         if (!targetData) {
             let object = {
@@ -69,5 +69,5 @@ module.exports = async function warn(message, target, reason, args0, client) {
     }
     require('./guildCacheReload')(client);
     target.send(`You have been warned in **${message.guild.name}** for reason **${reason}**`)
-    return require('../../tools/sendMessage')(message, `**${target.user.tag}** has been warned for reason **${reason}**`);
+    return require('../tools/sendMessage')(message, `**${target.user.tag}** has been warned for reason **${reason}**`);
 }
