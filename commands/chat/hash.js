@@ -4,13 +4,13 @@ module.exports = {
     config: {
         name: 'hash',
         aliases: ['hashtext', 'bcrypt'],
-        category: 'text',
+        category: 'chat',
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args, guildCache){
         if(!args[0]){
-            return require('../../tools/sendMessage')(message, require('../../noArgs/chat/backwards.js')(guildCache.prefix))
+            return require('../../tools/sendMessage')(message, require('../../noArgs/chat/hash.js')(guildCache.prefix))
         }else if(args[0]){
             const text = args.slice(0).join(" ");
             bcrypt.hash(text, 10, (err, hash) => {
