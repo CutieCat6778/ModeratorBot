@@ -53,7 +53,7 @@ module.exports = async (client, member) => {
             const filter = m => m.author.id == member.id;
             channel.awaitMessages(filter, { max: 1, time: 30000 })
                 .then(async m => {
-                    if(!m) {
+                    if(!m || m.size == 0) {
                         await channel.send("You failed the capcha, please join to the server back to redo the capcha");
                         if (guild.wellcome.enable == true && guild.wellcome.channelId != " ") {
                             let wellchannel = member.guild.channels.cache.get(guild.wellcome.channelId);
@@ -69,34 +69,35 @@ module.exports = async (client, member) => {
                             wellchannel.send(embed);
                         }
                         return member.kick("The member failed the capcha");
-                    }
-                    if (isNaN(m.first().toString()) == true || parseInt(m.first().toString()) != c) {
-                        await channel.send("You failed the capcha, please join to the server back to redo the capcha");
-                        if (guild.wellcome.enable == true && guild.wellcome.channelId != " ") {
-                            let wellchannel = member.guild.channels.cache.get(guild.wellcome.channelId);
-                            if (!wellchannel) return;
-                            let embed = new MessageEmbed()
+                    }if(m.size != 0){
+                        if (isNaN(m.first().toString()) == true || parseInt(m.first().toString()) != c) {
+                            await channel.send("You failed the capcha, please join to the server back to redo the capcha");
+                            if (guild.wellcome.enable == true && guild.wellcome.channelId != " ") {
+                                let wellchannel = member.guild.channels.cache.get(guild.wellcome.channelId);
+                                if (!wellchannel) return;
+                                let embed = new MessageEmbed()
+                                    .setColor("#40598F")
+                                    .setTitle("<:captcha:777490656813645836> Member failed")
+                                    .setThumbnail(member.user.displayAvatarURL())
+                                    .setDescription(`${member} just failed the capcha`);
+                                if (canDm == false) {
+                                    await channel.delete();
+                                }
+                                wellchannel.send(embed);
+                            }
+                            return member.kick("The member failed the capcha");
+                        } else if (isNaN(m.first().toString()) == false && parseInt(m.first().toString()) == c) {
+                            let goodembed = new MessageEmbed()
                                 .setColor("#40598F")
-                                .setTitle("<:captcha:777490656813645836> Member failed")
-                                .setThumbnail(member.user.displayAvatarURL())
-                                .setDescription(`${member} just failed the capcha`);
+                                .setTitle("<:easy:774348021101101096> You passed the Captcha")
+                                .setDescription(`Welcome to **${member.guild.name}** hope you enjoy the server`)
+                            channel.send(goodembed);
+                            member.roles.remove(vertifyrole);
                             if (canDm == false) {
                                 await channel.delete();
                             }
-                            wellchannel.send(embed);
+                            autoroleWellcome();
                         }
-                        return member.kick("The member failed the capcha");
-                    } else if (isNaN(m.first().toString()) == false && parseInt(m.first().toString()) == c) {
-                        let goodembed = new MessageEmbed()
-                            .setColor("#40598F")
-                            .setTitle("<:easy:774348021101101096> You passed the Captcha")
-                            .setDescription(`Welcome to **${member.guild.name}** hope you enjoy the server`)
-                        channel.send(goodembed);
-                        member.roles.remove(vertifyrole);
-                        if (canDm == false) {
-                            await channel.delete();
-                        }
-                        autoroleWellcome();
                     }
                 })
         } else if (guild.capcha.enable == false || !guild.capcha || member.user.bot == true) {
