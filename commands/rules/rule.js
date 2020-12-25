@@ -38,7 +38,7 @@ module.exports = {
                                         .setDescription(`${rules.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                                         .setFooter(message.guild.name, message.guild.iconURL())
                                         .setTimestamp(new Date())
-                                    require('../../tools/sendMessage')(message, embed);
+                                    require('../../tools/sendMessage')(message, embed, true);
                                     message.channel.send("Is that ok ? [y/n]");
                                     let collected1 = await require('../../tools/collectMessage')(message, filter);
                                     if (collected1.content == "y") {
@@ -83,7 +83,7 @@ module.exports = {
                         .setDescription(`**${guild.rules.rulesArr.find(a => a.ruleNum == parseInt(args[0])).ruleContent}**\n[Please read <#${guild.rules.channelId}> for more information](https://discordapp.com/channels/${message.guild.id}/${guild.rules.channelId}/${guild.rules.messageId}/)`)
                         .setTimestamp()
                         .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
-                    return require('../../tools/sendMessage')(message, embed);
+                    return require('../../tools/sendMessage')(message, embed, true);
                 } else if (args[0].toString() == "display") {
                     if(guild.rules.enable == false) return message.channel.send("The rules is disabled")
                     if(guild.rules.rulesArr.length == 0){
@@ -95,7 +95,7 @@ module.exports = {
                         .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                         .setFooter(message.guild.name, message.guild.iconURL())
                         .setTimestamp(new Date())
-                    require('../../tools/sendMessage')(message, embed);
+                    require('../../tools/sendMessage')(message, embed, true);
                 } else {
                     return require('../../tools/sendMessage')(message, await require("../../noArgs/rules/rule.js")(client.guild.get(message.guild.id).prefix));
                 }
