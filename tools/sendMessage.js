@@ -27,7 +27,7 @@ module.exports = (message, text, boolen) => {
             };
             const collector = await m.createReactionCollector(filter, { time: 15000 });
             collector.on("collect", (reaction, user) => {
-                if (reaction.emoji.name == "🗑️") {
+                if (reaction.emoji.name == "🗑️" && user.id == message.author.id) {
                     m.delete();
                 }
             })
