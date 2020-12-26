@@ -135,7 +135,7 @@ module.exports = async (client, message) => {
                 }
                 client.setTimeout(() => {
                     userCache.times = 0;
-                }, 45000)
+                }, 25000)
                 client.setTimeout(() => {
                     userCache.warn = 0;
                 }, 60000)
