@@ -85,8 +85,8 @@ module.exports = async (client, message) => {
                             .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.user.displayAvatarURL())
                         hook.send(embed);
                     }
-                    if (userCache.times >= 10 || userCache.warn >= 5) {
-                        message.channel.send(`Muted <@!${message.author.id}> for 10 minute, because **he keep ignoring the warnings**`);
+                    if (userCache.times >= 15 || userCache.warn >= 5) {
+                        message.channel.send(`Muted <@!${message.author.id}> for 15 minute, because **he keep ignoring the warnings**`);
                         let muterole = message.guild.roles.cache.find((r) => r.name === "Muted");
                         if (!muterole) {
                             if(message.guild.roles.cache.size > 250){
