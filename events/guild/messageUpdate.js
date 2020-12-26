@@ -139,10 +139,10 @@ module.exports = async (client, oldMessage, newMessage) => {
                 }
                 client.setTimeout(() => {
                     userCache.times = 0;
-                }, 20000)
+                }, 60000)
                 client.setTimeout(() => {
                     userCache.warn = 0;
-                }, 30000)
+                }, 120000)
             }
             //bot mentions
             if (newMessage.content.split(" ").join("").toString().toLowerCase() == "<@764901016692588554>" || newMessage.content.split(" ").join("").toString().toLowerCase() == "<@!764901016692588554>") {
