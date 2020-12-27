@@ -181,12 +181,12 @@ module.exports = async (client, message) => {
             //afk delete
             if (client.afk.get(message.author.id)) {
                 let userCache = client.afk.get(message.author.id);
-                if(userCache.name == true && message.member.displayName.startsWith('[AFK]')){
-                    message.member.setNickname(message.member.displayName.replace('[AFK]', ''))
-                }
                 if (userCache.enable == true) {
                     message.reply("wellcome back, removed you from AFK!");
                     client.afk.delete(message.author.id);
+                    if(userCache.name == true && message.member.displayName.startsWith('[AFK]')){
+                        message.member.setNickname(message.member.displayName.replace('[AFK]', ''))
+                    }
                 }
             }
             //commands working
