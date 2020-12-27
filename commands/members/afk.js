@@ -14,12 +14,18 @@ module.exports = {
                 return require('../../tools/sendMessage')(message, embed);
             }else if(args[0]){
                 let status = args.slice(0).join(" ");
-                client.afk.set(message.author.id, {
+                const obj = {
                     status: status,
                     enable: false,
-                    time: client.uptime
-                })
-                message.reply("moved you to AFK mode, good bye");
+                    time: client.uptime,
+                    name: false,
+                }
+                if(message.member.manageable){
+                    await message.member.setNickname(`[AFK] ${message.member.displayName}`);
+                    obj.name = true;
+                }
+                client.afk.set(message.author.id, obj)
+                message.reply("moved you to AFK mode, good bye!");
                 client.setTimeout(() => {
                     return client.afk.get(message.author.id).enable = true;
                 }, 15000);
