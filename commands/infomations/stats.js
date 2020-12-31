@@ -32,7 +32,7 @@ module.exports = {
                 .addField("Discord.js version", "12.3.1", true)
                 .addField("OS platform", `${os.platform}/${os.release}`, true)
                 .addField("Owner", `\`${owner}\``, true)
-                .addField("Support server", "[Click here](https://discord.gg/98tfpXG)", true)
+                .addField("Support server", "[Click here](https://moddy.js.org/support)", true)
                 .setTimestamp()
             return require('../../tools/sendMessage')(message, embed);
         } catch (e) {
