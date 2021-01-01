@@ -6,7 +6,7 @@ module.exports = async (client, role) => {
             chanel = {
                 name: role.name, id: role.id
             }
-            await guild.save();
+            await guild.updateOne({roles: guild.roles});
         }
         if (guild.logs.enable == true) {
             if (guild.logs.id == " ") return;

@@ -4,7 +4,7 @@ module.exports = async (client, role) => {
         let chanel = guild.roles.find(c => c.id == role.id);
         if (chanel) {
             guild.roles.splice(chanel, 1);
-            await guild.save();
+            await guild.updateOne({roles: guild.roles});
         }
         if (guild.logs.enable == true) {
             if (guild.logs.id == " ") return;
