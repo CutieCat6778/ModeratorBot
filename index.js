@@ -4,6 +4,7 @@ const {readdirSync} = require("fs")
 require('dotenv').config();
 
 client.start = new Date();
+client.totalCommands = 0;
 
 ["aliases", "commands"].forEach(x => client[x] = new Collection());
 ["afk", "spam", "ratelimit", "snipe", "guild"].forEach(x => client[x] = new Map());
