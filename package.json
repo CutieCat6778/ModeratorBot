@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NguyenXD06/shinoneko-djs.git"
+    "url": "https://github.com/NguyenXD06/moddy-djs.git"
   },
   "keywords": [
     "client",
@@ -21,7 +21,7 @@
   "author": "NguyenXD#6485",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CutieCat6778/Moddy/issue"
+    "url": "https://github.com/CutieCat6778/moddy-djs/issue"
   },
   "dependencies": {
     "@top-gg/sdk": "^3.0.3",
