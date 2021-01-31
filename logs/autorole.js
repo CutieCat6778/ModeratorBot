@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js")
 
-module.exports = function wellcomelogs(role, autorole) {
+module.exports = function welcomelogs(role, autorole) {
     let embed = new MessageEmbed()
         .setColor("#40598F")
         .setTitle("Updated auto assign role")

@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js")
 
-module.exports = function wellcomelogs(autorole) {
+module.exports = function welcomelogs(autorole) {
     const embed = new MessageEmbed()
         .setColor("#40598F")
         .setTitle("Updated text filter (anti swear)")

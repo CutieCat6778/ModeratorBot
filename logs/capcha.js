@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js")
 
-module.exports = function wellcomelogs(capcha) {
+module.exports = function welcomelogs(capcha) {
     let embed = new MessageEmbed()
         .setColor("#40598F")
         .setTitle("Updated captcha")

@@ -187,7 +187,7 @@ module.exports = async (client, oldMessage, newMessage) => {
             if (client.afk.get(newMessage.author.id)) {
                 let userCache = client.afk.get(newMessage.author.id);
                 if (userCache.enable == true) {
-                    newMessage.reply("wellcome back, removed you from AFK");
+                    newMessage.reply("welcome back, removed you from AFK");
                     client.afk.delete(newMessage.author.id);
                     await require('../../tools/database/removeAfk')(message.author.id);
                 }

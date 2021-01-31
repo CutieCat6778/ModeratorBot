@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js")
 
-module.exports = function wellcomelogs(channelName, logsStatus) {
+module.exports = function welcomelogs(channelName, logsStatus) {
     let embed = new MessageEmbed()
         .setColor("#40598F")
         .setTitle("Updated logger")

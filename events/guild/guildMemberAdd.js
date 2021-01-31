@@ -55,8 +55,8 @@ module.exports = async (client, member) => {
                 .then(async m => {
                     if(!m || m.size == 0) {
                         await channel.send("You failed the capcha, please join to the server back to redo the capcha");
-                        if (guild.wellcome.enable == true && guild.wellcome.channelId != " ") {
-                            let wellchannel = member.guild.channels.cache.get(guild.wellcome.channelId);
+                        if (guild.welcome.enable == true && guild.welcome.channelId != " ") {
+                            let wellchannel = member.guild.channels.cache.get(guild.welcome.channelId);
                             if (!wellchannel) return;
                             let embed = new MessageEmbed()
                                 .setColor("#40598F")
@@ -72,8 +72,8 @@ module.exports = async (client, member) => {
                     }if(m.size != 0){
                         if (isNaN(m.first().toString()) == true || parseInt(m.first().toString()) != c) {
                             await channel.send("You failed the capcha, please join to the server back to redo the capcha");
-                            if (guild.wellcome.enable == true && guild.wellcome.channelId != " ") {
-                                let wellchannel = member.guild.channels.cache.get(guild.wellcome.channelId);
+                            if (guild.welcome.enable == true && guild.welcome.channelId != " ") {
+                                let wellchannel = member.guild.channels.cache.get(guild.welcome.channelId);
                                 if (!wellchannel) return;
                                 let embed = new MessageEmbed()
                                     .setColor("#40598F")
@@ -96,26 +96,26 @@ module.exports = async (client, member) => {
                             if (canDm == false) {
                                 await channel.delete();
                             }
-                            autoroleWellcome();
+                            autorolewelcome();
                         }
                     }
                 })
         } else if (guild.capcha.enable == false || !guild.capcha || member.user.bot == true) {
-            autoroleWellcome()
+            autorolewelcome()
         }
-        function autoroleWellcome() {
+        function autorolewelcome() {
             //autorole
-            if (guild.autorole.enable == true && guild.wellcome.channelId != " ") {
+            if (guild.autorole.enable == true && guild.welcome.channelId != " ") {
                 let role = member.guild.roles.cache.get(guild.autorole.roleId);
                 if (!role) return;
                 if (member.roles.cache.has(role.id)) return;
                 member.roles.add(role);
             }
-            //wellcome
-            if (guild.wellcome.enable == true && guild.wellcome.channelId != " ") {
-                let channel = member.guild.channels.cache.get(guild.wellcome.channelId);
+            //welcome
+            if (guild.welcome.enable == true && guild.welcome.channelId != " ") {
+                let channel = member.guild.channels.cache.get(guild.welcome.channelId);
                 if (!channel) return;
-                const text = guild.wellcome.join.text.replace('{user}', member).replace('{server}', member.guild.name).replace('{count}', member.guild.members.cache.size)
+                const text = guild.welcome.join.text.replace('{user}', member).replace('{server}', member.guild.name).replace('{count}', member.guild.members.cache.size)
                 let embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setTitle("<:easy:774348021101101096> Member joined")
