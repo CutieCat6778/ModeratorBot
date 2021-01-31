@@ -3,8 +3,8 @@ const { MessageEmbed } = require("discord.js");
 module.exports = async (client, member) => {
     try {
         let guild = await client.guild.get(member.guild.id);
-        if(!guild) guild = await require("../../tools/database/getGuild")(client, member.guild.id)        //capcha
-        if (guild.capcha.enable == true && member.user.bot == false) {
+        if(!guild) guild = await require("../../tools/database/getGuild")(client, member.guild.id)        //captcha
+        if (guild.captcha.enable == true && member.user.bot == false) {
             let vertifyrole = member.guild.roles.cache.find(r => r.name == "Unvertified");
             if (!vertifyrole) {
                 if(member.guild.roles.cache.size > 250){
@@ -18,7 +18,7 @@ module.exports = async (client, member) => {
                     }
                 });
                 member.guild.channels.cache.forEach(async (channel) => {
-                    if (guild.capcha.whitelist.includes(channel.id)) return;
+                    if (guild.captcha.whitelist.includes(channel.id)) return;
                     await channel.createOverwrite(vertifyrole, {
                         READ_MESSAGES: false,
                         SEND_MESSAGES: false,
@@ -35,7 +35,7 @@ module.exports = async (client, member) => {
             let channel = await member.createDM();
             let canDm = true;
             if (!channel) {
-                channel = await member.guild.createChannel(`${member.user.displayName}'s capcha`, {type: "text"});
+                channel = await member.guild.createChannel(`${member.user.displayName}'s captcha`, {type: "text"});
                 await channel.overwritePermissions(message.author.id, { VIEW_CHANNEL: true });
                 await channel.overwritePermissions(client.id, { VIEW_CHANNEL: true });
                 await channel.overwritePermissions(everyoneRole, { VIEW_CHANNEL: false });
@@ -54,7 +54,7 @@ module.exports = async (client, member) => {
             channel.awaitMessages(filter, { max: 1, time: 30000 })
                 .then(async m => {
                     if(!m || m.size == 0) {
-                        await channel.send("You failed the capcha, please join to the server back to redo the capcha");
+                        await channel.send("You failed the captcha, please join to the server back to redo the captcha");
                         if (guild.welcome.enable == true && guild.welcome.channelId != " ") {
                             let wellchannel = member.guild.channels.cache.get(guild.welcome.channelId);
                             if (!wellchannel) return;
@@ -62,16 +62,16 @@ module.exports = async (client, member) => {
                                 .setColor("#40598F")
                                 .setTitle("<:captcha:777490656813645836> Member failed")
                                 .setThumbnail(member.user.displayAvatarURL())
-                                .setDescription(`${member} just failed the capcha`);
+                                .setDescription(`${member} just failed the captcha`);
                             if (canDm == false) {
                                 await channel.delete();
                             }
                             wellchannel.send(embed);
                         }
-                        return member.kick("The member failed the capcha");
+                        return member.kick("The member failed the captcha");
                     }if(m.size != 0){
                         if (isNaN(m.first().toString()) == true || parseInt(m.first().toString()) != c) {
-                            await channel.send("You failed the capcha, please join to the server back to redo the capcha");
+                            await channel.send("You failed the captcha, please join to the server back to redo the captcha");
                             if (guild.welcome.enable == true && guild.welcome.channelId != " ") {
                                 let wellchannel = member.guild.channels.cache.get(guild.welcome.channelId);
                                 if (!wellchannel) return;
@@ -79,13 +79,13 @@ module.exports = async (client, member) => {
                                     .setColor("#40598F")
                                     .setTitle("<:captcha:777490656813645836> Member failed")
                                     .setThumbnail(member.user.displayAvatarURL())
-                                    .setDescription(`${member} just failed the capcha`);
+                                    .setDescription(`${member} just failed the captcha`);
                                 if (canDm == false) {
                                     await channel.delete();
                                 }
                                 wellchannel.send(embed);
                             }
-                            return member.kick("The member failed the capcha");
+                            return member.kick("The member failed the captcha");
                         } else if (isNaN(m.first().toString()) == false && parseInt(m.first().toString()) == c) {
                             let goodembed = new MessageEmbed()
                                 .setColor("#40598F")
@@ -100,7 +100,7 @@ module.exports = async (client, member) => {
                         }
                     }
                 })
-        } else if (guild.capcha.enable == false || !guild.capcha || member.user.bot == true) {
+        } else if (guild.captcha.enable == false || !guild.captcha || member.user.bot == true) {
             autorolewelcome()
         }
         function autorolewelcome() {

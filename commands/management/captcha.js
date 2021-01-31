@@ -3,7 +3,7 @@ const { WebhookClient } = require('discord.js');
 module.exports = {
     config: {
         name: 'captcha',
-        aliases: ["capcha"],
+        aliases: ["captcha"],
         perms: ["MANAGE_GUILD"],
         category: "management",
         description: "Just a simple captcha before people joining",
