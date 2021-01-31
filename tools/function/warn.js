@@ -1,6 +1,6 @@
-const mute = require("../tools/mute");
+const mute = require("./muteTool");
 module.exports = async function warn(message, target, reason, args0, client) {
-    const guild = await require("../tools/getGuild")(client, message.guild.id);
+    const guild = await require("../database/getGuild")(client, message.guild.id);
     let targetData = guild.warn.find(t => t.userId == target.id);
     if (!targetData) {
         const object = {
@@ -35,7 +35,7 @@ module.exports = async function warn(message, target, reason, args0, client) {
             });
         }
         if (message.member.permissions.has(["MANAGE_GUILD", "MANAGE_MESSAGES"]) == false) {
-            return require('../tools/sendMessage')(message, require("../functions/permissionMiss")(["MANAGE_GUILD", "MANAGE_MESSAGES"]));
+            return require('./sendMessage')(message, require("./permissionMiss")(["MANAGE_GUILD", "MANAGE_MESSAGES"]));
         }
         if (!targetData) {
             let object = {
@@ -67,7 +67,7 @@ module.exports = async function warn(message, target, reason, args0, client) {
         targetData.reason = reason;
         await guild.updateOne({ warn: guild.warn });
     }
-    require('./guildCacheReload')(client);
+    require('../cache/guildCacheReload')(client);
     target.send(`You have been warned in **${message.guild.name}** for reason **${reason}**`)
-    return require('../tools/sendMessage')(message, `**${target.user.tag}** has been warned for reason **${reason}**`, true);
+    return require('./sendMessage')(message, `**${target.user.tag}** has been warned for reason **${reason}**`, true);
 }

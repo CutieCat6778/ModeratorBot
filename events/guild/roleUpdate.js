@@ -1,6 +1,6 @@
 module.exports = async (client, oldRole, newRole) => {
     try {
-        const guild = await require('../../tools/getGuild')(client, newRole.guild.id);
+        const guild = await require('../../tools/database/getGuild')(client, newRole.guild.id);
         let role = guild.roles.find(c => c.id == newRole.id);
         if (role) {
             role.name = newRole.name;
@@ -48,6 +48,6 @@ module.exports = async (client, oldRole, newRole) => {
             }
         }
     } catch (e) {
-        return require("../../tools/error")(e, undefined);
+        return require("../../tools/function/error")(e, undefined);
     }
 }

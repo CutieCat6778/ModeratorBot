@@ -10,7 +10,7 @@ module.exports = {
         let commandName = args[0].toLowerCase()
         try {
             if(commandName == "guild"){
-                await require('../../functions/guildCacheReload')(client);
+                await require('../../tools/cache/guildCacheReload')(client);
                 return messasge.channel.send("Done");
             }else if(client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName))){
                 const commandfile = await client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName));
@@ -21,7 +21,7 @@ module.exports = {
                 return message.channel.send("done")
             }else return message.channel.send("Invalid options");
         } catch (e) {
-            return require('../../tools/error')(e, message);
+            return require('../../tools/function/error')(e, message);
         }
     }
 }

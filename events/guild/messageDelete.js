@@ -3,7 +3,7 @@ const { MessageEmbed, WebhookClient } = require("discord.js");
 module.exports = async (client, message) => {
     try {
         const guildCache = client.guild.get(message.guild.id);
-        if (message.channel.id == guildCache.rules.channelId) {
+        if (message.channel.id == guildCache.rules._id) {
             if (message.id == guildCache.rules.messageId) {
                 if (guildCache.rules.rulesArr.length != 0) {
                     const embed = new MessageEmbed()
@@ -12,9 +12,9 @@ module.exports = async (client, message) => {
                         .setDescription(`${guildCache.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                         .setFooter(message.guild.name, message.guild.iconURL())
                         .setTimestamp(new Date())
-                    let msg = await message.guild.channels.cache.get(guildCache.rules.channelId).send(embed);
+                    let msg = await message.guild.channels.cache.get(guildCache.rules._id).send(embed);
                     guildCache.rules.messageId = msg.id;
-                    const guild = require('../../tools/getGuild')(client, message);
+                    const guild = require('../../tools/database/getGuild')(client, message);
                     guild.rules.messageId = msg.id;
                     await guild.save();
                 }
@@ -42,6 +42,6 @@ module.exports = async (client, message) => {
             }
         }
     } catch (e) {
-        return require("../../tools/error")(e, undefined)
+        return require("../../tools/function/error")(e, undefined)
     }
 };

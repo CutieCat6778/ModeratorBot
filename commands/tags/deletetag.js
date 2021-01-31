@@ -12,16 +12,16 @@ module.exports = {
                 return message.channel.send("Please supply tag's key word");
             } else if (args[0]) {
                 const key = args.slice(0).join(" ");
-                let tag = await require("../../tools/getTag")(key);
+                let tag = await require("../../tools/database/getTag")(key);
                 if (!tag || tag.off == false) {
                     return message.channel.send(`There are no tag has key word **${key}**`);
                 } else if (tag) {
-                    require('../../tools/sendMessage')(message, `Deleted a tag has key name **${key}**`)
+                    require('../../tools/function/sendMessage')(message, `Deleted a tag has key name **${key}**`)
                     return await tag.remove();
                 }
             }
         }catch(e) {
-            return await require("../../tools/error")(e, message);
+            return await require("../../tools/function/error")(e, message);
         }
     }
 }

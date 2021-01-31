@@ -1,6 +1,6 @@
 const StringTools = require("string-toolkit");
 const stringTools = new StringTools
-const specialCha = require("../asset/useFullArrays/specialCharacters");
+const specialCha = require("../../asset/useFullArrays/specialCharacters");
 module.exports = function (str) {
     let isUpperCases = 0;
     let length = 0;

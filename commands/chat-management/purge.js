@@ -20,7 +20,7 @@ module.exports = {
                     m.delete({ timeout: 5000, reason: reason });
                 })
             }).catch(e => {
-                return require("../../tools/error")(e, message)
+                return require("../../tools/function/error")(e, message)
             })
     }
 }

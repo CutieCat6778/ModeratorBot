@@ -13,7 +13,7 @@ module.exports = {
         try {
             if (!args[0]) {
                 let embed = await require("../../noArgs/members/bug")(client.guild.get(message.guild.id).prefix)
-                return require('../../tools/sendMessage')(message, embed);
+                return require('../../tools/function/sendMessage')(message, embed);
             } else if (args[0]) {
                 let problem = args.slice(0).join(" ");
                 let embed = new MessageEmbed()
@@ -28,7 +28,7 @@ module.exports = {
                 return hook.send(embed);
             }
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
 
     }

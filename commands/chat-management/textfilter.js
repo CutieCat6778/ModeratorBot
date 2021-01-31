@@ -11,10 +11,10 @@ module.exports = {
     async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
             }
             if (args[0] == "setup") {
-                let guild = await require("../../tools/getGuild")(client, message.guild.id);
+                let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                 if (guild.textfilter.enable == true) return message.channel.send(`Please use command \`${client.guild.get(message.guild.id).prefix} textfilter setting\`, you are already setup the textfilter`)
                 guild.textfilter.enable = true;
                 guildCache.textfilter.enable = true;
@@ -34,8 +34,8 @@ module.exports = {
                             That mean you have chosed that bot will react only with \`Cap messages\` and \`Bad words\`
                     `)
                     .setTimestamp()
-                require('../../tools/sendMessage')(message, embed);
-                let collected = await require('../../tools/collectMessage')(message, (user) => user.id == message.author.id);
+                require('../../tools/function/sendMessage')(message, embed);
+                let collected = await require('../../tools/function/collectMessage')(message, (user) => user.id == message.author.id);
                 const options = collected.content.toString().split(" ");
                 if (options.length == 1) {
                     if (isNaN(options[0])) return message.channel.send("Invalid options");
@@ -85,7 +85,7 @@ module.exports = {
                     }
                 } else return message.channel.send(`Please type this command to report to developer\`${guildCache.prefix} bug Text-filter options.length else\``)
                 await guild.save();
-                await require('../../functions/guildCacheReload')(client);
+                await require('../../tools/cache/guildCacheReload')(client);
                 message.channel.send("Successfully enabled Text filter function");
                 if (client.guild.get(message.guild.id)) {
                     let guildCache = client.guild.get(message.guild.id);
@@ -99,15 +99,15 @@ module.exports = {
                 }
             } else if (args[0] == "setting") {
                 if (!args[1]) {
-                    return require('../../tools/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
                 }
                 else if (args[1] == "true") {
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
+                    let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     if (guild.textfilter.enable == true) return message.channel.send("You already enable it");
                     guild.textfilter.enable = true;
                     await guild.save();
                     guildCache.textfilter.enable = true;
-                    await require('../../functions/guildCacheReload')(client);
+                    await require('../../tools/cache/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Text filter function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
@@ -120,7 +120,7 @@ module.exports = {
                         }
                     }
                 } else if (args[1] == "false") {
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
+                    let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     if (guild.textfilter.enable == false) return message.channel.send("You already disable it");
                     guild.textfilter.enable = false;
                     guildCache.textfilter.enable = false;
@@ -138,7 +138,7 @@ module.exports = {
                         }
                     }
                 } else if (args[1].toLowerCase() == "cap") {
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
+                    let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     if (guild.textfilter.enable == false) return message.channel.send("You already disable it");
                     if (guild.textfilter.cap == false) {
                         guild.textfilter.cap = true;
@@ -161,7 +161,7 @@ module.exports = {
                         }
                     }
                 } else if (args[1].toLowerCase() == "badwords") {
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
+                    let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     if (guild.textfilter.enable == false) return message.channel.send("You already disable it");
                     if (guild.textfilter.badwords.enable == false) {
                         guild.textfilter.badwords.enable = true;
@@ -184,7 +184,7 @@ module.exports = {
                         }
                     }
                 } else if (args[1].toLowerCase() == "links") {
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
+                    let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     if (guild.textfilter.enable == false) return message.channel.send("You already disable it");
                     if (guild.textfilter.links == false) {
                         guild.textfilter.links = true;
@@ -208,13 +208,13 @@ module.exports = {
                     }
                 } else if (args[1].toLowerCase() == "whitelist") {
                     let words = args.slice(2);
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
+                    let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     if (guild.textfilter.badwords.whitelist.includes(words)) return message.channel.send("You already whitelisted the words");
                     await words.forEach(word => {
                         guild.textfilter.badwords.whitelist.push(word);
                     });
                     await guild.save();
-                    await require('../../functions/guildCacheReload')(client);
+                    await require('../../tools/cache/guildCacheReload')(client);
                     client.guild.get(message.guild.id).textfilter = guild.textfilter;
                     message.channel.send("Added those word to whitelist word");
                     if (client.guild.get(message.guild.id)) {
@@ -229,13 +229,13 @@ module.exports = {
                     }
                 } else if (args[1].toLowerCase() == "blacklist") {
                     let words = args.slice(2);
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
+                    let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     if (guild.textfilter.badwords.blacklist.includes(words)) return message.channel.send("You already blacklisted the words");
                     await words.forEach(word => {
                         guild.textfilter.badwords.blacklist.push(word);
                     });
                     await guild.save();
-                    await require('../../functions/guildCacheReload')(client);
+                    await require('../../tools/cache/guildCacheReload')(client);
                     client.guild.get(message.guild.id).textfilter = guild.textfilter;
                     message.channel.send("Added those word to blacklist word");
                     if (client.guild.get(message.guild.id)) {
@@ -249,13 +249,13 @@ module.exports = {
                         }
                     }
                 } else {
-                    return require('../../tools/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
                 }
             } else {
-                return require('../../tools/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
             }
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
     }
 }

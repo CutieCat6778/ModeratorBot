@@ -1,7 +1,7 @@
 module.exports = async (client, channel) => {
     try {
         if (channel.type != "text") return;
-        const guild = await require('../../tools/getGuild')(client, channel.guild.id);
+        const guild = await require('../../tools/database/getGuild')(client, channel.guild.id);
         let chanel = guild.channels.find(c => c.id == channel.id);
         if (!chanel) {
             chanel = {
@@ -24,7 +24,7 @@ module.exports = async (client, channel) => {
                     }
                 });
             } catch (error) {
-                require("../../tools/error")(error, undefined)
+                require("../../tools/function/error")(error, undefined)
             }
         }
         await channel.createOverwrite(muterole, {
@@ -76,6 +76,6 @@ module.exports = async (client, channel) => {
             }
         }
     } catch (e) {
-        return require("../../tools/error")(e, undefined);
+        return require("../../tools/function/error")(e, undefined);
     }
 }

@@ -12,11 +12,11 @@ module.exports = {
     async execute (client, message, args) {
         try {
             if (!args[0]) {
-                return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/unmute")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/unmute")(client.guild.get(message.guild.id).prefix));
             }
             let muterole = message.guild.roles.cache.find((r) => r.name === "Muted");
             if (!muterole) return message.channel.send("There are no users who has been muted");
-            let target = message.guild.members.cache.get(require("../../tools/mentions")(args[0]));
+            let target = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0]));
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ");
             let text = `**${target.displayName}** has been unmuted for reason **${reason}**`;
@@ -25,7 +25,7 @@ module.exports = {
             if (!target.roles.cache.has(muterole.id)) return message.channel.send("The user didn't get mute");
             if (target.roles.cache.has(muterole.id)) {
                 await target.roles.remove(muterole);
-                require('../../tools/sendMessage')(message, text, true);
+                require('../../tools/function/sendMessage')(message, text, true);
                 if (client.guild.get(message.guild.id)) {
                     let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -39,7 +39,7 @@ module.exports = {
                 }
             }
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
     }
 }

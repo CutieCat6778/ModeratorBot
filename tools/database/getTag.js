@@ -1,4 +1,4 @@
-const Tag = require("../models/tags")
+const Tag = require("../../models/tags")
 
 module.exports = async (value) => {
     const tag = await Tag.findOne({key: value})

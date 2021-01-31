@@ -17,14 +17,14 @@ module.exports = {
                 const util = require("util");
                 const evaluted = eval(args.slice(1).join(" "));
                 if (!evaluted) return message.channel.send("Undefined")
-                const output = await require("../../tools/textsplit")(util.inspect(evaluted), true);
+                const output = await require("../../tools/string/textsplit")(util.inspect(evaluted), true);
                 await message.channel.send(`Type of: ${typeof (evaluted)} | ${require("ms")((new Date() - date1), { long: true })}`);
                 return message.channel.send(output);
             }
             console.log(args.slice(0).join(" "));
             const evaluted = eval(args.slice(0).join(" "));
             if (!evaluted) return message.channel.send("Undefined")
-            const output = await require("../../tools/textsplit")(evaluted);
+            const output = await require("../../tools/string/textsplit")(evaluted);
             await message.channel.send(`Type of: ${typeof (evaluted)} | ${require("ms")((new Date() - date1), { long: true })}`);
             message.channel.send(output);
         } catch (error) {
@@ -38,7 +38,7 @@ module.exports = {
                 `)
                 .addField("command", `${message.content ? message.content : "Client error, no commands info"}`)
                 .setTimestamp()
-            return require('../../tools/sendMessage')(message, embed);
+            return require('../../tools/function/sendMessage')(message, embed);
         }
     }
 }

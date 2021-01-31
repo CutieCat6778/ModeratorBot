@@ -10,7 +10,10 @@ module.exports = async (client) => {
             useNewUrlParser: true,
             useUnifiedTopology: true
         })
-        await require("../../functions/guildCache")(client);
+        await require("../../tools/cache/guildCache")(client);
+        await require("../../tools/cache/loadAfk")(client);
+        await require("../../tools/cache/loadTimeout")(client);
+        console.log(client.timeouts, client.afk);
         await dbl(client);
         if (!process.env.hook) {
             const embed = new MessageEmbed()
@@ -24,7 +27,7 @@ module.exports = async (client) => {
             await dbl.postStats(client.guilds.size);
         }, 21600000)
     } catch (e) {
-        return require("../../tools/error")(e, undefined)
+        return require("../../tools/function/error")(e, undefined)
     }
 
 }

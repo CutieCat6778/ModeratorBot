@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = async (client, member) => {
     try {
         let guild = await client.guild.get(member.guild.id);
-        if(!guild) guild = await require("../../tools/getGuild")(client, member.guild.id)        //capcha
+        if(!guild) guild = await require("../../tools/database/getGuild")(client, member.guild.id)        //capcha
         if (guild.capcha.enable == true && member.user.bot == false) {
             let vertifyrole = member.guild.roles.cache.find(r => r.name == "Unvertified");
             if (!vertifyrole) {
@@ -125,7 +125,7 @@ module.exports = async (client, member) => {
             }
         }
     } catch (e) {
-        return require("../../tools/error")(e, undefined)
+        return require("../../tools/function/error")(e, undefined)
     }
 }
 

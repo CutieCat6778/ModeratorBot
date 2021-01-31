@@ -13,11 +13,11 @@ module.exports = {
         try {
             if (!args[0]) {
                 let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
-                return require('../../tools/sendMessage')(message, embed);;
+                return require('../../tools/function/sendMessage')(message, embed);;
             } else if (args[0]) {
                 if (isNaN(args[0]) == true) {
                     let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
-                    return require('../../tools/sendMessage')(message, embed);;
+                    return require('../../tools/function/sendMessage')(message, embed);;
                 } else if (isNaN(args[0]) == false) {
                     let casenum = parseInt(args[0]);
                     let guild = client.guild.get(message.guild.id);
@@ -41,17 +41,17 @@ module.exports = {
                         .addField("**Reason:**", caseInfo.reason, true)
                         .addField("**Date:**", time + " ago", true)
                         .setTimestamp()
-                    return require('../../tools/sendMessage')(message, embed);
+                    return require('../../tools/function/sendMessage')(message, embed);
                 } else {
                     let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
-                    return require('../../tools/sendMessage')(message, embed);;
+                    return require('../../tools/function/sendMessage')(message, embed);;
                 }
             } else {
                 let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
-                return require('../../tools/sendMessage')(message, embed);;
+                return require('../../tools/function/sendMessage')(message, embed);;
             }
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
 
     }

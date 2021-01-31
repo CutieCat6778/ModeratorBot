@@ -19,6 +19,6 @@ module.exports = async (client, messages) => {
             }
         }
     } catch (e) {
-        return require("../../tools/error")(e, messages.first());
+        return require("../../tools/function/error")(e, messages.first());
     }
 }

@@ -12,15 +12,15 @@ module.exports = {
     async execute(client, message, args) {
         try {
             if (!args[0]) {
-                return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/unban")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/unban")(client.guild.get(message.guild.id).prefix));
             }
-            let target = await client.users.fetch(require("../../tools/mentions")(args[0]));
+            let target = await client.users.fetch(require("../../tools/string/mentions")(args[0]));
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ")
             if (!reason) reason = "No reason given!";
             message.guild.fetchBan(target.id).then(async b => {
                 await message.guild.members.unban(target);
-                require('../../tools/sendMessage')(message, `Unbaned **${target.tag}**`)
+                require('../../tools/function/sendMessage')(message, `Unbaned **${target.tag}**`)
                 if (client.guild.get(message.guild.id)) {
                     let guildCache = client.guild.get(message.guild.id);
                     if (guildCache.logs.enable == false) return;
@@ -38,7 +38,7 @@ module.exports = {
             })
             // if(!await message.guild.fetchBan(target.id)) return message.channel.send("That user is not banned.")
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
 
     }

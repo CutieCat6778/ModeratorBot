@@ -24,12 +24,12 @@ module.exports = {
                     .setAuthor(`${user.displayName}`, user.user.displayAvatarURL())
                     .setDescription(`   ${snipe.content}`)
                     .setFooter(require("ms")((new Date() - snipe.time), { long: true }) + " ago")
-                return require('../../tools/sendMessage')(message, embed);
+                return require('../../tools/function/sendMessage')(message, embed);
             } else {
-                require('../../tools/sendMessage')(message, require("../../noArgs/members/snipe"))(client.guild.get(message.guild.id).prefix)
+                require('../../tools/function/sendMessage')(message, require("../../noArgs/members/snipe"))(client.guild.get(message.guild.id).prefix)
             }
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
     }
 }

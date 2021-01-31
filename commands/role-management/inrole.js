@@ -11,9 +11,9 @@ module.exports = {
     async execute(client, message, args) {
         try {
             if (!args[0]) {
-                return require('../../tools/sendMessage')(message, require('../../noArgs/role-management/inrole.js')(guildCache.prefix));
+                return require('../../tools/function/sendMessage')(message, require('../../noArgs/role-management/inrole.js')(guildCache.prefix));
             }
-            const role = message.guild.roles.cache.get(await require('../../tools/mentions')(args[0]));
+            const role = message.guild.roles.cache.get(await require('../../tools/string/mentions')(args[0]));
             if (!role) return message.channel.send("Role not found");
             const embed = new MessageEmbed()
                 .setColor("#40598F")
@@ -21,9 +21,9 @@ module.exports = {
                 .setTimestamp()
                 .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
                 .setDescription(`${message.guild.members.cache.map(member => { if(member.roles.cache.has(role.id)){return member.user.username+"\n"}})}`.split(',').join(""))
-            require('../../tools/sendMessage')(message, embed);
+            require('../../tools/function/sendMessage')(message, embed);
         } catch (e) {
-            return require('../../tools/error')(e, message);
+            return require('../../tools/function/error')(e, message);
         }
     }
 }

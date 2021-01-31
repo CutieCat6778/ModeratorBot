@@ -2,27 +2,27 @@ const { MessageEmbed, WebhookClient } = require("discord.js");
 
 module.exports = {
     config: {
-        name: "wellcome",
+        name: "welcome",
         aliases: ["wellc", "welcome"],
         category: "management",
         perms: ["MANAGE_GUILD"],
-        description: "You use this command to setup a wellcome message",
+        description: "You use this command to setup a welcome message",
         bot: ["SEND_MESSAGES"]
     },
     async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/sendMessage')(message, require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/welcome")(client.guild.get(message.guild.id).prefix));
             }
             if (args[0] == "setup") {
                 if (args[1]) {
-                    let wellchannel = message.guild.channels.cache.get(require("../../tools/mentions")(args[1]));
+                    let wellchannel = message.guild.channels.cache.get(require("../../tools/string/mentions")(args[1]));
                     if (!wellchannel) return message.channel.send("Channel not found");
                     if (wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES") == false) {
-                        return message.channel.send(require("../../functions/permissionMiss")("I don't have permission to send messages in that channel"));
+                        return message.channel.send(require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel"));
                     }
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
-                    if (guild.wellcome.channelId != " ") return message.channel.send(`Please use command \`${client.guild.get(message.guild.id).prefix} wellcome setting\`, you are already setup the wellcome`)
+                    let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
+                    if (guild.welcome._id != " ") return message.channel.send(`Please use command \`${client.guild.get(message.guild.id).prefix} welcome setting\`, you are already setup the welcome`)
                     const filter = m => m.author.id == message.author.id;
                     let embed = new MessageEmbed()
                         .setTitle('Join message')
@@ -32,8 +32,8 @@ module.exports = {
                         .addField('Server Name', `{server}`, true)
                         .addField('Member count', `{count}`, true)
                         .setTimestamp()
-                    require('../../tools/sendMessage')(message, embed);
-                    let collected = await require('../../tools/collectMessage')(message, filter);
+                    require('../../tools/function/sendMessage')(message, embed);
+                    let collected = await require('../../tools/function/collectMessage')(message, filter);
                     if (collected.content) {
                         let embed1 = new MessageEmbed()
                             .setTitle('Leave message')
@@ -44,45 +44,45 @@ module.exports = {
                             .addField('Member count', `{count}`, true)
                             .setTimestamp()
                         message.channel.send(embed1);
-                        let collecte = await require('../../tools/collectMessage')(message, filter);
+                        let collecte = await require('../../tools/function/collectMessage')(message, filter);
                         console.log(collecte)
-                        guild.wellcome.channelId = wellchannel.id;
-                        guild.wellcome.enable = true;
-                        guild.wellcome.join.text = collected.content;
-                        guild.wellcome.leave.text = collecte.content;
-                        guildCache.wellcome.channelId = wellchannel.id;
-                        guildCache.wellcome.enable = true;
-                        guildCache.wellcome.join.text = collected.content;
-                        guildCache.wellcome.leave.text = collecte.content;
+                        guild.welcome._id = wellchannel.id;
+                        guild.welcome.enable = true;
+                        guild.welcome.join.text = collected.content;
+                        guild.welcome.leave.text = collecte.content;
+                        guildCache.welcome._id = wellchannel.id;
+                        guildCache.welcome.enable = true;
+                        guildCache.welcome.join.text = collected.content;
+                        guildCache.welcome.leave.text = collecte.content;
                         await guild.save();
                         wellchannel.send("Welcome messages will be here");
                         message.channel.send("Successfully enabled Welcome message function");
                         if (client.guild.get(message.guild.id)) {
                             let guildCache = client.guild.get(message.guild.id);
                             if (guildCache.logs.enable == false) return;
-                            if (guildCache.logs.channelId == " ") return;
-                            if (isNaN(guildCache.logs.channelId == true)) return;
-                            let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                            if (guildCache.logs._id == " ") return;
+                            if (isNaN(guildCache.logs._id == true)) return;
+                            let channel = message.guild.channels.cache.get(guildCache.logs._id);
                             if (channel) {
-                                return channel.send(require("../../logs/wellcome")(wellchannel, guild.wellcome));
+                                return channel.send(require("../../logs/welcome")(wellchannel, guild.welcome));
                             }
                         }
                     }
                 } else {
-                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/welcome")(client.guild.get(message.guild.id).prefix));
                 }
             } else if (args[0] == "test") {
-                const guild = await require("../../tools/getGuild")(client, message.guild.id);
-                const channel = message.guild.channels.cache.get(guild.wellcome.channelId);
+                const guild = await require("../../tools/database/getGuild")(client, message.guild.id);
+                const channel = message.guild.channels.cache.get(guild.welcome._id);
                 if (!channel) return message.channel.send('Channel not found');
-                const text1 = guild.wellcome.leave.text.replace('{user}', `${client.user.tag}`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
+                const text1 = guild.welcome.leave.text.replace('{user}', `${client.user.tag}`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
                 const embed1 = new MessageEmbed()
                     .setColor("#40598F")
                     .setTitle("Member left")
                     .setThumbnail(client.user.displayAvatarURL())
                     .setDescription(text1)
                     .setTimestamp()
-                const text = guild.wellcome.join.text.replace('{user}', `<@${client.user.id}>`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
+                const text = guild.welcome.join.text.replace('{user}', `<@${client.user.id}>`).replace('{server}', message.guild.name).replace('{count}', message.guild.members.cache.size)
                 const embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setTitle("Member joined")
@@ -91,37 +91,37 @@ module.exports = {
                     .setTimestamp()
                 await channel.send(embed);
                 await channel.send(embed1);
-                return message.channel.send(`Done ! check <#${guild.wellcome.channelId}>, if there is a problem use command \`${client.guild.get(message.guild.id).prefix} bug <text>\``)
+                return message.channel.send(`Done ! check <#${guild.welcome._id}>, if there is a problem use command \`${client.guild.get(message.guild.id).prefix} bug <text>\``)
             }
             else if (args[0] == "setting") {
                 if (!args[1]) {
-                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/textfilter")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/textfilter")(client.guild.get(message.guild.id).prefix));
                 }
                 else if (args[1] == "true") {
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
-                    if (guild.wellcome.enable == true) return message.channel.send("You already enable it");
-                    guild.wellcome.enable = true;
-                    guildCache.wellcome.enable = true;
+                    let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
+                    if (guild.welcome.enable == true) return message.channel.send("You already enable it");
+                    guild.welcome.enable = true;
+                    guildCache.welcome.enable = true;
                     await guild.save();
-                    let wellchannel = message.guild.channels.cache.get(guild.wellcome.channelId);
+                    let wellchannel = message.guild.channels.cache.get(guild.welcome._id);
                     message.channel.send("Successfully enabled Welcome message function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
-                        if (guildCache.logs.channelId == " ") return;
-                        if (isNaN(guildCache.logs.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                        if (guildCache.logs._id == " ") return;
+                        if (isNaN(guildCache.logs._id == true)) return;
+                        let channel = message.guild.channels.cache.get(guildCache.logs._id);
                         if (channel) {
-                            return channel.send(require("../../logs/wellcome")(wellchannel, guild.wellcome));
+                            return channel.send(require("../../logs/welcome")(wellchannel, guild.welcome));
                         }
                     }
                 } else if (args[1] == "false") {
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
-                    if (guild.wellcome.enable == false) return message.channel.send("You already disable it");
-                    guild.wellcome.enable = false;
-                    guildCache.wellcome.enable = false;
+                    let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
+                    if (guild.welcome.enable == false) return message.channel.send("You already disable it");
+                    guild.welcome.enable = false;
+                    guildCache.welcome.enable = false;
                     await guild.save();
-                    let wellchannel = message.guild.channels.cache.get(guild.wellcome.channelId);
+                    let wellchannel = message.guild.channels.cache.get(guild.welcome._id);
                     message.channel.send("Successfully disabled Welcome message function");
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
@@ -130,11 +130,11 @@ module.exports = {
                         if (isNaN(guildCache.logs.id == true)) return;
                         let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
-                            return channel.send(require("../../logs/wellcome")(wellchannel, guild.wellcome));
+                            return channel.send(require("../../logs/welcome")(wellchannel, guild.welcome));
                         }
                     }
                 } else if (args[1] == "join") {
-                    const guild = await require('../../tools/getGuild')(client, message.guild.id);
+                    const guild = await require('../../tools/database/getGuild')(client, message.guild.id);
                     const filter = m => m.author.id == message.author.id;
                     let embed = new MessageEmbed()
                         .setTitle('Join message')
@@ -144,14 +144,14 @@ module.exports = {
                         .addField('Server Name', `{server}`, true)
                         .addField('Member count', `{count}`, true)
                         .setTimestamp()
-                    require('../../tools/sendMessage')(message, embed);
-                    let collected = await require('../../tools/collectMessage')(message, filter);
-                    guild.wellcome.join.text == collected.content.toString();
-                    guildCache.wellcome.join.text == collected.content.toString();
+                    require('../../tools/function/sendMessage')(message, embed);
+                    let collected = await require('../../tools/function/collectMessage')(message, filter);
+                    guild.welcome.join.text == collected.content.toString();
+                    guildCache.welcome.join.text == collected.content.toString();
                     await guild.save();
                     return message.channel.send("Successfully change the user join text");
                 } else if (args[1] == "leave") {
-                    const guild = await require('../../tools/getGuild')(client, message.guild.id);
+                    const guild = await require('../../tools/database/getGuild')(client, message.guild.id);
                     const filter = m => m.author.id == message.author.id;
                     let embed1 = new MessageEmbed()
                         .setTitle('Leave message')
@@ -162,18 +162,18 @@ module.exports = {
                         .addField('Member count', `{count}`, true)
                         .setTimestamp()
                     message.channel.send(embed1);
-                    let collected = await require('../../tools/collectMessage')(message, filter);                   
-                    guild.wellcome.leave.text == collected.content.toString();
-                    guildCache.wellcome.leave.text == collected.content.toString();
+                    let collected = await require('../../tools/function/collectMessage')(message, filter);                   
+                    guild.welcome.leave.text == collected.content.toString();
+                    guildCache.welcome.leave.text == collected.content.toString();
                     await guild.save();
                     return message.channel.send("Successfully change the user join text");
                 } else if (args[1]) {
-                    let wellchannel = message.guild.channels.cache.get(require("../../tools/mentions")(args[1]));
+                    let wellchannel = message.guild.channels.cache.get(require("../../tools/string/mentions")(args[1]));
                     if (!wellchannel) return message.channel.send("Channel not found");
                     if (wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES") == false) {
-                        return message.channel.send(require("../../functions/permissionMiss")("I don't have permission to send messages in that channel"));
+                        return message.channel.send(require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel"));
                     }
-                    let guild = await require("../../tools/getGuild")(client, message.guild.id);
+                    let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     const filter = m => m.author.id == message.author.id;
                     let embed = new MessageEmbed()
                         .setTitle('Join message')
@@ -183,8 +183,8 @@ module.exports = {
                         .addField('Server Name', `{server}`, true)
                         .addField('Member count', `{count}`, true)
                         .setTimestamp()
-                    require('../../tools/sendMessage')(message, embed);
-                    let collected = await require('../../tools/collectMessage')(message, filter);
+                    require('../../tools/function/sendMessage')(message, embed);
+                    let collected = await require('../../tools/function/collectMessage')(message, filter);
                     if (collected.content) {
                         let embed1 = new MessageEmbed()
                             .setTitle('Leave message')
@@ -195,15 +195,15 @@ module.exports = {
                             .addField('Member count', `{count}`, true)
                             .setTimestamp()
                         message.channel.send(embed1);
-                        let collecte = await require('../../tools/collectMessage')(message, filter);
-                        guild.wellcome.channelId = wellchannel.id;
-                        guildCache.wellcome.channelId = wellchannel.id;
-                        guild.wellcome.enable = true;
-                        guildCache.wellcome.enable = true;
-                        guild.wellcome.join.text = collected.content;
-                        guildCache.wellcome.join.text = collected.content;
-                        guild.wellcome.leave.text = collecte.content;
-                        guildCache.wellcome.leave.text = collecte.content;
+                        let collecte = await require('../../tools/function/collectMessage')(message, filter);
+                        guild.welcome._id = wellchannel.id;
+                        guildCache.welcome._id = wellchannel.id;
+                        guild.welcome.enable = true;
+                        guildCache.welcome.enable = true;
+                        guild.welcome.join.text = collected.content;
+                        guildCache.welcome.join.text = collected.content;
+                        guild.welcome.leave.text = collecte.content;
+                        guildCache.welcome.leave.text = collecte.content;
                         await guild.save();
                         wellchannel.send("Welcome messages will be here");
                         message.channel.send("Successfully enabled Welcome message function");
@@ -214,18 +214,18 @@ module.exports = {
                             if (isNaN(guildCache.logs.id == true)) return;
                             let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                             if (channel) {
-                                return channel.send(require("../../logs/wellcome")(wellchannel, guild.wellcome));
+                                return channel.send(require("../../logs/welcome")(wellchannel, guild.welcome));
                             }
                         }
                     }
                 } else {
-                    return require('../../tools/sendMessage')(message, require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/welcome")(client.guild.get(message.guild.id).prefix));
                 }
             } else {
-                return require('../../tools/sendMessage')(message, require("../../noArgs/management/wellcome")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/welcome")(client.guild.get(message.guild.id).prefix));
             }
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
     }
 }

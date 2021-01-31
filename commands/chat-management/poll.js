@@ -24,7 +24,7 @@ module.exports = {
                 return stripIndents`${m.react("👍")} \`${m.react("🤔")}\` \`${m.react("👎")}\``
             })
         } catch (e) {
-            require("../../tools/error")(e, message)
+            require("../../tools/function/error")(e, message)
         }
     }
 }

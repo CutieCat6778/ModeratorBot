@@ -26,9 +26,9 @@ module.exports = {
                 .addField("Server created on", `${new Date(message.guild.createdAt).toLocaleString()}`, true)
                 .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
                 .setTimestamp()
-            return require('../../tools/sendMessage')(message, embed);
+            return require('../../tools/function/sendMessage')(message, embed);
         } catch (e) {
-            return require('../../tools/error')(e, message);
+            return require('../../tools/function/error')(e, message);
         }
 
     }

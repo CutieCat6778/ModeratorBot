@@ -10,6 +10,6 @@ module.exports = async(client, guild) => {
         hook.send(embed);
         client.guild.delete(guild.id)
     } catch (e) {
-        return require("../../tools/error")(e, undefined)
+        return require("../../tools/function/error")(e, undefined)
     }
 }

@@ -20,6 +20,6 @@ module.exports = (client, channel, time) => {
             }
         }
     } catch (e) {
-        return require("../../tools/error")(e, undefined);
+        return require("../../tools/function/error")(e, undefined);
     }
 }

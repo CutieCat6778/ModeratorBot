@@ -1,7 +1,7 @@
 module.exports = async (client, oldMember, newMember) => {
     try{
         let guildCache = await client.guild.get(newMember.guild.id);
-        if(!guildCache) guildCache = await require("../../tools/getGuild")(client, newMember.guild.id);
+        if(!guildCache) guildCache = await require("../../tools/database/getGuild")(client, newMember.guild.id);
         if (guildCache.logs.enable == true) {
             if (guildCache.logs.id == " ") return;
             if (isNaN(guildCache.logs.id == true)) return;
@@ -46,7 +46,7 @@ module.exports = async (client, oldMember, newMember) => {
             }
         }
     }catch(e) {
-        return require("../../tools/error")(e, undefined);
+        return require("../../tools/function/error")(e, undefined);
     }
     
 }

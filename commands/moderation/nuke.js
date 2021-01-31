@@ -11,7 +11,7 @@ module.exports = {
             if (!args[0]) {
                 message.channel.send("Are you sure that you want to nuke this channel ? [y/n]");
                 const filter = (user) => user.id == message.author.id;
-                let collected = await require('../../tools/collectMessage')(message, filter);
+                let collected = await require('../../tools/function/collectMessage')(message, filter);
                 switch (collected.content.toLowerCase()) {
                     default:
                         return message.channel.send("Invalid options");
@@ -34,11 +34,11 @@ module.exports = {
                         return message.channel.send("Canceled");
                 }
             } else if (args[0]) {
-                const oldChannel = message.guild.channels.cache.get(await require('../../tools/mentions')(args[0]));
+                const oldChannel = message.guild.channels.cache.get(await require('../../tools/string/mentions')(args[0]));
                 if (!oldChannel) return message.channel.send("Channel not found");
                 message.channel.send("Are you sure that you want to nuke this channel ? [y/n]");
                 const filter = (user) => user.id == message.author.id;
-                let collected = await require('../../tools/collectMessage')(message, filter);
+                let collected = await require('../../tools/function/collectMessage')(message, filter);
                 switch (collected.content) {
                     default:
                         return message.channel.send("Invalid options");
@@ -61,7 +61,7 @@ module.exports = {
                 }
             }
         } catch (e) {
-            return require('../../tools/error')(e, message);
+            return require('../../tools/function/error')(e, message);
         }
     }
 }

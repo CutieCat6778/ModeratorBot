@@ -12,15 +12,15 @@ module.exports = {
     async execute (client, message, args) {
         try {
             if(!args[0]){
-                return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/warn")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/warn")(client.guild.get(message.guild.id).prefix));
             }
-            let target = message.guild.members.cache.get(require("../../tools/mentions")(args[0]));
+            let target = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0]));
             if (!target) return message.channel.send("User not found");
             if (target) {
                 if (args[0]) {
                     let reason = args.slice(1).join(" ");
                     if (!reason) return message.channel.send("Please supply a __reason__");
-                    await require("../../functions/warn")(message, target, reason, args[0], client)
+                    await require("../../tools/function/warn")(message, target, reason, args[0], client)
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -34,11 +34,11 @@ module.exports = {
                     }
                 }
                 else {
-                    return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/warn")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/warn")(client.guild.get(message.guild.id).prefix));
                 }
             }
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
 
     }

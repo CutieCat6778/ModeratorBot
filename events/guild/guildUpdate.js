@@ -22,9 +22,9 @@ module.exports = async (client, oldGuild, newGuild) => {
                     .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
                     .setFooter(newGuild.name, newGuild.iconURL())
                     .setTimestamp(new Date())
-                newGuild.channels.cache.get(guild.rules.channelId).messages.fetch(guild.rules.messageId).then(msg => {
+                newGuild.channels.cache.get(guild.rules._id).messages.fetch(guild.rules.messageId).then(msg => {
                     if (!msg) {
-                        newGuild.channels.cache.get(guild.rules.channelId).send(embed1);
+                        newGuild.channels.cache.get(guild.rules._id).send(embed1);
                     } else if (msg) {
                         msg.edit(embed1);
                     }
@@ -95,6 +95,6 @@ module.exports = async (client, oldGuild, newGuild) => {
             }
         }
     } catch (e) {
-        return require("../../tools/error")(e, undefined);
+        return require("../../tools/function/error")(e, undefined);
     }
 }

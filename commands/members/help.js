@@ -28,29 +28,29 @@ module.exports = {
                     if (args[0] == "development") {
                         let embed = await require(`../../noArgs/development.js`)(client.guild.get(message.guild.id).prefix);
                         if (!embed) return message.channel.send("Category not found");
-                        return require('../../tools/sendMessage')(message, embed);;
+                        return require('../../tools/function/sendMessage')(message, embed);;
                     }
                     let embed = await require(`../../noArgs/${target}.js`)(client.guild.get(message.guild.id).prefix);
                     if (!embed) return message.channel.send("Category not found");
-                    else if (embed) return require('../../tools/sendMessage')(message, embed);
+                    else if (embed) return require('../../tools/function/sendMessage')(message, embed);
                 } else if (!categories.includes(target)) {
                     let command = client.commands.get(client.aliases.get(target) || target)
                     if (!command) return message.channel.send("Command not found");
                     if (command.config.category == "development") {
                         let embed = await require(`../../noArgs/development.js`)(client.guild.get(message.guild.id).prefix);
                         if (!embed) return message.channel.send("Command not found");
-                        return require('../../tools/sendMessage')(message, embed);;
+                        return require('../../tools/function/sendMessage')(message, embed);;
                     }
                     let embed = await require(`../../noArgs/${command.config.category}/${command.config.name}.js`)(client.guild.get(message.guild.id).prefix);
                     if (!embed) return message.channel.send("Command not found");
-                    else if (embed) return require('../../tools/sendMessage')(message, embed);
+                    else if (embed) return require('../../tools/function/sendMessage')(message, embed);
                 } else {
                     return message.channel.send("Uhmm. . . i don't know what is happening");
                 }
 
             }
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
     }
 }

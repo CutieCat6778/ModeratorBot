@@ -11,7 +11,7 @@ module.exports = {
     async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/sendMessage')(message, require('../../noArgs/chat/morse.js')(guildCache.prefix))
+                return require('../../tools/function/sendMessage')(message, require('../../noArgs/chat/morse.js')(guildCache.prefix))
             } else if (args[0]) {
                 const text = args.slice(0)
                 if (text.length > 7) return message.channel.send("Your text is too long, please try again!");
@@ -21,7 +21,7 @@ module.exports = {
                 }
             }
         } catch (e) {
-            return require('../../tools/error')(error, message);
+            return require('../../tools/function/error')(error, message);
         }
     }
 }

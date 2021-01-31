@@ -10,16 +10,31 @@ module.exports = async function temp(client, muterole, message, args, target) {
     let reason = spaces ? args.slice(3).join(" ") : args.slice(2).join(" ");
     if (!reason) reason = "No reason provided";
     if (target.roles.cache.has(muterole.id)) {
-        return require('../tools/sendMessage')(message, "The user is already get muted", true);
+        return require('./sendMessage')(message, "The user is already get muted", true);
     }
     if (!target.roles.cache.has(muterole.id)) {
         await target.roles.add(muterole);
-        require('../tools/sendMessage')(message, `Muted **${target.displayName}** for ${time}`, true);
+        require('./sendMessage')(message, `Muted **${target.displayName}** for ${time}`, true);
     }
-    client.setTimeout(() => {
+    const channel = message.channel;
+    const date = new Date()
+    function f() {
         if (!target.roles.cache.has(muterole.id)) return;
         target.roles.remove(muterole);
-        return require('../tools/sendMessage')(message, `**${target.displayName}** has been unmuted for ${time}`, true)
-    }, require("ms")(time))
+        return channel.send(`**${target.displayName}** has been unmuted for ${time}`)
+    }
+    const obj = {
+        type: 'mute',
+        obj:{
+            author: target.id,
+            message: message.channel.id,
+            args: [target.guild.id, muterole.id]
+        },
+        from: date.getTime().toString(),
+        to: (date.getTime() + require("ms")(time)).toString(),
+        function: f.toString()
+    }
+    await require('../database/newTimeout')(obj);
+    client.setTimeout(f, require("ms")(time))
 }
 

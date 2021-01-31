@@ -13,7 +13,7 @@ module.exports = {
             let user;
             if (!args[0]) user = message.member;
             if(args[0]){
-                user = message.guild.members.cache.get(require("../../tools/mentions")(args[0]));
+                user = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0]));
                 if(!user) return message.channel.send("Member not found");
             }
             let embed = new MessageEmbed()
@@ -22,9 +22,9 @@ module.exports = {
                 .setDescription(`[Click here for link](${user.user.displayAvatarURL({ size: 256, format: "png" })})`)
                 .setImage(user.user.displayAvatarURL({ size: 256 }))
                 .setTimestamp()
-            require('../../tools/sendMessage')(message, embed);
+            require('../../tools/function/sendMessage')(message, embed);
         }catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
     }
 }

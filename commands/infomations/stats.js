@@ -34,9 +34,9 @@ module.exports = {
                 .addField("Owner", `\`${owner}\``, true)
                 .addField("Support server", "[Click here](https://moddy.js.org/support)", true)
                 .setTimestamp()
-            return require('../../tools/sendMessage')(message, embed);
+            return require('../../tools/function/sendMessage')(message, embed);
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
     }
 }

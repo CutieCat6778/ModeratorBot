@@ -1,4 +1,4 @@
-const badwords = require("../asset/useFullArrays/badwords");
+const badwords = require("../../asset/useFullArrays/badwords");
 let a;
 module.exports = function bad(message, guildCache) {
     message.toLowerCase().split(" ").forEach(word => {

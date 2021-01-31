@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const si = require('systeminformation');
-const niceBytes = require('../../tools/byteConverter');
+const niceBytes = require('../../tools/string/byteConverter');
 module.exports = {
     config: {
         name: "system",
@@ -44,11 +44,11 @@ module.exports = {
                                 Used memory: ${niceBytes(data2.used)}
                             \n\`\`\`
                         ` , true)
-                    require('../../tools/sendMessage')(message, embed);
+                    require('../../tools/function/sendMessage')(message, embed);
                 });
             });
         } catch (e) {
-            return require("../../tools/error")(e, message);
+            return require("../../tools/function/error")(e, message);
         }
     }
 }

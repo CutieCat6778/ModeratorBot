@@ -1,7 +1,7 @@
 module.exports = async (client, channel) => {
     try {
         if (channel.type != "text") return;
-        const guild = await require('../../tools/getGuild')(client, channel.guild.id);
+        const guild = await require('../../tools/database/getGuild')(client, channel.guild.id);
         let chanel = guild.channels.find(c => c.id == channel.id);
         if (chanel) {
             guild.channels.splice(chanel, 1);
@@ -25,6 +25,6 @@ module.exports = async (client, channel) => {
             }
         }
     } catch (e) {
-        return require("../../tools/error")(e, undefined);
+        return require("../../tools/function/error")(e, undefined);
     }
 }

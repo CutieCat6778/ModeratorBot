@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = async (client, member) => {
     try {
         let guild = await client.guild.get(member.guild.id);
-        if(!guild) guild = await require("../../tools/getGuild")(client, member.guild.id)  
+        if(!guild) guild = await require("../../tools/database/getGuild")(client, member.guild.id)  
         if (guild.wellcome.enable == false) return;
         if (guild.wellcome.channelId == " " || isNaN(guild.wellcome.channelId) == true) return;
         //wellcome
@@ -19,6 +19,6 @@ module.exports = async (client, member) => {
             channel.send(embed);
         }
     } catch (e) {
-        return require("../../tools/error")(e, undefined)
+        return require("../../tools/function/error")(e, undefined)
     }
 }

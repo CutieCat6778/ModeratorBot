@@ -12,7 +12,7 @@ module.exports = {
     async execute(client, message, args) {
         try {
             const date1 = new Date()
-            const guild = await require('../../tools/getGuild')(client, message.guild.id);
+            const guild = await require('../../tools/database/getGuild')(client, message.guild.id);
             const date2 = new Date();
             var value = date2 - date1;
             message.channel.send("Pinging").then(m => {
@@ -28,10 +28,10 @@ module.exports = {
                     ])
                     .setTimestamp()
                 m.delete();
-                require('../../tools/sendMessage')(message, embed);
+                require('../../tools/function/sendMessage')(message, embed);
             })
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
     }
 }

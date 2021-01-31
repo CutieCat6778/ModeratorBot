@@ -1,6 +1,6 @@
 module.exports = async function warn(message, target, reason, client) {
     try {
-        const guild = await require("../tools/getGuild")(client, message.guild.id);
+        const guild = await require("../database/getGuild")(client, message.guild.id);
         const targetData = guild.warn.find(t => t.userId == target.id);
         if (!targetData) {
             const object = {
@@ -41,8 +41,8 @@ module.exports = async function warn(message, target, reason, client) {
         if (target.roles.cache.has(muterole.id)) {
             await target.roles.remove(muterole);
         }
-        return require('../tools/sendMessage')(message, `One warn has been removed from **${target.user.username}**`, true)
+        return require('../tools/function/sendMessage')(message, `One warn has been removed from **${target.user.username}**`, true)
     } catch (e) {
-        return require('../tools/error')(e, message);
+        return require('./error')(e, message);
     }
 }

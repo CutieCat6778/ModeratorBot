@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const guildSchema = mongoose.Schema({
-    guildId: String,
-    moderators: Array,
+    _id: String,
+    moderators: [String],
     channels: [{
         "name": String, "id": String
     }],
@@ -10,10 +10,10 @@ const guildSchema = mongoose.Schema({
         "name": String, "id": String
     }],
     autorole: {
-        "roleId": String, "enable": Boolean
+        "_id": String, "enable": Boolean
     },
-    wellcome: {
-        "channelId": String, "enable": Boolean, "join": {
+    welcome: {
+        "_id": String, "enable": Boolean, "join": {
             "text": String, "default": Boolean
         }, "leave": {
             "text": String, "default": Boolean
@@ -23,22 +23,22 @@ const guildSchema = mongoose.Schema({
         { "userId": String, "time": Number, "reason": String }
     ],
     logs: {
-        "id": String, "enable": Boolean, "token": String, "channelId": String
+        "id": String, "enable": Boolean, "token": String, "_id": String
     },
     prefix: String,
     case: [
         { name: String, num: Number, reason: String, author: String, target: String, time: String }
     ],
-    capcha: {
-        "channels": Array, "enable": Boolean
+    captcha: {
+        "channels": [String], "enable": Boolean
     },
     textfilter: { "enable": Boolean, 
         "badwords":{
-            "whitelist": Array, "blacklist": Array, "enable": Boolean
+            "whitelist": [String], "blacklist": [String], "enable": Boolean
         }, "links":Boolean, "cap": Boolean
     },
     rules: {
-        "enable": Boolean, "channelId": String, "messageId": String, "rulesArr": [
+        "enable": Boolean, "_id": String, "messageId": String, "rulesArr": [
             { "ruleNum": Number, "ruleContent": String }
         ]
     }

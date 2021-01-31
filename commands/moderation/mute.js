@@ -33,20 +33,20 @@ module.exports = {
                         });
                     });
                 } catch (error) {
-                    require("../../tools/error")("mute", message, error)
+                    require("../../tools/function/error")("mute", message, error)
                 }
             }
             if (!args[0]) {
-                return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/mute")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/mute")(client.guild.get(message.guild.id).prefix));
             }
-            let target = message.guild.members.cache.get(require("../../tools/mentions")(args[0])) || message.guild.members.cache.get(require("../../tools/mentions")(args[1])) || message.guild.members.cache.get(require("../../tools/mentions")(args[2]));
+            let target = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0])) || message.guild.members.cache.get(require("../../tools/string/mentions")(args[1])) || message.guild.members.cache.get(require("../../tools/string/mentions")(args[2]));
             if (!target) return message.channel.send("User not found");
             if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
-                return require('../../tools/sendMessage')(message, require("../../functions/permissionMiss")("I don't have permission to mute him/her"));
+                return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")("I don't have permission to mute him/her"));
             }
             if (args[0]) {
                 if (require('ms')(args[0])) {
-                    require("../../functions/muteTemp")(client, muterole, message, args, target);
+                    require("../../tools/function/muteTemp")(client, muterole, message, args, target);
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -60,7 +60,7 @@ module.exports = {
                     }
                 }
                 else if (target) {
-                    require("../../functions/mute")(muterole, message, args, target)
+                    require("../../tools/function/mute")(muterole, message, args, target)
                     if (client.guild.get(message.guild.id)) {
                         let guildCache = client.guild.get(message.guild.id);
                         if (guildCache.logs.enable == false) return;
@@ -73,11 +73,11 @@ module.exports = {
                         }
                     }
                 } else {
-                    return require('../../tools/sendMessage')(message, require("../../noArgs/moderation/mute")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/mute")(client.guild.get(message.guild.id).prefix));
                 }
             }
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
 
     }

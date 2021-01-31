@@ -36,6 +36,6 @@ module.exports = (client, oldEmoji, newEmoji) => {
             }
         }
     } catch (e) {
-        return require("../../tools/error")(e, undefined);
+        return require("../../tools/function/error")(e, undefined);
     }
 }

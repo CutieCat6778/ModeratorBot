@@ -15,7 +15,7 @@ module.exports = {
         try {
             if (!args[0]) {
                 let embed = require("../../noArgs/api/translate")(client.guild.get(message.guild.id).prefix);
-                return require('../../tools/sendMessage')(message, embed);;
+                return require('../../tools/function/sendMessage')(message, embed);;
             } else if (args[0]) {
                 let text = args.slice(0).join(" ");
                 let result = await translate(text, { to: 'en' });
@@ -25,10 +25,10 @@ module.exports = {
                     .addField("Before", `\`${text.toString()}\``, true)
                     .addField("After", `\`${result.toString()}\``, true)
                     .setTimestamp()
-                return require('../../tools/sendMessage')(message, embed);
+                return require('../../tools/function/sendMessage')(message, embed);
             }
         } catch (e) {
-            return require("../../tools/error")(e, message);
+            return require("../../tools/function/error")(e, message);
         }
 
     }

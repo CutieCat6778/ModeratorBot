@@ -9,22 +9,22 @@ module.exports = {
     async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/sendMessage')(message, require('../../noArgs/role-management/setcolor.js')(guildCache.prefix));
+                return require('../../tools/function/sendMessage')(message, require('../../noArgs/role-management/setcolor.js')(guildCache.prefix));
             }
-            let role = message.guild.roles.cache.get(await require('../../tools/mentions')(args[0]));
+            let role = message.guild.roles.cache.get(await require('../../tools/string/mentions')(args[0]));
             if (!role) return message.channel.send("Role not found");
             if (role.position >= message.guild.me.roles.highest.position && role.permissions.has("ADMINISTRATOR")) {
-                return require('../../tools/sendMessage')(message, require("../../functions/permissionMiss")("I don't have permission to access that role"));
+                return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")("I don't have permission to access that role"));
             }
             const oldColor = role.color;
             await role.setColor(args[1]);
             if (role.color == oldColor) {
-                return require('../../tools/sendMessage')(message, "I couldn't change that role's color! Please check does it is a valid color code.");
+                return require('../../tools/function/sendMessage')(message, "I couldn't change that role's color! Please check does it is a valid color code.");
             } else if (role.color != oldColor) {
-                return require('../../tools/sendMessage')(message, `Done! I that role's color to ${args[0]}`);
+                return require('../../tools/function/sendMessage')(message, `Done! I that role's color to ${args[0]}`);
             }
         } catch (e) {
-            return require('../../tools/error')(e, message);
+            return require('../../tools/function/error')(e, message);
         }
     }
 }

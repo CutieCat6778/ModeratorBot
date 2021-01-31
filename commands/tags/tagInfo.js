@@ -14,7 +14,7 @@ module.exports = {
                 return message.channel.send("Please supply a tag key word");
             } else if (args[0]) {
                 let key = args.slice(0).join(" ");
-                const tag = await require("../../tools/getTag")(key);
+                const tag = await require("../../tools/database/getTag")(key);
                 if (!tag) return message.channel.send(`There are no tag has key word **${key}**`)
                 else if (tag) {
                     const user = await client.users.fetch(tag.userId);
@@ -24,11 +24,11 @@ module.exports = {
                         .addField("Key word", `${tag.key.slice(0, 1).toUpperCase() + tag.key.slice(1)}`, true)
                         .addField("Date", require("ms")((new Date() - tag.date), { long: true }) + " ago", true)
                         .setTimestamp()
-                    return require('../../tools/sendMessage')(message, embed);
+                    return require('../../tools/function/sendMessage')(message, embed);
                 }
             }
         } catch (e) {
-            return await require("../../tools/error")(e, message);
+            return await require("../../tools/function/error")(e, message);
         }
 
     }

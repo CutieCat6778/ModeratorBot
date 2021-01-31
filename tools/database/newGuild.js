@@ -1,9 +1,9 @@
-const Guild = require('../models/guilds');
+const Guild = require('../../models/guilds');
 
 module.exports = async(client, g) => {
     const channels = [];
     const guild = client.guilds.cache.get(g)
-    const guildData = await Guild.findOne({guildId: g});
+    const guildData = await Guild.findOne({_id: g});
     if(guildData) return;
     guild.channels.cache.forEach(channel => {
         if(channel.type != "text") return;
@@ -20,15 +20,15 @@ module.exports = async(client, g) => {
         roles.push(obj);
     })
     const newGuild = new Guild({
-        guildId: g,
+        _id: g,
         moderators: [],
         channels: channels,
         roles: roles,
         autorole: {
-            roleId: " ", enable: false
+            _id: " ", enable: false
         },
-        wellcome: {
-            "channelId": " ", "enable": false, "join":{
+        welcome: {
+            "_id": " ", "enable": false, "join":{
                 "text": " ", "default": true
             },"leave":{
                 "text": " ", "default": true
@@ -40,7 +40,7 @@ module.exports = async(client, g) => {
         },
         prefix: "mod",
         case: [],
-        capcha: {
+        captcha: {
             channels: [], enable: false
         },
         textfilter: {
@@ -49,7 +49,7 @@ module.exports = async(client, g) => {
                 "whitelist": [], "blacklist": [], "enable": false
             }, "links": false, "cap": false
         },
-        rules: { "enable": false, "channelId": " ", "messageId": " ", "rulesArr": [] }
+        rules: { "enable": false, "_id": " ", "messageId": " ", "rulesArr": [] }
     })
     guild.members.cache.map(u => {
         if(u.user.bot == false){
@@ -58,6 +58,6 @@ module.exports = async(client, g) => {
             }
         }
     });
-    await newGuild.save().catch(e => require('./error')(e, undefined))
+    await newGuild.save().catch(e => require('../function/error')(e, undefined))
     return newGuild;
 }

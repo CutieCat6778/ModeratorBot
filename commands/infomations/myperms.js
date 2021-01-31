@@ -15,9 +15,9 @@ module.exports = {
                 .setTitle(`<:permission:777500648500625449> ${message.member.displayName}'s permissions`)
                 .setDescription(`\`\`\`css\n${message.member.permissions.toArray().join("\n")}\n\`\`\``)
                 .setTimestamp()
-            return require('../../tools/sendMessage')(message, embed);
+            return require('../../tools/function/sendMessage')(message, embed);
         } catch (e) {
-            return require("../../tools/error")(e, message)
+            return require("../../tools/function/error")(e, message)
         }
 
     }

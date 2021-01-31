@@ -1,6 +1,6 @@
 module.exports = async (client, role) => {
     try {
-        const guild = await require('../../tools/getGuild')(client, role.guild.id);
+        const guild = await require('../../tools/database/getGuild')(client, role.guild.id);
         let chanel = guild.roles.find(c => c.id == role.id);
         if (chanel) {
             guild.roles.splice(chanel, 1);
@@ -24,6 +24,6 @@ module.exports = async (client, role) => {
             }
         }
     } catch (e) {
-        return require("../../tools/error")(e, undefined);
+        return require("../../tools/function/error")(e, undefined);
     }
 }

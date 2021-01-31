@@ -12,6 +12,6 @@ module.exports = (client) => {
         };
         readdirSync("./events/").forEach(x => load(x));
     } catch (e) {
-        return require("../tools/error")(e, undefined)
+        return require("../tools/function/error")(e, undefined)
     }
 };

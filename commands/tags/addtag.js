@@ -14,11 +14,11 @@ module.exports = {
                 return message.channel.send("Please supply a key word");
             } else if (args[0]) {
                 const key = args.slice(0).join(" ");
-                var tag = await require("../../tools/getTag")(key)
+                var tag = await require("../../tools/database/getTag")(key)
                 if (!tag) {
                     const filter = m => m.author.id == message.author.id;
                     message.channel.send("Please supply your tag's content");
-                    let collected = await require('../../tools/collectMessage')(message, filter);
+                    let collected = await require('../../tools/function/collectMessage')(message, filter);
                     const text = collected.content.toString();
                     const newTag = new Tag({
                         userId: message.author.id,
@@ -33,13 +33,13 @@ module.exports = {
                         .addField("Tag's name", key)
                         .addField("Tag's content", `${text}`)
                         .setTimestamp()
-                    return require('../../tools/sendMessage')(message, embed);
+                    return require('../../tools/function/sendMessage')(message, embed);
                 } else if (tag && tag.off == true) {
                     return message.channel.send("Oops, that tag name is already exist");
                 }
             }
         } catch (e) {
-            return await require("../../tools/error")(e, message)
+            return await require("../../tools/function/error")(e, message)
         }
     }
 }

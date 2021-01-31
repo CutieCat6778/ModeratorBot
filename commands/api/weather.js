@@ -17,7 +17,7 @@ module.exports = {
             if (!args[0]) return message.channel.send('Please supply a city/country name!');
             weather.setCity(args.slice(0).join(" "));
             weather.getAllWeather(function (err, result) {
-                if (result.cod && result.cod == '404') return require('../../tools/sendMessage')(message, result.message);
+                if (result.cod && result.cod == '404') return require('../../tools/function/sendMessage')(message, result.message);
                 let embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setTitle(`<:weather:774348021496283186> ` + result.name)
@@ -29,10 +29,10 @@ module.exports = {
                     .addField("Wind", result.wind.speed + "km/h", true)
                     .addField("Cloud", result.clouds.all + "%", true)
                     .setTimestamp()
-                require('../../tools/sendMessage')(message, embed);
+                require('../../tools/function/sendMessage')(message, embed);
             });
         } catch (e) {
-            require("../../tools/error")(e, message)
+            require("../../tools/function/error")(e, message)
         }
     }
 }

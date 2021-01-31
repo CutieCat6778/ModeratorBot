@@ -7,8 +7,8 @@ module.exports = async (client, message) => {
             //get guild and save it in cache
             let guildCache = client.guild.get(message.guild.id);
             if (!guildCache) {
-                const g = await require("../../tools/getGuild")(client, message.guild.id);
-                client.guild.set(g.guildId, g)
+                const g = await require("../../tools/database/getGuild")(client, message.guild.id);
+                client.guild.set(g._id, g)
                 guildCache = client.guild.get(message.guild.id);
             }
             //text-filter
@@ -16,7 +16,7 @@ module.exports = async (client, message) => {
                 if(guildCache.logs.enable == true){
                     var hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                     if (!hook) {
-                        const guild = require('../../tools/getGuild')(client, message.guild.id);
+                        const guild = require('../../tools/database/getGuild')(client, message.guild.id);
                         const logchannel = message.guild.channels.get(guildCache.logs.channelId);
                         if (logchannel) {
                             logchannel.createWebhook(client.user.username, {
@@ -49,7 +49,7 @@ module.exports = async (client, message) => {
                 }
                 userCache.times++;
                 if (!message.member.permissions.has("ADMINISTRATOR")) {
-                    if (require("../../tools/isUpperCase")(message.content) == true && guildCache.textfilter.cap) {
+                    if (require("../../tools/string/isUpperCase")(message.content) == true && guildCache.textfilter.cap) {
                         message.delete();
                         message.reply("too many caps").then(m => m.delete({ timeout: 5000 }))
                         userCache.warn++;
@@ -61,7 +61,7 @@ module.exports = async (client, message) => {
                             .setTimestamp()
                             .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.user.displayAvatarURL())
                         hook.send(embed);
-                    } if (require("../../functions/badwords")(message.content, guildCache) == true && guildCache.textfilter.badwords.enable) {
+                    } if (require("../../tools/string/badwords")(message.content, guildCache) == true && guildCache.textfilter.badwords.enable) {
                         message.delete();
                         message.reply("watch your language").then(m => m.delete({ timeout: 5000 }));
                         userCache.warn++;
@@ -120,7 +120,7 @@ module.exports = async (client, message) => {
                             .setTimestamp()
                             .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.user.displayAvatarURL())
                         hook.send(embed);
-                        return require("../../tools/mute")(client, "10m", message.member, muterole);
+                        return require("../../tools/function/muteTool")(client, "10m", message.member, muterole);
                     } if (userCache.times == 7) {
                         message.channel.send(`Slowdown <@!${message.author.id}>, next time you will get mute`);
                         let embed = new MessageEmbed()
@@ -149,20 +149,21 @@ module.exports = async (client, message) => {
                 } else if (!guildCache.prefix || !guildCache) {
                     embed.setDescription(`My prefix in this server is \`${process.env.prefix}\`\n If you need help type in chat \`${process.env.prefix} help\``)
                 }
-                require('../../tools/sendMessage')(message, embed);
+                require('../../tools/function/sendMessage')(message, embed);
             }
             //user mentions
             if (message.mentions.members) {
                 if (!message.content.includes("@everyone")) {
                     const users = message.mentions.members.map(m => m.id);
+                    const date = (new Date()).getTime();
                     if (users.length == 1) {
                         let userCache = client.afk.get(users[0]);
                         if (userCache && userCache.enable == true) {
                             let embed = new MessageEmbed()
                                 .setColor("#40598F")
                                 .setDescription(`<:afk:777491403676188702> <@!${users}> AFK - **${userCache.status}**`)
-                                .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
-                            require('../../tools/sendMessage')(message, embed);
+                                .setFooter(`${require("ms")((date - userCache.time), { long: true })} ago`)
+                            require('../../tools/function/sendMessage')(message, embed, true);
                         }
                     } else if (users.length > 1) {
                         users.forEach(user => {
@@ -171,8 +172,8 @@ module.exports = async (client, message) => {
                                 let embed = new MessageEmbed()
                                     .setColor("#40598F")
                                     .setDescription(`<:afk:777491403676188702> <@!${user}> AFK - **${userCache.status}**`)
-                                    .setFooter(`${require("ms")((client.uptime - userCache.time), { long: true })} ago`)
-                                require('../../tools/sendMessage')(message, embed);
+                                    .setFooter(`${require("ms")((date - userCache.time), { long: true })} ago`)
+                                require('../../tools/function/sendMessage')(message, embed, true);
                             }
                         })
                     }
@@ -182,8 +183,9 @@ module.exports = async (client, message) => {
             if (client.afk.get(message.author.id)) {
                 let userCache = client.afk.get(message.author.id);
                 if (userCache.enable == true) {
-                    message.reply("wellcome back, removed you from AFK!");
+                    message.reply("welcome back, removed you from AFK!");
                     client.afk.delete(message.author.id);
+                    await require('../../tools/database/removeAfk')(message.author.id);
                     if(userCache.name == true && message.member.displayName.startsWith('[AFK]')){
                         message.member.setNickname(message.member.displayName.replace('[AFK]', ''))
                     }
@@ -223,7 +225,7 @@ module.exports = async (client, message) => {
                         let embed = new MessageEmbed()
                             .setColor("#40598F")
                             .setDescription("You are being **ratelimited**!\n Please wait **`2 hours`** to use this __type of command again!__\n Or vote the bot on **[top.gg](https://moddy.js.org/vote)** to skip the **`2 hours`**!")
-                        return require('../../tools/sendMessage')(message, embed);
+                        return require('../../tools/function/sendMessage')(message, embed);
                     }
                     user.used--;
                 }
@@ -233,7 +235,7 @@ module.exports = async (client, message) => {
                             var hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                         }
                         if (!hook) {
-                            const guild = require('../../tools/getGuild')(client, message.guild.id);
+                            const guild = require('../../tools/database/getGuild')(client, message.guild.id);
                             const logchannel = message.guild.channels.get(guildCache.logs.channelId);
                             if (logchannel) {
                                 logchannel.createWebhook(client.user.username, {
@@ -258,13 +260,13 @@ module.exports = async (client, message) => {
                     }
                 }
                 if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && message.author.id != "762749432658788384") {
-                    return require('../../tools/sendMessage')(message, require("../../functions/permissionMiss")(commandfile.config.perms))
+                    return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")(commandfile.config.perms))
                 } else if (!commandfile.config.perms.includes("BOT_OWNER")) {
                     if (message.channel.permissionsFor(message.member).has(commandfile.config.perms) == false) {
-                        return require('../../tools/sendMessage')(message, require("../../functions/permissionMiss")(commandfile.config.perms))
+                        return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")(commandfile.config.perms))
                     }
                     if (message.channel.permissionsFor(message.guild.me).has(commandfile.config.bot) == false) {
-                        return require('../../tools/sendMessage')(message, require("../../functions/permissionMissMe")(commandfile.config.perms))
+                        return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMissMe")(commandfile.config.perms))
                     }
                 }
                 client.totalCommands += 1;
@@ -272,6 +274,6 @@ module.exports = async (client, message) => {
             }
         }
     } catch (e) {
-        return require("../../tools/error")(e, undefined)
+        return require("../../tools/function/error")(e, undefined)
     }
 }
