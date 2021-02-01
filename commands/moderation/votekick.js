@@ -7,7 +7,7 @@ module.exports = {
         category: "moderation",
         perms: ["SEND_MESSAGES"],
         description: "The moderator or administrator use this command to sue some one",
-        bot: ["REACT_MESSAGES", "EMBED_LINKS"]
+        bot: ["ADD_REACTIONS", "EMBED_LINKS"]
     },
     async execute(client, message, args) {
         try {
