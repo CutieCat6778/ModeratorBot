@@ -23,9 +23,6 @@ module.exports = async (client) => {
             await hook.send(embed);
         }
         console.log(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`);
-        client.setInterval(async () => {
-            await dbl.postStats(client.guilds.size);
-        }, 21600000)
     } catch (e) {
         return require("../../tools/function/error")(e, undefined)
     }

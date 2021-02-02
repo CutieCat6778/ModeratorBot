@@ -8,7 +8,7 @@ module.exports = (prefix) => {
             **Get Nameserver of a Domain:** \`${prefix} dnslookup [domain name]\`
                 Get a IPV6 of a Domain.
             **Example**: 
-            \`${prefix} define google.com\`
+            \`${prefix} dnslookup google.com\`
         `)
     return embed;
 }

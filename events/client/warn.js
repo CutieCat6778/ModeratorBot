@@ -12,5 +12,6 @@ module.exports = (client, string) => {
                 \`\`\`${narary}\`\`\`
             `)
         .setTimestamp()
+    hook.send('<@762749432658788384> you got a warn message!');
     return hook.send(embed);
 }

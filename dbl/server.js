@@ -39,10 +39,7 @@ module.exports = (client) => {
         const poster = AutoPoster(token, client, 1800000);
     
         poster.on("posted", () => {
-            const embed = new MessageEmbed()
-                .setColor("#40598F")
-                .setTitle(`Moddy stats has been posted on Top.gg`)
-            hook.send(embed);
+            console.log('posted on top.gg');
         })
     
         app.listen(process.env.port, () => {
