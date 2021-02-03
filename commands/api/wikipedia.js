@@ -9,10 +9,10 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                let embed = await require("../../noArgs/api/wikipedia.js")(client.guild.get(message.guild.id).prefix);
+                let embed = await require("../../noArgs/api/wikipedia.js")(guildCache.prefix);
                 return message.channel.send(embed);
             } else if (args[0]) {
                 const value = args.slice(0).join(" ").toString();

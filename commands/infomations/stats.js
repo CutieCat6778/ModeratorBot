@@ -9,7 +9,7 @@ module.exports = {
         description: "You use this command to see my stats",
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             const system = {
                 osInfo: 'platform, release',

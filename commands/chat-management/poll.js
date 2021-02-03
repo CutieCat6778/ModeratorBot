@@ -10,7 +10,7 @@ module.exports = {
         perms: ["MANAGE_GUILD"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) return message.channel.send("Please supply a __question__")
             let question = args.slice(0).join(" ");

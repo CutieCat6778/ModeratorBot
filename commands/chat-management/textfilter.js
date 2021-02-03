@@ -11,11 +11,11 @@ module.exports = {
     async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(guildCache.prefix));
             }
             if (args[0] == "setup") {
                 let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
-                if (guild.textfilter.enable == true) return message.channel.send(`Please use command \`${client.guild.get(message.guild.id).prefix} textfilter setting\`, you are already setup the textfilter`)
+                if (guild.textfilter.enable == true) return message.channel.send(`Please use command \`${guildCache.prefix} textfilter setting\`, you are already setup the textfilter`)
                 guild.textfilter.enable = true;
                 guildCache.textfilter.enable = true;
                 let embed = new MessageEmbed()
@@ -87,8 +87,8 @@ module.exports = {
                 await guild.save();
                 await require('../../tools/cache/guildCacheReload')(client);
                 message.channel.send("Successfully enabled Text filter function");
-                if (client.guild.get(message.guild.id)) {
-                    let guildCache = client.guild.get(message.guild.id);
+                if (guildCache) {
+                    let guildCache = guildCache;
                     if (guildCache.logs.enable == false) return;
                     if (guildCache.logs.id == " ") return;
                     if (isNaN(guildCache.logs.id == true)) return;
@@ -99,7 +99,7 @@ module.exports = {
                 }
             } else if (args[0] == "setting") {
                 if (!args[1]) {
-                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(guildCache.prefix));
                 }
                 else if (args[1] == "true") {
                     let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
@@ -109,8 +109,8 @@ module.exports = {
                     guildCache.textfilter.enable = true;
                     await require('../../tools/cache/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Text filter function");
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -125,10 +125,10 @@ module.exports = {
                     guild.textfilter.enable = false;
                     guildCache.textfilter.enable = false;
                     await guild.save();
-                    client.guild.get(message.guild.id).textfilter = guild.textfilter;
+                    guildCache.textfilter = guild.textfilter;
                     message.channel.send("Successfully disabled Text filter function");
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -149,9 +149,9 @@ module.exports = {
                     }
                     guildCache.textfilter = guild.textfilter;
                     await guild.save();
-                    client.guild.get(message.guild.id).textfilter = guild.textfilter;
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    guildCache.textfilter = guild.textfilter;
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -172,9 +172,9 @@ module.exports = {
                     }
                     guildCache.textfilter = guild.textfilter;
                     await guild.save();
-                    client.guild.get(message.guild.id).textfilter = guild.textfilter;
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    guildCache.textfilter = guild.textfilter;
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -195,9 +195,9 @@ module.exports = {
                     }
                     guildCache.textfilter = guild.textfilter;
                     await guild.save();
-                    client.guild.get(message.guild.id).textfilter = guild.textfilter;
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    guildCache.textfilter = guild.textfilter;
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -215,10 +215,10 @@ module.exports = {
                     });
                     await guild.save();
                     await require('../../tools/cache/guildCacheReload')(client);
-                    client.guild.get(message.guild.id).textfilter = guild.textfilter;
+                    guildCache.textfilter = guild.textfilter;
                     message.channel.send("Added those word to whitelist word");
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -236,10 +236,10 @@ module.exports = {
                     });
                     await guild.save();
                     await require('../../tools/cache/guildCacheReload')(client);
-                    client.guild.get(message.guild.id).textfilter = guild.textfilter;
+                    guildCache.textfilter = guild.textfilter;
                     message.channel.send("Added those word to blacklist word");
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -249,10 +249,10 @@ module.exports = {
                         }
                     }
                 } else {
-                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(guildCache.prefix));
                 }
             } else {
-                return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/chat-management/textfilter")(guildCache.prefix));
             }
         } catch (e) {
             return require("../../tools/function/error")(e, message)

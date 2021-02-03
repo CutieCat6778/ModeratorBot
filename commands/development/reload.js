@@ -5,7 +5,7 @@ module.exports = {
         category: "development",
         perms: ["BOT_OWNER"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         if (!args[0]) return;
         let commandName = args[0].toLowerCase()
         try {

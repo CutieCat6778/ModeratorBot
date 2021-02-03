@@ -7,7 +7,7 @@ module.exports = {
         perms: ["BOT_OWNER"],
         category: "development"
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             const input = "pm2 reload 0";
             await message.channel.send(`${message.guild.me.displayName} is reloading`)

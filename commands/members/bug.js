@@ -9,10 +9,10 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                let embed = await require("../../noArgs/members/bug")(client.guild.get(message.guild.id).prefix)
+                let embed = await require("../../noArgs/members/bug")(guildCache.prefix)
                 return require('../../tools/function/sendMessage')(message, embed);
             } else if (args[0]) {
                 let problem = args.slice(0).join(" ");

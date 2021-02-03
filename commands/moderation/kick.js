@@ -9,10 +9,10 @@ module.exports = {
         description: "You use this command to kick a member out of a guild, but he/her still can join back",
         bot: ["KICK_MEMBERS"]
     },
-    async execute (client, message, args) {
+    async execute (client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/kick")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/kick")(guildCache.prefix));
             }
             let target = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0]));
             if (!target) return message.channel.send("Member not found"); 
@@ -29,8 +29,7 @@ module.exports = {
                     await target.kick(reason);
                     require('../../tools/function/sendMessage')(message, text, true);
                     target.send(`You has been kicked from **${message.guild.name}** for reason **${reason}**`);
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    if (guildCache) {
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -41,7 +40,7 @@ module.exports = {
                         }
                     }
                 } else {
-                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/kick")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/kick")(guildCache.prefix));
                 }
             }
         } catch (e) {

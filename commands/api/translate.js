@@ -11,10 +11,10 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                let embed = require("../../noArgs/api/translate")(client.guild.get(message.guild.id).prefix);
+                let embed = require("../../noArgs/api/translate")(guildCache.prefix);
                 return require('../../tools/function/sendMessage')(message, embed);;
             } else if (args[0]) {
                 let text = args.slice(0).join(" ");

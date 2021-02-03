@@ -6,7 +6,7 @@ module.exports = {
         perms: ["MANAGE_GUILD"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             const guild = await require('../../tools/database/getGuild')(client, message.guild.id);
             if (guild.rules.enable == false) return message.channel.send("The rules is disabled")

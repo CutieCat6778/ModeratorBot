@@ -9,17 +9,17 @@ module.exports = {
         description: "The moderator or administrator use this command to sue some one",
         bot: ["ADD_REACTIONS", "EMBED_LINKS"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                let embed = await require("../../noArgs/moderation/votekick")(client.guild.get(message.guild.id).prefix);
+                let embed = await require("../../noArgs/moderation/votekick")(guildCache.prefix);
                 return require('../../tools/function/sendMessage')(message, embed);;
             }
             const target = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0]));
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ");
             if (!reason || !target) {
-                let embed = await require("../../noArgs/moderation/votekick")(client.guild.get(message.guild.id).prefix);
+                let embed = await require("../../noArgs/moderation/votekick")(guildCache.prefix);
                 return require('../../tools/function/sendMessage')(message, embed);;
             }
             if (message.member.id == target.id) return message.channel.send("You can't sue your self");
@@ -81,8 +81,8 @@ module.exports = {
                         } else if (target.roles.highest.position < message.guild.me.roles.highest.position && !target.permissions.has("ADMINISTRATOR")) {
                             await target.ban({ reason: reason });
                             m.edit(embed.setDescription(`Kicked ${target.displayName} with ${posiv} votes.`))
-                            if (client.guild.get(message.guild.id)) {
-                                let guildCache = client.guild.get(message.guild.id);
+                            if (guildCache) {
+                                let guildCache = guildCache;
                                 if (guildCache.logs.enable == false) return;
                                 if (guildCache.logs.id == " ") return;
                                 if (isNaN(guildCache.logs.id == true)) return;

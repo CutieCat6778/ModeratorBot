@@ -6,7 +6,7 @@ module.exports = {
         perms: ["MANAGE_CHANNELS", "MANAGE_GUILD"],
         bot: ["MANAGE_CHANNELS"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
                 message.channel.send("Are you sure that you want to nuke this channel ? [y/n]");

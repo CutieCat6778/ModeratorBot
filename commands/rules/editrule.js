@@ -7,10 +7,10 @@ module.exports = {
         perms: ["MANAGE_GUILD"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/function/sendMessage')(message, await require("../../noArgs/rules/editrule.js")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, await require("../../noArgs/rules/editrule.js")(guildCache.prefix));
             } else if (args[0]) {
                 if (isNaN(args[0]) == true) return message.channel.send("Invalid rule number");
                 else if (isNaN(args[0]) == false) {

@@ -6,7 +6,7 @@ module.exports = {
         category: "tags",
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
                 return message.channel.send("Please supply a tag key")

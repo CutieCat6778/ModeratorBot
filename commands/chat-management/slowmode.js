@@ -9,7 +9,7 @@ module.exports = {
         category: "chat-management",
         bot: ["MANAGE_MESSAGES", "MANAGE_CHANNELS"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) return message.channel.send("Please specific a limit time !");
             if (isNaN(args[0]) == false) return message.channel.send("The option is invalid. For example the option can be (10s, 1h, False)");

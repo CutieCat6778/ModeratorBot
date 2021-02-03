@@ -8,7 +8,7 @@ module.exports = {
         category: "development",
         perms: ["BOT_OWNER"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             let system = {
                 cpu: "manufacturer, brand, speed, cores, processors",

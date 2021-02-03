@@ -7,7 +7,7 @@ module.exports = {
         perms: ["BOT_OWNER"],
         category: "development"
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             const input = args.slice(0).join(" ");
             if (!input) return;

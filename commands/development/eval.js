@@ -9,7 +9,7 @@ module.exports = {
         perms: ["BOT_OWNER"],
         description: "Don't touch, when you don't know what is"
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             const date1 = new Date();
             if (!args[0]) return;

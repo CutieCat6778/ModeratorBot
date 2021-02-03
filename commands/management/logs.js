@@ -9,10 +9,10 @@ module.exports = {
         description: "You use this command to disable or enable logs",
         bot: ["MANAGE_CHANNELS", "SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0] || !args[1]) {
-                return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/logs")(guildCache.prefix));
             }
             if (args[0] == "setup") {
                 if (args[1].toString()) {
@@ -21,9 +21,9 @@ module.exports = {
                     if (!logchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                         return require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel")
                     }
-                    const guildCache = client.guild.get(message.guild.id);
+                    const guildCache = guildCache;
                     const guild = await require("../../tools/database/getGuild")(client, message.guild.id);
-                    if (isNaN(guildCache.logs.id) == true) return message.channel.send(`Please use command \`${client.guild.get(message.guild.id).prefix} logs setting\`, you are already setup the logs`)
+                    if (isNaN(guildCache.logs.id) == true) return message.channel.send(`Please use command \`${guildCache.prefix} logs setting\`, you are already setup the logs`)
                     guild.logs.channelId = logchannel.id;
                     guildCache.logs.channelId = logchannel.id;
                     logchannel.createWebhook(client.user.username, {
@@ -43,11 +43,11 @@ module.exports = {
                         })
 
                 } else {
-                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/logs")(guildCache.prefix));
                 }
             } else if (args[0] == "setting") {
                 if (!args[1]) {
-                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/textfilter")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/textfilter")(guildCache.prefix));
                 }
                 else if (args[1] == "true") {
                     let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
@@ -60,7 +60,7 @@ module.exports = {
                     if (guild.logs.enable == false) return message.channel.send("You already disable it");
                     guild.logs.enable = false;
                     await guild.save();
-                    const guildCache = client.guild.get(message.guild.id);
+                    const guildCache = guildCache;
                     const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                     if (hook) {
                         await hook.delete();
@@ -72,7 +72,7 @@ module.exports = {
                     if (!logchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                         return require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel")
                     }
-                    const guildCache = client.guild.get(message.guild.id);
+                    const guildCache = guildCache;
                     const oldhook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                     if (oldhook) await oldhook.delete();
                     const guild = await require("../../tools/database/getGuild")(client, message.guild.id);
@@ -94,10 +94,10 @@ module.exports = {
                             return message.channel.send("Succesfully enabled the logs function");
                         })
                 } else {
-                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/logs")(guildCache.prefix));
                 }
             } else {
-                return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/logs")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/logs")(guildCache.prefix));
             }
         } catch (e) {
             return require("../../tools/function/error")(e, message)

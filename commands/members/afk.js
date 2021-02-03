@@ -10,7 +10,7 @@ module.exports = {
     async execute (client, message, args) {
         try{
             if(!args[0]) {
-                let embed = await require("../../noArgs/members/afk.js")(client.guild.get(message.guild.id).prefix);
+                let embed = await require("../../noArgs/members/afk.js")(guildCache.prefix);
                 return require('../../tools/function/sendMessage')(message, embed);
             }else if(args[0]){
                 let status = args.slice(0).join(" ");

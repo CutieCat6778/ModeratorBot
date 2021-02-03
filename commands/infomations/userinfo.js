@@ -8,7 +8,7 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             let target = await message.guild.members.fetch(args[0] ? await require('../../tools/string/mentions')(args[0]) : message.author.id);
             if (!target) return message.channel.send("User not found");

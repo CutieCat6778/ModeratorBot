@@ -8,10 +8,10 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                let embed = await require('../../noArgs/api/define.js')(client.guild.get(message.guild.id).prefix);
+                let embed = await require('../../noArgs/api/define.js')(guildCache.prefix);
                 return require('../../tools/function/sendMessage')(message, embed);;
             } else if (args[0]) {
                 url = `https://api.dictionaryapi.dev/api/v2/entries/en/${args[0]}`;

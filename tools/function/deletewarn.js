@@ -14,7 +14,7 @@ module.exports = async function warn(message, target, reason, client) {
         targetData.time--;
         targetData.reason = `Deleted one warn for reason __${reason}__`;
         await guild.updateOne({ warn: guild.warn });
-        client.guild.get(message.guild.id).warn = guild.warn;
+        guildCache.warn = guild.warn;
         let muterole = message.guild.roles.cache.find((r) => r.name === "Muted");
         if (!muterole) {
             if (message.guild.roles.cache.size > 250) {

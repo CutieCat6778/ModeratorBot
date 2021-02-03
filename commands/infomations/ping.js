@@ -9,7 +9,7 @@ module.exports = {
         category: "infomations",
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             const date1 = new Date()
             const guild = await require('../../tools/database/getGuild')(client, message.guild.id);

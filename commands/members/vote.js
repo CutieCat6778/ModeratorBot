@@ -7,7 +7,7 @@ module.exports = {
         aliases: ["v", "votes"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         const embed = new MessageEmbed()
             .setColor("#40598F")
             .setThumbnail("https://cutiecat6778.github.io/cdn/pfp.png")

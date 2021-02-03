@@ -9,10 +9,10 @@ module.exports = {
         perms: ["BAN_MEMBERS"],
         bot: ["BAN_MEMBERS"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/ban")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/ban")(guildCache.prefix));
             }
             if (args[0]) {
                 if (args[0]) {
@@ -36,8 +36,8 @@ module.exports = {
                     }
                     message.guild.members.ban(target.id, { reason: reason })
                     require('../../tools/function/sendMessage')(message, text, true);
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -58,11 +58,11 @@ module.exports = {
                     if (!reason) text = `**${target.displayName}** has been banned`;
                     if (!reason) reason = "No reason provided";
                     await target.send(`You has been banned from **${message.guild.name}** for reason **${reason}**`);
-                    if (isNaN(args[1]) == true) return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/ban")(client.guild.get(message.guild.id).prefix));
+                    if (isNaN(args[1]) == true) return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/ban")(guildCache.prefix));
                     await target.ban({ days: args[0].toString().toLowerCase(), reason: reason });
                     require('../../tools/function/sendMessage')(message, text, true);
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -73,7 +73,7 @@ module.exports = {
                         }
                     }
                 } else {
-                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/ban")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/ban")(guildCache.prefix));
                 }
             }
         } catch (e) {

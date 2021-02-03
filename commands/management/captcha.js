@@ -12,12 +12,12 @@ module.exports = {
     async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/captcha")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/captcha")(guildCache.prefix));
             }
             if (args[0] == "setup") {
                 const channels = await mentions(args.slice(1));
                 let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
-                if (guild.captcha.enable == true) return message.channel.send(`You are already setup the captcha, \`${client.guild.get(message.guild.id).prefix} captcha setting\` to setting to captcha`)
+                if (guild.captcha.enable == true) return message.channel.send(`You are already setup the captcha, \`${guildCache.prefix} captcha setting\` to setting to captcha`)
                 guild.captcha.enable = true;
                 guild.captcha.channels = channels;
                 await guild.save();
@@ -65,8 +65,8 @@ module.exports = {
                 }
                 await require('../../tools/cache/guildCacheReload')(client);
                 message.channel.send("Successfully enabled Captcha function");
-                if (client.guild.get(message.guild.id)) {
-                    let guildCache = client.guild.get(message.guild.id);
+                if (guildCache) {
+                    let guildCache = guildCache;
                     if (guildCache.logs.enable == false) return;
                     if (guildCache.logs.id == " ") return;
                     if (isNaN(guildCache.logs.id == true)) return;
@@ -77,7 +77,7 @@ module.exports = {
                 }
             } else if (args[0] == "setting") {
                 if (!args[1]) {
-                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/captcha")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/captcha")(guildCache.prefix));
                 }
                 if (args[1] == "true") {
                     let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
@@ -86,8 +86,8 @@ module.exports = {
                     await guild.save();
                     await require('../../tools/cache/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Captcha function");
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -103,8 +103,8 @@ module.exports = {
                     await guild.save();
                     await require('../../tools/cache/guildCacheReload')(client);
                     message.channel.send("Successfully disabled Captcha function");
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -163,8 +163,8 @@ module.exports = {
                     }
                     await require('../../tools/cache/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Captcha function");
-                    if (client.guild.get(message.guild.id)) {
-                        let guildCache = client.guild.get(message.guild.id);
+                    if (guildCache) {
+                        let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -175,10 +175,10 @@ module.exports = {
                     }
                 }
                 else {
-                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/captcha")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/captcha")(guildCache.prefix));
                 }
             } else {
-                return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/captcha")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/captcha")(guildCache.prefix));
             }
         } catch (e) {
             return require("../../tools/function/error")(e, message)

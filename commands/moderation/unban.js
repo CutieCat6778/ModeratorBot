@@ -9,10 +9,10 @@ module.exports = {
         perms: ["BAN_MEMBERS"],
         bot: ["BAN_MEMBERS"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/unban")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/unban")(guildCache.prefix));
             }
             let target = await client.users.fetch(require("../../tools/string/mentions")(args[0]));
             if (!target) return message.channel.send("User not found");
@@ -21,8 +21,8 @@ module.exports = {
             message.guild.fetchBan(target.id).then(async b => {
                 await message.guild.members.unban(target);
                 require('../../tools/function/sendMessage')(message, `Unbaned **${target.tag}**`)
-                if (client.guild.get(message.guild.id)) {
-                    let guildCache = client.guild.get(message.guild.id);
+                if (guildCache) {
+                    let guildCache = guildCache;
                     if (guildCache.logs.enable == false) return;
                     if (guildCache.logs.id == " ") return;
                     if (isNaN(guildCache.logs.id == true)) return;

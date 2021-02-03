@@ -12,7 +12,7 @@ module.exports = {
     async execute (client, message, args) {
         try {
             if (!args[0]) {
-                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/unmute")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/unmute")(guildCache.prefix));
             }
             let muterole = message.guild.roles.cache.find((r) => r.name === "Muted");
             if (!muterole) return message.channel.send("There are no users who has been muted");
@@ -26,8 +26,8 @@ module.exports = {
             if (target.roles.cache.has(muterole.id)) {
                 await target.roles.remove(muterole);
                 require('../../tools/function/sendMessage')(message, text, true);
-                if (client.guild.get(message.guild.id)) {
-                    let guildCache = client.guild.get(message.guild.id);
+                if (guildCache) {
+                    let guildCache = guildCache;
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;

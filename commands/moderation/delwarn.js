@@ -9,10 +9,10 @@ module.exports = {
         perms: ["MANAGE_GUILD", "MANAGE_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/deletewarn")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/deletewarn")(guildCache.prefix));
             }
             let target = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0]));
             if (!target) return message.channel.send("User not found");
@@ -20,8 +20,8 @@ module.exports = {
                 let reason = args.slice(1).join(" ");
                 if (!reason) return message.channel.send("Please supply a __reason__");
                 require("../../tools/function/deleteWarn")(message, target, reason, client)
-                if (client.guild.get(message.guild.id)) {
-                    let guildCache = client.guild.get(message.guild.id);
+                if (guildCache) {
+                    let guildCache = guildCache;
                     if (guildCache.logs.enable == false) return;
                     if (guildCache.logs.id == " ") return;
                     if (isNaN(guildCache.logs.id == true)) return;
@@ -32,7 +32,7 @@ module.exports = {
                     }
                 }
                 else {
-                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/deletewarn")(client.guild.get(message.guild.id).prefix));
+                    return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/deletewarn")(guildCache.prefix));
                 }
             }
         } catch (e) {

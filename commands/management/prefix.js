@@ -8,10 +8,10 @@ module.exports = {
         description: "Change my prefix",
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                let emebd = await require("../../noArgs/management/prefix")(client.guild.get(message.guild.id).prefix);
+                let emebd = await require("../../noArgs/management/prefix")(guildCache.prefix);
                 require('../../tools/function/sendMessage')(message, emebd);
             } else if (args[1]) {
                 return message.channel.send("The prefix can be only one word")
@@ -25,9 +25,9 @@ module.exports = {
                 const prefix = args[0].toString();
                 let guildData = await require("../../tools/database/getGuild")(client, message.guild.id);
                 guildData.prefix = prefix;
-                client.guild.get(message.guild.id).prefix = prefix;
+                guildCache.prefix = prefix;
                 await guildData.save();
-                client.guild.get(message.guild.id).prefix = prefix;
+                guildCache.prefix = prefix;
                 message.channel.send(`My prefix in this server has been change to \`${prefix}\``);
             }
         } catch (e) {

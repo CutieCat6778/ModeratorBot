@@ -9,18 +9,18 @@ module.exports = {
         description: "The moderator or administrator use this command to see cases history",
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
+                let embed = await require("../../noArgs/moderation/cases")(guildCache.prefix);
                 return require('../../tools/function/sendMessage')(message, embed);;
             } else if (args[0]) {
                 if (isNaN(args[0]) == true) {
-                    let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
+                    let embed = await require("../../noArgs/moderation/cases")(guildCache.prefix);
                     return require('../../tools/function/sendMessage')(message, embed);;
                 } else if (isNaN(args[0]) == false) {
                     let casenum = parseInt(args[0]);
-                    let guild = client.guild.get(message.guild.id);
+                    let guild = guildCache;
                     let caseInfo = await guild.case.find(c => c.num == casenum - 1);;
                     if (!caseInfo) return message.channel.send("Case not found");
                     let target = message.guild.members.cache.get(caseInfo.target);
@@ -43,11 +43,11 @@ module.exports = {
                         .setTimestamp()
                     return require('../../tools/function/sendMessage')(message, embed);
                 } else {
-                    let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
+                    let embed = await require("../../noArgs/moderation/cases")(guildCache.prefix);
                     return require('../../tools/function/sendMessage')(message, embed);;
                 }
             } else {
-                let embed = await require("../../noArgs/moderation/cases")(client.guild.get(message.guild.id).prefix);
+                let embed = await require("../../noArgs/moderation/cases")(guildCache.prefix);
                 return require('../../tools/function/sendMessage')(message, embed);;
             }
         } catch (e) {

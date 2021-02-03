@@ -5,7 +5,7 @@ module.exports = {
         perms: ["BOT_OWNER"],
         category: "development"
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             message.channel.messages.fetch({
                 limit: 80,

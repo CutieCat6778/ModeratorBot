@@ -7,7 +7,7 @@ module.exports = {
         perms: ["BOT_OWNER"],
         category: "development"
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             const input = "pm2 status";
             exec(input, async (error, stdout, stderr) => {

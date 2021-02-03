@@ -9,7 +9,7 @@ module.exports = {
         description: 'You use this command to see how many warns you have',
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
             let user = guild.warn.find(u => u.userId == message.author.id);

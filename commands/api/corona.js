@@ -8,7 +8,7 @@ module.exports = {
         bot: ["SEND_MESSAGES"],
         category: "api"
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try{
             let url = "https://api.covid19api.com/summary";
             url = encodeURI(url);

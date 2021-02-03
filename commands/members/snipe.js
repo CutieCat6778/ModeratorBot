@@ -8,7 +8,7 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             let snipe = client.snipe.get(message.channel.id);
             if (!snipe) return message.channel.send("There are no recent deleted message");
@@ -26,7 +26,7 @@ module.exports = {
                     .setFooter(require("ms")((new Date() - snipe.time), { long: true }) + " ago")
                 return require('../../tools/function/sendMessage')(message, embed);
             } else {
-                require('../../tools/function/sendMessage')(message, require("../../noArgs/members/snipe"))(client.guild.get(message.guild.id).prefix)
+                require('../../tools/function/sendMessage')(message, require("../../noArgs/members/snipe"))(guildCache.prefix)
             }
         } catch (e) {
             return require("../../tools/function/error")(e, message)

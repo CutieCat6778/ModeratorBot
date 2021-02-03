@@ -7,7 +7,7 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             const embed = new MessageEmbed()
                 .setColor("#40598F")

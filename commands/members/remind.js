@@ -8,10 +8,10 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return require('../../tools/function/sendMessage')(message, await require("../../noArgs/members/remind.js")(client.guild.get(message.guild.id).prefix));
+                return require('../../tools/function/sendMessage')(message, await require("../../noArgs/members/remind.js")(guildCache.prefix));
             } else if (args[0]) {
                 const time = args[0].toString();
                 const date = new Date()

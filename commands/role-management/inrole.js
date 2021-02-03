@@ -8,7 +8,7 @@ module.exports = {
         category: "role-management",
         bot: ["MANAGE_ROLES"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
                 return require('../../tools/function/sendMessage')(message, require('../../noArgs/role-management/inrole.js')(guildCache.prefix));
