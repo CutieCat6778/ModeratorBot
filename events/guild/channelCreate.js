@@ -35,29 +35,31 @@ module.exports = async (client, channel) => {
             SPEAK: false,
             CONNECT: false
         });
-        let vertifyrole = channel.guild.roles.cache.find((r) => r.name === "Unvertified");
-        if (!vertifyrole) {
-            if(channel.guild.roles.cache.size > 250){
-                return;
-            }
-            vertifyrole = await channel.guild.roles.create({
-                data: {
-                    name: 'Unvertified',
-                    color: '#000000',
-                    permission: []
+        if(guild.captcha.enable == true){
+            let vertifyrole = channel.guild.roles.cache.find((r) => r.name === "Unvertified");
+            if (!vertifyrole) {
+                if(channel.guild.roles.cache.size > 250){
+                    return;
                 }
+                vertifyrole = await channel.guild.roles.create({
+                    data: {
+                        name: 'Unvertified',
+                        color: '#000000',
+                        permission: []
+                    }
+                });
+                if (channel.type == "dm" || channel.type == "category" || channel.type == "unknown") return;
+            }
+            await channel.createOverwrite(vertifyrole, {
+                VIEW_CHANNEL: false,
+                SEND_MESSAGES: false,
+                ADD_REACTIONS: false,
+                SEND_TTS_MESSAGES: false,
+                ATTACH_FILES: false,
+                SPEAK: false,
+                CONNECT: false
             });
-            if (channel.type == "dm" || channel.type == "category" || channel.type == "unknown") return;
         }
-        await channel.createOverwrite(vertifyrole, {
-            VIEW_CHANNEL: false,
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false,
-            SEND_TTS_MESSAGES: false,
-            ATTACH_FILES: false,
-            SPEAK: false,
-            CONNECT: false
-        });
         if (guild.logs.enable == true) {
             if (guild.logs.id == " ") return;
             if (isNaN(guild.logs.id == true)) return;
