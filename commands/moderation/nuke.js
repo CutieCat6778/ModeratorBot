@@ -17,7 +17,6 @@ module.exports = {
                         return message.channel.send("Invalid options");
                     case "y":
                         const oldChannel = message.channel;
-                        const oldChannel_OverWrites = message.channel.permissionOverwrites;
                         const obj = {
                             type: oldChannel.type
                         }
