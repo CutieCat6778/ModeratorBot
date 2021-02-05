@@ -269,7 +269,7 @@ module.exports = async (client, message) => {
                         return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMissMe")(commandfile.config.perms))
                     }
                 }
-                client.totalCommands += 1;
+                client.total += 1;
                 return commandfile.execute(client, message, args, guildCache)
             }
         }
