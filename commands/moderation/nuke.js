@@ -17,6 +17,7 @@ module.exports = {
                         return message.channel.send("Invalid options");
                     case "y":
                         const oldChannel = message.channel;
+                        const oldChannel_OverWrites = message.channel.permissionOverwrites;
                         const obj = {
                             type: oldChannel.type
                         }
@@ -27,6 +28,8 @@ module.exports = {
                         obj.parent ? await channel.setParent(oldChannel.parent.id) : null
                         await channel.setPosition(oldChannel.position);
                         await oldChannel.delete();
+                        const oldChannel_OverWrites = oldChannel.permissionOverwrites;
+                        await channel.overwritePermission(oldChannel_OverWrites);
                         //done
                         await channel.send("Nuked this channel");
                         return channel.send("https://i.pinimg.com/originals/cb/2f/28/cb2f28639fddb230cdf55fbaab48a046.gif");
@@ -52,6 +55,8 @@ module.exports = {
                         const channel = await message.guild.channels.create(oldChannel.name, obj);
                         obj.parent ? await channel.setParent(oldChannel.parent.id) : null
                         await channel.setPosition(oldChannel.position);
+                        const oldChannel_OverWrites = oldChannel.permissionOverwrites;
+                        await channel.overwritePermission(oldChannel_OverWrites);
                         await oldChannel.delete();
                         //done
                         await channel.send("Nuked this channel");
