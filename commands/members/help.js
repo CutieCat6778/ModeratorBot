@@ -16,7 +16,7 @@ module.exports = {
                 let embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setTitle(message.guild.me.displayName + `#${client.user.discriminator}`)
-                    .setFooter("© 2020 CutieCat#6778 All Rights Reserved")
+                    .setFooter("© 2020 Cat_#9289 All Rights Reserved")
                     .setDescription(`
                         **__Usefull links__**\n\n**<:website:777495410893389834> Main website**\n[${process.env.url}](${process.env.url})\n**<:command:777495685082775552> Commands list**\n[${process.env.url}/commands](${process.env.url}/commands.html)\n**<:support:777495932472131604> Support server**\n[${process.env.url}/support](${process.env.url}/support)\n\n**__How to use help commands__**\n\n**[1] Command information**\n\`${guildCache.prefix} help (command_name, category_name)\`\n**[2] Comamnd list**\n*look at the second link!*
                     `)
