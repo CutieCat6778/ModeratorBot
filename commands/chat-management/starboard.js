@@ -37,15 +37,24 @@ module.exports = {
                         case "off":
                         case "disable":
                         case "disabled":
+                            if (!guildCache.starboard.enable) return send(message, 'Your starboard function is already disabled', false);
+                            else if (guildCache.starboard.enable == true) {
+                                const guild = await require('../../tools/database/getGuild')(client, message.guild.id);
+                                guild.starboard.enable = false;
+                                guildCache.starboard.enable = false;
+                                const text = guild.starboard.enable ? 'Successfully enabled **starboard** function' : 'Successfully disabled **starboard** function';
+                                return send(message, text, false);
+                            }
+                            break;
                         case "true":
                         case "on":
                         case "enable":
                         case "enabled":
-                            if (!guildCache.starboard.enable) return send(message, 'Your starboard function is already disabled', false);
-                            else if (guildCache.starboard.enable == true) {
+                            if (guildCache.starboard.enable) return send(message, 'Your starboard function is already enabled', false);
+                            else if (guildCache.starboard.enable == false) {
                                 const guild = await require('../../tools/database/getGuild')(client, message.guild.id);
-                                guild.starboard.enable = !guild.starboard.enable;
-                                guildCache.starboard.enable = !guildCache.starboard.enable;
+                                guild.starboard.enable = true;
+                                guildCache.starboard.enable = true;
                                 const text = guild.starboard.enable ? 'Successfully enabled **starboard** function' : 'Successfully disabled **starboard** function';
                                 return send(message, text, false);
                             }
