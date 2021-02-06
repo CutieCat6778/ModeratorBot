@@ -41,6 +41,9 @@ const guildSchema = mongoose.Schema({
         "enable": Boolean, "_id": String, "messageId": String, "rulesArr": [
             { "ruleNum": Number, "ruleContent": String }
         ]
+    },
+    starboard: {
+        "enable": Boolean, "_id": String, "blacklist": [String]
     }
 })
 

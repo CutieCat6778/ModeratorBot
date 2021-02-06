@@ -14,6 +14,7 @@ client.spam = new Map();
 client.ratelimit = new Map();
 client.snipe = new Map();
 client.timeouts = new Map();
+client.starboard = new Collection();
 
 require('./handlers/commands')(client);
 require('./handlers/events')(client);
