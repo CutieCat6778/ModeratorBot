@@ -58,7 +58,6 @@ module.exports = {
                         wellchannel.send("Welcome messages will be here");
                         message.channel.send("Successfully enabled Welcome message function");
                         if (guildCache) {
-                            let guildCache = guildCache;
                             if (guildCache.logs.enable == false) return;
                             if (guildCache.logs._id == " ") return;
                             if (isNaN(guildCache.logs._id == true)) return;
@@ -106,7 +105,7 @@ module.exports = {
                     let wellchannel = message.guild.channels.cache.get(guild.welcome._id);
                     message.channel.send("Successfully enabled Welcome message function");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs._id == " ") return;
                         if (isNaN(guildCache.logs._id == true)) return;
@@ -124,7 +123,7 @@ module.exports = {
                     let wellchannel = message.guild.channels.cache.get(guild.welcome._id);
                     message.channel.send("Successfully disabled Welcome message function");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -208,7 +207,7 @@ module.exports = {
                         wellchannel.send("Welcome messages will be here");
                         message.channel.send("Successfully enabled Welcome message function");
                         if (guildCache) {
-                            let guildCache = guildCache;
+                            
                             if (guildCache.logs.enable == false) return;
                             if (guildCache.logs.id == " ") return;
                             if (isNaN(guildCache.logs.id == true)) return;

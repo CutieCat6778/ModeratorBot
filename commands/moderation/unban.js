@@ -22,7 +22,7 @@ module.exports = {
                 await message.guild.members.unban(target);
                 require('../../tools/function/sendMessage')(message, `Unbaned **${target.tag}**`)
                 if (guildCache) {
-                    let guildCache = guildCache;
+                    
                     if (guildCache.logs.enable == false) return;
                     if (guildCache.logs.id == " ") return;
                     if (isNaN(guildCache.logs.id == true)) return;

@@ -66,7 +66,7 @@ module.exports = {
                 await require('../../tools/cache/guildCacheReload')(client);
                 message.channel.send("Successfully enabled Captcha function");
                 if (guildCache) {
-                    let guildCache = guildCache;
+                    
                     if (guildCache.logs.enable == false) return;
                     if (guildCache.logs.id == " ") return;
                     if (isNaN(guildCache.logs.id == true)) return;
@@ -87,7 +87,7 @@ module.exports = {
                     await require('../../tools/cache/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Captcha function");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -104,7 +104,7 @@ module.exports = {
                     await require('../../tools/cache/guildCacheReload')(client);
                     message.channel.send("Successfully disabled Captcha function");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -164,7 +164,7 @@ module.exports = {
                     await require('../../tools/cache/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Captcha function");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;

@@ -82,7 +82,7 @@ module.exports = {
                             await target.ban({ reason: reason });
                             m.edit(embed.setDescription(`Kicked ${target.displayName} with ${posiv} votes.`))
                             if (guildCache) {
-                                let guildCache = guildCache;
+                                
                                 if (guildCache.logs.enable == false) return;
                                 if (guildCache.logs.id == " ") return;
                                 if (isNaN(guildCache.logs.id == true)) return;

@@ -27,7 +27,7 @@ module.exports = {
                 await target.roles.remove(muterole);
                 require('../../tools/function/sendMessage')(message, text, true);
                 if (guildCache) {
-                    let guildCache = guildCache;
+                    
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;

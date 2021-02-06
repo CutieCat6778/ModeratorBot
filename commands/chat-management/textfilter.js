@@ -88,7 +88,7 @@ module.exports = {
                 await require('../../tools/cache/guildCacheReload')(client);
                 message.channel.send("Successfully enabled Text filter function");
                 if (guildCache) {
-                    let guildCache = guildCache;
+                    
                     if (guildCache.logs.enable == false) return;
                     if (guildCache.logs.id == " ") return;
                     if (isNaN(guildCache.logs.id == true)) return;
@@ -110,7 +110,7 @@ module.exports = {
                     await require('../../tools/cache/guildCacheReload')(client);
                     message.channel.send("Successfully enabled Text filter function");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -128,7 +128,7 @@ module.exports = {
                     guildCache.textfilter = guild.textfilter;
                     message.channel.send("Successfully disabled Text filter function");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -151,7 +151,7 @@ module.exports = {
                     await guild.save();
                     guildCache.textfilter = guild.textfilter;
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -174,7 +174,7 @@ module.exports = {
                     await guild.save();
                     guildCache.textfilter = guild.textfilter;
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -197,7 +197,7 @@ module.exports = {
                     await guild.save();
                     guildCache.textfilter = guild.textfilter;
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -218,7 +218,7 @@ module.exports = {
                     guildCache.textfilter = guild.textfilter;
                     message.channel.send("Added those word to whitelist word");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -239,7 +239,7 @@ module.exports = {
                     guildCache.textfilter = guild.textfilter;
                     message.channel.send("Added those word to blacklist word");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;

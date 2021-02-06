@@ -26,7 +26,7 @@ module.exports = {
                     await require('../../tools/cache/guildCacheReload')(client);
                     require('../../tools/function/sendMessage')(message, "Successfully enabled Auto assign role function");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
@@ -51,7 +51,7 @@ module.exports = {
                     await require('../../tools/cache/guildCacheReload')(client);
                     require('../../tools/function/sendMessage')(message, "Successfully enabled Auto assign role function");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.channelId == " ") return;
                         if (isNaN(guildCache.logs.channelId == true)) return;
@@ -69,7 +69,7 @@ module.exports = {
                     await require('../../tools/cache/guildCacheReload')(client);
                     require('../../tools/function/sendMessage')(message, "Successfully disabled Auto assign role function");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.channelId == " ") return;
                         if (isNaN(guildCache.logs.channelId == true)) return;
@@ -88,7 +88,7 @@ module.exports = {
                     await require('../../tools/cache/guildCacheReload')(client);
                     require('../../tools/function/sendMessage')(message, "Successfully enabled Auto assign role function");
                     if (guildCache) {
-                        let guildCache = guildCache;
+                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.channelId == " ") return;
                         if (isNaN(guildCache.logs.channelId == true)) return;
