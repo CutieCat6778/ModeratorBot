@@ -51,7 +51,7 @@ module.exports = {
                             }
                             break;
                         default:
-                            const id = require('../../tools/string/mentions')(args[0].toLowerCase());
+                            const id = require('../../tools/string/mentions')(args[1].toLowerCase());
                             const channel = await message.guild.channels.cache.get(id);
                             if (!channel) return send(message, await require('../../noArgs/chat-management/starboard.js')(guildCache.prefix), false);
                             else if (channel) {
