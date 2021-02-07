@@ -206,8 +206,12 @@ module.exports = async (client, message) => {
                 } if (message.content.toLowerCase().startsWith(`<@${client.user.id}>`)) {
                     args = message.content.slice(`<@${client.user.id}>`.length).trim().split(/ +/g);
                 }
-                const cmd = args.shift().toLowerCase();
-                const commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
+                let cmd = args.shift().toLowerCase();
+                let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
+                if(commandfile){
+                    cmd = cmd + args.shift().toLowerCase();
+                    commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
+                }
                 if (!commandfile) return;
                 if (commandfile.config.category == "api") {
                     let user = client.ratelimit.get(message.author.id);
