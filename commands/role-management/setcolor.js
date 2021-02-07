@@ -19,9 +19,9 @@ module.exports = {
             const oldColor = role.color;
             await role.setColor(args[1]);
             if (role.color == oldColor) {
-                return require('../../tools/function/sendMessage')(message, "I couldn't change that role's color! Please check does it is a valid color code.");
+                return require('../../tools/function/sendMessage')(message, "I couldn't change that role's color! Please check does it is a valid color code.", false);
             } else if (role.color != oldColor) {
-                return require('../../tools/function/sendMessage')(message, `Done! I that role's color to ${args[0]}`);
+                return require('../../tools/function/sendMessage')(message, `Done! I that role's color to ${args[0]}`, false);
             }
         } catch (e) {
             return require('../../tools/function/error')(e, message);

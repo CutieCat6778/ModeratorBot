@@ -15,7 +15,7 @@ module.exports = {
             }
             message.channel.send("Are you sure that you want to reset al the rules ? [y/n]");
             const filter = m => m.author.id == message.author.id;
-            let collected = require('../../tools/function/collectMessage')(message, filter);
+            let collected = await require('../../tools/function/collectMessage')(message, filter);
             if (collected.content.toLowerCase() == "y") {
                 let channel = message.guild.channels.cache.get(guild.rules._id);
                 if (channel) {
@@ -28,7 +28,7 @@ module.exports = {
                     "enable": false, "_id": " ", "messageId": " ", "rulesArr": []
                 }
                 await guild.updateOne({ rules: guild.rules });
-                return require('../../tools/function/sendMessage')(message, `Successfully reset the rules in **${message.guild.name}**`);
+                return require('../../tools/function/sendMessage')(message, `Successfully reset the rules in **${message.guild.name}**`, false);
             } else if (collected.content.toLowerCase() == "n") {
                 return require('../../tools/function/sendMessage')(message, "Canceled", false);
             }

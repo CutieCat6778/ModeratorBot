@@ -26,9 +26,9 @@ module.exports = {
                 })
             })
             if (role.permissions.has(["SEND_MESSAGES", "ADD_REACTIONS", "SEND_TTS_MESSAGES", "ATTACH_FILES", "SPEAK"])) {
-                return require('../../tools/function/sendMessage')(message, "I couldn't mute that role!");
+                return require('../../tools/function/sendMessage')(message, "I couldn't mute that role!", false);
             } else if (!role.permissions.has(["SEND_MESSAGES", "ADD_REACTIONS", "SEND_TTS_MESSAGES", "ATTACH_FILES", "SPEAK"])) {
-                return require('../../tools/function/sendMessage')(message, "Done! I muted that role.");
+                return require('../../tools/function/sendMessage')(message, "Done! I muted that role.", false);
             }
         } catch (e) {
             return require('../../tools/function/error')(e, message);

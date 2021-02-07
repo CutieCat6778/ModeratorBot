@@ -17,7 +17,7 @@ module.exports = {
                 return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")("I don't have permission to access that role"));
             }
             await role.setHoist(!role.hoist);
-            return require('../../tools/function/sendMessage')(message, `Done! I changed that role's hoist.`);
+            return require('../../tools/function/sendMessage')(message, `Done! I changed that role's hoist.`, false);
         } catch (e) {
             return require('../../tools/function/error')(e, message);
         }

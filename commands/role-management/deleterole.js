@@ -19,9 +19,9 @@ module.exports = {
             await role.delete(args.slice(1).join(" "));
             role = message.guild.roles.cache.get(await require('../../tools/string/mentions')(args[0]));
             if (role) {
-                return require('../../tools/function/sendMessage')(message, "I couldn't delete that role!");
+                return require('../../tools/function/sendMessage')(message, "I couldn't delete that role!", false);
             } else if (!role) {
-                return require('../../tools/function/sendMessage')(message, "Done! I deleted that role.");
+                return require('../../tools/function/sendMessage')(message, "Done! I deleted that role.", false);
             }
         } catch (e) {
             return require('../../tools/function/error')(e, message);

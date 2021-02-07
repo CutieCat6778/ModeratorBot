@@ -23,7 +23,7 @@ module.exports = {
                     const text = collected.content.toString();
                     tag.text = text.toString();
                     await tag.save();
-                    return require('../../tools/function/sendMessage')(message, `Changed the tag's content`)
+                    return require('../../tools/function/sendMessage')(message, `Changed the tag's content`, false)
                 }
             }
         } catch (e) {

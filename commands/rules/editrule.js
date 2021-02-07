@@ -37,7 +37,7 @@ module.exports = {
                         await msg.edit(embed);
                     }
                     await guild.updateOne({ rules: guild.rules });
-                    return require('../../tools/function/sendMessage')(message, "Successfully edited the rules.")
+                    return require('../../tools/function/sendMessage')(message, "Successfully edited the rules.", false)
                 }
             }
         } catch (e) {
