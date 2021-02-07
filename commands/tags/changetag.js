@@ -9,7 +9,7 @@ module.exports = {
     async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return message.channel.send("Please supply tag's key word");
+                return require('../../tools/function/sendMessage')(message, await require('../../noArgs/tags/changetag')(guildCache.prefix));
             } else if (args[0]) {
                 let key = args.slice(0).join(" ");
                 let tag = await require("../../tools/database/getTag")(key);

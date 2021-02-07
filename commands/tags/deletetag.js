@@ -6,10 +6,10 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute (client, message, args) {
+    async execute (client, message, args, guildCache) {
         try{
             if (!args[0]) {
-                return message.channel.send("Please supply tag's key word");
+                return require('../../tools/function/sendMessage')(message, await require('../../noArgs/tags/deletetag')(guildCache.prefix));
             } else if (args[0]) {
                 const key = args.slice(0).join(" ");
                 let tag = await require("../../tools/database/getTag")(key);

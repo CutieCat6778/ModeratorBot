@@ -11,7 +11,7 @@ module.exports = {
     async execute(client, message, args, guildCache) {
         try {
             if (!args[0]) {
-                return message.channel.send("Please supply a key word");
+                return require('../../tools/function/sendMessage')(message, await require('../../noArgs/tags/addtag')(guildCache.prefix));
             } else if (args[0]) {
                 const key = args.slice(0).join(" ");
                 var tag = await require("../../tools/database/getTag")(key)
