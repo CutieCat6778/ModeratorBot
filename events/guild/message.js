@@ -233,7 +233,7 @@ module.exports = async (client, message) => {
                     }
                     user.used--;
                 }
-                if (commandfile.category == "moderation" || commandfile.category == "management") {
+                if (commandfile.config.category == "moderation" || commandfile.config.category == "management") {
                     if (guildCache.logs.enable == true) {
                         if(!hook){
                             var hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
