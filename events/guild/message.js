@@ -208,7 +208,7 @@ module.exports = async (client, message) => {
                 }
                 let cmd = args.shift().toLowerCase();
                 let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
-                if(!commandfile){
+                if(!commandfile && args.length > 0){
                     cmd = cmd + args.shift().toLowerCase();
                     commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
                 }
