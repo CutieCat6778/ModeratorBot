@@ -17,7 +17,7 @@ module.exports = async (client, message) => {
                     var hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                     if (!hook) {
                         const guild = require('../../tools/database/getGuild')(client, message.guild.id);
-                        const logchannel = message.guild.channels.get(guildCache.logs.channelId);
+                        const logchannel = message.guild.channels.get(guildCache.logs._id);
                         if (logchannel) {
                             logchannel.createWebhook(client.user.username, {
                                 avatar: 'https://cutiecat6778.github.io/cdn/pfp.png'
@@ -240,7 +240,7 @@ module.exports = async (client, message) => {
                         }
                         if (!hook) {
                             const guild = require('../../tools/database/getGuild')(client, message.guild.id);
-                            const logchannel = message.guild.channels.get(guildCache.logs.channelId);
+                            const logchannel = message.guild.channels.get(guildCache.logs._id);
                             if (logchannel) {
                                 logchannel.createWebhook(client.user.username, {
                                     avatar: 'https://cutiecat6778.github.io/cdn/pfp.png'

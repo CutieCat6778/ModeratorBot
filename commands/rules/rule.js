@@ -50,7 +50,7 @@ module.exports = {
                                             if (!channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                                                 return require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel")
                                             }
-                                            guild.rules.channelIdnnelId = channel.id;
+                                            guild.rules._idnnelId = channel.id;
                                             let messageId = await channel.send(embed);
                                             guild.rules.messageId = messageId.id;
                                             guild.rules.rulesArr = rules;
@@ -80,7 +80,7 @@ module.exports = {
                     const embed = new MessageEmbed()
                         .setColor("#40598F")
                         .setTitle(`<:rules:774311089445535765> Rule #${args[0]}`, message.guild.iconURL())
-                        .setDescription(`**${guild.rules.rulesArr.find(a => a.ruleNum == parseInt(args[0])).ruleContent}**\n[Please read <#${guild.channelIdes.channelId}> for more information](https://discordapp.com/channels/${message.guild.id}/${channelIdld.rules.channelId}/${guild.rules.messageId}/)`)
+                        .setDescription(`**${guild.rules.rulesArr.find(a => a.ruleNum == parseInt(args[0])).ruleContent}**\n[Please read <#${guild._ides._id}> for more information](https://discordapp.com/channels/${message.guild.id}/${_idld.rules._id}/${guild.rules.messageId}/)`)
                         .setTimestamp()
                         .setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL())
                     return require('../../tools/function/sendMessage')(message, embed, true);

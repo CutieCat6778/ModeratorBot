@@ -21,7 +21,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                     var hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                     if (!hook) {
                         const guild = require('../../tools/database/getGuild')(client, newMessage.guild.id);
-                        const logchannel = newMessage.guild.channels.get(guildCache.logs.channelId);
+                        const logchannel = newMessage.guild.channels.get(guildCache.logs._id);
                         if (logchannel) {
                             logchannel.createWebhook(client.user.username, {
                                 avatar: 'https://cutiecat6778.github.io/cdn/pfp.png'

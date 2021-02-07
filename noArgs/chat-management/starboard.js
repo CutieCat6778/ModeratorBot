@@ -4,9 +4,9 @@ module.exports = function help(prefix) {
         .setColor("#40598F")
         .setTitle("Starboard")
         .setDescription(`The starboard command's aliases are : \`starboard\`, \`startboard\` or \`starb\`\n
-            **Starboard setup**: \`${prefix} starboard setup [#channel, channelID]\`
+            **Starboard setup**: \`${prefix} starboard setup [#channel, _id]\`
                 You just have to mentions a channel then the bot will automaticly setup
-            **Starboard setting**: \`${prefix} starboard setting <true, false or (#channel, channelID)>\`
+            **Starboard setting**: \`${prefix} starboard setting <true, false or (#channel, _id)>\`
                 You use this command to disable or enable the Starboard function
             **Example**: 
             \`${prefix} starboard setup @role\`

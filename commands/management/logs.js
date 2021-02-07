@@ -24,8 +24,8 @@ module.exports = {
                     const guildCache = guildCache;
                     const guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     if (isNaN(guildCache.logs.id) == true) return message.channel.send(`Please use command \`${guildCache.prefix} logs setting\`, you are already setup the logs`)
-                    guild.logs.channelId = logchannel.id;
-                    guildCache.logs.channelId = logchannel.id;
+                    guild.logs._id = logchannel.id;
+                    guildCache.logs._id = logchannel.id;
                     logchannel.createWebhook(client.user.username, {
                         avatar: 'https://cutiecat6778.github.io/cdn/pfp.png'
                     })
@@ -76,8 +76,8 @@ module.exports = {
                     const oldhook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                     if (oldhook) await oldhook.delete();
                     const guild = await require("../../tools/database/getGuild")(client, message.guild.id);
-                    guild.logs.channelId = logchannel.id;
-                    guildCache.logs.channelId = logchannel.id;
+                    guild.logs._id = logchannel.id;
+                    guildCache.logs._id = logchannel.id;
                     logchannel.createWebhook(client.user.username, {
                         avatar: 'https://cutiecat6778.github.io/cdn/pfp.png'
                     })

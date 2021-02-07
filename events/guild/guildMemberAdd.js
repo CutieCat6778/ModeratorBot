@@ -55,8 +55,8 @@ module.exports = async (client, member) => {
                 .then(async m => {
                     if(!m || m.size == 0) {
                         await channel.send("You failed the captcha, please join to the server back to redo the captcha");
-                        if (guild.welcome.enable == true && guild.welcome.channelId != " ") {
-                            let wellchannel = member.guild.channels.cache.get(guild.welcome.channelId);
+                        if (guild.welcome.enable == true && guild.welcome._id != " ") {
+                            let wellchannel = member.guild.channels.cache.get(guild.welcome._id);
                             if (!wellchannel) return;
                             let embed = new MessageEmbed()
                                 .setColor("#40598F")
@@ -72,8 +72,8 @@ module.exports = async (client, member) => {
                     }if(m.size != 0){
                         if (isNaN(m.first().toString()) == true || parseInt(m.first().toString()) != c) {
                             await channel.send("You failed the captcha, please join to the server back to redo the captcha");
-                            if (guild.welcome.enable == true && guild.welcome.channelId != " ") {
-                                let wellchannel = member.guild.channels.cache.get(guild.welcome.channelId);
+                            if (guild.welcome.enable == true && guild.welcome._id != " ") {
+                                let wellchannel = member.guild.channels.cache.get(guild.welcome._id);
                                 if (!wellchannel) return;
                                 let embed = new MessageEmbed()
                                     .setColor("#40598F")
@@ -105,15 +105,15 @@ module.exports = async (client, member) => {
         }
         function autorolewelcome() {
             //autorole
-            if (guild.autorole.enable == true && guild.welcome.channelId != " ") {
+            if (guild.autorole.enable == true && guild.welcome._id != " ") {
                 let role = member.guild.roles.cache.get(guild.autorole.roleId);
                 if (!role) return;
                 if (member.roles.cache.has(role.id)) return;
                 member.roles.add(role);
             }
             //welcome
-            if (guild.welcome.enable == true && guild.welcome.channelId != " ") {
-                let channel = member.guild.channels.cache.get(guild.welcome.channelId);
+            if (guild.welcome.enable == true && guild.welcome._id != " ") {
+                let channel = member.guild.channels.cache.get(guild.welcome._id);
                 if (!channel) return;
                 const text = guild.welcome.join.text.replace('{user}', member).replace('{server}', member.guild.name).replace('{count}', member.guild.members.cache.size)
                 let embed = new MessageEmbed()

@@ -53,9 +53,9 @@ module.exports = {
                     if (guildCache) {
                         
                         if (guildCache.logs.enable == false) return;
-                        if (guildCache.logs.channelId == " ") return;
-                        if (isNaN(guildCache.logs.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                        if (guildCache.logs._id == " ") return;
+                        if (isNaN(guildCache.logs._id == true)) return;
+                        let channel = message.guild.channels.cache.get(guildCache.logs._id);
                         if (channel) {
                             return channel.send(require("../../logs/autorole")(role, guild.autorole));
                         }
@@ -71,9 +71,9 @@ module.exports = {
                     if (guildCache) {
                         
                         if (guildCache.logs.enable == false) return;
-                        if (guildCache.logs.channelId == " ") return;
-                        if (isNaN(guildCache.logs.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                        if (guildCache.logs._id == " ") return;
+                        if (isNaN(guildCache.logs._id == true)) return;
+                        let channel = message.guild.channels.cache.get(guildCache.logs._id);
                         if (channel) {
                             return channel.send(require("../../logs/autorole")(role, guild.autorole));
                         }
@@ -90,9 +90,9 @@ module.exports = {
                     if (guildCache) {
                         
                         if (guildCache.logs.enable == false) return;
-                        if (guildCache.logs.channelId == " ") return;
-                        if (isNaN(guildCache.logs.channelId == true)) return;
-                        let channel = message.guild.channels.cache.get(guildCache.logs.channelId);
+                        if (guildCache.logs._id == " ") return;
+                        if (isNaN(guildCache.logs._id == true)) return;
+                        let channel = message.guild.channels.cache.get(guildCache.logs._id);
                         if (channel) {
                             return channel.send(require("../../logs/autorole")(role, guild.autorole));
                         }
