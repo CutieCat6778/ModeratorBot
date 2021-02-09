@@ -10,7 +10,7 @@ module.exports = {
         try {
             if (!args[0]) {
                 message.channel.send("Are you sure that you want to nuke this channel ? [y/n]");
-                const filter = (user) => user.id == message.author.id;
+                const filter = m => m.author.id == message.author.id;
                 let collected = await require('../../tools/function/collectMessage')(message, filter);
                 switch (collected.content.toLowerCase()) {
                     default:
