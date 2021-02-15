@@ -14,7 +14,7 @@ module.exports = {
             if (!args[0]) {
                 return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/kick")(guildCache.prefix));
             }
-            let target = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0]));
+            let target = message.guild.members.cache.get(require('mention-validator')(args[0]));
             if (!target) return message.channel.send("Member not found"); 
             if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
                 return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")("I don't have permission to kick him/her"));

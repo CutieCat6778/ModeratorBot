@@ -16,8 +16,8 @@ module.exports = {
             }
             if (args[0]) {
                 if (args[0]) {
-                    let target = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0]));
-                    if (!target) target = await client.users.fetch(require("../../tools/string/mentions")(args[0]));
+                    let target = message.guild.members.cache.get(require('mention-validator')(args[0]));
+                    if (!target) target = await client.users.fetch(require('mention-validator')(args[0]));
                     if (!target) return message.channel.send("User not found");
                     if (target.roles) {
                         if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
@@ -48,7 +48,7 @@ module.exports = {
                         }
                     }
                 } else if (isNaN(args[0]) == false) {
-                    let target = message.guild.members.cache.get(require("../../tools/string/mentions")(args[1]));
+                    let target = message.guild.members.cache.get(require('mention-validator')(args[1]));
                     if (!target) return message.channel.send("User not found");
                     if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
                         return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")("I don't have permission to ban him/her"));

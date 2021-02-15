@@ -15,7 +15,7 @@ module.exports = {
                 let embed = await require("../../noArgs/moderation/votekick")(guildCache.prefix);
                 return require('../../tools/function/sendMessage')(message, embed);;
             }
-            const target = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0]));
+            const target = message.guild.members.cache.get(require('mention-validator')(args[0]));
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ");
             if (!reason || !target) {

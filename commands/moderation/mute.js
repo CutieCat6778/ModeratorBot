@@ -39,7 +39,7 @@ module.exports = {
                     require("../../tools/function/error")("mute", message, error)
                 }
             }
-            let target = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0])) || message.guild.members.cache.get(require("../../tools/string/mentions")(args[1])) || message.guild.members.cache.get(require("../../tools/string/mentions")(args[2]));
+            let target = message.guild.members.cache.get(require('mention-validator')(args[0])) || message.guild.members.cache.get(require('mention-validator')(args[1])) || message.guild.members.cache.get(require('mention-validator')(args[2]));
             if (!target) return message.channel.send("User not found");
             if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
                 return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")("I don't have permission to mute him/her"));

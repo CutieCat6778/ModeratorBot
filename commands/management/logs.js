@@ -16,7 +16,7 @@ module.exports = {
             }
             if (args[0] == "setup") {
                 if (args[1].toString()) {
-                    let logchannel = message.guild.channels.cache.get(require("../../tools/string/mentions")(args[1]));
+                    let logchannel = message.guild.channels.cache.get(require('mention-validator')(args[1]));
                     if (!logchannel) return message.channel.send("Channel not found");
                     if (!logchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                         return require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel")
@@ -67,7 +67,7 @@ module.exports = {
                     }
                     return message.channel.send("Successfully disabled Logging function");
                 } else if (args[1].startsWith("<").endsWith(">") || isNaN(args[1] == false)) {
-                    let logchannel = message.guild.channels.cache.get(require("../../tools/string/mentions")(args[1]));
+                    let logchannel = message.guild.channels.cache.get(require('mention-validator')(args[1]));
                     if (!logchannel) return message.channel.send("Channel not found");
                     if (!logchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                         return require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel")

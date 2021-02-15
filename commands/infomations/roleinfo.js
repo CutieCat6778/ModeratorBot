@@ -12,7 +12,7 @@ module.exports = {
     async execute(bot, message, args) {
         try {
             if (!args[0]) return message.channel.send("Please mentions a role or supply a role ID");
-            const role = message.guild.roles.cache.get(await require("../../tools/string/mentions")(args[0].toString()));
+            const role = message.guild.roles.cache.get(await require('mention-validator')(args[0].toString()));
             if (!role) return message.channel.send("Role not found")
             let embed = new MessageEmbed()
                 .setColor("#40598F")

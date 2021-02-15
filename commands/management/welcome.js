@@ -16,7 +16,7 @@ module.exports = {
             }
             if (args[0] == "setup") {
                 if (args[1]) {
-                    let wellchannel = message.guild.channels.cache.get(require("../../tools/string/mentions")(args[1]));
+                    let wellchannel = message.guild.channels.cache.get(require('mention-validator')(args[1]));
                     if (!wellchannel) return message.channel.send("Channel not found");
                     if (wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES") == false) {
                         return message.channel.send(require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel"));
@@ -167,7 +167,7 @@ module.exports = {
                     await guild.save();
                     return message.channel.send("Successfully change the user join text");
                 } else if (args[1]) {
-                    let wellchannel = message.guild.channels.cache.get(require("../../tools/string/mentions")(args[1]));
+                    let wellchannel = message.guild.channels.cache.get(require('mention-validator')(args[1]));
                     if (!wellchannel) return message.channel.send("Channel not found");
                     if (wellchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES") == false) {
                         return message.channel.send(require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel"));

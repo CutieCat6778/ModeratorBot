@@ -13,7 +13,7 @@ module.exports = {
             let user;
             if (!args[0]) user = message.member;
             if(args[0]){
-                user = message.guild.members.cache.get(require("../../tools/string/mentions")(args[0]));
+                user = message.guild.members.cache.get(require('mention-validator')(args[0]));
                 if(!user) return message.channel.send("Member not found");
             }
             let embed = new MessageEmbed()
