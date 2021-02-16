@@ -27,13 +27,12 @@ module.exports = {
                 await target.roles.remove(muterole);
                 require('../../tools/function/sendMessage')(message, text, true);
                 if (guildCache) {
-                    
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
                         let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                     if (channel) {
-                        let embed = await require("../../logs/logs")(target, "unmute", message, reason);
+                        let embed = await require("../../logs/logs")(target, "unmute", message, reason, client);
                         return channel.send(embed);
                     }
                 }

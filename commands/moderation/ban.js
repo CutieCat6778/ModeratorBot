@@ -43,7 +43,7 @@ module.exports = {
                         if (isNaN(guildCache.logs.id == true)) return;
                         let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
-                            let embed = await require("../../logs/logs")(target, "ban", message, reason);
+                            let embed = await require("../../logs/logs")(target, "ban", message, reason, client);
                             return channel.send(embed);
                         }
                     }
@@ -67,7 +67,7 @@ module.exports = {
                         if (isNaN(guildCache.logs.id == true)) return;
                         let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
-                            let embed = await require("../../logs/logs")(target, "ban", message, reason);
+                            let embed = await require("../../logs/logs")(target, "ban", message, reason, client);
                             return channel.send(embed);
                         }
                     }
