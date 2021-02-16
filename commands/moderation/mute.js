@@ -44,6 +44,7 @@ module.exports = {
             if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
                 return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")("I don't have permission to mute him/her"));
             }
+            if(target.roles.cache.has(muterole.id)) return message.channel.send('This user is already muted');
             if (args[0]) {
                 if (require('ms')(args[0])) {
                     require("../../tools/function/muteTemp")(client, muterole, message, args, target);
