@@ -13,7 +13,7 @@ module.exports = {
             if (!args[0]) {
                 return require('../../tools/function/sendMessage')(message, require('../../noArgs/role-management/inrole.js')(guildCache.prefix));
             }
-            const role = message.guild.roles.cache.get(await require('../../tools/string/mentions')(args[0]));
+            const role = message.guild.roles.cache.get(require('mention-validator')(args[0]));
             if (!role) return message.channel.send("Role not found");
             const embed = new MessageEmbed()
                 .setColor("#40598F")
