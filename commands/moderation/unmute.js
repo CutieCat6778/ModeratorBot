@@ -9,7 +9,7 @@ module.exports = {
         description: "You use this command to unmute people, who are muted",
         bot: ["MANAGE_ROLES"]
     },
-    async execute (client, message, arg, guildCache) {
+    async execute (client, message, args, guildCache) {
         try {
             if (!args[0]) {
                 return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/unmute")(guildCache.prefix));
