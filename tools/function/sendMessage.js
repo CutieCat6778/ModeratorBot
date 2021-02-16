@@ -11,12 +11,13 @@ module.exports = (message, text, boolen) => {
                     if (reaction.emoji.name == "🗑️") {
                         m.delete();
                         ping.delete();
+                        return m;
                     }
                 })
                 collector.on('end', (reaction, user) => {
                     m.reactions.removeAll();
+                    return m;
                 })
-                return m;
             })
         })
     }else if(boolen){
@@ -29,10 +30,12 @@ module.exports = (message, text, boolen) => {
             collector.on("collect", (reaction, user) => {
                 if (reaction.emoji.name == "🗑️" && user.id == message.author.id) {
                     m.delete();
+                    return m;
                 }
             })
             collector.on('end', (reaction, user) => {
                 m.reactions.removeAll();
+                return m;
             })
             return m;
         })

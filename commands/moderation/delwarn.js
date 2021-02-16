@@ -27,7 +27,7 @@ module.exports = {
                     if (isNaN(guildCache.logs.id == true)) return;
                     let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                     if (channel) {
-                        let embed = await require("../../logs/logs")(target, "delete warn", message, reason, client);
+                        let embed = await require("../../logs/logs")(target, "delete warn", message, reason);
                         return channel.send(embed);
                     }
                 }

@@ -39,6 +39,7 @@
     "morse": "^0.1.0",
     "ms": "^2.1.2",
     "node-fetch": "^2.6.1",
+    "node-pre-gyp": "^0.17.0",
     "openweather-apis": "^4.3.1",
     "request": "^2.88.2",
     "string-toolkit": "^1.0.89",

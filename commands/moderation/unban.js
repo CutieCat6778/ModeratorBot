@@ -29,7 +29,7 @@ module.exports = {
                     let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                     if (channel) {
                         target.user = target;
-                        let embed = await require("../../logs/logs")(target, "unban", message, reason, client);
+                        let embed = await require("../../logs/logs")(target, "unban", message, reason);
                         return channel.send(embed);
                     }
                 }
