@@ -14,7 +14,7 @@ module.exports = {
             if (!args[0]) {
                 return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/unban")(guildCache.prefix));
             }
-            let target = await client.users.fetch(require('mention-validator')(args[0]));
+            let target = await client.users.fetch(require('mention-converter')(args[0]));
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ")
             if (!reason) reason = "No reason given!";

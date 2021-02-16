@@ -14,7 +14,7 @@ module.exports = {
             if (!args[0]) {
                 return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/deletewarn")(guildCache.prefix));
             }
-            let target = message.guild.members.cache.get(require('mention-validator')(args[0]));
+            let target = message.guild.members.cache.get(require('mention-converter')(args[0]));
             if (!target) return message.channel.send("User not found");
             if (target) {
                 let reason = args.slice(1).join(" ");

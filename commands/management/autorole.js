@@ -16,7 +16,7 @@ module.exports = {
             }
             if (args[0] == "setup") {
                 if (args[1]) {
-                    let role = message.guild.roles.cache.get(require('mention-validator')(args[1]));
+                    let role = message.guild.roles.cache.get(require('mention-converter')(args[1]));
                     if(!role) return message.channel.send("Role not found");
                     let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     if (guild.autorole.roleId != " ") return message.channel.send(`Please use command \`${guildCache.prefix} autorole setting\`, you are already setup the autorole`)
@@ -79,7 +79,7 @@ module.exports = {
                         }
                     }
                 } else if (args[1]) {
-                    let role = message.guild.roles.cache.get(require('mention-validator')(args[1]));
+                    let role = message.guild.roles.cache.get(require('mention-converter')(args[1]));
                     if(!role) return message.channel.send("Role not found");
                     let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     guild.autorole.roleId = role.id;

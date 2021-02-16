@@ -34,7 +34,7 @@
     "express": "^4.17.1",
     "geoip-lite": "^1.4.2",
     "html-to-text": "^5.1.1",
-    "mention-validator": "0.0.5",
+    "mention-converter": "0.0.1",
     "mongoose": "^5.10.11",
     "morse": "^0.1.0",
     "ms": "^2.1.2",

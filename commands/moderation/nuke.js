@@ -36,7 +36,7 @@ module.exports = {
                         return message.channel.send("Canceled");
                 }
             } else if (args[0]) {
-                const oldChannel = message.guild.channels.cache.get(require('mention-validator')(args[0]));
+                const oldChannel = message.guild.channels.cache.get(require('mention-converter')(args[0]));
                 if (!oldChannel) return message.channel.send("Channel not found");
                 message.channel.send("Are you sure that you want to nuke this channel ? [y/n]");
                 const filter = (user) => user.id == message.author.id;

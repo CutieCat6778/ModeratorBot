@@ -1,4 +1,4 @@
-const mentions = require('mention-validator');
+const mentions = require('mention-converter');
 const { WebhookClient } = require('discord.js');
 module.exports = {
     config: {

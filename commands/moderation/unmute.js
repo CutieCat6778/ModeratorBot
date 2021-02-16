@@ -16,7 +16,7 @@ module.exports = {
             }
             let muterole = message.guild.roles.cache.find((r) => r.name === "Muted");
             if (!muterole) return message.channel.send("There are no users who has been muted");
-            let target = message.guild.members.cache.get(require('mention-validator')(args[0]));
+            let target = message.guild.members.cache.get(require('mention-converter')(args[0]));
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ");
             let text = `**${target.displayName}** has been unmuted for reason **${reason}**`;
