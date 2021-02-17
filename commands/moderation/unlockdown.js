@@ -20,7 +20,7 @@ module.exports = {
             const overw = message.channel.permissionOverwrites;
             data.arr.forEach(a => {
                 const role = message.guild.roles.cache.get(a.id);
-                if (message.guild.me.roles.highest.position > role.position) {
+                if (message.guild.me.roles.highest.position > role.position  || role.permissions.has(['ADMINISTRATOR']) || role.permissions.has('MANAGE_GUILD')) {
                     let r = overw.find(b => b.id == a.id);
                     if (r) {
                         r.deny = r.deny == 55360 ? 0 : a.deny;

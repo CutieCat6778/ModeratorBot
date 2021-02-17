@@ -35,7 +35,7 @@ module.exports = {
             overw.forEach(o => {
                 if (o.type == 'role') {
                     const role = message.guild.roles.cache.get(o.id);
-                    if (message.guild.me.roles.highest.position > role.position || role.permission.has(['ADMINISTRATOR']) || role.permission.has('MANAGE_GUILD')) {
+                    if (message.guild.me.roles.highest.position > role.position || role.permissions.has(['ADMINISTRATOR']) || role.permissions.has('MANAGE_GUILD')) {
                         const allow = Array.isArray(o.allow) ? o.allow : o.allow.toArray();
                         const deny = Array.isArray(o.deny) ? o.deny : o.deny.toArray();
                         const target = ['SEND_MESSAGES', 'SEND_TTS_MESSAGES', 'ADD_REACTIONS', 'EMBED_LINKS', 'ATTACH_FILES'];
