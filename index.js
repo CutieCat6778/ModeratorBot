@@ -1,5 +1,5 @@
 const {Client, Collection} = require("discord.js");
-const client = new Client();
+const client = new Client({ ws: { properties: { $browser: "Discord Android" }} });
 require('dotenv').config();
 
 client.start = new Date();
