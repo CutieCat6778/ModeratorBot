@@ -10,7 +10,6 @@ module.exports = {
         category: "moderation"
     },
     async execute(client, message, args, guildCache) {
-        return message.channel.send('Under contruction!');
         let data = await require('../../tools/database/getLockdown')(message.channel.id);
         if(data) {
             if(data.lock == true){
@@ -27,7 +26,7 @@ module.exports = {
             lock: true,
             arr: []
         }
-        overw.map(a => {
+        overw.forEach(a => {
             obj.arr.push({id: a.id, type: a.type, deny: a.deny, allow: a.allow});
         })
         const cantUn = [];
@@ -35,7 +34,7 @@ module.exports = {
         overw.forEach(o => {
             if (o.type == 'role') {
                 const role = message.guild.roles.cache.get(o.id);
-                if (message.guild.me.roles.highest.position > role.position) {
+                if (message.guild.me.roles.highest.position > role.position || role.permission.has(['ADMINISTRATOR']) || role.permission.has('MANAGE_GUILD')) {
                     const allow = Array.isArray(o.allow) ? o.allow : o.allow.toArray();
                     const deny = Array.isArray(o.deny) ? o.deny : o.deny.toArray();
                     const target = ['SEND_MESSAGES', 'SEND_TTS_MESSAGES', 'ADD_REACTIONS', 'EMBED_LINKS', 'ATTACH_FILES'];
@@ -48,7 +47,7 @@ module.exports = {
                         }
                     })
                     if (guildRoles.includes(o.id)) {
-                        guildRoles.splice(guildRoles.indexOf(o.id));
+                        guildRoles.splice(guildRoles.indexOf(o.id), 1);
                     }
                     o.allow = new Permissions(allow);
                     o.deny = new Permissions(deny);

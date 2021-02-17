@@ -10,7 +10,6 @@ module.exports = {
         category: "moderation"
     },
     async execute(client, message, args, guildCache) {
-        return message.channel.send('Under contruction!');
         const data = await require('../../tools/database/getLockdown')(message.channel.id);
         if(!data || !data.lock) return message.channel.send('This channel is not locked');
         const embed = new MessageEmbed()
@@ -18,15 +17,18 @@ module.exports = {
             .setDescription('<a:loading:811171036745695283> **Please wait . . . **')
         const msg = await message.channel.send(embed);
         const overw = message.channel.permissionOverwrites;
-        for(let a of data.arr){
+        data.arr.forEach(a => {
+            console.log(a);
             const role = message.guild.roles.cache.get(a.id);
             if(message.guild.me.roles.highest.position > role.position){
-                let r = overw.get(a.id);
+                let r = overw.find(b => b.id == a.id);
                 if(r){
-                    r = a;
+                    console.log(r);
+                    r.deny = r.deny == 55360 ? 0 : a.deny;
+                    r.allow = a.allow;
                 }
             }
-        }
+        })
         console.log(overw);
         await require('../../tools/database/removeLockdown')(message.channel.id)
         await message.channel.overwritePermissions(overw);
