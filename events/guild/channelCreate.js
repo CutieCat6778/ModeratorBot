@@ -9,55 +9,54 @@ module.exports = async (client, channel) => {
             }
             await guild.save();
         }
-        let muterole = channel.guild.roles.cache.find((r) => r.name === "Muted");
-        if (!muterole) {
-            try {
-                if(channel.guild.roles.cache.size > 250){
-                    return;
-                }
-                muterole = await channel.guild.roles.create({
-                    data: {
-                        name: 'Muted',
-                        color: '#000000',
-                        permission: []
+        if (chanel.permissionFor(channel.guild.me).has('MANAGE_CHANNEL')) {
+            let muterole = channel.guild.roles.cache.find((r) => r.name === "Muted");
+            if (!muterole) {
+                try {
+                    if (channel.guild.roles.cache.size > 250) {
+                        return;
                     }
-                });
-            } catch (error) {
-                require("../../tools/function/error")(error, undefined)
-            }
-        }
-        await channel.createOverwrite(muterole, {
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false,
-            SEND_TTS_MESSAGES: false,
-            ATTACH_FILES: false,
-            SPEAK: false,
-            CONNECT: false
-        });
-        if(guild.captcha.enable == true){
-            let vertifyrole = channel.guild.roles.cache.find((r) => r.name === "Unvertified");
-            if (!vertifyrole) {
-                if(channel.guild.roles.cache.size > 250){
-                    return;
+                    muterole = await channel.guild.roles.create({
+                        data: {
+                            name: 'Muted',
+                            color: '#000000',
+                            permission: []
+                        }
+                    });
+                } catch (error) {
+                    require("../../tools/function/error")(error, undefined)
                 }
-                vertifyrole = await channel.guild.roles.create({
-                    data: {
-                        name: 'Unvertified',
-                        color: '#000000',
-                        permission: []
-                    }
-                });
-                if (channel.type == "dm" || channel.type == "category" || channel.type == "unknown") return;
             }
-            await channel.createOverwrite(vertifyrole, {
-                VIEW_CHANNEL: false,
+            const objVC = {
+                SPEAK: false,
+                CONNECT: false
+            }
+            const objTxt = {
                 SEND_MESSAGES: false,
                 ADD_REACTIONS: false,
                 SEND_TTS_MESSAGES: false,
                 ATTACH_FILES: false,
-                SPEAK: false,
-                CONNECT: false
-            });
+            }
+            await channel.createOverwrite(muterole, channel.type == "voice" ? objVC : objTxt );
+            if (guild.captcha.enable == true) {
+                let vertifyrole = channel.guild.roles.cache.find((r) => r.name === "Unvertified");
+                if (!vertifyrole) {
+                    if (channel.guild.roles.cache.size > 250) {
+                        return;
+                    }
+                    vertifyrole = await channel.guild.roles.create({
+                        data: {
+                            name: 'Unvertified',
+                            color: '#000000',
+                            permission: []
+                        }
+                    });
+                    if (channel.type == "dm" || channel.type == "category" || channel.type == "unknown") return;
+                }
+                objTxt["READ_MESSAGES"] = false;
+                objTxt["VIEW_CHANNEL"] = false;
+                await channel.createOverwrite(vertifyrole, channel.type == "voice" ? objVC : objTxt);
+            }
         }
         if (guild.logs.enable == true) {
             if (guild.logs.id == " ") return;
