@@ -1,6 +1,5 @@
 module.exports = async (client, oldChannel, newChannel) => {
     try {
-        if (newChannel.type != "text" || oldChannel.type != "text") return;
         const guild = await require('../../tools/database/getGuild')(client, newChannel.guild.id);
         let chanel = guild.channels.find(c => c.id == newChannel.id);
         if (chanel) {
