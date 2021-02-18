@@ -2,8 +2,8 @@ const { MessageEmbed, WebhookClient } = require("discord.js");
 
 module.exports = async(client, guild) => {
     try {
-        const guild = await require("../../tools/database/getGuild")(client, guild.id);
-        client.guild.set(guild.id, guild);
+        const guildData = await require("../../tools/database/getGuild")(client, guild.id);
+        client.guild.set(guildData.id, guildData);
         const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
         let embed = new MessageEmbed()
             .setColor("#40598F")
