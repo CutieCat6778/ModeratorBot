@@ -20,6 +20,7 @@ module.exports = {
                     enable: false,
                     time: (new Date()).getTime().toString(),
                     name: false,
+                    guildId: message.guild.id
                 }
                 const obj1 = {
                     _id: message.author.id,
@@ -27,6 +28,7 @@ module.exports = {
                     enable: true,
                     time: (new Date()).getTime().toString(),
                     name: false,
+                    guildId: message.guild.id
                 }
                 if(message.member.manageable){
                     await message.member.setNickname(`[AFK] ${message.member.displayName}`);

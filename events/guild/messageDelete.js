@@ -20,11 +20,12 @@ module.exports = async (client, message) => {
                 }
             }
         }
-        await client.snipe.set(message.channel.id, {
+        client.snipe.set(message.channel.id, {
             content: message.content,
             id: message.author.id,
             time: new Date(),
-            embed: message.embeds.length > 0 ? message.embeds[0] : null
+            embed: message.embeds.size > 0 ? message.embeds.map(a => a) : null,
+            attachments: message.attachments.size != 0 ? message.attachments.map(a => a.url) : null
         });
         if (guildCache.logs.enable == true) {
             if (guildCache.logs.id == " ") return;
@@ -42,6 +43,6 @@ module.exports = async (client, message) => {
             }
         }
     } catch (e) {
-        return require("../../tools/function/error")(e, undefined)
+        return require("../../tools/function/error")(e, message)
     }
 };

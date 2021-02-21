@@ -23,7 +23,7 @@ module.exports = {
                         .setTimestamp()
                         .setTitle(data.city ? data.city : "Not Found")
                         .setDescription(`X: ${data.range[0]} | Y: ${data.range[1]}`)
-                        .addField("Country", data.country, true)
+                        .addField("Country", data.country ? data.country : "None", true)
                         .addField('Region', data.region ? data.region : "None", true)
                         .addField('Timezone', data.timezone, true)
                     return require('../../tools/function/sendMessage')(message, embed);

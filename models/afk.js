@@ -6,6 +6,7 @@ const guildSchema = mongoose.Schema({
     enable: Boolean,
     time: String,
     name: Boolean,
+    guildId: String
 })
 
 module.exports = mongoose.model("Afk", guildSchema);
