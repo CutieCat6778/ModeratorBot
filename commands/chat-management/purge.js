@@ -10,7 +10,7 @@ module.exports = {
     async execute(client, message, args) {
         try {
             const id = require('mention-converter')(args[0]);
-            if (!id) {
+            if (!id || !message.guild.members.cache.get(id) ) {
                 if (!args[0]) return message.channel.send("Please specific a number of message that you want to delete! (1 - 80, max)");
                 if (args[0].toLowerCase() == "max") args[0] = 80;
                 if (isNaN(parseInt(args[0])) == true && args[0] != "max") return message.channel.send("Invalid number. The options can't be (max or number from 1-100)");
@@ -25,7 +25,7 @@ module.exports = {
                     }).catch(e => {
                         return require("../../tools/function/error")(e, message)
                     })
-            } else if (id) {
+            } else if (id && message.guild.members.cache.get(id)) {
                 if (!args[1]) return message.channel.send("Please specific a number of lines! (1 - 80, max)");
                 if (args[1].toLowerCase() == "max") args[1] = 80;
                 if (isNaN(parseInt(args[1])) == true && args[1] != "max") return message.channel.send("Invalid number. The options can't be (max or number from 1-100)");
