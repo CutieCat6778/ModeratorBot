@@ -35,7 +35,7 @@ module.exports = {
                 message.channel.messages.fetch({
                     limit: parseInt(args[1]),
                 }).then(async (messages) => {
-                    messages = messages.filter(m => m.author.id === "764901016692588554").array().slice(0, parseInt(args[1]));
+                    messages = messages.filter(m => m.author.id === id).array().slice(0, parseInt(args[1]));
                     message.channel.bulkDelete(messages)
                         .then((m) => {
                             message.reply(`Deleted ${m.size} messages`).then(m => {
