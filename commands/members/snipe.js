@@ -24,7 +24,7 @@ module.exports = {
                     .setAuthor(`${user.displayName}`, user.user.displayAvatarURL())
                     .setDescription(`   ${snipe.content}`)
                     .setFooter(require("ms")((new Date() - snipe.time), { long: true }) + " ago")
-                if (embed.attachments) {
+                if (snipe.attachments) {
                     embed.setDescription(`${snipe.content ? snipe.content : "No text"}\n\n ${snipe.attachments.map(a => a).join("\n")}`).setImage(embed.attachments[0]);
                 }
                 return require('../../tools/function/sendMessage')(message, embed);

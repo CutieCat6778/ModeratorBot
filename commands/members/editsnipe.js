@@ -25,7 +25,7 @@ module.exports = {
                     .setDescription(`     ${edit.content}`)
                     .setFooter(require("ms")((new Date() - edit.time), { long: true }) + " ago")
                 if(edit.attachments){
-                    embed.setDescription(`${snipe.content ? snipe.content : "No text"}\n\n ${snipe.attachments.map(a => a).join("\n")}`).setImage(embed.attachments[0]);
+                    embed.setDescription(`${edit.content ? edit.content : "No text"}\n\n ${edit.attachments.map(a => a).join("\n")}`).setImage(embed.attachments[0]);
                 }    
                 return require('../../tools/function/sendMessage')(message, embed);
             } else {
