@@ -3,20 +3,25 @@ const client = new Client({ ws: { properties: { $browser: "Discord Android" }} }
 require('dotenv').config();
 
 client.start = new Date();
-client.total = 0;
+client.total = new Number(0);
 
 client.aliases = new Collection();
 client.commands = new Collection();
 client.guild = new Collection()
+client.starboard = new Collection();
 
 client.afk = new Map();
 client.spam = new Map();
 client.ratelimit = new Map();
 client.snipe = new Map();
 client.timeouts = new Map();
-client.starboard = new Collection();
 
-require('./handlers/commands')(client);
-require('./handlers/events')(client);
+(async () => {
+    const commands = await require('./handlers/commands')(client);
+    const events = await require('./handlers/events')(client);
+    if(commands == true && events == true){
+        client.login(process.env.token);
+    }
+})()
 
-client.login(process.env.token);
+

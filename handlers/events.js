@@ -10,7 +10,11 @@ module.exports = (client) => {
                 client.on(eName, evt.bind(null, client));
             };
         };
-        readdirSync("./events/").forEach(x => load(x));
+        const commands = readdirSync('./events');
+		for(let x of commands){
+			load(x);
+		}
+        return true;
     } catch (e) {
         return require("../tools/function/error")(e, undefined)
     }

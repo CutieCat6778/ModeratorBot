@@ -10,7 +10,11 @@ module.exports = (client) => {
 				if (pull.config.aliases) pull.config.aliases.forEach(a => client.aliases.set(a, pull.config.name));
 			};
 		};
-		readdirSync("./commands/").forEach(x => load(x));
+		const commands = readdirSync('./commands');
+		for(let x of commands){
+			load(x);
+		}
+		return true;
 	} catch (e) {
 		return require("../tools/function/error")(e, undefined)
 	}

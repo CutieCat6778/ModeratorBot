@@ -26,5 +26,4 @@ module.exports = async (client) => {
     } catch (e) {
         return require("../../tools/function/error")(e, undefined)
     }
-
 }

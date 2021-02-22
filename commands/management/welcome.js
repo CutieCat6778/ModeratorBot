@@ -3,7 +3,7 @@ const { MessageEmbed, WebhookClient } = require("discord.js");
 module.exports = {
     config: {
         name: "welcome",
-        aliases: ["wellc", "welcome"],
+        aliases: ["wellc", "wellcome"],
         category: "management",
         perms: ["MANAGE_GUILD"],
         description: "You use this command to setup a welcome message",
