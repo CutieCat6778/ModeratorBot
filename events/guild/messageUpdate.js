@@ -144,12 +144,12 @@ module.exports = async (client, oldMessage, newMessage) => {
                     userCache.warn = 0;
                 }, 120000)
             }
-            client.edit.set(message.channel.id, {
-                content: message.content,
-                id: message.author.id,
+            client.edit.set(oldMessage.channel.id, {
+                content: oldMessage.content,
+                id: oldMessage.author.id,
                 time: new Date(),
-                embed: message.embeds.size > 0 ? message.embeds.map(a => a) : null,
-                attachments: message.attachments.size != 0 ? message.attachments.map(a => a.url) : null
+                embed: oldMessage.embeds.size > 0 ? oldMessage.embeds.map(a => a) : null,
+                attachments: oldMessage.attachments.size != 0 ? oldMessage.attachments.map(a => a.url) : null
             });
             //bot mentions
             if (newMessage.content.split(" ").join("").toString().toLowerCase() == "<@764901016692588554>" || newMessage.content.split(" ").join("").toString().toLowerCase() == "<@!764901016692588554>") {

@@ -15,15 +15,18 @@ module.exports = {
             let user = message.guild.members.cache.get(snipe.id);
             if (!user) return message.channel.send("Message author not found");
             else if (snipe) {
-                if(snipe.embed){
+                if (snipe.embed) {
                     message.channel.send("Sniped a embed");
-                    return message.channel.send({embed: snipe.embed})
+                    return message.channel.send({ embed: snipe.embed })
                 }
                 let embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setAuthor(`${user.displayName}`, user.user.displayAvatarURL())
                     .setDescription(`   ${snipe.content}`)
                     .setFooter(require("ms")((new Date() - snipe.time), { long: true }) + " ago")
+                if (edit.attachments) {
+                    embed.setDescription(`${snipe.content ? snipe.content : "No text"}\n\n ${snipe.attachments.map(a => a).join("\n")}`).setImage(embed.attachments[0]);
+                }
                 return require('../../tools/function/sendMessage')(message, embed);
             } else {
                 require('../../tools/function/sendMessage')(message, require("../../noArgs/members/snipe"))(guildCache.prefix)
