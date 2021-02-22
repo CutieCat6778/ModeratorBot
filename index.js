@@ -14,6 +14,7 @@ client.afk = new Map();
 client.spam = new Map();
 client.ratelimit = new Map();
 client.snipe = new Map();
+client.edit = new Map();
 client.timeouts = new Map();
 
 (async () => {
