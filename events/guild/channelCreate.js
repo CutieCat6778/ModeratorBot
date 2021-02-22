@@ -9,7 +9,7 @@ module.exports = async (client, channel) => {
             }
             await guild.save();
         }
-        if (chanel.permissionFor(channel.guild.me).has('MANAGE_CHANNEL')) {
+        if (chanel.permissionsFor(channel.guild.me).has('MANAGE_CHANNEL')) {
             let muterole = channel.guild.roles.cache.find((r) => r.name === "Muted");
             if (!muterole) {
                 try {
