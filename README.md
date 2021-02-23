@@ -1,7 +1,7 @@
 # moddy-djs
 Moddy is a Discord bot powered by **Discord.js**. It has been created at developed by **CutieCat6778** or **Cat_#9289**.
 
-#How to setup
+# How to setup
 
 __**1. Install all NPM packages**__
 ```
