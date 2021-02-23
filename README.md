@@ -7,6 +7,9 @@ __**1. Install all NPM packages**__
 ```
 npm install
 ```
+```
+npm install pm2 --save 
+```
 
 __**2. Create a file has name `.env`**__
 
