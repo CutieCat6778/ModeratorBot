@@ -30,8 +30,8 @@ npm start
 
 # Requirements
 
-**Node.js** >= v14.x.x
-**NPM** >= v6.x.x
+**Node.js** >= v14.x.x\n
+**NPM** >= v6.x.x\n
 **Importain** - a Mongo.db database
 
 # Command list
