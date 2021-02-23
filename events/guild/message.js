@@ -263,6 +263,7 @@ module.exports = async (client, message) => {
                         }
                     }
                 }
+                if(commandfile.config.category == "emoji") return message.channel.send('Under development, will be realese soon!');
                 if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && message.author.id != "762749432658788384") {
                     return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")(commandfile.config.perms))
                 } else if (!commandfile.config.perms.includes("BOT_OWNER")) {
