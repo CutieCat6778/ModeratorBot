@@ -3,20 +3,24 @@ Moddy is a Discord bot powered by **Discord.js**. It has been created at develop
 
 #How to setup
 
-**1. Install all NPM packages**
+__**1. Install all NPM packages**__
 ```
 npm install
 ```
-**2. Create a file has name `.env`**
-On Windows:
+
+__**2. Create a file has name `.env`**__
+
+- On Windows:
 ```
 type nul ".env"
 ```
-On Linux:
+- On Linux:
 ```
 touch .env
 ```
-**3. Launch the bot**
+
+
+__**3. Launch the bot**__
 ```
 npm start
 ```
