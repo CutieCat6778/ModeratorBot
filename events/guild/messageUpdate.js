@@ -145,7 +145,8 @@ module.exports = async (client, oldMessage, newMessage) => {
                 }, 120000)
             }
             client.edit.set(oldMessage.channel.id, {
-                content: oldMessage.content,
+                oldContent: oldMessage.content,
+                newContent: newMessage.content,
                 id: oldMessage.author.id,
                 time: new Date(),
                 embed: oldMessage.embeds.size > 0 ? oldMessage.embeds.map(a => a) : null,

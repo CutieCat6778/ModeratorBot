@@ -21,7 +21,10 @@ client.timeouts = new Map();
     const commands = await require('./handlers/commands')(client);
     const events = await require('./handlers/events')(client);
     if(commands == true && events == true){
-        client.login(process.env.token);
+        console.log('Logging in . . . ');
+        client.login(process.env.token, () => {
+            console.log(`Successfully loged in!`)
+        })
     }
 })()
 
