@@ -13,7 +13,7 @@ module.exports = {
             const edit = client.edit.get(message.channel.id);
             if (!edit) return message.channel.send("There are no recent edited message");
             const user = message.guild.members.cache.get(edit.id);
-            if (!user) return message.channel.send("Message author not found");
+            if (!user) user.displayName = "Not found"
             else if (edit) {
                 if(edit.embed){
                     message.channel.send("Sniped a embed");
@@ -21,14 +21,15 @@ module.exports = {
                 }
                 const embed = new MessageEmbed()
                     .setColor("#40598F")
-                    .setAuthor(`${user.displayName}`, user.user.displayAvatarURL())
+                    .setAuthor(`${user?.displayName}`, user?.user.displayAvatarURL())
                     .addFields([
                         {"name": "Before", "value": edit.oldContent, "inline": true},
                         {"name": "After", "value": edit.newContent, "inline": true}
                     ])
                     .setFooter(require("ms")((new Date() - edit.time), { long: true }) + " ago")
                 if(edit.attachments){
-                    embed.setDescription(`${edit.content ? edit.content : "No text"}\n\n ${edit.attachments.map(a => a).join("\n")}`).setImage(edit.attachments[0]);
+                    embed.setDescription(`${edit.content ? edit.content : "No text"}\n\n ${edit.attachments.map(a => a).join("\n")}`);
+                    embed.setImage(edit.attachments[0].toString());
                 }    
                 return require('../../tools/function/sendMessage')(message, embed);
             } else {

@@ -10,10 +10,10 @@ module.exports = {
     },
     async execute(client, message, args, guildCache) {
         try {
-            let snipe = client.snipe.get(message.channel.id);
+            const snipe = client.snipe.get(message.channel.id);
             if (!snipe) return message.channel.send("There are no recent deleted message");
-            let user = message.guild.members.cache.get(snipe.id);
-            if (!user) return message.channel.send("Message author not found");
+            const user = message.guild.members.cache.get(snipe.id);
+            if (!user) user.displayName = "Not found"
             else if (snipe) {
                 if (snipe.embed) {
                     message.channel.send("Sniped a embed");
@@ -21,11 +21,12 @@ module.exports = {
                 }
                 let embed = new MessageEmbed()
                     .setColor("#40598F")
-                    .setAuthor(`${user.displayName}`, user.user.displayAvatarURL())
-                    .setDescription(`   ${snipe.content}`)
+                    .setAuthor(`${user?.displayName}`, user?.user?.displayAvatarURL())
+                    .setDescription(`   ${snipe?.content}`)
                     .setFooter(require("ms")((new Date() - snipe.time), { long: true }) + " ago")
                 if (snipe.attachments) {
-                    embed.setDescription(`${snipe.content ? snipe.content : "No text"}\n\n ${snipe.attachments.map(a => a).join("\n")}`).setImage(snipe.attachments[0]);
+                    embed.setDescription(`${snipe.content ? snipe.content : "No text"}\n\n ${snipe.attachments.map(a => a).join("\n")}`);
+                    embed.setImage(snipe.attachments[0].toString());
                 }
                 return require('../../tools/function/sendMessage')(message, embed);
             } else {
