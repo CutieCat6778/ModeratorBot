@@ -44,17 +44,18 @@ module.exports = {
                                     if (collected1.content == "y") {
                                         message.channel.send("Please mentions the rules channel");
                                         let collected2 = await require('../../tools/function/collectMessage')(message, filter);
-                                        const channel = message.guild.channels.cache.get(await require('../../tools/string/mentions')(collected2.content));
+                                        const channel = message.guild.channels.cache.get(await require('mention-converter')(collected2.content));
                                         if (!channel) return message.channel.send("Invalid channel !");
                                         else if (channel) {
                                             if (!channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                                                 return require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel")
                                             }
-                                            guild.rules._idnnelId = channel.id;
+                                            guild.rules._id = channel.id;
                                             let messageId = await channel.send(embed);
                                             guild.rules.messageId = messageId.id;
                                             guild.rules.rulesArr = rules;
                                             guild.rules.enable = true;
+                                            message.channel.send({embed: `Done! Please go check <#${channel.id}>, if there is a problem. Try command \`${guildCache.prefix}\``})
                                             return await guild.save();
                                         }
                                     } else if (collected1.content == "n") {
