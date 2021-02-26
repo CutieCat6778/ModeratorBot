@@ -1,5 +1,6 @@
 module.exports = async (client, channel) => {
     try {
+        if(channel.type == "dm") return;
         const guild = await require('../../tools/database/getGuild')(client, channel.guild.id);
         let chanel = guild.channels.find(c => c.id == channel.id);
         if (!chanel) {

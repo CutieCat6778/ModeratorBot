@@ -15,7 +15,7 @@ module.exports = {
         try {
             if (!args[0]) {
                 let embed = require("../../noArgs/api/translate")(guildCache.prefix);
-                return require('../../tools/function/sendMessage')(message, embed);;
+                return require('../../tools/function/sendMessage')(message, embed);
             } else if (args[0]) {
                 let text = args.slice(0).join(" ");
                 let result = await translate(text, { to: 'en' });

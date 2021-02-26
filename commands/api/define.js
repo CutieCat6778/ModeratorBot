@@ -12,7 +12,7 @@ module.exports = {
         try {
             if (!args[0]) {
                 let embed = await require('../../noArgs/api/define.js')(guildCache.prefix);
-                return require('../../tools/function/sendMessage')(message, embed);;
+                return require('../../tools/function/sendMessage')(message, embed);
             } else if (args[0]) {
                 url = `https://api.dictionaryapi.dev/api/v2/entries/en/${args[0]}`;
                 url = encodeURI(url);

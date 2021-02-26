@@ -13,14 +13,14 @@ module.exports = {
         try {
             if (!args[0]) {
                 let embed = await require("../../noArgs/moderation/votekick")(guildCache.prefix);
-                return require('../../tools/function/sendMessage')(message, embed);;
+                return require('../../tools/function/sendMessage')(message, embed);
             }
             const target = message.guild.members.cache.get(require('mention-converter')(args[0]));
             if (!target) return message.channel.send("User not found");
             let reason = args.slice(1).join(" ");
             if (!reason || !target) {
                 let embed = await require("../../noArgs/moderation/votekick")(guildCache.prefix);
-                return require('../../tools/function/sendMessage')(message, embed);;
+                return require('../../tools/function/sendMessage')(message, embed);
             }
             if (message.member.id == target.id) return message.channel.send("You can't sue your self");
             let embed = new MessageEmbed()
