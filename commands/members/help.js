@@ -15,7 +15,6 @@ module.exports = {
             if (!args[0]) {
                 let embed = new MessageEmbed()
                     .setColor("#40598F")
-                    .setTitle(message.guild.me.displayName)
                     .setFooter("© 2020 Cat_#9289 All Rights Reserved")
                     .setDescription(`**${client.user.username}** is the most __powerful moderation bot__ on Discord. ${client.user.username} will help you to **moderate** or **manage** your server much much better!\n You can visit our website on **[moddy.js.org](${process.env.url})** to get more informations about **${client.user.username}**.`)
                 categories.map(a => embed.addField(a.slice(0, 1).toUpperCase() + a.slice(1), `\`\`\`\n${guildCache.prefix} help ${a}\`\`\``, true))    
