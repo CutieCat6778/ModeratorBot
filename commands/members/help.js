@@ -33,7 +33,7 @@ module.exports = {
                     if (!embed) return message.channel.send("Category not found");
                     else if (embed) {
                         let des = embed.description;
-                        des = des+`\n\n__**Commands list**__\n\n${client.commands.filter(a => a.config.category == target).map(a => `\`\`\`css\n${a.config.name} [${a.config.aliases.join(', ')}]\n\`\`\``).join('\n')}`
+                        des = des+`\n\n__**Commands list**__\n\n\`\`\`css\n${client.commands.filter(a => a.config.category == target).map(a => `- ${a.config.name} [${a.config.aliases.join(', ')}]`).join('\n')}\n\`\`\``
                         embed.description = des;
                         return require('../../tools/function/sendMessage')(message, embed);
                     }
