@@ -41,7 +41,7 @@ module.exports = async (error, message, text) => {
                     \`\`\`console\n${narary} \n\n ${text}\`\`\`
                 `)
                     .addField("command", `${message.content ? message.content : "Client error, no commands info"}`)
-                    .addField("Info", `SERVER:${message.guild.id};CHANNEL:${message.channel.id};USER:${message.author.id};MSG:${message.id}`)
+                    .addField("Info", `SERVER:${message.guild.id}\nCHANNEL:${message.channel.id}\nUSER:${message.author.id}\nMSG:${message.id}`)
                     .setTimestamp()
                 return hook.send(embed);
             } else if (message) {
@@ -60,7 +60,7 @@ module.exports = async (error, message, text) => {
                     \`\`\`console\n${narary}\`\`\`
                 `)
                     .addField("command", `${message.content ? message.content : "Client error, no commands info"}`)
-                    .addField("Info", `SERVER:${message.guild.id};CHANNEL:${message.channel.id};USER:${message.author.id};MSG:${message.id}`)
+                    .addField("Info", `SERVER:${message.guild.id}\nCHANNEL:${message.channel.id}\nUSER:${message.author.id}\nMSG:${message.id}`)
                     .setTimestamp()
                 return hook.send(embed);
             } else if (!message) {
