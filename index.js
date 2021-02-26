@@ -20,7 +20,8 @@ client.timeouts = new Map();
 (async () => {
     const commands = await require('./handlers/commands')(client);
     const events = await require('./handlers/events')(client);
-    if(commands == true && events == true){
+    const category = await require('./handlers/loadCategories')(client);
+    if(commands == true && events == true && category == true){
         console.log('Logging in . . . ');
         client.login(process.env.token, () => {
             console.log(`Successfully loged in!`)

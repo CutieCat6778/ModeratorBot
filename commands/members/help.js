@@ -22,7 +22,7 @@ module.exports = {
                 return require('../../tools/function/sendMessage')(message, embed);
             } else if (args[0]) {
                 let target = args.slice(0).join("-").split("_").join("-").toLowerCase().toString();
-                target = require('../../tools/string/categoryConverter')(target);
+                target = client.category[target];
                 if (categories.includes(target)) {
                     if (args[0] == "development") {
                         let embed = await require(`../../noArgs/development.js`)(guildCache.prefix);
