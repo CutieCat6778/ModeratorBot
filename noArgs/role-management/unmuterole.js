@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The unmuterole command's aliases are : \`unmuterole\`, \`unmrole\` or \`unmutero\`\n
             **Unmuterole**: \`${prefix} mute <@role, roleID> <reason>\`
                 Unmute a role so after the user with that role can talk freely
-            **Example**: 
-            \`${prefix} unmuterole (@role, roleID)\`
+            **Example**: \`\`\`\n${prefix} unmuterole (@role, roleID)
+\`\`\`    
         `)
     return embed;
 }

@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The add rule command's aliases are : \`addrule\` or \`adrule\`\n
             **Add rule**: \`${prefix} addrule\`
                 Add more rules
-            **Example**: 
-            \`${prefix} addrule\`
+            **Example**: \`\`\`\n${prefix} addrule
+\`\`\`    
         `)
     return embed;
 }

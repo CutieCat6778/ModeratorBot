@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The morse command's aliases are : \`morse\` or \`morsecode\`\n
             **Morse** \`${prefix} Mock [text]\`
                 Convert a message into a morse code.
-            **Example**: 
-            \`${prefix} morse Hello How are you?\`
+            **Example**: \`\`\`\n${prefix} morse Hello How are you?
+\`\`\`    
         `)
     return embed;
 }

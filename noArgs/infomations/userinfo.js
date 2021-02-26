@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The user info command's aliases are : \`userinfo\` or \`whois\`\n
             **User info:** \`${prefix} userinfo\`
                 It will display all information about you or someone that supplied.
-            **Example**: 
-            \`${prefix} userinfo (@user, userID)\`
+            **Example**: \`\`\`\n${prefix} userinfo (@user, userID)
+\`\`\`    
         `)
     return embed;
 }

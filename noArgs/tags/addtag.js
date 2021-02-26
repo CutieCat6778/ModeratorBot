@@ -8,7 +8,8 @@ module.exports = function help(prefix) {
             **All commands:** \`${prefix} addtag [key_word]\`
                 After that command, you have to write your new tag's content
             **Example**: 
-            \`${prefix} addtag moddy\`
+        \`\`\`            ${prefix} addtag moddy
+\`\`\`    
         `)
     return embed;
 }

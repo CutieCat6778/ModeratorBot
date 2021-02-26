@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The stats command's aliases are : \`stats\`, \`notonline\` or \`offline\`\n
             **All commands:** \`${prefix} stats\`
                 It will display all information about me
-            **Example**: 
-            \`${prefix} stats\`
+            **Example**: \`\`\`\n${prefix} stats
+\`\`\`    
         `)
     return embed;
 }

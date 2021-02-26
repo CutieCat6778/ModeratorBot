@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The avatar command's aliases are : \`avatar\`, \`ava\` or \`av\`\n
             **All commands:** \`${prefix} av [@user]\`
                 Display your/someone is avatar
-            **Example**: 
-            \`${prefix} avatar @moddy\`
+            **Example**: \`\`\`\n${prefix} avatar @moddy
+\`\`\`    
         `)
     return embed;
 }

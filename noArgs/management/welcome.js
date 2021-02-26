@@ -8,9 +8,8 @@ module.exports = function help(prefix) {
                 You just have to mentions a channel then the bot will automaticly setup
             **Welcome setting**: \`${prefix} welcome setting <true, false or #channel>\`
                 You use this command to disable or enable the welcome function
-            **Example**: 
-            \`${prefix} welcome setup #channel\`
-            \`${prefix} welcome setting true\`
+            **Example**: \`\`\`\n${prefix} welcome setup #channel\n${prefix} welcome setting true
+\`\`\`    
         `)
     return embed;
 }

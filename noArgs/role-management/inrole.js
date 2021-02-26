@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The in role command's aliases are : \`inrole\` or \`inr\`\n
             **In role**: \`${prefix} inrole <@role, roleID>\`
                 Display all members has the supplied role
-            **Example**: 
-            \`${prefix} inrole (@role, roleID)\`
+            **Example**: \`\`\`\n${prefix} inrole (@role, roleID)
+\`\`\`    
         `)
     return embed;
 }

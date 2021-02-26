@@ -9,9 +9,9 @@ module.exports = function help(prefix) {
                 Display all command
             **Command info:**  \`${prefix}help <command>\`
                 Display all info about one command
-            **Example**: 
-            \`${prefix} help\`
-            \`${prefix} help mute\`
+            **Example**: \`\`\`\n${prefix} help\`\n${prefix} help moderation\`\n
+            \`${prefix} help mute
+\`\`\`    
         `)
     return embed;
 }

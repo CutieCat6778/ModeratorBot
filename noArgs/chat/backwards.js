@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The backwards command's aliases are : \`backwards\` or \`backward\`\n
             **Backwards** \`${prefix} Mock [text]\`
                 Backwards a message, it will look very cool!
-            **Example**: 
-            \`${prefix} backwards Hello How are you?\`
+            **Example**: \`\`\`\n${prefix} backwards Hello How are you?
+\`\`\`    
         `)
     return embed;
 }

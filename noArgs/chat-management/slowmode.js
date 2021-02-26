@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The slowmode command's aliases are : \`slowmode\`, \`ratelimit\` or \`limit\`\n
             **slowmode**: \`${prefix} slowmode <time>\`
                 Set a ratelimit between users messages
-            **Example**: 
-            \`${prefix} slowmode 10s\`
+            **Example**: \`\`\`\n${prefix} slowmode 10s
+\`\`\`    
         `)
     return embed;
 }

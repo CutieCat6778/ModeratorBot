@@ -8,7 +8,8 @@ module.exports = function deletewarn(prefix) {
             **Pernamently deletewarn**: \`${prefix} deletewarn @user reason\`
                 delete warn one warn of a member
             **Example**:
-            \`${prefix} deletewarn @steve he is good\`
+        \`\`\`${prefix} deletewarn @steve he is good
+\`\`\`    
         `)
     return embed;
 }

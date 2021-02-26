@@ -7,10 +7,9 @@ module.exports = function nowarn(prefix) {
             **Warn system**:\n\`First warn: nothing\nSecond warn: mute 5h\nThird warn: mute 24h\nFouth warn: mute 2days\nFifth warn: ban\`
             **Pernamently warn**: \`${prefix} warn @user reason\`
                 Warn a member, when they break the rule
-            **Example**: 
-            \`${prefix} warn @steve he deserved it\`
-            **Check your warns**:
-            \`${prefix} mywarns\`
+            **Example**: \`\`\`\n${prefix} warn @steve he deserved it\n
+            # Check your warns\n${prefix} mywarns
+\`\`\`    
         `)
     return embed;
 }

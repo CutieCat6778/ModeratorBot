@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The snipe command's aliases are : \`snipe\`, \`delmsg\` or \`deletemsg\`\n
             **Snipe command:** \`${prefix} snipe\`
                 It will display lastest deleted message
-            **Example**: 
-            \`${prefix} snipe\`
+            **Example**: \`\`\`\n${prefix} snipe
+\`\`\`    
         `)
     return embed;
 }

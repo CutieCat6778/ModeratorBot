@@ -7,8 +7,7 @@ module.exports = function help(prefix) {
         .setDescription(`The tag command's aliases are : \`tags\` or \`gettag\`\n
             **All commands:** \`${prefix} tag [key_word]\`
                 Get a tag's information with key word
-            **Example**: 
-            \`${prefix} tag moddy\`
+            **Example**: \`\`\`\n${prefix} tag moddy\`\`\`    
         `)
     return embed;
 }

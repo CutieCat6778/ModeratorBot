@@ -6,8 +6,8 @@ module.exports = function nokick(prefix) {
         .setDescription(`The kick command's aliases are : \`kick\`, \`k\` or \`getout\`\n
             **Pernamently kick**: \`${prefix} kick @user reason\`
                 kick a member, but they still can join back
-            **Example**: 
-            \`${prefix} kick @steve he deserved it\`
+            **Example**: \`\`\`\n${prefix} kick @steve he deserved it
+\`\`\`    
         `)
     return embed;
 }

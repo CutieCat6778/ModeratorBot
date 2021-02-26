@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The wikipedia command's aliases are : \`wikipedia\` or \`wiki\`\n
             **All commands:** \`${prefix} wikipedia [something]\`
                 Get all information about one topic
-            **Example**: 
-            \`${prefix} wikipedia discord\`
+            **Example**: \`\`\`\n${prefix} wikipedia discord
+\`\`\`    
         `)
     return embed;
 }

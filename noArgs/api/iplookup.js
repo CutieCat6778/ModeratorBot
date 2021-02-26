@@ -7,8 +7,8 @@ module.exports = (prefix) => {
         .setDescription(`The iplookup command's aliases are : \`iplookup\` or \`locateip\`\n
             **Get the location of a IP andress:** \`${prefix} iplookup [IP(x.x.x.x)]\`
                 Get a Location of an IP andress.
-            **Example**: 
-            \`${prefix} iplookup 4.4.4.4\`
+            **Example**: \`\`\`\n${prefix} iplookup 4.4.4.4
+\`\`\`    
         `)
     return embed;
 }

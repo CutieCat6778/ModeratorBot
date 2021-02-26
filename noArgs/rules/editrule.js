@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The edit rule command's aliases are : \`editrule\` or \`changerule\`\n
             **Edit rule**: \`${prefix} editrule [rule_number]\`
                 Edit a rule with rule number.
-            **Example**: 
-            \`${prefix} editrule 1\`
+            **Example**: \`\`\`\n${prefix} editrule 1
+\`\`\`    
         `)
     return embed;
 }

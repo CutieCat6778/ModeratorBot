@@ -8,9 +8,8 @@ module.exports = function help(prefix) {
                 Mute a member for a number of time so after that he will get automaticly unmute
             **Pernamently mute**: \`${prefix} mute <@user> <reason>\`
                 Mute a member so after that he can't talk anymore, until someone unmute him
-            **Example**: 
-            \`${prefix} mute 10m @steve spam alots\`
-            \`${prefix} mute @steve say bad words\`
+            **Example**: \`\`\`\n${prefix} mute 10m @steve spam alots\n${prefix} mute @steve say bad words
+\`\`\`    
         `)
     return embed;
 }

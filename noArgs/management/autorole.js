@@ -8,9 +8,8 @@ module.exports = function help(prefix) {
                 You just have to mentions a role then the bot will automaticly setup
             **Autorole setting**: \`${prefix} autorole setting <true, false or (@role, roleID)>\`
                 You use this command to disable or enable the autorole function
-            **Example**: 
-            \`${prefix} autorole setup @role\`
-            \`${prefix} autorole setting true\`
+            **Example**: \`\`\`\n${prefix} autorole setup @role\n${prefix} autorole setting true
+\`\`\`    
         `)
     return embed;
 }

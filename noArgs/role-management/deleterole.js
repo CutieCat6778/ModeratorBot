@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The deleterole command's aliases are : \`deleterole\`, \`delrole\` or \`deletero\`\n
             **Delete role**: \`${prefix} deleterole <@role, roleID>\`
                 Delete a role from your server.
-            **Example**: 
-            \`${prefix} deleterole (@role, roleID)\`
+            **Example**: \`\`\`\n${prefix} deleterole (@role, roleID)
+\`\`\`    
         `)
     return embed;
 }

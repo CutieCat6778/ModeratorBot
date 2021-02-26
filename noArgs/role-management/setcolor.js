@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The setcolor command's aliases are : \`setcolor\`, \`setco\` or \`scolor\`\n
             **Set color**: \`${prefix} setcolor <@role, roleID>\`
                 Change the role's color.
-            **Example**: 
-            \`${prefix} setcolor (@role, roleID)\`
+            **Example**: \`\`\`\n${prefix} setcolor (@role, roleID)
+\`\`\`    
         `)
     return embed;
 }

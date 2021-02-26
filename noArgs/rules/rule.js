@@ -10,9 +10,8 @@ module.exports = function help(prefix) {
                 Get rule's content by a number
             **Display rules**: \`${prefix} rule [display]\`
                 Display all rules
-            **Example**: 
-            \`${prefix} rule 1\`
-            \`${prefix} rule setup\`
+            **Example**: \`\`\`\n${prefix} rule 1\n${prefix} rule setup
+\`\`\`    
         `)
     return embed;
 }

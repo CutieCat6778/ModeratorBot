@@ -38,6 +38,7 @@ module.exports = {
                         return require('../../tools/function/sendMessage')(message, embed);
                     }
                 } else if (!categories.includes(target)) {
+                    target = args.slice(0).join("-").split("_").join("-").toLowerCase().toString();
                     let command = client.commands.get(client.aliases.get(target) || target)
                     if (!command) return message.channel.send("Command not found");
                     if (command.config.category == "development") {

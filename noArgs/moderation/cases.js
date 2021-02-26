@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The cases command's aliases are : \`cases\`, \`case\` or \`caseinfo\`\n
             **Pernamently cases**: \`${prefix} cases <case_number>\`
                 Display a case's logs information
-            **Example**: 
-            \`${prefix} cases 12\`
+            **Example**: \`\`\`\n${prefix} cases 12
+\`\`\`    
         `)
     return embed;
 }

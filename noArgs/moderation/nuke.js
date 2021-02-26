@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The nuke command's aliases are : \`nuke\` or \`renew\`\n
             **Nuke**: \`${prefix} nuke (@channel, _id)\`
                 Renew a channel, boom
-            **Example**: 
-            \`${prefix} nuke @general\`
+            **Example**: \`\`\`\n${prefix} nuke @general
+\`\`\`    
         `)
     return embed;
 }

@@ -8,9 +8,8 @@ module.exports = function help(prefix) {
                 The bot will automaticly setup the captcha
             **captcha setting**: \`${prefix} captcha setting <true, false>\`
                 You use this command to disable or enable the captcha function
-            **Example**: 
-            \`${prefix} captcha setup\`
-            \`${prefix} captcha setting true\`
+            **Example**: \`\`\`\n${prefix} captcha setup\n${prefix} captcha setting true
+\`\`\`    
         `)
     return embed;
 }

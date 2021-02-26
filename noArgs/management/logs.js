@@ -8,9 +8,8 @@ module.exports = function help(prefix) {
                 You just have to mentions a channel then the bot will automaticly setup the log system
             **logs setting**: \`${prefix} logs setting <true, false or #channel>\`
                 You use this command to disable or enable the logs function
-            **Example**: 
-            \`${prefix} logs setup #channel\`
-            \`${prefix} logs setting true\`
+            **Example**: \`\`\`\n${prefix} logs setup #channel\n${prefix} logs setting true
+\`\`\`    
         `)
     return embed;
 }

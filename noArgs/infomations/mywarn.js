@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The my warn command's aliases are : \`mywarn\` or \`mywarns\`\n
             **My warns:** \`${prefix} mywarn\`
                 It will display all information about your last warn
-            **Example**: 
-            \`${prefix} mywarn\`
+            **Example**: \`\`\`\n${prefix} mywarn
+\`\`\`    
         `)
     return embed;
 }

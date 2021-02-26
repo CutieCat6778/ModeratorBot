@@ -6,8 +6,8 @@ module.exports = function nokick(prefix) {
         .setDescription(`The lockdown command's aliases are : \`lockdown\`, \`lock\` or \`lockchannel\`\n
             **Lock a channel down**: \`${prefix} lockdown\`
                 Lock a channel that all members cannot write anymore in that channel
-            **Example**: 
-            \`${prefix} lockdown\`
+            **Example**: \`\`\`\n${prefix} lockdown
+\`\`\`    
         `)
     return embed;
 }

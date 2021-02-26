@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The AFK command's aliases are : \`afk\`, \`notonline\` or \`offline\`\n
             **Set status:** \`${prefix} AFK <status>\`
                 Set you to afk, after 15s
-            **Example**: 
-            \`${prefix} afk i will go sleep\`
+            **Example**: \`\`\`\n${prefix} afk i will go sleep
+\`\`\`    
         `)
     return embed;
 }

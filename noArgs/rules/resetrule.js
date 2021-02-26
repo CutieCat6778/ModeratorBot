@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The reset rule command's aliases are : \`resetrule\` or \`resetr\`\n
             **Reset rule**: \`${prefix} resetrule\`
                 Reset rule (delete it)
-            **Example**: 
-            \`${prefix} resetrule\`
+            **Example**: \`\`\`\n${prefix} resetrule
+\`\`\`    
         `)
     return embed;
 }

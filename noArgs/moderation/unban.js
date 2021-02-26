@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The unban command's aliases are : \`unban\`, \`unbanish\` or \`unben\`\n
             **Unban**: \`${prefix} unban <@user> <reason>\`
                 Unban a member so he can join to server back
-            **Example**: 
-            \`${prefix} unban @steve he is good now\`
+            **Example**: \`\`\`\n${prefix} unban @steve he is good now
+\`\`\`    
         `)
     return embed;
 }

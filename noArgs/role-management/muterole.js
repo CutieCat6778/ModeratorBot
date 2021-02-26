@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The muterole command's aliases are : \`muterole\`, \`mrole\` or \`mutero\`\n
             **Muterole**: \`${prefix} muterole <@role, roleID> <reason>\`
                 Mute a role so after the user with that role can't talk anymore, until someone unmute that role.
-            **Example**: 
-            \`${prefix} muterole (@role, roleID)\`
+            **Example**: \`\`\`\n${prefix} muterole (@role, roleID)
+\`\`\`    
         `)
     return embed;
 }

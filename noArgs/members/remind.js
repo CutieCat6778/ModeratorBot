@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The remind command's aliases are : \`remind\`, \`alert\` or \`reminder\`\n
             **Remind:** \`${prefix} remind [time] [text]\`
                 Remind you about something importain
-            **Example**: 
-            \`${prefix} remind 10h do my homeworkds\`
+            **Example**: \`\`\`\n${prefix} remind 10h do my homeworkds
+\`\`\`    
         `)
     return embed;
 }

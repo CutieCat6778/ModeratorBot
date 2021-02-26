@@ -6,8 +6,8 @@ module.exports = function help(prefix) {
         .setDescription(`The unmute command's aliases are : \`unmute\`, \`unm\` or \`unmutee\`\n
             **Pernamently unmute**: \`${prefix} unmute <@user> <reason>\`
                 Unmute a member so he can talk after that
-            **Example**: 
-            \`${prefix} unmute @steve he is good now\`
+            **Example**: \`\`\`\n${prefix} unmute @steve he is good now
+\`\`\`    
         `)
     return embed;
 }

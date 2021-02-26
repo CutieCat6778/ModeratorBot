@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The weather command's aliases are : \`weather\` or \`wether\`\n
             **All commands:** \`${prefix} weather [something]\`
                 Get all information about a city/country weather
-            **Example**: 
-            \`${prefix} weather USA\`
+            **Example**: \`\`\`\n${prefix} weather USA
+\`\`\`    
         `)
     return embed;
 }

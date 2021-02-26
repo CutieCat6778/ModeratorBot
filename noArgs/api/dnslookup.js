@@ -7,8 +7,8 @@ module.exports = (prefix) => {
         .setDescription(`The dnslookup command's aliases are : \`dnslookup\` or \`nameserver\`\n
             **Get IP of a Nameserver:** \`${prefix} dnslookup [domain name]\`
                 Get IP of a Nameserver
-            **Example**: 
-            \`${prefix} dnslookup google.com\`
+            **Example**: \`\`\`\n${prefix} dnslookup google.com
+\`\`\`    
         `)
     return embed;
 }

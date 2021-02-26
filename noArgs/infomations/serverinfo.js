@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The server info command's aliases are : \`serverinfo\` or \`sinfo\`\n
             **Server info:** \`${prefix} serverinfo\`
                 It will display all information about the current server.
-            **Example**: 
-            \`${prefix} serverinfo\`
+            **Example**: \`\`\`\n${prefix} serverinfo
+\`\`\`    
         `)
     return embed;
 }

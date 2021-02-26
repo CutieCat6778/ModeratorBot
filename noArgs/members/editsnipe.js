@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The edit command's aliases are : \`editsnipe\`, \`esnipe\` or \`snipeedit\`\n
             **Edit command:** \`${prefix} editsnipe\`
                 It will display lastest edited message
-            **Example**: 
-            \`${prefix} editsnipe\`
+            **Example**: \`\`\`\n${prefix} editsnipe
+\`\`\`    
         `)
     return embed;
 }

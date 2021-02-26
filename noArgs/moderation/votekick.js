@@ -6,8 +6,8 @@ module.exports = function nojudge(prefix) {
         .setDescription(`The votekick command's aliases are : \`votekick\` or \`votek\`\n
             **Pernamently votekick**: \`${prefix} votekick @user reason\`
                 Votekick a member, does they are guilty or not guilty. And then the member will be kicked from the server
-            **Example**: 
-            \`${prefix} votekick @steve He is spamm, should i ban him ?\`
+            **Example**: \`\`\`\n${prefix} votekick @steve He is spamm, should i ban him ?
+\`\`\`    
         `)
     return embed;
 }

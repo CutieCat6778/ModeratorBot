@@ -8,11 +8,8 @@ module.exports = function help(prefix) {
                 You just have to mentions a channel then the bot will automaticly setup
             **Starboard setting**: \`${prefix} starboard setting <true, false or (#channel, _id)>\`
                 You use this command to disable or enable the Starboard function
-            **Example**: 
-            \`${prefix} starboard setup @role\`
-            \`${prefix} starboard setting true\`
-            \`${prefix} starboard setting false\`
-            \`${prefix} starboard setting #channel\`
+            **Example**: \`\`\`\n${prefix} starboard setup @role\n${prefix} starboard setting true\n${prefix} starboard setting false\n${prefix} starboard setting #channel
+\`\`\`    
         `)
     return embed;
 }

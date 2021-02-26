@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The deletetag command's aliases are : \`deletetag\`, \`deltag\` or \`deletetags\`\n
             **All commands:** \`${prefix} deletetag [key_word]\`
                 Delete a tag that you think it is stupid
-            **Example**: 
-            \`${prefix} deletetag moddy\`
+            **Example**: \`\`\`\n${prefix} deletetag moddy
+\`\`\`    
         `)
     return embed;
 }

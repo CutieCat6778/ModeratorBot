@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The my permissions command's aliases are : \`mypermissions\` or \`myperms\`\n
             **My permissions:** \`${prefix} mypermissions\`
                 It will display all information about your permissions in that server.
-            **Example**: 
-            \`${prefix} mypermissions\`
+            **Example**: \`\`\`\n${prefix} mypermissions
+\`\`\`    
         `)
     return embed;
 }

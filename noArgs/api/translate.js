@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The translate command's aliases are : \`translate\` or \`trans\`\n
             **All commands:** \`${prefix} translate [something]\`
                 translate a text to english
-            **Example**: 
-            \`${prefix} translate discord\`
+            **Example**: \`\`\`\n${prefix} translate discord
+\`\`\`    
         `)
     return embed;
 }

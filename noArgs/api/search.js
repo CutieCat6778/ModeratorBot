@@ -7,8 +7,8 @@ module.exports = function help(prefix) {
         .setDescription(`The search command's aliases are : \`search\` or \`google\`\n
             **All commands:** \`${prefix} search [something]\`
                 Search all information about a something
-            **Example**: 
-            \`${prefix} search discord\`
+            **Example**: \`\`\`\n${prefix} search discord
+\`\`\`    
         `)
     return embed;
 }

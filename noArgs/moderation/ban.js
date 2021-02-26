@@ -8,9 +8,8 @@ module.exports = function help(prefix) {
                 Ban a member forever, until admin or moderator unban the user
             **Clear ban**: \`${prefix} ban clear 7 @user reason\`
                 Ban a member forever, but it clears all messages from user max in last 7 days
-            **Example**: 
-            \`${prefix} ban clear 7 @steve he deserved it\`
-            \`${prefix} ban @steve he deserved it\`
+            **Example**: \`\`\`\n${prefix} ban clear 7 @steve he deserved it\n${prefix} ban @steve he deserved it
+\`\`\`    
         `)
     return embed;
 }
