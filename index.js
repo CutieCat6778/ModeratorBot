@@ -7,6 +7,7 @@ client.total = new Number(0);
 
 client.aliases = new Collection();
 client.commands = new Collection();
+client.category = new Collection();
 client.guild = new Collection()
 client.starboard = new Collection();
 

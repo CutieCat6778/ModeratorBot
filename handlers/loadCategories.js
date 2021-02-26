@@ -2,15 +2,13 @@ const category = require('../asset/useFullObject/categories');
 
 module.exports = (client) => {
     try {
-        const aliases = {};
         for (let a in category) {
-            aliases[a] = a;
+            client.category.set(a, a)
             if (category.hasOwnProperty(a)) {
                 let value = category[a];
-                value.map(b => aliases[b] = a)
+                value.map(b => client.category.get(b) ? null : client.category.set(b, a))
             }
         }
-        client.category = aliases;
         console.log('--- All categories has been loaded ---')
         return true;
     } catch (e) {

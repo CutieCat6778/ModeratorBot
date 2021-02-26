@@ -1,21 +1,21 @@
-const obj = {
+{
     "api": [
-        "apis", "fun"
+        "apis", "fun", "applicationinterface", "funs", "funny", "utilities"
     ],
     "chat": [
-        "message", "chats", "chatcommands", "chatcmds", "chatcmd"
+        "message", "chats", "chatcommands", "chatcmds", "chatcmd", "chatcommand"
     ],
     "chat-management": [
         "chatsmanagement", "chatmanage", "chats-manage", "chatsmanage", "chat-manage", "chat-config", "chat-control", "chatconfig", "chatcontrol"
     ],
     "development": [
-        "owner", "bot"
+        "owner", "bot", "botadmin"
     ],
     "emoji": [
-        "reaction", "react", 'emojis'
+        "reaction", "react", "emojis"
     ],
     "informations": [
-        "infomation", "infomations", "info", "inform", 'information'
+        "infomation", "infomations", "info", "inform", "information"
     ],
     "members": [
         "general", "main", "member"
@@ -27,11 +27,9 @@ const obj = {
         "rolesmanagement", "rolemanage", "roles-manage", "rolesmanage", "role-manage", "role-config", "role-control", "roleconfig", "rolecontrol"
     ],
     "rules": [
-        "rule", "regulation", "reg", "ground-rule"
+        "rule", "regulation", "reg", "ground-rule", "groundrule"
     ],
     "tags": [
         "tag", "keyword", "keywords"
     ]
 }
-
-module.exports = obj;

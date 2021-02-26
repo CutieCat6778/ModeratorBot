@@ -21,7 +21,7 @@ module.exports = {
                 return require('../../tools/function/sendMessage')(message, embed);
             } else if (args[0]) {
                 let target = args.slice(0).join("-").split("_").join("-").toLowerCase().toString();
-                target = client.category[target];
+                target = client.category.get(target);
                 if (categories.includes(target)) {
                     if (args[0] == "development") {
                         let embed = await require(`../../noArgs/development.js`)(guildCache.prefix);
@@ -31,9 +31,8 @@ module.exports = {
                     let embed = await require(`../../noArgs/${target}.js`)(guildCache.prefix);
                     if (!embed) return message.channel.send("Category not found");
                     else if (embed) {
-                        let des = embed.description;
-                        des = des+`\n\n__**Commands list**__\n\n\`\`\`css\n${client.commands.filter(a => a.config.category == target).map(a => `- ${a.config.name} [${a.config.aliases.join(', ')}]`).join('\n')}\n\`\`\``
-                        embed.description = des;
+                        const commands = client.commands.filter(a => a.config.category == target);
+                        embed.description += `\n\n**--- __Commands list[${commands.size}]__ ---**\n\n\`\`\`css\n${commands.map(a => `- ${a.config.name} [${a.config.aliases.join(', ')}]`).join('\n')}\n\`\`\``
                         return require('../../tools/function/sendMessage')(message, embed);
                     }
                 } else if (!categories.includes(target)) {

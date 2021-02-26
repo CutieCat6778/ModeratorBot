@@ -3,15 +3,6 @@ module.exports = function help(prefix) {
     let embed = new MessageEmbed()
         .setColor("#40598F")
         .setTitle("Rule")
-        .setDescription(`The rule command's aliases are : \`rule\` or \`rules\`\n
-            **Setup rule**: \`${prefix} rule [setup]\`
-                Setup the rules function
-            **Get rule**: \`${prefix} rule [rule_number]\`
-                Get rule's content by a number
-            **Display rules**: \`${prefix} rule [display]\`
-                Display all rules
-            **Example**: \`\`\`\n${prefix} rule 1\n${prefix} rule setup
-\`\`\`    
-        `)
+        .setDescription(`The rule command's aliases are : \`rule\` or \`rules\`\n\n **Setup rule**: \`${prefix} rule [setup]\`\nSetup the rules function\n **Get rule**: \`${prefix} rule [rule_number]\`\nGet rule's content by a number\n **Display rules**: \`${prefix} rule [display]\`\nDisplay all rules\n**Example**: \`\`\`\n${prefix} rule 1\n${prefix} rule setup\n\`\`\``)
     return embed;
 }
