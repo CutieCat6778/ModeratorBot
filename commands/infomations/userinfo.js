@@ -4,7 +4,7 @@ module.exports = {
     config: {
         name: "userinfo",
         aliases: ["whois", "uinfo", "useri"],
-        category: "infomations",
+        category: "informations",
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },

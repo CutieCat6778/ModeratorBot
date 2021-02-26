@@ -29,7 +29,7 @@ module.exports = {
                                 Processors : ${data.cpu.processors}
                             \n\`\`\`
                         ` , true)
-                        .addField("OS infomations", `
+                        .addField("OS informations", `
                             \`\`\`js\n
                                 Model : ${data.system.model} \n
                                 Manufacturer : ${data.system.manufacturer} \n
@@ -37,7 +37,7 @@ module.exports = {
                                 Release : ${data.osInfo.release}  \n
                             \n\`\`\`
                         ` , true)
-                        .addField("Memory infomations", `
+                        .addField("Memory informations", `
                             \`\`\`js\n
                                 Total memory: ${niceBytes(data2.total)} \n
                                 Free memory: ${niceBytes(data2.free)} \n

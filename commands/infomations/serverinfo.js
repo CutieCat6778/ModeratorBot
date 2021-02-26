@@ -3,7 +3,7 @@ module.exports = {
     config: {
         name: "serverinfo",
         aliases: ["sinfo", "serverdesc", "guildinfo"],
-        category: "infomations",
+        category: "informations",
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },

@@ -4,7 +4,7 @@ module.exports = {
     config: {
         name: "avatar",
         aliases: ["av", "ava"],
-        category: "infomations",
+        category: "informations",
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },

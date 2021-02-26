@@ -4,7 +4,7 @@ module.exports = {
     config: {
         name: "stats",
         aliases: ["botinfo", "stat"],
-        category: "infomations",
+        category: "informations",
         perms: ["SEND_MESSAGES"],
         description: "You use this command to see my stats",
         bot: ["SEND_MESSAGES"]

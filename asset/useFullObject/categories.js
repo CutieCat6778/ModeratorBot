@@ -15,7 +15,7 @@ const obj = {
         "reaction", "react", 'emojis'
     ],
     "informations": [
-        "infomation", "informations", "info", "inform"
+        "infomation", "infomations", "info", "inform", 'information'
     ],
     "members": [
         "general", "main", "member"

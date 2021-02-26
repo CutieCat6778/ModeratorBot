@@ -4,7 +4,7 @@ module.exports = {
     config: {
         name: "mypermissions",
         aliases: ["myperms", "mperms"],
-        category: "infomations",
+        category: "informations",
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },

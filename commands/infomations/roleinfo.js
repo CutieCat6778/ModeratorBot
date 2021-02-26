@@ -5,7 +5,7 @@ module.exports = {
     config: {
         name: "roleinfo",
         aliases: ["rolei", "rinfo"],
-        category: "infomations",
+        category: "informations",
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },

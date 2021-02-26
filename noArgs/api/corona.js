@@ -6,7 +6,7 @@ module.exports = function help(prefix) {
         .setTitle("Covid19 stats")
         .setDescription(`The covid19 command's aliases are : \`corona\` or \`covid19\`\n
             **Covid19 stats:** \`${prefix} search [CountryCode, CountryName]\`
-                Get all infomations about corona virus
+                Get all informations about corona virus
             **Example**: \`\`\`\n${prefix} covid19 de\n${prefix} covid19 Germany
 \`\`\`    
         `)
