@@ -10,7 +10,7 @@ module.exports = {
     },
     async execute(client, message, args, guildCache) {
         if (!args[0]) {
-            return send(require(`../../noArgs/${this.category}/${this.name}.js`)(guildCache.prefix))
+            return send(message, require(`../../noArgs/${this.config.category}/${this.config.name}.js`)(guildCache.prefix))
         } else if (args[0]) {
             const id = require('mention-converter')(args[0]);
             if (!id) return message.channel.send('Invalid mentions string!');
@@ -34,7 +34,7 @@ module.exports = {
                                 if (isNaN(guildCache.logs.id == true)) return;
                                 let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                                 if (channel) {
-                                    let embed = await require("../../logs/logs")(user, this.name, message, reason, client);
+                                    let embed = await require("../../logs/logs")(user, this.config.name, message, reason, client);
                                     return channel.send(embed);
                                 }
                             }
@@ -43,7 +43,7 @@ module.exports = {
                 }
             }
         } else {
-            return send(require(`../../noArgs/${this.category}/${this.name}.js`)(guildCache.prefix))
+            return send(require(`../../noArgs/${this.config.category}/${this.config.name}.js`)(guildCache.prefix))
         }
     }
 }
