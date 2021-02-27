@@ -14,6 +14,7 @@ module.exports = {
             if (logs.length == 0) return message.channel.send('There are no logs has been saved!');
             else if (logs.length > 0) {
                 const embed = new MessageEmbed()
+                    .setColor("#40598F")
                     .setTitle('Mod logs')
                     .setFooter('All informations has been saved by ' + client.user.username, message.guild.me.user.displayAvatarURL())
                     .setThumbnail(message.guild.iconURL())
