@@ -2,11 +2,11 @@ const send = require('../../tools/function/sendMessage');
 
 module.exports = {
     config: {
-        name: "voicemute",
+        name: "unvoicemute",
         perms: ['MANAGE_CHANNELS', 'MANAGE_GUILD'],
         bot: ['MANAGE_GUILD'],
         category: "moderation",
-        aliases: ['vcmute', 'vcm']
+        aliases: ['unvcmute', 'unvcm']
     },
     async execute(client, message, args, guildCache) {
         if (!args[0]) {
