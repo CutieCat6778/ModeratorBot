@@ -16,6 +16,7 @@ module.exports = async function muteLog(target, name, message, reason, client) {
     guild.case.push({
         "name": name, "num": guild.case.length, "reason": reason ? reason : "No reason provieded", "author": message.author.id, "target": target.id, "time": new Date()
     })
+    client.guild.get(message.guild.id).case = guild.case
     await guild.updateOne({case: guild.case});
     return embed;
 }
