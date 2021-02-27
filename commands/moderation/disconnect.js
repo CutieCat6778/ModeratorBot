@@ -19,11 +19,11 @@ module.exports = {
                 if (!user) return message.channel.send('User not found!');
                 else if (user) {
                     const voice = user.voice;
-                    if (!voice) return message.channel.send('That user not in voice channel');
+                    if (!voice.channel) return message.channel.send('That user not in voice channel');
                     if (user.permissions.has(['MANAGE_GUILD', 'ADMINISTRATOR'])) return message.channel.send(require('../../tools/function/permissionMissMe')('I don\'t have enought permissions to disconnect him/her from voice!'));
                     else if (!user.permissions.has(['MANAGE_GUILD', 'ADMINISTRATOR'])) {
-                        if (voice.deaf) return message.channel.send('That user is already voicemuteed!');
-                        else if (!voice.deaf) {
+                        if (voice.connection) return message.channel.send('That user is already voicemuteed!');
+                        else if (!voice.connection) {
                             let reason = args.slice(1).join(" ");
                             if(!reason) reason = "No reason provieded";
                             voice.kick(reason);
