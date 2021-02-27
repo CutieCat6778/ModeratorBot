@@ -1,8 +1,9 @@
-const translate = require('translate-google');
+const {Translate} = require('@google-cloud/translate').v2;
 const { MessageEmbed } = require('discord.js');
-translate.engine = 'google';
-translate.key = process.env.trans;
-translate.to = "en";
+const projectId = 'thinh-nguyen-272809';
+const translate = new Translate({projectId});
+translate.key = process.env.trans
+
 module.exports = {
     config: {
         name: "translate",
@@ -18,7 +19,7 @@ module.exports = {
                 return require('../../tools/function/sendMessage')(message, embed);
             } else if (args[0]) {
                 let text = args.slice(0).join(" ");
-                let result = await translate(text, { to: 'en' });
+                let [result] = await translate.translate(text, 'en');
                 let embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setTitle("<:translate:777487138206908426> Translated to English")
