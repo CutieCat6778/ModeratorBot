@@ -22,15 +22,17 @@ module.exports = async(client) => {
 		for(let x of commands){
 			load(x);
 		}
+        let value = true;
         console.log('--- LOADING ALL EVENTS ---')
         cmds.forEach(a => {
 			if(!cmd.includes(a)){
 				console.log(`${a.slice(0, 1).toUpperCase() + a.slice(1)}: ✅`)
 			}else if(cmd.includes(a)){
 				console.log(`${a.slice(0, 1).toUpperCase() + a.slice(1)}: ❌`)
+                value = false;
 			}
 		})
-        return true;
+        return value;
     } catch (e) {
         return require("../tools/function/error")(e, undefined)
     }

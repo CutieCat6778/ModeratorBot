@@ -26,6 +26,7 @@ module.exports = {
                     fetch(url)
                         .then(a => a.json())
                         .then(res => {
+                            if(!res) return msg.edit({ embed: { description: `**STATUS**\xa0\xa0\xa0\xa0\`No result found\`` } });
                             if (!res.success) {
                                 return msg.edit('Unable to look for the domain up!');
                             } else if (res.success) {

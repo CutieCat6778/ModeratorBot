@@ -65,7 +65,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                             .setTimestamp()
                             .setFooter(`Catched by Textfilter system from ${client.user.tag}`, newMessage.guild.me.user.displayAvatarURL())
                         hook.send(embed);
-                    } if (require("../../tools/string/badwords")(newMessage.content, guildCache) == true && guildCache.textfilter.badwords.enable) {
+                    } if (require("../../tools/string/badwords")(message.content, guildCache.textfilter.badwords) == true && guildCache.textfilter.badwords.enable) {
                         newMessage.delete();
                         newMessage.reply("watch your language").then(m => m.delete({ timeout: 5000 }));
                         userCache.warn++;
@@ -77,7 +77,7 @@ module.exports = async (client, oldMessage, newMessage) => {
                             .setTimestamp()
                             .setFooter(`Catched by Textfilter system from ${client.user.tag}`, newMessage.guild.me.user.displayAvatarURL())
                         hook.send(embed);
-                    } if (newMessage.content.startsWith("http") && guildCache.textfilter.links && newMessage.content.includes("://") && newMessage.content.includes(".")) {
+                    } if ((message.content.startsWith("http") && guildCache.textfilter.links && message.content.includes("://") && message.content.includes(".")) || require('../../tools/string/domainValidation')(message.content)) {
                         newMessage.delete();
                         newMessage.reply('links are not allowed in here');
                         let embed = new MessageEmbed()

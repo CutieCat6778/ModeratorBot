@@ -1,12 +1,10 @@
 const badwords = require("../../asset/useFullArrays/badwords");
-let a;
-module.exports = function bad(message, guildCache) {
-    message.toLowerCase().split(" ").forEach(word => {
-        if(badwords.includes(word) && !guildCache.textfilter.badwords.whitelist.includes(word) || guildCache.textfilter.badwords.blacklist.includes(word)){
+let a = false;
+module.exports = function bad(message, data) {
+    for(let b of badwords){
+        if((message.includes(b) && !data?.whitelist?.includes(b)) || data?.blacklist?.includes(b)){
             a = true;
-        }else {
-            a = false;
         }
-    })
+    }
     return a;
 }

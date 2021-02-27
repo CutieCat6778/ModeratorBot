@@ -22,11 +22,13 @@ module.exports = {
                 const embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setAuthor(`${user?.displayName}`, user?.user.displayAvatarURL())
-                    .addFields([
+                    .setFooter(require("ms")((new Date() - edit.time), { long: true }) + " ago")
+                if(edit.oldContent != "" && edit.newContent != ""){
+                    embed.addFields([
                         {"name": "Before", "value": edit.oldContent, "inline": true},
                         {"name": "After", "value": edit.newContent, "inline": true}
                     ])
-                    .setFooter(require("ms")((new Date() - edit.time), { long: true }) + " ago")
+                }
                 if(edit.attachments){
                     embed.setDescription(`${edit.content ? edit.content : "No text"}\n\n ${edit.attachments.map(a => a).join("\n")}`);
                     embed.setImage(edit.attachments[0].toString());

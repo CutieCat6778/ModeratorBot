@@ -1,10 +1,9 @@
-const StringTools = require("string-toolkit");
-const stringTools = new StringTools
 const specialCha = require("../../asset/useFullArrays/specialCharacters");
+
 module.exports = function (str) {
     let isUpperCases = 0;
     let length = 0;
-    stringTools.toChunks(str.toString().split(" "), 1).forEach(word => {
+    str.split("").forEach(word => {
         if(isNaN(word) == false) return;
         if(specialCha.includes(word)) return;
         if(word === word.toString().toUpperCase()) isUpperCases++;

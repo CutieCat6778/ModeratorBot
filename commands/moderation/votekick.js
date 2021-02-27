@@ -29,9 +29,9 @@ module.exports = {
                 .setDescription(`**__Reason:__**
                     ${reason.toString()}\n\nIf there are many people agree with this. The member will be kicked from the server
                     
-                    <:easy:774348021101101096> to agree with the reason provided 
-                    <:x_:774311089310662667> to disagree with the reason provided
-                    🗑️ if there are more then 5 reaction of this, the vote will be closed`)
+                    <:easy:774348021101101096> to agree to kick the user
+                    <:x_:774311089310662667> to disagree with the reason providedto kick the user
+                    🗑️ if there are more then 80% reaction of delete the vote, the vote will be closed`)
                 .setTimestamp()
                 .setThumbnail(target.user.displayAvatarURL())
                 .setFooter("The vote will end after 15 minutes")
@@ -52,16 +52,6 @@ module.exports = {
                     if (reaction.emoji.name == "🗑️") {
                         user = message.guild.members.cache.get(user.id);
                         del++;
-                        if (del > 5) {
-                            let embed = new MessageEmbed()
-                                .setColor("#40598F")
-                                .setTitle("Vote ended")
-                                .setDescription("There are more then 5 votes to delete this case")
-                                .setTimestamp()
-                                .setThumbnail(target.user.displayAvatarURL())
-                            collector.stop();
-                            return m.edit(embed);
-                        }
                         if (!user.permissions.has("ADMINISTRATOR")) return;
                         else if (user.permissions.has("ADMINISTRATOR")) {
                             collector.stop();
@@ -75,14 +65,23 @@ module.exports = {
                         .setTitle(`${target.displayName} votekick`)
                         .setTimestamp()
                         .setThumbnail(target.user.displayAvatarURL())
+                    if (Math.floor(collected.size / del) * 100 >= 70) {
+                        let embed = new MessageEmbed()
+                            .setColor("#40598F")
+                            .setTitle("Vote ended")
+                            .setDescription(`There are ${del} votes are agreed to delete this case`)
+                            .setTimestamp()
+                            .setThumbnail(target.user.displayAvatarURL())
+                        collector.stop();
+                        return m.edit(embed);
+                    }
                     if (posiv > nega) {
                         if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
                             return m.edit(embed.setDescription(`<@!${target.id}> is guilty, with ${posiv} votes. Please mentions a Moderator or Admin to kick the user, I don't have permission to kick him/her.`))
                         } else if (target.roles.highest.position < message.guild.me.roles.highest.position && !target.permissions.has("ADMINISTRATOR")) {
-                            await target.ban({ reason: reason });
+                            await target.kick({ reason: reason });
                             m.edit(embed.setDescription(`Kicked ${target.displayName} with ${posiv} votes.`))
                             if (guildCache) {
-                                
                                 if (guildCache.logs.enable == false) return;
                                 if (guildCache.logs.id == " ") return;
                                 if (isNaN(guildCache.logs.id == true)) return;

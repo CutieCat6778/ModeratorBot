@@ -25,17 +25,25 @@ touch .env
 
 __**3. Launch the bot**__
 ```
+# Production
 npm start
+
+# Local
+npm localstart
 ```
 
 # Requirements
 
-**Node.js** >= v14.x.x
+• **Advanced Javascript knowledge**
 
-**NPM** >= v6.x.x
+• **Node.js** >= v14.x.x
 
-**Importain** - a Mongo.db database
+• **NPM** >= v6.x.x
+
+• **MongoDB database**
+
+• **All APIs keys/token required in `example.env` file**
 
 # Command list
 
-you can visit my website on [moddy.js.org](https://moddy.js.org) to see all of **Moddy**'s commands.
+You can visit my website on [moddy.js.org](https://moddy.js.org) to see all of **Moddy**'s commands.

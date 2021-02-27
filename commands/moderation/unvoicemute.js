@@ -22,11 +22,11 @@ module.exports = {
                     if (!voice.channel) return message.channel.send('That user not in voice channel');
                     if (user.permissions.has(['MANAGE_GUILD', 'ADMINISTRATOR'])) return message.channel.send(require('../../tools/function/permissionMissMe')('I don\'t have enought permissions to voice mute him/her !'));
                     else if (!user.permissions.has(['MANAGE_GUILD', 'ADMINISTRATOR'])) {
-                        if (voice.mute) return message.channel.send('That user is already voice muted!');
-                        else if (!voice.mute) {
+                        if (!voice.mute) return message.channel.send('That user is not voice muted!');
+                        else if (voice.mute) {
                             let reason = args.slice(1).join(" ");
                             if(!reason) reason = "No reason provieded";
-                            voice.setMute(true, reason);
+                            voice.setMute(false, reason);
                             require('../../tools/function/sendMessage')(message, `Successfully voicemuteed **${user.displayName}**!!!`, false);
                             if (guildCache) {
                                 if (guildCache.logs.enable == false) return;

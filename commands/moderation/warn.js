@@ -22,7 +22,6 @@ module.exports = {
                     if (!reason) return message.channel.send("Please supply a __reason__");
                     await require("../../tools/function/warn")(message, target, reason, args[0], client)
                     if (guildCache) {
-                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;

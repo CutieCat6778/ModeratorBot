@@ -33,6 +33,7 @@ module.exports = {
                     fetch(url, opt)
                         .then(a => a.json())
                         .then(res => {
+                            if(!res) return msg.edit({ embed: { description: `**STATUS**\xa0\xa0\xa0\xa0\`No result found\`` } });
                             if (res.message || res.error) {
                                 return msg.edit({ embed: { description: `**STATUS**\xa0\xa0\xa0\xa0\`${res.message || res.error}\`` } });
                             } else if (!res.message) {

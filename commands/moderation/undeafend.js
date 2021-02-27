@@ -2,11 +2,11 @@ const send = require('../../tools/function/sendMessage');
 
 module.exports = {
     config: {
-        name: "voicemute",
+        name: "undeafend",
         perms: ['MANAGE_CHANNELS', 'MANAGE_GUILD'],
         bot: ['MANAGE_GUILD'],
         category: "moderation",
-        aliases: ['vcmute', 'vcm']
+        aliases: ['undeaf', 'enablespeaker']
     },
     async execute(client, message, args, guildCache) {
         if (!args[0]) {
@@ -20,14 +20,14 @@ module.exports = {
                 else if (user) {
                     const voice = user.voice;
                     if (!voice.channel) return message.channel.send('That user not in voice channel');
-                    if (user.permissions.has(['MANAGE_GUILD', 'ADMINISTRATOR'])) return message.channel.send(require('../../tools/function/permissionMissMe')('I don\'t have enought permissions to voice mute him/her !'));
+                    if (user.permissions.has(['MANAGE_GUILD', 'ADMINISTRATOR'])) return message.channel.send(require('../../tools/function/permissionMissMe')('I don\'t have enought permissions to deafend him/her !'));
                     else if (!user.permissions.has(['MANAGE_GUILD', 'ADMINISTRATOR'])) {
-                        if (voice.mute) return message.channel.send('That user is already voice muted!');
-                        else if (!voice.mute) {
+                        if (!voice.deaf) return message.channel.send('That user is not deafended!');
+                        else if (voice.deaf) {
                             let reason = args.slice(1).join(" ");
                             if(!reason) reason = "No reason provieded";
-                            voice.setMute(true, reason);
-                            require('../../tools/function/sendMessage')(message, `Successfully voicemuteed **${user.displayName}**!!!`, false);
+                            voice.setDeaf(false, reason);
+                            require('../../tools/function/sendMessage')(message, `Successfully deafended **${user.displayName}**!!!`, false);
                             if (guildCache) {
                                 if (guildCache.logs.enable == false) return;
                                 if (guildCache.logs.id == " ") return;

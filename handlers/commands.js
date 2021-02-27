@@ -23,15 +23,17 @@ module.exports = async(client) => {
 		for (let x of commands) {
 			await load(x);
 		}
+		let value = true;
 		console.log('--- LOADING ALL COMMANDS ---')
 		cmds.forEach(a => {
 			if (!cmd.includes(a)) {
 				console.log(`${a}: ✅`)
 			} else if (cmd.includes(a)) {
-				console.log(`${a}: ❌`)
+				console.log(`${a}: ❌`);
+				value = false;
 			}
 		})
-		return true;
+		return value;
 	} catch (e) {
 		return require("../tools/function/error")(e, undefined)
 	}

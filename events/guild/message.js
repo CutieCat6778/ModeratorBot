@@ -61,7 +61,7 @@ module.exports = async (client, message) => {
                             .setTimestamp()
                             .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.user.displayAvatarURL())
                         hook.send(embed);
-                    } if (require("../../tools/string/badwords")(message.content, guildCache) == true && guildCache.textfilter.badwords.enable) {
+                    } if (require("../../tools/string/badwords")(message.content, guildCache.textfilter.badwords) == true && guildCache.textfilter.badwords.enable) {
                         message.delete();
                         message.reply("watch your language").then(m => m.delete({ timeout: 5000 }));
                         userCache.warn++;
@@ -73,7 +73,7 @@ module.exports = async (client, message) => {
                             .setTimestamp()
                             .setFooter(`Catched by Textfilter system from ${client.user.tag}`, message.guild.me.user.displayAvatarURL())
                         hook.send(embed);
-                    } if (message.content.startsWith("http") && guildCache.textfilter.links && message.content.includes("://") && message.content.includes(".")) {
+                    } if ((message.content.startsWith("http") && guildCache.textfilter.links && message.content.includes("://") && message.content.includes(".")) || require('../../tools/string/domainValidation')(message.content)) {
                         message.delete();
                         message.reply('links are not allowed in here');
                         let embed = new MessageEmbed()
