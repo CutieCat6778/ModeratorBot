@@ -16,7 +16,7 @@ module.exports = {
                 const commandfile = await client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName));
                 delete require.cache[require.resolve(`../${commandfile.config.category}/${commandName}.js`)] // usage !reload <name>
                 client.commands.delete(commandName)
-                const pull = require(`../${commandfile.config.category}/${commandName}.js`)
+                const pull = require(`../${commandfile.config.category}/${commandfile.config.name}.js`)
                 client.commands.set(commandName, pull)
                 return message.channel.send("done")
             }else return message.channel.send("Invalid options");

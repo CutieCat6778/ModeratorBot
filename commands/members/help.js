@@ -17,7 +17,7 @@ module.exports = {
                     .setColor("#40598F")
                     .setFooter("© 2020 Cat_#9289 All Rights Reserved")
                     .setDescription(`**${client.user.username}** is the most __powerful moderation bot__ on Discord. ${client.user.username} will help you to **moderate** or **manage** your server much much better!\n You can visit our website on **[moddy.js.org](${process.env.url})** to get more informations about **${client.user.username}**.`)
-                categories.map(a => embed.addField(a.slice(0, 1).toUpperCase() + a.slice(1), `\`\`\`\n${guildCache.prefix} help ${a}\`\`\``, true))    
+                categories.map(a => embed.addField(a.slice(0, 1).toUpperCase() + a.slice(1), `\`\`\`\n${guildCache.prefix} help ${a.length > 8 ? "\n"+a : a}\n\`\`\``, true))    
                 return require('../../tools/function/sendMessage')(message, embed);
             } else if (args[0]) {
                 let target = args.slice(0).join("-").split("_").join("-").toLowerCase().toString();
@@ -32,7 +32,7 @@ module.exports = {
                     if (!embed) return message.channel.send("Category not found");
                     else if (embed) {
                         const commands = client.commands.filter(a => a.config.category == target);
-                        embed.description += `\n\n**--- __Commands list[${commands.size}]__ ---**\n\n\`\`\`css\n${commands.map(a => `- ${a.config.name} [${a.config.aliases.join(', ')}]`).join('\n')}\n\`\`\``
+                        embed.description += `\n\n**__Commands list__ [${commands.size}]**\n\n\`\`\`css\n${commands.map(a => `- ${a.config.name} [${a.config.aliases.join(', ')}]`).join('\n')}\n\`\`\``
                         return require('../../tools/function/sendMessage')(message, embed);
                     }
                 } else if (!categories.includes(target)) {
