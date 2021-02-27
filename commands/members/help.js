@@ -23,6 +23,7 @@ module.exports = {
                 let target = args.slice(0).join("-").split("_").join("-").toLowerCase().toString();
                 target = client.category.get(target);
                 if (categories.includes(target)) {
+                    if(target == "emoji") return message.channel.send({embed: {description: "Under development!"}});
                     if (args[0] == "development") {
                         let embed = await require(`../../noArgs/development.js`)(guildCache.prefix);
                         if (!embed) return message.channel.send("Category not found");
