@@ -40,6 +40,7 @@ module.exports = {
                     target = args.slice(0).join("-").split("_").join("-").toLowerCase().toString();
                     let command = client.commands.get(client.aliases.get(target) || target)
                     if (!command) return message.channel.send("Command not found");
+                    if(command.config.category == "emoji") return message.channel.send({embed: {description: "Under development!"}});
                     if (command.config.category == "development") {
                         let embed = await require(`../../noArgs/development.js`)(guildCache.prefix);
                         if (!embed) return message.channel.send("Command not found");
