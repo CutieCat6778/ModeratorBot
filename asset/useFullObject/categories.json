@@ -31,5 +31,8 @@
     ],
     "tags": [
         "tag", "keyword", "keywords"
+    ],
+    "image": [
+        "img", "imgs", "images", "pictures", "pic", "picture"
     ]
 }

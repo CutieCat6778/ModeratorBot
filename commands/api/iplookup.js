@@ -23,9 +23,9 @@ module.exports = {
                     fetch(`http://ip-api.com/json/${ip}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,reverse,query`)
                         .then(a => a.json())
                         .then(res => {
-                            if(!res) return msg.edit({ embed: { description: `**STATUS**\xa0\xa0\xa0\xa0\`No result found\`` } });
+                            if(!res) return msg.edit({ embed: {color: "#40598F",  description: `**STATUS**\xa0\xa0\xa0\xa0\`No result found\`` } });
                             if (res.status != 'success') {
-                                return msg.edit({ embed: { description: `**STATUS**\xa0\xa0\xa0\xa0\`${res.message}\`` } })
+                                return msg.edit({ embed: {color: "#40598F",  description: `**STATUS**\xa0\xa0\xa0\xa0\`${res.message}\`` } })
                             } else if (res.status == 'success') {
                                 const embed = new MessageEmbed()
                                     .setColor('#40598F')
