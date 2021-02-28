@@ -2,6 +2,7 @@ const { MessageEmbed, WebhookClient } = require("discord.js");
 
 module.exports = async (client, oldMessage, newMessage) => {
     try {
+        if(client.block == false) return;
         if (newMessage.author.bot) return;
         if (newMessage.channel.type == "text") {
             //get guild and save it in cache

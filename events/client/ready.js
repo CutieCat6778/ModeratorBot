@@ -5,7 +5,7 @@ const dbl = require('../../dbl/server');
 
 module.exports = async (client) => {
     try {
-        await client.user.setActivity(`@${client.user.username}`, { type: "WATCHING" });
+        await client.user.setActivity(process.env.hook ? `Deploying on local` : `Starting up`, { type: "PLAYING" });
         await mongoose.connect(process.env.mongo, {
             useNewUrlParser: true,
             useUnifiedTopology: true
@@ -21,8 +21,15 @@ module.exports = async (client) => {
                 .setTitle(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`)
                 .setTimestamp()
             await hook.send(embed);
+            client.setTimeout(() => {
+                client.user.setActivity(`@${client.user.username}`, { type: "WATCHING" });
+                client.block = true;
+            }, 5000);
         }
         console.log(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`);
+        if(process.env.hook){
+            client.block = null;
+        }
     } catch (e) {
         return require("../../tools/function/error")(e, undefined)
     }

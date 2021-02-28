@@ -9,7 +9,7 @@ module.exports = {
         if (!args[0]) return;
         let commandName = args[0].toLowerCase()
         try {
-            if(commandName == "guild"){
+            if(commandName == "global"){
                 await require('../../tools/cache/guildCacheReload')(client);
                 return messasge.channel.send("Done");
             }else if(client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName))){

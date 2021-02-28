@@ -19,10 +19,19 @@ module.exports = {
             if (collected.content.toLowerCase() == "y") {
                 let channel = message.guild.channels.cache.get(guild.rules._id);
                 if (channel) {
-                    let msg = await channel.messages.fetch(guild.rules.messageId);
-                    if (msg) {
-                        await msg.delete();
-                    } else if (!msg) { };
+                    channel.messages.fetch(guild.rules.messageId)
+                        .then(m => {
+                            if(m){
+                                m.delete();
+                            }
+                        })
+                        .catch(e => {
+                            if(e.toString().includes('Unknown Message')){
+                                message.channel.send({embed: {color: "#40598F", description: `\`!WARNING\`\xa0\xa0\xa0\xa0rules list message is not exist! (just a warning, don't worry)`}})
+                            }else if(!e.toString().includes('Unknown Message')){
+                                return require('../../tools/function/error')(e, message);
+                            }
+                        })
                 }
                 guild.rules = {
                     "enable": false, "_id": " ", "messageId": " ", "rulesArr": []

@@ -55,7 +55,7 @@ module.exports = {
                                             guild.rules.messageId = messageId.id;
                                             guild.rules.rulesArr = rules;
                                             guild.rules.enable = true;
-                                            message.channel.send({embed: `Done! Please go check <#${channel.id}>, if there is a problem. Try command \`${guildCache.prefix}\``})
+                                            message.channel.send({embed: {color: "#40598F", description: `Done! Please go check <#${channel.id}>, if there is a problem. Try command \`${guildCache.prefix}\``}})
                                             return await guild.save();
                                         }
                                     } else if (collected1.content == "n") {

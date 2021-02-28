@@ -14,8 +14,10 @@ module.exports = {
             exec(input, async (error, stdout, stderr) => {
                 const date1 = new Date();
                 if (error) {
-                    const output = await require("../../tools/string/textsplit")(error, true);
-                    if(!output) output = await require("../../tools/string/textsplit")(stderr, true);
+                    let output = await require("../../tools/string/textsplit")(error, true);
+                    if(stderr){
+                        output = await require("../../tools/string/textsplit")(error + `\n\n${stderr}`, true);
+                    }
                     if(!output) output = "nothing";
                     await message.channel.send(`${require("ms")((new Date() - date1), { long: true })}`);
                     return message.channel.send(output);

@@ -2,7 +2,8 @@ module.exports = {
     config: {
         name: 'cleanup',
         aliases: ["selfpurge", "selfclear"],
-        perms: ["BOT_OWNER"],
+        perms: ["MANAGE_MESSAGES"],
+        bot: ['MANAGE_MESSAGES'],
         category: "development"
     },
     async execute(client, message, args, guildCache) {

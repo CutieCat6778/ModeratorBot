@@ -4,6 +4,7 @@ require('dotenv').config();
 
 client.start = new Date();
 client.total = new Number(0);
+client.block = new Boolean(false);
 
 client.aliases = new Collection();
 client.commands = new Collection();
