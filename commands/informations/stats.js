@@ -1,4 +1,4 @@
-const si = require('systeminformation');
+const os = require('os');
 const { MessageEmbed } = require("discord.js");
 module.exports = {
     config: {
@@ -11,11 +11,6 @@ module.exports = {
     },
     async execute(client, message, args, guildCache) {
         try {
-            const system = {
-                osInfo: 'platform, release',
-            }
-            let os = await si.get(system);
-            os = os.osInfo;
             const owner = client.users.cache.get("762749432658788384").tag
             let embed = new MessageEmbed()
                 .setColor("#40598F")
@@ -30,7 +25,7 @@ module.exports = {
                 .addField("Uptime", require("ms")(client.uptime, { long: true }), true)
                 .addField("NodeJS version", `${process.version}`, true)
                 .addField("Discord.js version", "12.3.1", true)
-                .addField("OS platform", `${os.platform}/${os.release}`, true)
+                .addField("OS platform", `${os.platform()}/${os.release()}`, true)
                 .addField("Owner", `\`${owner}\``, true)
                 .addField("Support server", "[Click here](https://moddy.js.org/support)", true)
                 .setTimestamp()

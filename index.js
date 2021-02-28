@@ -1,9 +1,8 @@
-const { Client, Collection, WebhookClient } = require("discord.js");
+const { Client, Collection } = require("discord.js");
 const cluster = require('cluster');
 const os = require('os');
 
 const clusterSize = os.cpus().length;
-const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
 
 if(clusterSize > 1){
     if(cluster.isMaster){
@@ -12,14 +11,14 @@ if(clusterSize > 1){
         }
 
         cluster.on('exit', (worker) => {
-            hook.send({embed: {color: "#40598F", description: `Worker ${worker.id} has exitted.`}})
+            console.log(`Worker ${worker.id} has exitted.`)
         })
     }else {
-        hook.send({embed: {color: "#40598F", description: `Current worker ${process.pid}`}})
+        console.log(`Current worker ${process.pid}`)
         return main("multi");
     }
 }else {
-    hook.send({embed: {color: "#40598F", description: `Current worker ${process.pid}`}})
+    console.log(`Current worker ${process.pid}`)
     return main("single")
 }
 
