@@ -19,7 +19,6 @@ module.exports = async (client) => {
             const embed = new MessageEmbed()
                 .setColor("#40598F")
                 .setTitle(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`)
-                .setDescription(`The bot running with a ${client.process} processor! Current worker ${process.pid}`)
                 .setTimestamp()
             await hook.send(embed);
             client.setTimeout(() => {
@@ -28,7 +27,6 @@ module.exports = async (client) => {
             }, 5000);
         }
         console.log(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`);
-        console.log(`It is running on ${client.process} processor! Current worker ${process.pid}`)
         if(process.env.hook){
             client.block = null;
         }
