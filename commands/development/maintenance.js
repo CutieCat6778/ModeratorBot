@@ -35,7 +35,11 @@ module.exports = {
                 client.user.setActivity(`maintenance mode`, { type: "PLAYING" });
                 client.block = false;
             }
-            return require('../../tools/function/sendMessage')(message, {embed: {description: `**\`STATUS\`** ${client.block.toString()}`}})
+            let status = "";
+            if(client.block == null) status = "null";
+            if(client.block == false) status = "false";
+            if(client.block == true) status = "true";
+            return require('../../tools/function/sendMessage')(message, {embed: {description: `**\`STATUS\`** ${status.toString()}`}})
         } catch (e) {
             return require('../../tools/function/error')(e, message);
         }
