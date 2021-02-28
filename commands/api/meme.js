@@ -18,6 +18,7 @@ module.exports = {
             const subreddits = ['comedyheaven', 'dank', 'meme', 'dankmeme', 'memes', 'MemeEconomy', 'ComedyCemetery', 'dankmemes']
             const gen = async() => {
                 let url = await api(subreddits[Math.floor(Math.random() * subreddits.length)], true);
+                if(!url) url = await gen();
                 if(url.endsWith('.png') || url.endsWith('.jpg') || url.endsWith('.jpeg')){
                     return url;
                 }else if(!url.endsWith('.png') && !url.endsWith('.jpg') && !url.endsWith('.jpeg')){
