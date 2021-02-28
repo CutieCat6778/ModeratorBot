@@ -39,7 +39,7 @@ module.exports = {
             if(client.block == null) status = "null";
             if(client.block == false) status = "false";
             if(client.block == true) status = "true";
-            return require('../../tools/function/sendMessage')(message, {embed: {description: `**\`STATUS\`** ${status.toString()}`}})
+            return require('../../tools/function/sendMessage')(message, {embed: {color: "#40598F", description: `**\`STATUS\`** ${status.toString()}`}})
         } catch (e) {
             return require('../../tools/function/error')(e, message);
         }

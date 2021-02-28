@@ -42,6 +42,7 @@
     "node-fetch": "^2.6.1",
     "node-pre-gyp": "^0.17.0",
     "openweather-apis": "^4.4.1",
+    "os": "^0.1.1",
     "request": "^2.88.2",
     "string-toolkit": "^1.0.89",
     "topgg-autoposter": "^1.1.3"
