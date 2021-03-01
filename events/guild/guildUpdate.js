@@ -16,19 +16,26 @@ module.exports = async (client, oldGuild, newGuild) => {
                 embed.addField("Changed name", `\`${oldGuild.name}\` => \`${newGuild.name}\``)
                 mod = true;
                 const guild = client.guild.get(newGuild.id);
-                const embed1 = new MessageEmbed()
-                    .setTitle(`<:rules:774311089445535765> ${newGuild.name}'s rules`)
-                    .setColor("#40598F")
-                    .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
-                    .setFooter(newGuild.name, newGuild.iconURL())
-                    .setTimestamp(new Date())
-                newGuild.channels.cache.get(guild.rules._id).messages.fetch(guild.rules.messageId).then(msg => {
-                    if (!msg) {
-                        newGuild.channels.cache.get(guild.rules._id).send(embed1);
-                    } else if (msg) {
-                        msg.edit(embed1);
+                if (guild.rules.enable == true) {
+                    if (guild.rules._id.length > 3 && guild.rules.messageId.length > 3) {
+                        const embed1 = new MessageEmbed()
+                            .setTitle(`<:rules:774311089445535765> ${newGuild.name}'s rules`)
+                            .setColor("#40598F")
+                            .setDescription(`${guild.rules.rulesArr.map(rule => `**[${rule.ruleNum}]** - ${rule.ruleContent.toString()}`).join('\n')}`)
+                            .setFooter(newGuild.name, newGuild.iconURL())
+                            .setTimestamp(new Date())
+                        const channel = newGuild.channels.cache.get(guild.rules._id)
+                        if (channel) {
+                            channel.messages.fetch(guild.rules.messageId).then(msg => {
+                                if (!msg) {
+                                    newGuild.channels.cache.get(guild.rules._id).send(embed1);
+                                } else if (msg) {
+                                    msg.edit(embed1);
+                                }
+                            })
+                        }
                     }
-                })
+                }
             } if (oldGuild.afkChannel != newGuild.afkChannel) {
                 embed.addField("Changed afk channel", `\`${oldGuild.afkChannel.name}\` => \`${newGuild.afkChannel.name}\``)
                 mod = true
