@@ -15,9 +15,10 @@ module.exports = {
             let grad = 0;
             let user = message.member;
             const id = require('mention-converter')(args[0]);
-            if(id.length < 5){
+            if(!id) return require('../../tools/function/sendMessage')(message, require('../../noArgs/image/rotate')(guildCache.prefix))
+            else if(id && id.length < 5){
                 grad = id;
-            }else if(id.length > 5){
+            }else if(id && id.length > 5){
                 user = message.guild.members.cache.get(id);
                 grad = args[1];
                 if(isNaN(grad) == true) return message.channel.send('Invalid number!');
