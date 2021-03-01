@@ -18,7 +18,7 @@ module.exports = {
                     .setTitle('Mod logs')
                     .setFooter('All informations has been saved by ' + client.user.username, message.guild.me.user.displayAvatarURL())
                     .setThumbnail(message.guild.iconURL())
-                for(let i = logs.length; i >= 0; i--){
+                for(let i = logs.length < 5 ? logs.length - 1 : 4; i >= 0; i--){
                     const a = logs[i]
                     embed.addField(a.name.slice(0, 1).toUpperCase() + a.name.slice(1) + ` [${a.num + 1}]`, `By: **${message.guild.members.cache.get(a.author)?.user?.tag}** To:  **${message.guild.members.cache.get(a.target)?.user?.tag}**\nReason: **${a?.reason}**`)
                 }
