@@ -48,7 +48,7 @@ module.exports = async (error, message, text) => {
                 let embed1 = new MessageEmbed()
                     .setTitle("<:error:774311088262086697> Error")
                     .setColor("#40598F")
-                    .setDescription("Oh no there is a error, please wait 24h then try again. If it is not fixed, you can use command \`(prefix) bug [problem-info]\` to get better support.")
+                    .setDescription(`Oh no there is a error, please wait 24h then try again. If it is not fixed, you can use command \`${message.client.guild.get(message.guild.id).prefix} bug [problem-info]\` to get better support.`)
                     .setTimestamp()
                 message.channel.send(embed1);
                 let array = stringTools.toChunks(e, 5);
