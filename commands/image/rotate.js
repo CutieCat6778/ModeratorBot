@@ -22,7 +22,7 @@ module.exports = {
                 grad = args[1];
                 if(isNaN(grad) == true) return message.channel.send('Invalid number!');
             }
-            if(grad == 0) return require('../../tools/function/sendMessage')(message, require('../../noArgs/image/rotate')(guildCache.prefix))
+            if(grad == 0 || !grad) return require('../../tools/function/sendMessage')(message, require('../../noArgs/image/rotate')(guildCache.prefix))
             if(!user) return message.channel.send('User not found!');
             else if(user){
                 let url = user.user.displayAvatarURL({format: "png", size: 512});
