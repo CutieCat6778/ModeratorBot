@@ -5,7 +5,7 @@ const dbl = require('../../dbl/server');
 
 module.exports = async (client) => {
     try {
-        await client.user.setActivity(process.env.hook ? `Deploying on local` : `Starting up`, { type: "PLAYING" });
+        process.env.hook ? null : await client.user.setActivity(`Starting up`, { type: "PLAYING" });
         await mongoose.connect(process.env.mongo, {
             useNewUrlParser: true,
             useUnifiedTopology: true
