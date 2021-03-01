@@ -25,16 +25,17 @@ module.exports = {
                         if (voice.deaf) return message.channel.send('That user is already deafended!');
                         else if (!voice.deaf) {
                             let reason = args.slice(1).join(" ");
-                            if(!reason) reason = "No reason provieded";
+                            if (!reason) reason = "No reason provieded";
                             voice.setDeaf(true, reason);
                             require('../../tools/function/sendMessage')(message, `Successfully deafended **${user.displayName}**!!!`, false);
                             if (guildCache) {
+                                await require('../../tools/database/saveCase')(target, message, this.config.name, reason)
                                 if (guildCache.logs.enable == false) return;
                                 if (guildCache.logs.id == " ") return;
                                 if (isNaN(guildCache.logs.id == true)) return;
                                 let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                                 if (channel) {
-                                    let embed = await require("../../logs/logs")(user, this.config.name, message, reason, client);
+                                    let embed = await require("../../logs/logs")(user, this.config.name, message, reason);
                                     return channel.send(embed);
                                 }
                             }

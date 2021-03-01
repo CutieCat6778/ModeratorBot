@@ -30,12 +30,13 @@ module.exports = {
                     require('../../tools/function/sendMessage')(message, text, true);
                     target.send(`You has been kicked from **${message.guild.name}** for reason **${reason}**`);
                     if (guildCache) {
+                        await require('../../tools/database/saveCase')(target, message, this.config.name, reason)
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;
                         let channel = new WebhookClient(guildCache.logs.id, guildCache.logs.token)
                         if (channel) {
-                            let embed = await require("../../logs/logs")(target, "kick", message, reason, client);
+                            let embed = await require("../../logs/logs")(target, "kick", message, reason);
                             return channel.send(embed);
                         }
                     }

@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 module.exports = async function muteLog(target, name, message, reason, client) {
-    const guild = await require('../tools/database/getGuild')(client, message.guild.id);
+    const guild = await require('../tools/database/getGuild')(message.client, message.guild.id);
     const embed = new MessageEmbed()
         .setColor("#40598F")
         .setTitle(`Case #${guild.case.length + 1} | ${name}`)
@@ -16,7 +16,7 @@ module.exports = async function muteLog(target, name, message, reason, client) {
     guild.case.push({
         "name": name, "num": guild.case.length, "reason": reason ? reason : "No reason provieded", "author": message.author.id, "target": target.id, "time": new Date()
     })
-    client.guild.get(message.guild.id).case = guild.case
+    message.client.guild.get(message.guild.id).case = guild.case
     await guild.updateOne({case: guild.case});
     return embed;
 }

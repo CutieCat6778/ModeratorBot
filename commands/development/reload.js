@@ -14,7 +14,7 @@ module.exports = {
                 return messasge.channel.send("Done");
             }else if(client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName))){
                 const commandfile = await client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName));
-                delete require.cache[require.resolve(`../${commandfile.config.category}/${commandName}.js`)] // usage !reload <name>
+                delete require.cache[require.resolve(`../${commandfile.config.category}/${commandfile.config.name}.js`)] // usage !reload <name>
                 client.commands.delete(commandName)
                 const pull = require(`../${commandfile.config.category}/${commandfile.config.name}.js`)
                 client.commands.set(commandName, pull)
