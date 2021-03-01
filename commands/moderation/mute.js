@@ -39,6 +39,7 @@ module.exports = {
                     require("../../tools/function/error")("mute", message, error)
                 }
             }
+            if(muterole.position >= message.guild.me.roles.highest.position)return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")(`I don't have permission to manage role <@&${muterole.id}>`));
             let target = message.guild.members.cache.get(require('mention-converter')(args[0])) || message.guild.members.cache.get(require('mention-converter')(args[1])) || message.guild.members.cache.get(require('mention-converter')(args[2]));
             if (!target) return message.channel.send("User not found");
             if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {

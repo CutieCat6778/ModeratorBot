@@ -37,7 +37,6 @@ module.exports = {
                     message.guild.members.ban(target.id, { reason: reason })
                     require('../../tools/function/sendMessage')(message, text, true);
                     if (guildCache) {
-                        
                         if (guildCache.logs.enable == false) return;
                         if (guildCache.logs.id == " ") return;
                         if (isNaN(guildCache.logs.id == true)) return;

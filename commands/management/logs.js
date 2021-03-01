@@ -21,7 +21,6 @@ module.exports = {
                     if (!logchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                         return require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel")
                     }
-                    const guildCache = guildCache;
                     const guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     if (isNaN(guildCache.logs.id) == true) return message.channel.send(`Please use command \`${guildCache.prefix} logs setting\`, you are already setup the logs`)
                     guild.logs._id = logchannel.id;
@@ -60,7 +59,7 @@ module.exports = {
                     if (guild.logs.enable == false) return message.channel.send("You already disable it");
                     guild.logs.enable = false;
                     await guild.save();
-                    const guildCache = guildCache;
+                    ;
                     const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                     if (hook) {
                         await hook.delete();
@@ -72,7 +71,7 @@ module.exports = {
                     if (!logchannel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {
                         return require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel")
                     }
-                    const guildCache = guildCache;
+                    ;
                     const oldhook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                     if (oldhook) await oldhook.delete();
                     const guild = await require("../../tools/database/getGuild")(client, message.guild.id);
