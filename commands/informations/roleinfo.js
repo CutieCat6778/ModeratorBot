@@ -9,7 +9,7 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute(bot, message, args) {
+    async execute(bot, message, args, guildCache) {
         try {
             if (!args[0]) return message.channel.send("Please mentions a role or supply a role ID");
             const role = message.guild.roles.cache.get(await require('mention-converter')(args[0].toString()));

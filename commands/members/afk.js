@@ -7,7 +7,7 @@ module.exports = {
         description: "You use this command to tell people that you are offline",
         bot: ["SEND_MESSAGES"]
     },
-    async execute (client, message, args) {
+    async execute (client, message, args, guildCache) {
         try{
             if(!args[0]) {
                 let embed = await require("../../noArgs/members/afk.js")(guildCache.prefix);

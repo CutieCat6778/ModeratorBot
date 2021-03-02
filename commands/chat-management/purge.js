@@ -7,7 +7,7 @@ module.exports = {
         description: "You use this command to delete messages, but faster",
         bot: ["MANAGE_MESSAGES", "MANAGE_CHANNELS"]
     },
-    async execute(client, message, args) {
+    async execute(client, message, args, guildCache) {
         try {
             const id = require('mention-converter')(args[0]);
             if (!id || !message.guild.members.cache.get(id) ) {

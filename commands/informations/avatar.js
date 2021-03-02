@@ -8,7 +8,7 @@ module.exports = {
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute (client, message, args) {
+    async execute (client, message, args, guildCache) {
         try {
             let user;
             if (!args[0]) user = message.member;

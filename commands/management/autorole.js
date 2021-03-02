@@ -9,7 +9,7 @@ module.exports = {
         description: "You use this command to setup a auto assign role function",
         bot: ["MANAGE_ROLES"]
     },
-    async execute (client, message, args) {
+    async execute (client, message, args, guildCache) {
         try {
             if (!args[0] || !args[1]) {
                 return require('../../tools/function/sendMessage')(message, require("../../noArgs/management/autorole")(guildCache.prefix));

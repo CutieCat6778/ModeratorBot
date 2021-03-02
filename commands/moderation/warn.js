@@ -9,7 +9,7 @@ module.exports = {
         perms: ["MANAGE_GUILD", "MANAGE_MESSAGES"],
         bot: ["SEND_MESSAGES"]
     },
-    async execute (client, message, args) {
+    async execute (client, message, args, guildCache) {
         try {
             if(!args[0]){
                 return require('../../tools/function/sendMessage')(message, require("../../noArgs/moderation/warn")(guildCache.prefix));
