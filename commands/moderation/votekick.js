@@ -39,6 +39,7 @@ module.exports = {
                 m.react("✅");
                 m.react("❌");
                 await m.react("🗑️");
+                const votedUsers = [];
                 let posiv = 0;
                 let nega = 0;
                 let del = 0;
@@ -47,6 +48,10 @@ module.exports = {
                 };
                 const collector = m.createReactionCollector(filter, { time: 900000 });
                 collector.on('collect', (reaction, user) => {
+                    if(votedUsers.includes(user.id)) return;
+                    else if(!votedUsers.includes(user.id)){
+                        votedUsers.push(user.id);
+                    }
                     if (reaction.emoji.name == "✅") posiv++;
                     if (reaction.emoji.name == "❌") nega++;
                     if (reaction.emoji.name == "🗑️") {
