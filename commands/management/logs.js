@@ -59,11 +59,6 @@ module.exports = {
                     if (guild.logs.enable == false) return message.channel.send("You already disable it");
                     guild.logs.enable = false;
                     await guild.save();
-                    ;
-                    const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
-                    if (hook) {
-                        await hook.delete();
-                    }
                     return message.channel.send("Successfully disabled Logging function");
                 } else if (args[1].startsWith("<").endsWith(">") || isNaN(args[1] == false)) {
                     let logchannel = message.guild.channels.cache.get(require('mention-converter')(args[1]));
