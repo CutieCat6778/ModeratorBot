@@ -53,12 +53,33 @@ module.exports = {
                     if (guild.logs.enable == true) return message.channel.send("You already enable it");
                     guild.logs.enable = true;
                     await guild.save();
+                    logchannel.createWebhook(client.user.username, {
+                        avatar: 'https://cutiecat6778.github.io/cdn/pfp.png'
+                    })
+                        .then(async webhook => {
+                            guild.logs.id = webhook.id;
+                            guild.logs.token = webhook.token;
+                            guild.logs.enable = true;
+                            guildCache.logs.id = webhook.id;
+                            guildCache.logs.token = webhook.token;
+                            guildCache.logs.enable = true;
+                            const hook = new WebhookClient(webhook.id, webhook.token)
+                            hook.send(await require('../../logs/logger')(logchannel.name, guildCache.logs.enable));
+                            await guild.save();
+                            return message.channel.send("Succesfully enabled the logs function");
+                        })
                     message.channel.send("Successfully enabled Logging function");
                 } else if (args[1] == "false") {
                     let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
                     if (guild.logs.enable == false) return message.channel.send("You already disable it");
                     guild.logs.enable = false;
+                    guild.logs.id = "";
+                    guild.logs.token = "";
                     await guild.save();
+                    const hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
+                    if (hook) {
+                        await hook.delete();
+                    }
                     return message.channel.send("Successfully disabled Logging function");
                 } else if (args[1].startsWith("<").endsWith(">") || isNaN(args[1] == false)) {
                     let logchannel = message.guild.channels.cache.get(require('mention-converter')(args[1]));

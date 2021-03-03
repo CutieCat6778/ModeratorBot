@@ -2,8 +2,8 @@ const { MessageEmbed, WebhookClient } = require("discord.js");
 
 module.exports = async (client, message) => {
     try {
-        if(client.block == false || (client.block == null && message.guild.id !== "769862485053931521")) return;
-        if(process.env.hook && message.guild.id !== "769862485053931521")return;
+        if (client.block == false || (client.block == null && message.guild.id !== "769862485053931521")) return;
+        if (process.env.hook && message.guild.id !== "769862485053931521") return;
         if (message.author.bot) return;
         if (message.channel.type == "text") {
             //get guild and save it in cache
@@ -15,7 +15,7 @@ module.exports = async (client, message) => {
             }
             //text-filter
             if (guildCache.textfilter.enable == true) {
-                if(guildCache.logs.enable == true){
+                if (guildCache.logs.enable == true) {
                     var hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                     if (!hook) {
                         const guild = require('../../tools/database/getGuild')(client, message.guild.id);
@@ -91,7 +91,7 @@ module.exports = async (client, message) => {
                         message.channel.send(`Muted <@!${message.author.id}> for 15 minute, because **he keep ignoring the warnings**`);
                         let muterole = message.guild.roles.cache.find((r) => r.name === "Muted");
                         if (!muterole) {
-                            if(message.guild.roles.cache.size > 250){
+                            if (message.guild.roles.cache.size > 250) {
                                 return message.channel.send("Your server has reached max roles, please delete a role that you don't need and run this command again!")
                             }
                             muterole = await message.guild.roles.create({
@@ -188,7 +188,7 @@ module.exports = async (client, message) => {
                     message.reply("welcome back, removed you from AFK!");
                     client.afk.delete(message.author.id);
                     await require('../../tools/database/removeAfk')(message.author.id);
-                    if(userCache.name == true && message.member.displayName.startsWith('[AFK]')){
+                    if (userCache.name == true && message.member.displayName.startsWith('[AFK]')) {
                         message.member.setNickname(message.member.displayName.replace('[AFK]', ''))
                     }
                 }
@@ -210,7 +210,25 @@ module.exports = async (client, message) => {
                 }
                 let cmd = args.shift().toLowerCase();
                 let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
-                if(!commandfile && args.length > 0){
+                if (!commandfile) {
+                    const target = client.category.get(cmd);
+                    if (target) {
+                        if (target == "emoji") return message.channel.send({ embed: { description: "Under development!" } });
+                        if (target == "development") {
+                            let embed = await require(`../../noArgs/development.js`)(guildCache.prefix);
+                            if (!embed) return message.channel.send("Category not found");
+                            return require('../../tools/function/sendMessage')(message, embed);
+                        }
+                        const embed = await require(`../../noArgs/${target}.js`)(guildCache.prefix);
+                        if (!embed) return message.channel.send("Category not found");
+                        else if (embed) {
+                            const commands = client.commands.filter(a => a.config.category == target);
+                            embed.description += `\n\n**__Commands list__ [${commands.size}]**\n\n\`\`\`css\n${commands.map(a => `- ${a.config.name} [${a.config.aliases.join(', ')}]`).join('\n')}\n\`\`\``
+                            return require('../../tools/function/sendMessage')(message, embed);
+                        }
+                    }
+                }
+                if (!commandfile && args.length > 0) {
                     cmd = cmd + args.shift().toLowerCase();
                     commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
                 }
@@ -237,7 +255,7 @@ module.exports = async (client, message) => {
                 }
                 if (commandfile.config.category == "moderation" || commandfile.config.category == "management") {
                     if (guildCache.logs.enable == true) {
-                        if(!hook){
+                        if (!hook) {
                             var hook = new WebhookClient(guildCache.logs.id, guildCache.logs.token);
                         }
                         if (!hook) {
@@ -265,7 +283,7 @@ module.exports = async (client, message) => {
                         }
                     }
                 }
-                if(commandfile.config.category == "emoji") return message.channel.send('Under development, will be realese soon!');
+                if (commandfile.config.category == "emoji") return message.channel.send('Under development, will be realese soon!');
                 if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && message.author.id != "762749432658788384") {
                     return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")(commandfile.config.perms))
                 } else if (!commandfile.config.perms.includes("BOT_OWNER")) {
