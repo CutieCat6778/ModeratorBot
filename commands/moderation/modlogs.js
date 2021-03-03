@@ -27,7 +27,7 @@ module.exports = {
                 for(let i = ((logs.length - 1) - 5*num); i >= ((logs.length -5) - (5*num)); i--){
                     const a = logs[i];
                     if(a){
-                        embed.addField(a.name.slice(0, 1).toUpperCase() + a.name.slice(1) + ` [${a.num + 1}]`, `By: **${message.guild.members.cache.get(a.author)?.user?.tag}** To:  **${message.guild.members.cache.get(a.target)?.user?.tag}**\nReason: **${a?.reason}**`)
+                        embed.addField(`#${a.num + 1} ` + a.name.slice(0, 1).toUpperCase() + a.name.slice(1), `By: **${message.guild.members.cache.get(a.author)?.user?.tag}**\n To:  **${message.guild.members.cache.get(a.target)?.user?.tag}**\nReason: **${a?.reason}**`)
                     }
                 }
                 return require('../../tools/function/sendMessage')(message, embed, false);
