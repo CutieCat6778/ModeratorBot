@@ -211,7 +211,9 @@ module.exports = async (client, message) => {
                 let cmd = args.shift().toLowerCase();
                 let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
                 if (!commandfile) {
-                    const target = client.category.get(cmd);
+                    let str = cmd;
+                    args.length > 0 ? str += args.join(" ") : null;
+                    const target = client.category.get(str);
                     if (target) {
                         if (target == "emoji") return message.channel.send({ embed: { description: "Under development!" } });
                         if (target == "development") {
@@ -223,7 +225,7 @@ module.exports = async (client, message) => {
                         if (!embed) return message.channel.send("Category not found");
                         else if (embed) {
                             const commands = client.commands.filter(a => a.config.category == target);
-                            embed.description += `\n\n**__Commands list__ [${commands.size}]**\n\n\`\`\`css\n${commands.map(a => `- ${a.config.name} [${a.config.aliases.join(', ')}]`).join('\n')}\n\`\`\``
+                            embed.description += `\n\n**__Commands list__ [${commands.size}]**\n\n\`\`\`css\n${commands.map(a => `- ${a.config.name} [${a.config.aliases ? a.config.aliases.join(', ') : "none"}]`).join('\n')}\n\`\`\``
                             return require('../../tools/function/sendMessage')(message, embed);
                         }
                     }

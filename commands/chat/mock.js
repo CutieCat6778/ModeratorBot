@@ -4,7 +4,7 @@ const tool = new StringTool();
 module.exports = {
     config: {
         name: "mock",
-        aliase: ["mok", "moc"],
+        aliases: ["mok", "moc"],
         category: 'chat',
         perms: ["SEND_MESSAGES"],
         bot: ["SEND_MESSAGES"]

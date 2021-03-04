@@ -6,7 +6,7 @@
         "message", "chats", "chatcommands", "chatcmds", "chatcmd", "chatcommand"
     ],
     "chat-management": [
-        "chatsmanagement", "chatmanage", "chats-manage", "chatsmanage", "chat-manage", "chat-config", "chat-control", "chatconfig", "chatcontrol"
+        "chatmanagement","chatsmanagement", "chatmanage", "chats-manage", "chatsmanage", "chat-manage", "chat-config", "chat-control", "chatconfig", "chatcontrol"
     ],
     "development": [
         "owner", "bot", "botadmin"
@@ -24,7 +24,7 @@
         "mod", "administrator", "administrators", "admin", "admins", "mods"
     ],
     "role-management": [
-        "rolesmanagement", "rolemanage", "roles-manage", "rolesmanage", "role-manage", "role-config", "role-control", "roleconfig", "rolecontrol"
+       "rolemanagement","rolesmanagement", "rolemanage", "roles-manage", "rolesmanage", "role-manage", "role-config", "role-control", "roleconfig", "rolecontrol"
     ],
     "rules": [
         "rule", "regulation", "reg", "ground-rule", "groundrule"
