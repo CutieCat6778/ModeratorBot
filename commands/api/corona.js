@@ -25,7 +25,7 @@ module.exports = {
                 }
                 body = JSON.parse(body);
                 const country = body.data[0];
-                if(!country || body.data.length != 0) return message.channel.send("Country not found!");
+                if(!country || body.data.length === 0) return message.channel.send("Country not found!");
                 let embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setTitle(`<:covid:774311088334045184> ${country.location} corona stats`)
