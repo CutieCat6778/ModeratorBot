@@ -26,7 +26,7 @@ try {
             category = await require('./handlers/loadCategories')(client);
         if (commands == true && events == true && category == true) {
             console.log('Logging in . . . ');
-            client.login(process.env.token, () => {
+            client.login("NzY0OTAxMDE2NjkyNTg4NTU0.X4M_lQ.0uyL_167K5NYegI4kPXH7lQFAP8", () => {
                 console.log(`Successfully loged in!`)
             })
         } else {
