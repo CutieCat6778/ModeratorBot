@@ -16,7 +16,7 @@ module.exports = async (client, statcord) => {
         console.log(client.timeouts, client.afk);
         await dbl(client);
         if (!process.env.hook) {
-            //statcord.autopost();
+            statcord.autopost();
             const embed = new MessageEmbed()
                 .setColor("#40598F")
                 .setTitle(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`)

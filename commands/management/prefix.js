@@ -29,16 +29,17 @@ module.exports = {
                         guildData.prefixes.push(prefix);
                         guildCache.prefixes.push(prefix);
                         await guildData.updateOne({prefixes: guildCache.prefixes});
-                        message.channel.send(`My prefix in this server has been change to \`${prefix}\``);
+                        message.channel.send(`Added \`${prefix}\` to prefix list`);
                     }
                 }else if(args[0] == "remove"){
+                    if(guildData.prefixes.length == 1) return message.channel.send('You can remove this prefix, it is your last prefix!');
                     const prefix = args[1].toLowerCase();
                     const data = guildData.prefixes.find(a => a.toLowerCase() == prefix)
                     if(data){
-                        guildData.prefixes.splice(guildData.prefixes.indexOf(prefix), 1);
-                        guildCache.prefixes.splice(guildData.prefixes.indexOf(prefix), 1);
+                        guildData.prefixes.splice(guildData.prefixes.indexOf(data), 1);
+                        guildCache.prefixes.splice(guildCache.prefixes.indexOf(data), 1);
                         await guildData.updateOne({prefixes: guildCache.prefixes});
-                        return message.channel.send("Successfully removed the prefix!");
+                        return message.channel.send(`Successfully removed the prefix **\`${data}\`** from the prefix list!`);
                     }else if(!data) return message.channel.send('Prefix not found!');
                 }
             }
