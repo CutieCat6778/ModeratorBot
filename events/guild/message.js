@@ -194,11 +194,17 @@ module.exports = async (client, statcord, message) => {
                 }
             }
             //converting to prefix
-            console.log(guildCache);
-            const prefix = message.content.split(" ").shift();
-            if(guildCache.prefixes.includes(prefix)){
-                guildCache.prefix = prefix;
-            }else if(!guildCache.prefixes.includes(prefix)) return;
+            if(guildCache.length == 1){
+                if(message.content.toLowerCase().startsWith(guildCache[0])){
+                    guildCache.prefix = guildCache[0];
+                }
+            }else if(guildCache.length > 1){
+                guildCache.prefixes.map(a => {
+                    if(message.content.toLowerCase().startsWith(a)){
+                        guildCache.prefix = a;
+                    }
+                })
+            }
             //commands working
             if (message.content.toLowerCase().startsWith(guildCache.prefix)|| message.content.toLowerCase().startsWith(`<@!${client.user.id}>`) || message.content.toLowerCase().startsWith(`<@${client.user.id}>`)) {
                 let args;
