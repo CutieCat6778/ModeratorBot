@@ -12,7 +12,7 @@ module.exports = {
         try {
             if (!args[0]) {
                 let emebd = await require("../../noArgs/management/prefix")(guildCache.prefix);
-                require('../../tools/function/sendMessage')(message, emebd);
+                return require('../../tools/function/sendMessage')(message, emebd);
             } else if(args[0]){
                 let guildData = await require("../../tools/database/getGuild")(client, message.guild.id);
                 if(args[0] == "add"){
@@ -42,9 +42,10 @@ module.exports = {
                         return message.channel.send(`Successfully removed the prefix **\`${data}\`** from the prefix list!`);
                     }else if(!data) return message.channel.send('Prefix not found!');
                 }
+            }else if(!args[0]){
+                let emebd = await require("../../noArgs/management/prefix")(guildCache.prefix);
+                return require('../../tools/function/sendMessage')(message, emebd);
             }
-            
-            
         } catch (e) {
             return require("../../tools/function/error")(e, message)
         }
