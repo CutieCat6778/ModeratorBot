@@ -16,7 +16,7 @@ module.exports = {
                 let embed = new MessageEmbed()
                     .setColor("#40598F")
                     .setFooter("© 2020 Cat_#9289 All Rights Reserved")
-                    .setDescription(`**${client.user.username}** is the most __powerful moderation bot__ on Discord. ${client.user.username} will help you to **moderate** or **manage** your server much much better!\n You can visit our website on **[moddy.js.org](${process.env.url})** to get more informations about **${client.user.username}**.\n\n**__CURRENT PREFIX__**\n\`${guildCache.prefix}\`\n\n**__CATEGORIES__**\n${categories.map(a => `\`${a.split("-").join(" ")}\``).join(', ')}\n\n**__USAGE__**\`\`\`\n${guildCache.prefix} help [category]\n\`\`\``)
+                    .setDescription(`**${client.user.username}** is the most __powerful moderation bot__ on Discord. ${client.user.username} will help you to **moderate** or **manage** your server much much better!\n You can visit our website on **[moddy.js.org](${process.env.url})** to get more informations about **${client.user.username}**.\n\n**__CURRENT PREFIX__**\n\`${guildCache.prefixes.map(a => `\`${a}\``).join(", ")}\`\n\n**__CATEGORIES__**\n${categories.map(a => `\`${a.split("-").join(" ")}\``).join(', ')}\n\n**__USAGE__**\`\`\`\n${guildCache.prefix} help [category]\n\`\`\``)
                 return require('../../tools/function/sendMessage')(message, embed);
             } else if (args[0]) {
                 let target = args.slice(0).join("-").split("_").join("-").toLowerCase().toString();

@@ -38,7 +38,7 @@ module.exports = async(client, g) => {
         logs: {
             id: " ", enable: false, token: " "
         },
-        prefix: "mod",
+        prefixes: ["mod"],
         case: [],
         captcha: {
             channels: [], enable: false

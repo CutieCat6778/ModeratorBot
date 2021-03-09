@@ -193,19 +193,20 @@ module.exports = async (client, statcord, message) => {
                     }
                 }
             }
+            //converting to prefix
+            console.log(guildCache);
+            const prefix = message.content.split(" ").shift();
+            if(guildCache.prefixes.includes(prefix)){
+                guildCache.prefix = prefix;
+            }else if(!guildCache.prefixes.includes(prefix)) return;
             //commands working
-            if (message.content.toLowerCase().startsWith(guildCache.prefix) || message.author.id == "762749432658788384" || message.content.toLowerCase().startsWith(`<@!${client.user.id}>`) || message.content.toLowerCase().startsWith(`<@${client.user.id}>`)) {
+            if (message.content.toLowerCase().startsWith(guildCache.prefix)|| message.content.toLowerCase().startsWith(`<@!${client.user.id}>`) || message.content.toLowerCase().startsWith(`<@${client.user.id}>`)) {
                 let args;
                 if (message.content.toLowerCase().startsWith(guildCache.prefix)) {
                     args = message.content.slice(guildCache.prefix.length).trim().split(/ +/g);
-                } if (message.author.id == "762749432658788384" || (message.content.toLowerCase().startsWith(guildCache.prefix) && message.author.id == "762749432658788384")) {
-                    args = message.content.trim().split(/ +/g);
-                    if (message.content.toLowerCase().startsWith(guildCache.prefix)) {
-                        args = message.content.slice(guildCache.prefix.length).trim().split(/ +/g);
-                    }
-                } if (message.content.toLowerCase().startsWith(`<@!${client.user.id}>`)) {
+                }else if (message.content.toLowerCase().startsWith(`<@!${client.user.id}>`)) {
                     args = message.content.slice(`<@!${client.user.id}>`.length).trim().split(/ +/g);
-                } if (message.content.toLowerCase().startsWith(`<@${client.user.id}>`)) {
+                }else if (message.content.toLowerCase().startsWith(`<@${client.user.id}>`)) {
                     args = message.content.slice(`<@${client.user.id}>`.length).trim().split(/ +/g);
                 }
                 let cmd = args.shift().toLowerCase();
@@ -296,7 +297,7 @@ module.exports = async (client, statcord, message) => {
                         return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMissMe")(commandfile.config.perms))
                     }
                 }
-                statcord.postCommand(commandfile.config.name, message.author.id);
+                if (!process.env.hook) statcord.postCommand(commandfile.config.name, message.author.id);
                 client.total += 1;
                 return commandfile.execute(client, message, args, guildCache)
             }
