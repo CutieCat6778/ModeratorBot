@@ -4,7 +4,7 @@ module.exports = {
     config: {
         name: "status",
         aliases: ["pm2stat"],
-        perms: ["BOT_OWNER"],
+        perms: ["CREATOR"],
         category: "development"
     },
     async execute(client, message, args, guildCache) {

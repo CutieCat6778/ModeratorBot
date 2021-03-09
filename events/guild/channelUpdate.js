@@ -1,4 +1,4 @@
-module.exports = async (client, oldChannel, newChannel) => {
+module.exports = async (client, statcord,  oldChannel, newChannel) => {
     try {
         const guild = await require('../../tools/database/getGuild')(client, newChannel.guild.id);
         let chanel = guild.channels.find(c => c.id == newChannel.id);

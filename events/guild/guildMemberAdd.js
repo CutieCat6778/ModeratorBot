@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 
-module.exports = async (client, member) => {
+module.exports = async (client, statcord,  member) => {
     try {
         let guild = await client.guild.get(member.guild.id);
         if(!guild) guild = await require("../../tools/database/getGuild")(client, member.guild.id)        //captcha

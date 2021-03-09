@@ -1,4 +1,4 @@
-module.exports = (client, channel, time) => {
+module.exports = (client, statcord, channel, time) => {
     try {
         const guildCache = client.guild.get(channel.guild.id);
         if (guildCache.logs.enable == true) {

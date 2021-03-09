@@ -1,6 +1,6 @@
 const { MessageEmbed, WebhookClient } = require("discord.js");
 
-module.exports = async (client, message) => {
+module.exports = async (client, statcord, message) => {
     try {
         if (client.block == false || (client.block == null && message.guild.id !== "769862485053931521")) return;
         if (process.env.hook && message.guild.id !== "769862485053931521") return;
@@ -286,9 +286,9 @@ module.exports = async (client, message) => {
                     }
                 }
                 if (commandfile.config.category == "emoji") return message.channel.send('Under development, will be realese soon!');
-                if (commandfile.config.perms.includes("BOT_OWNER") && commandfile.config.category == "development" && message.author.id != "762749432658788384") {
+                if (commandfile.config.perms.includes("CREATOR") && commandfile.config.category == "development" && message.author.id != "762749432658788384") {
                     return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")(commandfile.config.perms))
-                } else if (!commandfile.config.perms.includes("BOT_OWNER")) {
+                } else if (!commandfile.config.perms.includes("CREATOR")) {
                     if (message.channel.permissionsFor(message.member).has(commandfile.config.perms) == false) {
                         return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")(commandfile.config.perms))
                     }
@@ -296,6 +296,7 @@ module.exports = async (client, message) => {
                         return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMissMe")(commandfile.config.perms))
                     }
                 }
+                statcord.postCommand(commandfile.config.name, message.author.id);
                 client.total += 1;
                 return commandfile.execute(client, message, args, guildCache)
             }

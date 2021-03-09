@@ -3,7 +3,7 @@ const { WebhookClient, MessageEmbed } = require("discord.js");
 const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
 const dbl = require('../../dbl/server');
 
-module.exports = async (client) => {
+module.exports = async (client, statcord) => {
     try {
         process.env.hook ? null : await client.user.setActivity(`Starting up`, { type: "PLAYING" });
         await mongoose.connect(process.env.mongo, {
@@ -30,6 +30,7 @@ module.exports = async (client) => {
         if(process.env.hook){
             client.block = null;
         }
+        statcord.autopost();
     } catch (e) {
         return require("../../tools/function/error")(e, undefined)
     }

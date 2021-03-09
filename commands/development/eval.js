@@ -6,7 +6,7 @@ module.exports = {
         name: "eval",
         aliases: ["code"],
         category: "development",
-        perms: ["BOT_OWNER"],
+        perms: ["CREATOR"],
         description: "Don't touch, when you don't know what is"
     },
     async execute(client, message, args, guildCache) {

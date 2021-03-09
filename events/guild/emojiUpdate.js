@@ -1,4 +1,4 @@
-module.exports = (client, oldEmoji, newEmoji) => {
+module.exports = (client, statcord, oldEmoji, newEmoji) => {
     try {
         const guildCache = client.guild.get(newEmoji.guild.id);
         if (guildCache.logs.enable == true) {

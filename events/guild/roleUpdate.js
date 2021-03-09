@@ -1,4 +1,4 @@
-module.exports = async (client, oldRole, newRole) => {
+module.exports = async (client, statcord,  oldRole, newRole) => {
     try {
         const guild = await require('../../tools/database/getGuild')(client, newRole.guild.id);
         let role = guild.roles.find(c => c.id == newRole.id);

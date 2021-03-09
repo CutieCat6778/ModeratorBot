@@ -1,4 +1,4 @@
-module.exports = async (client, invite) => {
+module.exports = async (client, statcord,  invite) => {
     try {
         const guildCache = await client.guild.get(invite.guild.id);
         if (guildCache.logs.enable == true) {

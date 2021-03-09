@@ -4,7 +4,7 @@ module.exports = {
     config: {
         name: 'docs',
         aliases: ["doc"],
-        perms: ["BOT_OWNER"],
+        perms: ["CREATOR"],
         category: "development"
     },
     async execute (client, message, args, guildCache) {

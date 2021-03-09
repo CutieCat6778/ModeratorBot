@@ -1,6 +1,15 @@
 const { Client, Collection } = require("discord.js");
+const Stats = require('statcord.js');
 const client = new Client({ ws: { properties: { $browser: "Discord Android" } } });
 require('dotenv').config();
+
+const statcord = new Stats.Client({
+    client,
+    key: process.env.statcord,
+    postCpuStatistics: true, /* Whether to post memory statistics or not, defaults to true */
+    postMemStatistics: true, /* Whether to post memory statistics or not, defaults to true */
+    postNetworkStatistics: false, /* Whether to post memory statistics or not, defaults to true */
+});
 
 client.start = new Date();
 client.total = new Number(0);
@@ -22,9 +31,10 @@ client.timeouts = new Map();
 try {
     (async () => {
         const commands = await require('./handlers/commands')(client),
-            events = await require('./handlers/events')(client),
+            events = await require('./handlers/events')(client, statcord),
+            statcordEvent = await require('./handlers/statcordEvent')(statcord, client),
             category = await require('./handlers/loadCategories')(client);
-        if (commands == true && events == true && category == true) {
+        if (commands == true && events == true && category == true && statcordEvent == true) {
             console.log('Logging in . . . ');
             client.login(process.env.token, () => {
                 console.log(`Successfully loged in!`)

@@ -5,7 +5,7 @@ module.exports = {
         name: "maintenance",
         aliases: ['shutdown', 'maintance', 'maintanance'],
         category: "development",
-        perms: ['BOT_OWNER'],
+        perms: ['CREATOR'],
         bot: ['SEND_MESSAGES']
     },
     async execute(client, message, args, guildCache) {

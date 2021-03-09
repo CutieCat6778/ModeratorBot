@@ -1,6 +1,6 @@
 const { MessageEmbed, WebhookClient } = require("discord.js");
 
-module.exports = async (client, oldMessage, newMessage) => {
+module.exports = async (client, statcord,  oldMessage, newMessage) => {
     try {
         if(client.block == false) return;
         if (newMessage.author.bot) return;

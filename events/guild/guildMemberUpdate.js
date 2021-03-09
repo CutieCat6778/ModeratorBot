@@ -1,4 +1,4 @@
-module.exports = async (client, oldMember, newMember) => {
+module.exports = async (client, statcord,  oldMember, newMember) => {
     try{
         let guildCache = await client.guild.get(newMember.guild.id);
         if(!guildCache) guildCache = await require("../../tools/database/getGuild")(client, newMember.guild.id);

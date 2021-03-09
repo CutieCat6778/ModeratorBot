@@ -3,7 +3,7 @@ module.exports = {
         name: "reload",
         aliases: ["loadcmd"],
         category: "development",
-        perms: ["BOT_OWNER"]
+        perms: ["CREATOR"]
     },
     async execute(client, message, args, guildCache) {
         if (!args[0]) return;
