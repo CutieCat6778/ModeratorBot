@@ -8,7 +8,7 @@ require('dotenv').config();
      key: process.env.statcord,
      postCpuStatistics: true, /* Whether to post memory statistics or not, defaults to true */
      postMemStatistics: true, /* Whether to post memory statistics or not, defaults to true */
-     postNetworkStatistics: false, /* Whether to post memory statistics or not, defaults to true */
+     postNetworkStatistics: true, /* Whether to post memory statistics or not, defaults to true */
  });
 
 client.start = new Date();
