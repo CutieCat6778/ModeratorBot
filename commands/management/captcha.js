@@ -17,7 +17,7 @@ module.exports = {
             if (args[0] == "setup") {
                 const channels = await mentions(args.slice(1));
                 let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
-                if (guild.captcha.enable == true) return message.channel.send(`You are already setup the captcha, \`${guildCache.prefix} captcha setting\` to setting to captcha`)
+                if (guild.captcha.enable == true) return message.channel.send(`You are already setup the captcha, \`${guildCache.prefix}captcha setting\` to setting to captcha`)
                 guild.captcha.enable = true;
                 guild.captcha.channels = channels;
                 await guild.save();

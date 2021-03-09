@@ -36,6 +36,7 @@ module.exports = {
                     const data = guildData.prefixes.find(a => a.toLowerCase() == prefix)
                     if(data){
                         guildData.prefixes.splice(guildData.prefixes.indexOf(prefix), 1);
+                        guildCache.prefixes.splice(guildData.prefixes.indexOf(prefix), 1);
                         await guildData.updateOne({prefixes: guildCache.prefixes});
                         return message.channel.send("Successfully removed the prefix!");
                     }else if(!data) return message.channel.send('Prefix not found!');

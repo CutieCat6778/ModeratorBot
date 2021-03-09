@@ -22,7 +22,7 @@ module.exports = {
                         return require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel")
                     }
                     const guild = await require("../../tools/database/getGuild")(client, message.guild.id);
-                    if (isNaN(guildCache.logs.id) == true) return message.channel.send(`Please use command \`${guildCache.prefix} logs setting\`, you are already setup the logs`)
+                    if (isNaN(guildCache.logs.id) == true) return message.channel.send(`Please use command \`${guildCache.prefix}logs setting\`, you are already setup the logs`)
                     guild.logs._id = logchannel.id;
                     guildCache.logs._id = logchannel.id;
                     logchannel.createWebhook(client.user.username, {

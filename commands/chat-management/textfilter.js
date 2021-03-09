@@ -15,7 +15,7 @@ module.exports = {
             }
             if (args[0] == "setup") {
                 let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
-                if (guild.textfilter.enable == true) return message.channel.send(`Please use command \`${guildCache.prefix} textfilter setting\`, you are already setup the textfilter`)
+                if (guild.textfilter.enable == true) return message.channel.send(`Please use command \`${guildCache.prefix}textfilter setting\`, you are already setup the textfilter`)
                 guild.textfilter.enable = true;
                 guildCache.textfilter.enable = true;
                 let embed = new MessageEmbed()
@@ -83,7 +83,7 @@ module.exports = {
                             }
                         }
                     }
-                } else return message.channel.send(`Please type this command to report to developer\`${guildCache.prefix} bug Text-filter options.length else\``)
+                } else return message.channel.send(`Please type this command to report to developer\`${guildCache.prefix}bug Text-filter options.length else\``)
                 await guild.save();
                 await require('../../tools/cache/guildCacheReload')(client);
                 message.channel.send("Successfully enabled Text filter function");

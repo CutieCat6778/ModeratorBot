@@ -16,7 +16,7 @@ module.exports = {
                 const guild = await require('../../tools/database/getGuild')(client, message.guild.id);
                 if (args[0] == "setup") {
                     const rules = [];
-                    if (guild.rules.rulesArr.length != 0 || guild.rules.enable == true) return message.channel.send(`You are already setup the rules or use command \`${guildCache.prefix} resetrule\` to reset the rules`);
+                    if (guild.rules.rulesArr.length != 0 || guild.rules.enable == true) return message.channel.send(`You are already setup the rules or use command \`${guildCache.prefix}resetrule\` to reset the rules`);
                     else if (guild.rules.rulesArr.length == 0) {
                         message.channel.send("Please supply how many rules you will need");
                         const filter = m => m.author.id == message.author.id;
@@ -59,7 +59,7 @@ module.exports = {
                                             return await guild.save();
                                         }
                                     } else if (collected1.content == "n") {
-                                        return message.channel.send(`If you have problem with the embed, please do command \`${guildCache.prefix} bug [YOUR_PROBLEM]\``);
+                                        return message.channel.send(`If you have problem with the embed, please do command \`${guildCache.prefix}bug [YOUR_PROBLEM]\``);
                                     } else {
                                         return message.channel.send("Invalid options");
                                     }

@@ -33,7 +33,7 @@ module.exports = {
             const embed1 = new MessageEmbed()
                 .setColor('#40598F')
                 .setTitle('Unlocked this channel')
-                .setDescription(`This channel has been unlocked, if you want to lock this channel again then you can see more information about \`lock\` command. Get help about that command, please type anywhere you want \`${guildCache.prefix} help lock\`!`)
+                .setDescription(`This channel has been unlocked, if you want to lock this channel again then you can see more information about \`lock\` command. Get help about that command, please type anywhere you want \`${guildCache.prefix}help lock\`!`)
                 .setTimestamp()
                 .setFooter(`Unlocked by ${message.guild.me.displayName}`, message.guild.iconURL())
             return client.setTimeout(() => {

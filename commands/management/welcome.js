@@ -22,7 +22,7 @@ module.exports = {
                         return message.channel.send(require("../../tools/function/permissionMiss")("I don't have permission to send messages in that channel"));
                     }
                     let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
-                    if (guild.welcome._id != " ") return message.channel.send(`Please use command \`${guildCache.prefix} welcome setting\`, you are already setup the welcome`)
+                    if (guild.welcome._id != " ") return message.channel.send(`Please use command \`${guildCache.prefix}welcome setting\`, you are already setup the welcome`)
                     const filter = m => m.author.id == message.author.id;
                     let embed = new MessageEmbed()
                         .setTitle('Join message')
@@ -89,7 +89,7 @@ module.exports = {
                     .setTimestamp()
                 await channel.send(embed);
                 await channel.send(embed1);
-                return message.channel.send(`Done ! check <#${guild.welcome._id}>, if there is a problem use command \`${guildCache.prefix} bug <text>\``)
+                return message.channel.send(`Done ! check <#${guild.welcome._id}>, if there is a problem use command \`${guildCache.prefix}bug <text>\``)
             }
             else if (args[0] == "setting") {
                 if (!args[1]) {

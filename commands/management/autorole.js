@@ -19,7 +19,7 @@ module.exports = {
                     let role = message.guild.roles.cache.get(require('mention-converter')(args[1]));
                     if(!role) return message.channel.send("Role not found");
                     let guild = await require("../../tools/database/getGuild")(client, message.guild.id);
-                    if (guild.autorole.roleId != " ") return message.channel.send(`Please use command \`${guildCache.prefix} autorole setting\`, you are already setup the autorole`)
+                    if (guild.autorole.roleId != " ") return message.channel.send(`Please use command \`${guildCache.prefix}autorole setting\`, you are already setup the autorole`)
                     guild.autorole.roleId = role.id;
                     guild.autorole.enable = true;
                     await guild.save();
