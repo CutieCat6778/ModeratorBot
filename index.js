@@ -18,6 +18,7 @@ client.ratelimit = new Map();
 client.snipe = new Map();
 client.edit = new Map();
 client.timeouts = new Map();
+client.chatlimit = new Map();
 
 try {
     const statcord = new (require('statcord.js').Client)({

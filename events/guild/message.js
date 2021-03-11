@@ -6,6 +6,7 @@ module.exports = async (client, statcord, message) => {
         if (process.env.local && message.guild.id !== "769862485053931521") return;
         if (message.author.bot) return;
         if (message.channel.type == "text") {
+            const date = (new Date()).getTime();
             //get guild and save it in cache
             let guildCache = client.guild.get(message.guild.id);
             if (!guildCache) {
@@ -157,7 +158,6 @@ module.exports = async (client, statcord, message) => {
             if (message.mentions.members) {
                 if (!message.content.includes("@everyone")) {
                     const users = message.mentions.members.map(m => m.id);
-                    const date = (new Date()).getTime();
                     if (users.length == 1) {
                         let userCache = client.afk.get(users[0]);
                         if (userCache && userCache.enable == true) {
@@ -192,6 +192,23 @@ module.exports = async (client, statcord, message) => {
                         message.member.setNickname(message.member.displayName.replace('[AFK]', ''))
                     }
                 }
+            }
+            //Chat limit users
+            const userData = client.chatlimit.get(message.author.id);
+            if(userData){
+                if((date - userData.time) < 5000){
+                    message.channel.send(`<@${message.author.id}>`);
+                    return message.channel.send({embed: {
+                        color: "#40598F", 
+                        description: `Slowdown, please wait **${require('ms')(5000 - (date - userData.time))}** more!`
+                    }})
+                }else if((date - userData.time) > 5000){
+                    client.chatlimit.delete(message.author.id);
+                }
+            }else if(!userData){
+                client.chatlimit.set(message.author.id, {
+                    time: date
+                })
             }
             //converting to prefix
             if(guildCache.prefixes.length == 1){

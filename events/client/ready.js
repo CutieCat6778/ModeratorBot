@@ -15,7 +15,7 @@ module.exports = async (client, statcord) => {
         await require("../../tools/cache/loadTimeout")(client);
         console.log(client.timeouts, client.afk);
         await dbl(client);
-        if (!process.env.local) {
+        if (process.env.local) {
             statcord.autopost();
             const embed = new MessageEmbed()
                 .setColor("#40598F")
