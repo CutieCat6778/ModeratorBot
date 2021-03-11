@@ -2,9 +2,9 @@ require('dotenv').config();
 const { Client, Collection } = require("discord.js-light");
 const client = new Client({ 
     ws: { properties: { $browser: "Discord Android" } },
-    cacheOverwrites: true,
+    cacheOverwrites: false,
     cacheEmojis: false,
-    cachePresences: true,
+    cachePresences: false,
     cacheGuilds: true,
     cacheChannels: true,
     cacheRoles: true
