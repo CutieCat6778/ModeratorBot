@@ -3,7 +3,7 @@ const { Client, Collection } = require("discord.js-light");
 const client = new Client({ 
     ws: { properties: { $browser: "Discord Android" } },
     cacheOverwrites: false,
-    cacheEmojis: false,
+    cacheEmojis: true,
     cachePresences: false,
     cacheGuilds: true,
     cacheChannels: true,
