@@ -1,5 +1,6 @@
-module.exports = async function addToCache(client) {
+module.exports = async (client) => {
     try {
+        let counter = 0;
         let guilds = await require("../../models/guilds").find();
         guilds.map(async g => {
             if (!g.prefixes) {
@@ -20,9 +21,13 @@ module.exports = async function addToCache(client) {
                 await g.save();
             }
             if (!client.guild.get(g._id)) {
+                counter++;
                 client.guild.set(g._id, g)
             }
         })
+        if(counter == client.guilds.cache.size){
+            return console.log('--- ALL GUILDS HAS BEEN LOADED ---');
+        }
     } catch (e) {
         return require('../function/error')(e)
     }

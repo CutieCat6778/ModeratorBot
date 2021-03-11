@@ -5,7 +5,7 @@ const dbl = require('../../dbl/server');
 
 module.exports = async (client, statcord) => {
     try {
-        process.env.hook ? null : await client.user.setActivity(`Starting up`, { type: "PLAYING" });
+        process.env.local ? null : await client.user.setActivity(`Starting up`, { type: "PLAYING" });
         await mongoose.connect(process.env.mongo, {
             useNewUrlParser: true,
             useUnifiedTopology: true
@@ -15,7 +15,7 @@ module.exports = async (client, statcord) => {
         await require("../../tools/cache/loadTimeout")(client);
         console.log(client.timeouts, client.afk);
         await dbl(client);
-        if (!process.env.hook) {
+        if (!process.env.local) {
             statcord.autopost();
             const embed = new MessageEmbed()
                 .setColor("#40598F")
@@ -28,7 +28,7 @@ module.exports = async (client, statcord) => {
             }, 5000);
         }
         console.log(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`);
-        if(process.env.hook){
+        if(process.env.local){
             client.block = null;
         }
     } catch (e) {

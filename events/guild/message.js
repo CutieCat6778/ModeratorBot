@@ -3,7 +3,7 @@ const { MessageEmbed, WebhookClient } = require("discord.js");
 module.exports = async (client, statcord, message) => {
     try {
         if (client.block == false || (client.block == null && message.guild.id !== "769862485053931521")) return;
-        if (process.env.hook && message.guild.id !== "769862485053931521") return;
+        if (process.env.local && message.guild.id !== "769862485053931521") return;
         if (message.author.bot) return;
         if (message.channel.type == "text") {
             //get guild and save it in cache
@@ -304,7 +304,7 @@ module.exports = async (client, statcord, message) => {
                         return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMissMe")(commandfile.config.perms))
                     }
                 }
-                if (!process.env.hook) statcord.postCommand(commandfile.config.name, message.author.id);
+                if (!process.env.local) statcord.postCommand(commandfile.config.name, message.author.id);
                 client.total += 1;
                 return commandfile.execute(client, message, args, guildCache)
             }

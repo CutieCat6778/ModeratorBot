@@ -1,15 +1,14 @@
-const { Client, Collection } = require("discord.js");
-const Stats = require('statcord.js');
-const client = new Client({ ws: { properties: { $browser: "Discord Android" } } });
 require('dotenv').config();
-
- const statcord = new Stats.Client({
-     client,
-     key: process.env.statcord,
-     postCpuStatistics: true, /* Whether to post memory statistics or not, defaults to true */
-     postMemStatistics: true, /* Whether to post memory statistics or not, defaults to true */
-     postNetworkStatistics: true, /* Whether to post memory statistics or not, defaults to true */
- });
+const { Client, Collection } = require("discord.js-light");
+const client = new Client({ 
+    ws: { properties: { $browser: "Discord Android" } },
+    cacheOverwrites: false,
+    cacheEmojis: false,
+    cachePresences: false,
+    cacheGuilds: true,
+    cacheChannels: true,
+    cacheRoles: true
+});
 
 client.start = new Date();
 client.total = new Number(0);
@@ -29,12 +28,20 @@ client.edit = new Map();
 client.timeouts = new Map();
 
 try {
+    const statcord = new (require('statcord.js').Client)({
+        client,
+        key: process.env.statcord,
+        postCpuStatistics: true,
+        postMemStatistics: true,
+        postNetworkStatistics: true,
+    });
+
     (async () => {
         const commands = await require('./handlers/commands')(client),
             events = await require('./handlers/events')(client, statcord),
             statcordEvent = await require('./handlers/statcordEvent')(statcord, client),
             category = await require('./handlers/loadCategories')(client);
-        if (commands == true && events == true && category == true) {
+        if (commands == true && events == true && category == true && statcordEvent) {
             console.log('Logging in . . . ');
             client.login(process.env.token, () => {
                 console.log(`Successfully loged in!`)

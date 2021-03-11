@@ -40,9 +40,9 @@ module.exports = {
                 m.react("❌");
                 await m.react("🗑️");
                 const votedUsers = [];
-                let posiv = 0;
-                let nega = 0;
-                let del = 0;
+                let posiv = [];
+                let nega = [];
+                let del = [];
                 const filter = (reaction, user) => {
                     return reaction.emoji.name === '✅' || reaction.emoji.name === '❌' || reaction.emoji.name === '🗑️';
                 };
@@ -52,13 +52,42 @@ module.exports = {
                     else if(!votedUsers.includes(user.id)){
                         votedUsers.push(user.id);
                     }
-                    if (reaction.emoji.name == "✅") posiv++;
-                    if (reaction.emoji.name == "❌") nega++;
+                    if (reaction.emoji.name == "✅"){
+                        if(nega.includes(user.id) || del.includes(user.id)){
+                            nega.splice(nega.indexOf(user.id), 1);
+                            del.splice(del.indexOf(user.id), 1);
+                            posiv.push(user.id);
+                        }else if(!nega.includes(user.id) && !del.includes(user.id) && !posiv.includes(user.id)){
+                            posiv.push(user.id);
+                        }else if(posiv.includes(user.id)){
+                            posiv.splice(posiv.indexOf(user.id), 1);
+                        }
+                    }
+                    if (reaction.emoji.name == "❌") {
+                        if(posiv.includes(user.id) || del.includes(user.id)){
+                            posiv.splice(posiv.indexOf(user.id), 1);
+                            del.splice(del.indexOf(user.id), 1);
+                            nega.push(user.id);
+                        }else if(!nega.includes(user.id) && !del.includes(user.id) && !posiv.includes(user.id)){
+                            nega.push(user.id);
+                        }else if(nega.includes(user.id)){
+                            nega.splice(nega.indexOf(user.id), 1);
+                        }
+                    }
                     if (reaction.emoji.name == "🗑️") {
-                        user = message.guild.members.cache.get(user.id);
-                        del++;
-                        if (!user.permissions.has("ADMINISTRATOR")) return;
-                        else if (user.permissions.has("ADMINISTRATOR")) {
+                        if(posiv.includes(user.id) || nega.includes(user.id)){
+                            posiv.splice(posiv.indexOf(user.id), 1);
+                            nega.splice(nega.indexOf(user.id), 1);
+                            del.push(user.id);
+                        }else if(!nega.includes(user.id) && !del.includes(user.id) && !posiv.includes(user.id)){
+                            del.push(user.id);
+                        }else if(del.includes(user.id)){
+                            del.splice(del.indexOf(user.id), 1);
+                        }
+                        userData = message.guild.members.cache.get(user.id);
+                        del.push(user.id);
+                        if (!userData.permissions.has("ADMINISTRATOR")) return;
+                        else if (userData.permissions.has("ADMINISTRATOR")) {
                             collector.stop();
                             m.delete();
                         }
@@ -70,7 +99,7 @@ module.exports = {
                         .setTitle(`${target.displayName} votekick`)
                         .setTimestamp()
                         .setThumbnail(target.user.displayAvatarURL())
-                    if (Math.floor(collected.size / del) * 100 >= 70) {
+                    if (Math.floor(collected.size / del.length) * 100 >= 70) {
                         let embed = new MessageEmbed()
                             .setColor("#40598F")
                             .setTitle("Vote ended")
@@ -80,7 +109,7 @@ module.exports = {
                         collector.stop();
                         return m.edit(embed);
                     }
-                    if (posiv > nega) {
+                    if (posiv.length > nega.length) {
                         if (target.roles.highest.position >= message.guild.me.roles.highest.position && target.permissions.has("ADMINISTRATOR")) {
                             return m.edit(embed.setDescription(`<@!${target.id}> is guilty, with ${posiv} votes. Please mentions a Moderator or Admin to kick the user, I don't have permission to kick him/her.`))
                         } else if (target.roles.highest.position < message.guild.me.roles.highest.position && !target.permissions.has("ADMINISTRATOR")) {
@@ -98,7 +127,7 @@ module.exports = {
                                 }
                             }
                         }
-                    } else if (posiv < nega) {
+                    } else if (posiv.length < nega.length) {
                         m.edit(embed.setDescription(`<@!${target.id}> is not guilty, with ${nega} disagree votes`))
                     } else {
                         m.edit(embed.setDescription(`I can't decide to kick <@!${target.id}> or not, because the vote has same value`))

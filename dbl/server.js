@@ -48,5 +48,4 @@ module.exports = (client) => {
     }catch(e){
         return require('../tools/function/error')(e)
     }
-    
 }
