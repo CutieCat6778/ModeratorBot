@@ -12,7 +12,6 @@ module.exports = async (client) => {
                 await g.save();
             }
             if (g.prefix) {
-                console.log(a);
                 if (!g.prefixes || Array.isArray(g.prefixes) == false) {
                     g.prefixes = [];
                 }

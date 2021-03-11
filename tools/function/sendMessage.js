@@ -4,11 +4,11 @@ module.exports = (message, text, boolen) => {
             message.channel.send(text).then(async m => {
                 await m.react("🗑️");
                 const filter = (reaction, user) => {
-                    return (reaction.emoji.name === '🗑️' && message.author.id == user.id) || (reaction.emoji.name === "🗑️" && message.member.permissions.has("ADMINISTRATOR"))
+                    return !user.bot && (reaction.emoji.name === '🗑️' && message.author.id == user.id) || (reaction.emoji.name === "🗑️" && message.member.permissions.has("ADMINISTRATOR"))
                 };
                 const collector = await m.createReactionCollector(filter, { time: 15000 });
                 collector.on("collect", (reaction, user) => {
-                    if (reaction.emoji.name == "🗑️") {
+                    if (reaction.emoji.name == "🗑️" && user.id == message.author.id) {
                         m.delete();
                         ping.delete();
                         return m;

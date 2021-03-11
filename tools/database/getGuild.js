@@ -5,7 +5,6 @@ module.exports = async function getGuild(client, id) {
         const guild = await require('./newGuild')(client, id);
         return guild
     }
-    console.log(guild.prefix, guild.prefixes)
     if(!guild.starboard){
         guild.starboard = {
             "enable": false, "_id": ""
