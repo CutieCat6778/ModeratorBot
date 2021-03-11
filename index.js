@@ -1,7 +1,7 @@
 // All variable that I needed
 require('dotenv').config();
 const { Client, Collection } = require("discord.js");
-const client = new Client({ ws: { properties: { $browser: "Discord Android" } }, disableMentions: 'everyone' });
+const client = new Client({ ws: { properties: { $browser: "Discord Android" } }, disableMentions: 'everyone', messageCacheMaxSize: 100, messageCacheLifetime: 1800000 });
 
 //Get the time, until the bot ready
 client.start = new Date();
