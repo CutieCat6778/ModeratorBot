@@ -1,14 +1,6 @@
 require('dotenv').config();
-const { Client, Collection } = require("discord.js-light");
-const client = new Client({ 
-    ws: { properties: { $browser: "Discord Android" } },
-    cacheOverwrites: false,
-    cacheEmojis: false,
-    cachePresences: false,
-    cacheGuilds: true,
-    cacheChannels: true,
-    cacheRoles: true
-});
+const { Client, Collection } = require("discord.js");
+const client = new Client({ ws: { properties: { $browser: "Discord Android" } } });
 
 client.start = new Date();
 client.total = new Number(0);
