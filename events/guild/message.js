@@ -208,25 +208,7 @@ module.exports = async (client, statcord, message) => {
             //commands working
             if (!guildCache.prefix) return;
             if (message.content.toLowerCase().startsWith(guildCache.prefix) || message.content.toLowerCase().startsWith(`<@!${client.user.id}>`) || message.content.toLowerCase().startsWith(`<@${client.user.id}>`)) {
-                //Chat limit users
-                const userData = client.chatlimit.get(message.author.id);
-                if (userData) {
-                    if ((date - userData.time) < 5000) {
-                        message.channel.send(`<@${message.author.id}>`);
-                        return message.channel.send({
-                            embed: {
-                                color: "#40598F",
-                                description: `Slowdown, please wait **${require('ms')(5000 - (date - userData.time))}** more!`
-                            }
-                        })
-                    } else if ((date - userData.time) > 5000) {
-                        client.chatlimit.delete(message.author.id);
-                    }
-                } else if (!userData) {
-                    client.chatlimit.set(message.author.id, {
-                        time: date
-                    })
-                }
+                
                 let args;
                 if (message.content.toLowerCase().startsWith(guildCache.prefix)) {
                     args = message.content.slice(guildCache.prefix.length).trim().split(/ +/g);
@@ -322,6 +304,25 @@ module.exports = async (client, statcord, message) => {
                     if (message.channel.permissionsFor(message.guild.me).has(commandfile.config.bot) == false) {
                         return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMissMe")(commandfile.config.perms))
                     }
+                }
+                //Chat limit users
+                const userData = client.chatlimit.get(message.author.id);
+                if (userData) {
+                    if ((date - userData.time) < 5000) {
+                        message.channel.send(`<@${message.author.id}>`);
+                        return message.channel.send({
+                            embed: {
+                                color: "#40598F",
+                                description: `Slowdown, please wait **${require('ms')(5000 - (date - userData.time))}** more!`
+                            }
+                        })
+                    } else if ((date - userData.time) > 5000) {
+                        client.chatlimit.delete(message.author.id);
+                    }
+                } else if (!userData) {
+                    client.chatlimit.set(message.author.id, {
+                        time: date
+                    })
                 }
                 if (!process.env.local) statcord.postCommand(commandfile.config.name, message.author.id);
                 client.total += 1;
