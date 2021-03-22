@@ -3,7 +3,7 @@ const { WebhookClient, MessageEmbed } = require("discord.js");
 const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
 const dbl = require('../../dbl/server');
 
-module.exports = async (client, statcord) => {
+module.exports = async (client) => {
     try {
         process.env.local ? null : await client.user.setActivity(`Starting up`, { type: "PLAYING" });
         await mongoose.connect(process.env.mongo, {
@@ -16,7 +16,6 @@ module.exports = async (client, statcord) => {
         console.log(client.timeouts, client.afk);
         await dbl(client);
         if (!process.env.local) {
-            statcord.autopost();
             const embed = new MessageEmbed()
                 .setColor("#40598F")
                 .setTitle(`${client.user.username} is online - It took ${require("ms")((new Date() - client.start), { long: true })}`)

@@ -1,4 +1,4 @@
-module.exports = async (client, statcord,  oldMember, newMember) => {
+module.exports = async (client,  oldMember, newMember) => {
     try{
         if(!oldMember || !newMember) return;
         let guildCache = await client.guild.get(newMember.guild.id);

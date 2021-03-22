@@ -1,5 +1,5 @@
 
-module.exports = async (client, statcord,  messages) => {
+module.exports = async (client,  messages) => {
     try {
         const guildCache = await client.guild.get(messages.first().guild.id);
         if (guildCache.logs.enable == true) {

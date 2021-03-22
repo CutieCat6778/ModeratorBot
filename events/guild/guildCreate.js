@@ -1,6 +1,6 @@
 const { MessageEmbed, WebhookClient } = require("discord.js");
 
-module.exports = async(client, statcord, guild) => {
+module.exports = async(client, guild) => {
     try {
         const guildData = await require("../../tools/database/getGuild")(client, guild.id);
         client.guild.set(guildData.id, guildData);

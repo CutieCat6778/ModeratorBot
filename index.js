@@ -40,23 +40,13 @@ client.timeouts = new Map();
 client.chatlimit = new Map();
 
 try {
-    //Login to Statcord
-    const statcord = new (require('statcord.js').Client)({
-        client,
-        key: process.env.statcord,
-        postCpuStatistics: true,
-        postMemStatistics: true,
-        postNetworkStatistics: true,
-    });
-
     //Run the handlers and login function
     (async () => {
         // Require those handlers stuff
         const commands = await require('./handlers/commands')(client),
-            events = await require('./handlers/events')(client, statcord),
-            statcordEvent = await require('./handlers/statcordEvent')(statcord, client),
+            events = await require('./handlers/events')(client),
             category = await require('./handlers/loadCategories')(client);
-        if (commands == true && events == true && category == true && statcordEvent) {
+        if (commands == true && events == true && category == true) {
             console.log('Logging in . . . ');
             //Login to the bot
             client.login(process.env.token, () => {

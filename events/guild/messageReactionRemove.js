@@ -1,4 +1,4 @@
-module.exports = async (client, statcord,  reaction, user) => {
+module.exports = async (client,  reaction, user) => {
     try {
         if (reaction.emoji.name == "⭐") {
             if (user.bot) return;

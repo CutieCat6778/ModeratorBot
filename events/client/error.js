@@ -1,7 +1,7 @@
 const { WebhookClient, MessageEmbed } = require("discord.js");
 const StringTools = require("string-toolkit");
 const stringTools = new StringTools;
-module.exports = (client, statcord, error) => {
+module.exports = (client, error) => {
     const hook = new WebhookClient("761689131528224818", "2On36D1n9Mv64FAgc_CyxTVEcBioSx2fVTpfUZuwYeQ8oURn_mC8sgBk-P7BOoKkj_jF");
     console.log(error);
     let array = stringTools.toChunks(error.stack, 5);

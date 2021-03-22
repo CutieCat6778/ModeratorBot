@@ -1,6 +1,6 @@
 const { readdirSync } = require("fs")
 
-module.exports = async(client, statcord) => {
+module.exports = async(client) => {
     try {
         const cmds = [];
         const cmd = [];
@@ -10,7 +10,7 @@ module.exports = async(client, statcord) => {
             for (let file of events) {
                 const evt = require(`../events/${dirs}/${file}`);
                 let eName = file.split('.')[0];
-                client.on(eName, evt.bind(null, client, statcord));
+                client.on(eName, evt.bind(null, client));
                 if(!cmds.includes(eName+".js")){
                     console.log(`Missing ${eName+".js"}`)
 				}else if(cmds.includes(eName+".js")){

@@ -1,6 +1,6 @@
 const { MessageEmbed, WebhookClient } = require("discord.js");
 
-module.exports = async (client, statcord,  message) => {
+module.exports = async (client,  message) => {
     try {
         const guildCache = client.guild.get(message.guild.id);
         if (message.channel.id == guildCache.rules._id && guildCache.rules.enable == true) {

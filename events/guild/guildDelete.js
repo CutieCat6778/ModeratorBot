@@ -1,6 +1,6 @@
 const { MessageEmbed,WebhookClient } = require("discord.js");
 
-module.exports = async(client, statcord, guild) => {
+module.exports = async(client, guild) => {
     try {
         const hook = new WebhookClient(process.env.hookId, process.env.hookToken);
         let embed = new MessageEmbed()

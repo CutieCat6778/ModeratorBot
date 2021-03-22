@@ -1,6 +1,7 @@
 const { MessageEmbed, WebhookClient } = require("discord.js");
+const data = require('../../asset/datamodel/default');
 
-module.exports = async (client, statcord, message) => {
+module.exports = async (client, message) => {
     try {
         if (client.block == false || (client.block == null && message.guild.id !== "769862485053931521")) return;
         if (process.env.local && message.guild.id !== "769862485053931521") return;

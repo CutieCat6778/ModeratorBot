@@ -1,4 +1,4 @@
-module.exports = async (client, statcord,  channel) => {
+module.exports = async (client,  channel) => {
     try {
         if(channel.type == "dm") return;
         const guild = await require('../../tools/database/getGuild')(client, channel.guild.id);
