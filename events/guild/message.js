@@ -1,10 +1,9 @@
 const { MessageEmbed, WebhookClient } = require("discord.js");
-const data = require('../../asset/datamodel/default');
 
 module.exports = async (client, message) => {
     try {
-        if (client.block == false || (client.block == null && message.guild.id !== "769862485053931521")) return;
-        if (process.env.local && message.guild.id !== "769862485053931521") return;
+        if (client.block == false || (client.block == null && message.guild.id !== process.env.server)) return;
+        if (process.env.local && message.guild.id !== process.env.server) return;
         if (message.author.bot) return;
         if (message.channel.type == "text") {
             const date = (new Date()).getTime();
@@ -296,7 +295,7 @@ module.exports = async (client, message) => {
                     }
                 }
                 if (commandfile.config.category == "emoji") return message.channel.send('Under development, will be realese soon!');
-                if (commandfile.config.perms.includes("CREATOR") && commandfile.config.category == "development" && message.author.id != "762749432658788384") {
+                if (commandfile.config.perms.includes("CREATOR") && commandfile.config.category == "development" && message.author.id != process.env.owner) {
                     return require('../../tools/function/sendMessage')(message, require("../../tools/function/permissionMiss")(commandfile.config.perms))
                 } else if (!commandfile.config.perms.includes("CREATOR")) {
                     if (message.channel.permissionsFor(message.member).has(commandfile.config.perms) == false) {

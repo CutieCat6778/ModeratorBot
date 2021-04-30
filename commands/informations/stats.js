@@ -11,7 +11,7 @@ module.exports = {
     },
     async execute(client, message, args, guildCache) {
         try {
-            const owner = await client.users.fetch("762749432658788384").tag
+            const owner = await client.users.fetch(process.env.owner).tag
             let embed = new MessageEmbed()
                 .setColor("#40598F")
                 .setTitle(`<:stats:774311089453137930> ${client.user.username}'s information`)

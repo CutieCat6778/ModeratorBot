@@ -1,7 +1,7 @@
 module.exports = (client, string) => {
     const date = new Date();
-    const time = client.start - date.getTime();
-    if(time > 20000){
+    const time = date.getTime() - client.start;
+    if(time > 2000){
         console.log(string);
     }
 }
